@@ -10,7 +10,7 @@ export default {
           imageUrl: 'portfolio',
           status: 'My personal website, I created this website to display my profile, skills and projects. As well as my place to try new technology.',
           tech: 'VueJS 3, Tailwind',
-          github: '',
+          github: 'https://github.com/RavenAgtha18/personal-portfolio-.git',
           demo: ''
         },
         {
@@ -28,7 +28,7 @@ export default {
           imageUrl: 'library',
           status: 'A web-based application with an integrated library management system that includes books, stock, catalog, members, publishers, authors, and loan transactions.',
           tech: 'Laravel 9, Bootstrap, VueJS 3',
-          github: 'null',
+          github: 'https://github.com/RavenAgtha18/perpustakaaan.gi',
           demo: 'null'
         },
         {
@@ -37,8 +37,17 @@ export default {
           imageUrl: 'market',
           status: 'A web-based retail management application with seamless integration of product, stock, category, member, employee, supplier, and purchase/sales transactions',
           tech: 'Laravel 10, Bootstrap',
-          github: 'null',
+          github: 'https://github.com/RavenAgtha18/store.git',
           demo: 'null'
+        },
+        {
+          id: 5,
+          name: 'Resto',
+          imageUrl: 'resto',
+          status: 'A Showcase of Culinary Excellence with Bootstrap-Powered Landing Page. Immerse yourself in the world of cutting-edge web technology as we present our culinary haven. Crafted using the Bootstrap framework, our landing page seamlessly blends elegant design and responsive functionality.',
+          tech: 'HTML, Bootstrap',
+          github: 'https://github.com/RavenAgtha18/lading-page-resto.git',
+          demo: 'https://majestic-khapse-51488b.netlify.app/'
         },
       ]
     };
