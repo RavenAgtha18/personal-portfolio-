@@ -26,7 +26,7 @@ export default {
           id: 3,
           name: 'Resto',
           imageUrl: 'resto',
-          status: 'A Showcase of Culinary Excellence with Bootstrap-Powered Landing Page. Immerse yourself in the world of cutting-edge web technology as we present our culinary haven. Crafted using the Bootstrap framework, our landing page seamlessly blends elegant design and responsive functionality.',
+          status: 'A Showcase of Culinary Excellence with Bootstrap-Powered Landing Page. Immerse yourself in the world of cutting-edge web technology as we present our culinary haven.',
           tech: 'HTML, Bootstrap',
           github: 'https://github.com/RavenAgtha18/lading-page-resto.git',
           demo: 'https://majestic-khapse-51488b.netlify.app/'
@@ -47,6 +47,15 @@ export default {
           status: 'A web-based application with an integrated library management system that includes books, stock, catalog, members, publishers, authors, and loan transactions.',
           tech: 'Laravel 9, Bootstrap, VueJS 3',
           github: 'https://github.com/RavenAgtha18/perpustakaaan.gi',
+          demo: 'null'
+        },
+         {
+          id: 6,
+          name: 'Webclinic',
+          imageUrl: 'webclinic',
+          status: 'A web-based application specifically designed to cater to the needs of clinics. This application is primarily used for managing patient data, scheduling, medication inventory, and various other business processes.',
+          tech: 'Laravel 5, Bootstrap, AngularJs',
+          github: 'null',
           demo: 'null'
         },
       ]
