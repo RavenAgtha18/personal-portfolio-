@@ -14,14 +14,27 @@
             >Riki Andi Alfiyanto</span
           >
         </button>
-        <div class="flex md:order-2 fadein-bot">
-          <a href="https://github.com/RavenAgtha18"
-            ><img
-              class="w-9 rounded-full"
-              src="https://seeklogo.com/images/G/github-logo-2E3852456C-seeklogo.com.png"
-              alt="github"
-          /></a>
+        <div class="flex md:order-2 gap-4 fadein-bot">
+          <div class="flex">
+            <a href="https://github.com/RavenAgtha18">
+              <img
+                class="w-9 rounded-full"
+                src="https://seeklogo.com/images/G/github-logo-2E3852456C-seeklogo.com.png"
+                alt="github"
+              />
+            </a>
+          </div>
+          <div class="flex">
+            <a href="https://www.linkedin.com/in/riki-andi-alfiyanto/">
+              <img
+                class="w-9 rounded-full"
+                src="https://images.seeklogo.com/logo-png/24/1/linkedin-icon-logo-png_seeklogo-249364.png?v=638663243070000000"
+                alt="Linkedin"
+              />
+            </a>
+          </div>
         </div>
+
         <div
           class="hidden md:flex justify-between items-center w-full md:w-auto md:order-1"
           id="mobile-menu-3"

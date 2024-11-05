@@ -13,6 +13,16 @@
       </div>
       <p class="text-white pr-4 fade-in-from-left">Welcome to My personal website. <span class="wave">👋🏼</span></p>
       <br>
+      <br>
+      <a
+        href="https://wa.me/6285175180821\" target="_blank"
+        class="fadein-bot flex items-center justify-center py-2 px-5 mx-auto text-sm font-medium rounded-lg border border-amber-200 text-amber-200 bg-transparent hover:bg-amber-200 hover:text-black transition duration-300 md:mx-0 w-fit"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="mr-2 w-5 h-5" viewBox="0 0 24 24">
+          <path d="M12.07,2A10,10,0,0,0,2.1,17.67L2,22l4.34-.76A10,10,0,1,0,12.07,2Zm5.39,13.62c-.22.62-1.28,1.19-1.77,1.26-.5.08-.87.12-2.92-.61a10.47,10.47,0,0,1-6-5.37c-.5-.86-.55-1.16-.55-1.56a3.14,3.14,0,0,1,1-2.16,1,1,0,0,1,.72-.31c.18,0,.36.06.52.43s.65,1.6.7,1.72a.43.43,0,0,1,0,.4,2.11,2.11,0,0,1-.31.52c-.16.19-.33.42-.47.56-.16.15-.33.31-.15.61a8.58,8.58,0,0,0,3.73,3.23c.27.12.42.1.57-.06a13.4,13.4,0,0,0,.91-1.15.52.52,0,0,1,.62-.2c.25.09,1.58.75,1.85.88s.44.2.51.31A2.84,2.84,0,0,1,17.46,15.61Z"/>
+        </svg>
+        Chat on WhatsApp
+      </a>
       <!-- <button
         class="fadein-bot fade-500 flex items-center py-2 px-4 mx-auto text-sm font-medium rounded-lg border transition duration-300 md:py-2.5 md:px-5 md:mx-0 text-amber-200 border-amber-200 hover:bg-amber-200 hover:bg-opacity-10 bg-transparent focus:outline-none w-fit"><svg
           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-2 w-4 h-4">
