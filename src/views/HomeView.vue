@@ -1,25 +1,39 @@
 <template>
   <main
-    class="mt-10 md:mt-1 flex flex-col-reverse gap-8 items-center md:flex-row md:gap-16 md:justify-center min-h-[65vh] md:min-h-[80vh]">
+    class="mt-10 md:mt-1 flex flex-col-reverse gap-8 items-center md:flex-row md:gap-16 md:justify-center min-h-[65vh] md:min-h-[80vh]"
+  >
     <div class="space-y-2 text-center md:text-left px-10">
       <p class="text-amber-200">Hello World, I'm</p>
-      <h1 class="text-4xl font-bold md:text-5xl text-white fadein-up">Riki Andi Alfiyanto</h1>
+      <h1 class="text-4xl font-bold md:text-5xl text-white fadein-up">
+        Riki Andi Alfiyanto
+      </h1>
       <div class="py-2">
         <h1
           class="typewrite text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-yellow-500 md:text-2xl fadein-up"
-          ref="typewriter">
+          ref="typewriter"
+        >
           <span class="wrap">{{ txt }}</span>
         </h1>
       </div>
-      <p class="text-white pr-4 fade-in-from-left">Welcome to My personal website. <span class="wave">👋🏼</span></p>
-      <br>
-      <br>
+      <p class="text-white pr-4 fade-in-from-left">
+        Welcome to My personal website. <span class="wave">👋🏼</span>
+      </p>
+      <br />
+      <br />
       <a
-        href="https://wa.me/6285175180821\" target="_blank"
+        href="https://wa.me/6285175180821\"
+        target="_blank"
         class="fadein-bot flex items-center justify-center py-2 px-5 mx-auto text-sm font-medium rounded-lg border border-amber-200 text-amber-200 bg-transparent hover:bg-amber-200 hover:text-black transition duration-300 md:mx-0 w-fit"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="mr-2 w-5 h-5" viewBox="0 0 24 24">
-          <path d="M12.07,2A10,10,0,0,0,2.1,17.67L2,22l4.34-.76A10,10,0,1,0,12.07,2Zm5.39,13.62c-.22.62-1.28,1.19-1.77,1.26-.5.08-.87.12-2.92-.61a10.47,10.47,0,0,1-6-5.37c-.5-.86-.55-1.16-.55-1.56a3.14,3.14,0,0,1,1-2.16,1,1,0,0,1,.72-.31c.18,0,.36.06.52.43s.65,1.6.7,1.72a.43.43,0,0,1,0,.4,2.11,2.11,0,0,1-.31.52c-.16.19-.33.42-.47.56-.16.15-.33.31-.15.61a8.58,8.58,0,0,0,3.73,3.23c.27.12.42.1.57-.06a13.4,13.4,0,0,0,.91-1.15.52.52,0,0,1,.62-.2c.25.09,1.58.75,1.85.88s.44.2.51.31A2.84,2.84,0,0,1,17.46,15.61Z"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          class="mr-2 w-5 h-5"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12.07,2A10,10,0,0,0,2.1,17.67L2,22l4.34-.76A10,10,0,1,0,12.07,2Zm5.39,13.62c-.22.62-1.28,1.19-1.77,1.26-.5.08-.87.12-2.92-.61a10.47,10.47,0,0,1-6-5.37c-.5-.86-.55-1.16-.55-1.56a3.14,3.14,0,0,1,1-2.16,1,1,0,0,1,.72-.31c.18,0,.36.06.52.43s.65,1.6.7,1.72a.43.43,0,0,1,0,.4,2.11,2.11,0,0,1-.31.52c-.16.19-.33.42-.47.56-.16.15-.33.31-.15.61a8.58,8.58,0,0,0,3.73,3.23c.27.12.42.1.57-.06a13.4,13.4,0,0,0,.91-1.15.52.52,0,0,1,.62-.2c.25.09,1.58.75,1.85.88s.44.2.51.31A2.84,2.84,0,0,1,17.46,15.61Z"
+          />
         </svg>
         Chat on WhatsApp
       </a>
@@ -34,20 +48,34 @@
           </path>
         </svg>Download Resume</button> -->
     </div>
-    <div class="flex justify-center md:justify-start fadein-right"><img alt="avatar" fetchpriority="high" width="300" height="300" decoding="async" data-nimg="1"
-        class="w-09/12 md:h-auto rounded-full border-4 border-amber-200 pict" src="/img/profile-pic .png">
+    <div class="flex justify-center md:justify-start fadein-right">
+      <img
+        alt="avatar"
+        fetchpriority="high"
+        width="300"
+        height="300"
+        decoding="async"
+        data-nimg="1"
+        class="w-09/12 md:h-auto rounded-full border-4 border-amber-200 pict"
+        src="/img/profile.jpg"
+      />
     </div>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   data() {
     return {
-      toRotate: ["Web Developer", "Full-stack Engineer", "Informatics Student", "Tech Enthusiast"],
+      toRotate: [
+        "Web Developer",
+        "Full-stack Engineer",
+        "Informatics Student",
+        "Tech Enthusiast",
+      ],
       period: 2000,
-      txt: '',
+      txt: "",
       loopNum: 0,
       isDeleting: false,
     };
@@ -68,7 +96,9 @@ export default {
       let i = this.loopNum % this.toRotate.length;
       let fullTxt = this.toRotate[i];
 
-      this.txt = this.isDeleting ? fullTxt.substring(0, this.txt.length - 1) : fullTxt.substring(0, this.txt.length + 1);
+      this.txt = this.isDeleting
+        ? fullTxt.substring(0, this.txt.length - 1)
+        : fullTxt.substring(0, this.txt.length + 1);
       typewriter.innerHTML = `<span class="wrap">${this.txt}</span>`;
 
       let that = this;
@@ -81,7 +111,7 @@ export default {
       if (!this.isDeleting && this.txt === fullTxt) {
         delta = this.period;
         this.isDeleting = true;
-      } else if (this.isDeleting && this.txt === '') {
+      } else if (this.isDeleting && this.txt === "") {
         this.isDeleting = false;
         this.loopNum++;
         delta = 500;
@@ -91,8 +121,8 @@ export default {
         that.tick();
       }, delta);
     },
-  }
-}
+  },
+};
 </script>
 
 <style>
@@ -101,7 +131,7 @@ body {
   overflow-x: hidden;
 }
 
-.typewrite>.wrap {
+.typewrite > .wrap {
   border-right: 0.08em solid #fff;
 }
 
@@ -110,47 +140,47 @@ body {
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
   transform-origin: 70% 70%;
-  display: inline-block
+  display: inline-block;
 }
 
 @keyframes wave-animation {
   0% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
 
   10% {
-    transform: rotate(14deg)
+    transform: rotate(14deg);
   }
 
   20% {
-    transform: rotate(-8deg)
+    transform: rotate(-8deg);
   }
 
   30% {
-    transform: rotate(14deg)
+    transform: rotate(14deg);
   }
 
   40% {
-    transform: rotate(-4deg)
+    transform: rotate(-4deg);
   }
 
   50% {
-    transform: rotate(10deg)
+    transform: rotate(10deg);
   }
 
   60% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
 
   to {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
 }
 
 .pict {
-  box-shadow: 0px 0px 73px -9px rgba(255,219,112,0.44);
--webkit-box-shadow: 0px 0px 73px -9px rgba(255,219,112,0.44);
--moz-box-shadow: 0px 0px 73px -9px rgba(255,219,112,0.44);
+  box-shadow: 0px 0px 73px -9px rgba(255, 219, 112, 0.44);
+  -webkit-box-shadow: 0px 0px 73px -9px rgba(255, 219, 112, 0.44);
+  -moz-box-shadow: 0px 0px 73px -9px rgba(255, 219, 112, 0.44);
 }
 
 .fadein-up {
