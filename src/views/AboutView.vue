@@ -113,226 +113,351 @@ export default {
           status: "Database",
         },
       ],
+      hoveredSkill: null,
     };
+  },
+  methods: {
+    getProficiencyColor(status) {
+      const map = {
+        Advanced: "from-emerald-400 to-emerald-600",
+        Intermediate: "from-amber-400 to-amber-600",
+        Beginner: "from-rose-400 to-rose-600",
+        "Version Control": "from-blue-400 to-blue-600",
+        "Git Hosting": "from-purple-400 to-purple-600",
+        "Package Manager": "from-red-400 to-red-600",
+        Database: "from-cyan-400 to-cyan-600",
+      };
+      return map[status] || "from-gray-400 to-gray-600";
+    },
+    setHoveredSkill(id) {
+      this.hoveredSkill = id;
+    },
+    clearHoveredSkill() {
+      this.hoveredSkill = null;
+    },
   },
 };
 </script>
 <template>
+  <!-- About Me Section -->
   <div
-    class="bg-[#1e1e1f] px-5 py-5 md:px-12 md:py-10 text-left border border-[#383838] rounded-3xl text-amber-50 mx-3 mb-5"
+    class="relative overflow-hidden bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] border border-[#383838] rounded-3xl mx-3 mb-8 p-8 md:p-12"
   >
+    <!-- Decorative Elements -->
+    <div
+      class="absolute top-0 right-0 w-32 h-32 bg-amber-400/5 rounded-full blur-3xl"
+    ></div>
+    <div
+      class="absolute bottom-0 left-0 w-64 h-64 bg-emerald-400/5 rounded-full blur-3xl"
+    ></div>
+
     <article data-page="about">
       <header>
-        <div
-          class="text-2xl font-bold text-white mb-5 fadein-bot title-section flex items-center"
-        >
-          About Me &nbsp;
+        <div class="flex items-center mb-8 group">
+          <h2
+            class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent"
+          >
+            About Me
+          </h2>
           <div
-            class="h-[1px] w-32 bg-amber-200 md:w-96 aos-init aos-animate"
-            data-aos="zoom-in-left"
-            data-aos-duration="600"
+            class="ml-4 h-px flex-1 bg-gradient-to-r from-amber-400/30 to-transparent transition-all duration-500 group-hover:from-amber-400/80"
           ></div>
         </div>
       </header>
 
-      <section
-        class="text-sm md:text-lg text-justify flex flex-col gap-4 md:flex-row md:gap-8 md:justify-left md:items-center"
-      >
-        <div class="flex justify-center">
-          <img
-            class="w-9/12 rounded-full mb-3 fadein-up"
-            src="/img/profile.jpg"
-            alt="Foto"
-          />
+      <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        <!-- Profile Image with Floating Effect -->
+        <div class="relative flex justify-center lg:justify-start">
+          <div class="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 group">
+            <div
+              class="absolute inset-0 rounded-full border-2 border-amber-400/30 transform rotate-0 group-hover:rotate-6 transition-transform duration-700"
+            ></div>
+            <div
+              class="absolute inset-0 rounded-full border-2 border-emerald-400/30 transform -rotate-3 group-hover:-rotate-9 transition-transform duration-500"
+            ></div>
+            <img
+              class="w-full h-full rounded-full object-cover z-10 relative border-2 border-amber-200/20"
+              src="/img/profile.jpg"
+              alt="Profile Photo"
+            />
+            <div
+              class="absolute -inset-2 rounded-full bg-amber-400/10 blur-md group-hover:blur-lg transition-all duration-300"
+            ></div>
+          </div>
         </div>
-        <div class="md:w-7/12">
-          <p class="mb-3 md:mb-7 fadein-left fadeins-1">
-            &nbsp; &nbsp; &nbsp;I'm a full-stack developer who builds stuff that
-            actually works - whether it's sleek UIs with Angular/Vue or robust
-            APIs with Laravel. In the startup world where I cut my teeth, I've
-            learned that good code isn't just about fancy syntax; it's about
-            solving real problems. Like that time I slashed deployment errors by
-            90% with smarter caching, or when I built a real-time notification
-            system that boosted user engagement by 20%.
+
+        <!-- Bio Text -->
+        <div class="lg:col-span-2 space-y-6">
+          <p class="text-gray-300 leading-relaxed text-lg md:text-xl">
+            <span class="text-amber-300 font-medium"
+              >I'm a full-stack developer</span
+            >
+            who builds stuff that actually works - whether it's sleek UIs with
+            Angular/Vue or robust APIs with Laravel. In the startup world where
+            I cut my teeth, I've learned that good code isn't just about fancy
+            syntax; it's about solving real problems.
           </p>
-          <p class="mb-3 fadein-left fadeins-2">
-            &nbsp; &nbsp; &nbsp; Here's the thing: I geek out over technical
-            challenges, but I never lose sight of the bigger picture. When I'm
-            optimizing database queries, I'm really thinking about making the
-            user experience snappier. When I integrate payment APIs, I'm focused
-            on making transactions smoother for both customers and the business.
-          </p>
+
+          <div class="relative pl-6 border-l-2 border-amber-400/30">
+            <div
+              class="absolute -left-1.5 top-0 w-3 h-3 rounded-full bg-gradient-to-r from-amber-400 to-amber-600 animate-pulse"
+            ></div>
+            <p class="text-gray-400 italic">
+              "Like that time I slashed deployment errors by 90% with smarter
+              caching, or when I built a real-time notification system that
+              boosted user engagement by 20%."
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <span
+              class="px-3 py-1 rounded-full text-xs bg-amber-400/10 text-amber-300 border border-amber-400/20"
+              >Laravel Expert</span
+            >
+            <span
+              class="px-3 py-1 rounded-full text-xs bg-emerald-400/10 text-emerald-300 border border-emerald-400/20"
+              >Vue Specialist</span
+            >
+            <span
+              class="px-3 py-1 rounded-full text-xs bg-cyan-400/10 text-cyan-300 border border-cyan-400/20"
+              >Tailwind CSS</span
+            >
+          </div>
         </div>
       </section>
     </article>
   </div>
 
-  <div class="px-5 py-5 md:px-12 md:py-10 text-left text-amber-50 mx-3">
-    <article data-page="about">
+  <!-- Skills Section -->
+  <div
+    class="relative bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] border border-[#383838] rounded-3xl mx-3 p-8 md:p-12"
+  >
+    <!-- Decorative Elements -->
+    <div
+      class="absolute top-0 left-0 w-32 h-32 bg-purple-400/5 rounded-full blur-3xl"
+    ></div>
+
+    <article>
       <header>
-        <div
-          class="text-2xl font-bold text-white mb-5 fadein-bot title-section flex items-center"
-        >
-          &nbsp; Skills&nbsp;&nbsp;
+        <div class="flex items-center mb-8 group">
+          <h2
+            class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent"
+          >
+            Skills & Tools
+          </h2>
           <div
-            class="h-[1px] w-10 bg-amber-200 md:w-20 aos-init aos-animate"
-            data-aos="zoom-in-left"
-            data-aos-duration="600"
+            class="ml-4 h-px flex-1 bg-gradient-to-r from-amber-400/30 to-transparent transition-all duration-500 group-hover:from-amber-400/80"
           ></div>
         </div>
       </header>
-      <section>
-        <div>
-          <ul
-            class="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-5"
-          >
-            <li class="mr-2">
-              <button
-                class="inline-block px-4 py-3 rounded-lg hover:text-white"
-                :class="{
-                  'text-amber-200 bg-amber-200 bg-opacity-10': activeTab === 1,
-                }"
-                @click="activeTab = 1"
-              >
+
+      <!-- Tab Navigation -->
+      <div class="mb-8 border-b border-gray-800">
+        <ul class="flex flex-wrap -mb-px">
+          <li class="mr-2">
+            <button
+              @click="activeTab = 1"
+              class="inline-block p-4 border-b-2 rounded-t-lg transition-all duration-300"
+              :class="
+                activeTab === 1
+                  ? 'text-amber-400 border-amber-400'
+                  : 'border-transparent hover:text-gray-300 hover:border-gray-300'
+              "
+            >
+              <span class="flex items-center gap-2">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                  ></path>
+                </svg>
                 Tech Stack
-              </button>
-            </li>
-            <li class="mr-2">
-              <button
-                class="inline-block px-4 py-3 rounded-lg hover:text-white"
-                :class="{
-                  'text-amber-200 bg-amber-200 bg-opacity-10': activeTab === 2,
-                }"
-                @click="activeTab = 2"
-              >
-                Tools
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div v-show="activeTab === 1">
-          <div
-            class="grid grid-cols-2 gap-4 pb-32 md:grid-cols-3 md:gap-8 xl:grid-cols-4 xl:gap-10 2xl:gap-12"
-          >
-            <div v-for="item in tech" :key="item.id">
-              <div
-                class="item-tech flex cursor-pointer items-center gap-2 rounded border border-amber-200 px-2 py-2 hover:bg-amber-200 hover:bg-opacity-10 md:gap-3 lg:px-3"
-              >
-                <div
-                  class="flex h-12 w-12 items-center justify-center p-0 lg:h-16 lg:w-16 lg:p-2 zoom-in"
+              </span>
+            </button>
+          </li>
+          <li class="mr-2">
+            <button
+              @click="activeTab = 2"
+              class="inline-block p-4 border-b-2 rounded-t-lg transition-all duration-300"
+              :class="
+                activeTab === 2
+                  ? 'text-amber-400 border-amber-400'
+                  : 'border-transparent hover:text-gray-300 hover:border-gray-300'
+              "
+            >
+              <span class="flex items-center gap-2">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <img
-                    alt="HTML"
-                    loading="lazy"
-                    width="32"
-                    height="32"
-                    decoding="async"
-                    data-nimg="1"
-                    class="img-tech drop-shadow-xl transition-all duration-300 h-[65%] w-[65%] lg:h-[85%] lg:w-[85%]"
-                    :src="item.imageUrl"
-                    style="color: transparent"
-                  />
-                </div>
-                <div class="flex items-center text-sm md:text-base lg:text-lg">
-                  <div
-                    class="tech font-medium text-secondary transition-all duration-300 translate-y-0"
-                  >
-                    {{ item.name }}
-                  </div>
-                  <div
-                    class="status-tech opacity-0 absolute mt-5 text-[10px] text-amber-200 transition-all duration-300 md:text-xs lg:text-sm"
-                  >
-                    {{ item.status }}
-                  </div>
-                </div>
-              </div>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                  ></path>
+                </svg>
+                Development Tools
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tech Stack Grid -->
+      <div
+        v-show="activeTab === 1"
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+      >
+        <div
+          v-for="item in tech"
+          :key="item.id"
+          class="relative"
+          @mouseenter="setHoveredSkill(item.id)"
+          @mouseleave="clearHoveredSkill()"
+        >
+          <div
+            class="h-full flex flex-col items-center p-6 rounded-xl transition-all duration-300"
+            :class="
+              hoveredSkill === item.id
+                ? 'bg-gray-800/50 shadow-lg'
+                : 'bg-gray-900/50 hover:bg-gray-800/30'
+            "
+          >
+            <div
+              class="relative w-16 h-16 mb-4 flex items-center justify-center"
+            >
+              <div
+                class="absolute inset-0 rounded-xl bg-gradient-to-br from-amber-400/10 to-transparent blur-md opacity-0 transition-opacity duration-300"
+                :class="{ 'opacity-100': hoveredSkill === item.id }"
+              ></div>
+              <img
+                :src="item.imageUrl"
+                :alt="item.name"
+                class="w-full h-full object-contain transition-transform duration-300"
+                :class="{ 'scale-110': hoveredSkill === item.id }"
+              />
+            </div>
+            <h3 class="text-center font-medium text-gray-200 mb-1">
+              {{ item.name }}
+            </h3>
+            <div
+              class="text-xs font-mono px-2 py-1 rounded-full"
+              :class="`bg-gradient-to-r ${getProficiencyColor(
+                item.status
+              )} text-white`"
+            >
+              {{ item.status }}
             </div>
           </div>
         </div>
-        <div v-show="activeTab === 2">
+      </div>
+
+      <!-- Tools Grid -->
+      <div
+        v-show="activeTab === 2"
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+      >
+        <div
+          v-for="item in tools"
+          :key="item.id"
+          class="relative"
+          @mouseenter="setHoveredSkill(item.id)"
+          @mouseleave="clearHoveredSkill()"
+        >
           <div
-            class="grid grid-cols-2 gap-4 pb-32 md:grid-cols-3 md:gap-8 xl:grid-cols-4 xl:gap-10 2xl:gap-12"
+            class="h-full flex flex-col items-center p-6 rounded-xl transition-all duration-300"
+            :class="
+              hoveredSkill === item.id
+                ? 'bg-gray-800/50 shadow-lg'
+                : 'bg-gray-900/50 hover:bg-gray-800/30'
+            "
           >
-            <div v-for="item in tools" :key="item.id">
+            <div
+              class="relative w-16 h-16 mb-4 flex items-center justify-center"
+            >
               <div
-                class="item-tech flex cursor-pointer items-center gap-2 rounded border border-amber-200 px-2 py-2 hover:bg-amber-200 hover:bg-opacity-10 md:gap-3 lg:px-3"
-              >
-                <div
-                  class="flex h-12 w-12 items-center justify-center p-0 lg:h-16 lg:w-16 lg:p-2 zoom-in"
-                >
-                  <img
-                    alt="HTML"
-                    loading="lazy"
-                    width="32"
-                    height="32"
-                    decoding="async"
-                    data-nimg="1"
-                    class="img-tech drop-shadow-xl transition-all duration-300 h-[65%] w-[65%] lg:h-[85%] lg:w-[85%]"
-                    :src="item.imageUrl"
-                    style="color: transparent"
-                  />
-                </div>
-                <div class="flex items-center text-sm md:text-base lg:text-lg">
-                  <div
-                    class="tech font-medium text-secondary transition-all duration-300 translate-y-0"
-                  >
-                    {{ item.name }}
-                  </div>
-                  <div
-                    class="status-tech opacity-0 absolute mt-5 text-[10px] text-amber-200 transition-all duration-300 md:text-xs lg:text-sm"
-                  >
-                    {{ item.status }}
-                  </div>
-                </div>
-              </div>
+                class="absolute inset-0 rounded-xl bg-gradient-to-br from-amber-400/10 to-transparent blur-md opacity-0 transition-opacity duration-300"
+                :class="{ 'opacity-100': hoveredSkill === item.id }"
+              ></div>
+              <img
+                :src="item.imageUrl"
+                :alt="item.name"
+                class="w-full h-full object-contain transition-transform duration-300"
+                :class="{ 'scale-110': hoveredSkill === item.id }"
+              />
+            </div>
+            <h3 class="text-center font-medium text-gray-200 mb-1">
+              {{ item.name }}
+            </h3>
+            <div
+              class="text-xs font-mono px-2 py-1 rounded-full"
+              :class="`bg-gradient-to-r ${getProficiencyColor(
+                item.status
+              )} text-white`"
+            >
+              {{ item.status }}
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </article>
   </div>
 </template>
 
 <style>
-.fadein-left {
-  opacity: 0;
-  animation: fadeInLeft 0.5s ease-out forwards;
-}
-
-@keyframes fadeInLeft {
-  0% {
+/* Animation for section entrance */
+@keyframes fadeInUp {
+  from {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateY(20px);
   }
-
-  100% {
+  to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
-.fadeins-1 {
-  animation-delay: 500ms;
+/* Animation for cards */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
-.fadeins-2 {
-  animation-delay: 800ms;
+/* Apply animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
-.img-tech,
-.tech {
-  transition: transform 0.3s ease;
+/* Smooth transitions */
+.transition-slow {
+  transition: all 0.7s ease;
 }
 
-.item-tech:hover .img-tech {
-  transform: scale(1.3);
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-
-.item-tech:hover .tech {
-  transform: translateY(-12px);
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
 }
-
-.item-tech:hover .status-tech {
-  opacity: 1;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#f59e0b, #fbbf24);
+  border-radius: 3px;
 }
 </style>

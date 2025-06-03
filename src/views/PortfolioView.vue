@@ -10,8 +10,8 @@ export default {
           imageUrl: "protrack",
           status: "Product tracking system.",
           tech: "JavaScript, Tailwind, Laravel, flowbite",
-          github: "https://github.com/RavenAgtha18/personal-portfolio-.git",
-          demo: "",
+          github: "null",
+          demo: "null",
         },
         {
           id: 2,
