@@ -1,111 +1,60 @@
 <template>
-  <main class="relative overflow-hidden">
-    <!-- Background decorative elements -->
-    <div class="absolute inset-0 -z-10 overflow-hidden">
-      <div
-        class="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-amber-400/10 blur-3xl animate-float"
-      ></div>
-      <div
-        class="absolute bottom-1/3 right-1/4 w-64 h-64 rounded-full bg-amber-200/5 blur-3xl animate-float-delay"
-      ></div>
-    </div>
+  <main
+    class="relative min-h-screen overflow-hidden flex flex-col justify-center items-center text-center bg-[#0a0a0a] text-white"
+  >
+    <canvas ref="bgCanvas" class="absolute inset-0 -z-10"></canvas>
 
     <div
-      class="container mx-auto px-6 py-12 md:py-24 flex flex-col-reverse gap-12 items-center md:flex-row md:gap-16 min-h-[calc(100vh-80px)]"
-    >
-      <!-- Content Section -->
-      <div class="space-y-6 text-center md:text-left max-w-2xl">
-        <div class="space-y-4 overflow-hidden">
-          <p
-            class="text-amber-300/80 text-sm md:text-base tracking-widest animate-slide-up delay-100"
-          >
-            HELLO WORLD, I'M
-          </p>
-          <h1
-            class="text-4xl md:text-6xl font-bold text-white animate-slide-up delay-200 leading-tight"
-          >
-            Riki Andi Alfiyanto
-            <span class="wave inline-block ml-2 animate-wave">👋</span>
-          </h1>
+      class="absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-b from-amber-400/10 to-transparent blur-3xl rounded-full animate-rotate-slow"
+    ></div>
 
-          <div class="py-2 h-10 md:h-12 overflow-hidden">
-            <h1
-              class="typewrite text-xl md:text-3xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 animate-slide-up delay-300"
-              ref="typewriter"
-            >
-              <span class="wrap">{{ txt }}</span>
-            </h1>
-          </div>
+    <div class="relative z-10 flex flex-col items-center gap-6 animate-fade-in">
+      <h1
+        class="text-5xl md:text-7xl font-extrabold tracking-tight animate-title"
+      >
+        <span class="gradient-text">Riki Andi Alfiyanto</span>
+      </h1>
+      <p
+        class="text-amber-300 font-mono text-sm md:text-base uppercase tracking-[0.3em] animate-slide-up"
+      >
+        Technical Business Analyst & Developer
+      </p>
 
-          <p
-            class="text-white/80 text-lg md:text-xl animate-slide-up delay-400 max-w-lg"
-          >
-            Passionate developer creating digital experiences that matter.
-            <span class="inline-block animate-bounce">✨</span>
-          </p>
-        </div>
-
-        <div
-          class="flex flex-col sm:flex-row gap-4 pt-4 animate-slide-up delay-500"
+      <div
+        class="mt-6 px-6 py-3 rounded-xl bg-gradient-to-r from-[#1f1f1f]/60 to-[#262626]/60 border border-amber-300/20 backdrop-blur-md shadow-lg animate-float"
+      >
+        <span class="text-amber-200 font-mono"
+          >{{ displayedText }}<span class="blinker">|</span></span
         >
-          <a
-            href="https://wa.me/6285175180821"
-            target="_blank"
-            class="flex items-center justify-center py-3 px-6 text-sm font-medium rounded-full border-2 border-amber-300 text-amber-300 bg-transparent hover:bg-amber-300 hover:text-gray-900 transition-all duration-300 group animate-pulse-once"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              class="mr-2 w-5 h-5 group-hover:text-gray-900 animate-wiggle"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12.07,2A10,10,0,0,0,2.1,17.67L2,22l4.34-.76A10,10,0,1,0,12.07,2Zm5.39,13.62c-.22.62-1.28,1.19-1.77,1.26-.5.08-.87.12-2.92-.61a10.47,10.47,0,0,1-6-5.37c-.5-.86-.55-1.16-.55-1.56a3.14,3.14,0,0,1,1-2.16,1,1,0,0,1,.72-.31c.18,0,.36.06.52.43s.65,1.6.7,1.72a.43.43,0,0,1,0,.4,2.11,2.11,0,0,1-.31.52c-.16.19-.33.42-.47.56-.16.15-.33.31-.15.61a8.58,8.58,0,0,0,3.73,3.23c.27.12.42.1.57-.06a13.4,13.4,0,0,0,.91-1.15.52.52,0,0,1,.62-.2c.25.09,1.58.75,1.85.88s.44.2.51.31A2.84,2.84,0,0,1,17.46,15.61Z"
-              />
-            </svg>
-            Contact Me
-          </a>
-          <!-- <button
-            class="flex items-center justify-center py-3 px-6 text-sm font-medium rounded-full border-2 border-white/30 text-white hover:border-white/60 transition-all duration-300 group animate-pulse-once-delay"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="mr-2 w-4 h-4 group-hover:text-amber-300 animate-bounce-slow"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.625 1.5H9a3.75 3.75 0 013.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 013.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 01-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875zm5.845 17.03a.75.75 0 001.06 0l3-3a.75.75 0 10-1.06-1.06l-1.72 1.72V12a.75.75 0 00-1.5 0v4.19l-1.72-1.72a.75.75 0 00-1.06 1.06l3 3z"
-                clip-rule="evenodd"
-              ></path>
-              <path
-                d="M14.25 5.25a5.23 5.23 0 00-1.279-3.434 9.768 9.768 0 016.963 6.963A5.23 5.23 0 0016.5 7.5h-1.875a.375.375 0 01-.375-.375V5.25z"
-              ></path>
-            </svg>
-            Download CV
-          </button> -->
-        </div>
       </div>
 
-      <!-- Image Section -->
-      <div class="relative animate-float">
-        <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+      <div class="relative mt-10 animate-scale-in">
+        <div class="relative w-60 h-60 md:w-72 md:h-72">
           <img
-            alt="avatar"
-            width="400"
-            height="400"
-            decoding="async"
-            class="w-full h-full rounded-full object-cover border-4 border-amber-300/80 shadow-lg animate-scale-in"
             src="/img/profile.jpg"
+            alt="Riki"
+            class="w-full h-full rounded-full object-cover border-4 border-amber-300/70 shadow-[0_0_30px_rgba(251,191,36,0.2)]"
           />
           <div
-            class="absolute inset-0 rounded-full border-4 border-transparent animate-spin-slow [border-image:linear-gradient(to_bottom_right,#f59e0b,transparent)_1] -z-10"
-          ></div>
-          <div
-            class="absolute -inset-4 rounded-full bg-amber-300/10 blur-xl -z-20 animate-pulse-slow"
+            class="absolute inset-0 rounded-full border border-transparent animate-spin-gradient [border-image:conic-gradient(#f59e0b_0deg,transparent_180deg,#f59e0b_360deg)_1]"
           ></div>
         </div>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4 mt-10 animate-slide-up">
+        <a
+          href="https://wa.me/6285175180821"
+          target="_blank"
+          class="px-6 py-3 rounded-full border-2 border-amber-400 text-amber-300 hover:bg-amber-400 hover:text-black transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(251,191,36,0.4)]"
+        >
+          Contact Me
+        </a>
+        <a
+          href="/cv_rikiandi.pdf"
+          target="_blank"
+          class="px-6 py-3 rounded-full border-2 border-white/20 text-white hover:border-amber-300 hover:text-amber-300 transition-all duration-300"
+        >
+          View CV
+        </a>
       </div>
     </div>
   </main>
@@ -116,66 +65,117 @@ export default {
   name: "HomeView",
   data() {
     return {
-      toRotate: [
-        "Web Developer",
-        "Full-stack Engineer",
-        "Informatics Student",
-        "Tech Enthusiast",
+      texts: [
+        "Transforming ideas into scalable products...",
+        "Connecting code and business logic...",
+        "Designing data-driven user experiences...",
       ],
-      period: 2000,
-      txt: "",
-      loopNum: 0,
+      displayedText: "",
+      textIndex: 0,
+      charIndex: 0,
       isDeleting: false,
     };
   },
   mounted() {
-    this.$nextTick(() => {
-      this.tick();
-    });
+    this.startTypewriter();
+    this.animateGrid();
   },
   methods: {
-    tick() {
-      let typewriter = this.$refs.typewriter;
-
-      if (!typewriter) {
-        return;
-      }
-
-      let i = this.loopNum % this.toRotate.length;
-      let fullTxt = this.toRotate[i];
-
-      this.txt = this.isDeleting
-        ? fullTxt.substring(0, this.txt.length - 1)
-        : fullTxt.substring(0, this.txt.length + 1);
-      typewriter.innerHTML = `<span class="wrap">${this.txt}</span>`;
-
-      let that = this;
-      let delta = 200 - Math.random() * 100;
-
+    startTypewriter() {
+      const current = this.texts[this.textIndex];
       if (this.isDeleting) {
-        delta /= 2;
+        this.displayedText = current.substring(0, this.charIndex--);
+      } else {
+        this.displayedText = current.substring(0, this.charIndex++);
       }
 
-      if (!this.isDeleting && this.txt === fullTxt) {
-        delta = this.period;
+      let speed = this.isDeleting ? 40 : 90;
+      if (!this.isDeleting && this.displayedText === current) {
+        speed = 1500;
         this.isDeleting = true;
-      } else if (this.isDeleting && this.txt === "") {
+      } else if (this.isDeleting && this.displayedText === "") {
         this.isDeleting = false;
-        this.loopNum++;
-        delta = 500;
+        this.textIndex = (this.textIndex + 1) % this.texts.length;
       }
+      setTimeout(this.startTypewriter, speed);
+    },
 
-      setTimeout(() => {
-        that.tick();
-      }, delta);
+    animateGrid() {
+      const canvas = this.$refs.bgCanvas;
+      const ctx = canvas.getContext("2d");
+      let w, h;
+      const dots = [];
+
+      const resize = () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        dots.length = 0;
+        for (let i = 0; i < 100; i++) {
+          dots.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            dx: (Math.random() - 0.5) * 0.3,
+            dy: (Math.random() - 0.5) * 0.3,
+          });
+        }
+      };
+      resize();
+      window.addEventListener("resize", resize);
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = "rgba(255, 193, 37, 0.2)";
+        dots.forEach((p) => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > w) p.dx *= -1;
+          if (p.y < 0 || p.y > h) p.dy *= -1;
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
     },
   },
 };
 </script>
 
 <style>
-/* Base Animations */
-@keyframes spin-slow {
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 1s ease forwards;
+}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-slide-up {
+  animation: slide-up 1s ease forwards;
+}
+@keyframes rotate-slow {
   from {
     transform: rotate(0deg);
   }
@@ -183,202 +183,54 @@ export default {
     transform: rotate(360deg);
   }
 }
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
+.animate-rotate-slow {
+  animation: rotate-slow 40s linear infinite;
+}
+@keyframes spin-gradient {
+  to {
+    transform: rotate(360deg);
   }
 }
-
-@keyframes float-delay {
-  0%,
-  100% {
-    transform: translateY(-5px);
-  }
-  50% {
-    transform: translateY(5px);
-  }
+.animate-spin-gradient {
+  animation: spin-gradient 8s linear infinite;
 }
-
-@keyframes wave {
-  0% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(14deg);
-  }
-  20% {
-    transform: rotate(-8deg);
-  }
-  30% {
-    transform: rotate(14deg);
-  }
-  40% {
-    transform: rotate(-4deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-  60% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes bounce-slow {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
-}
-
-@keyframes wiggle {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(5deg);
-  }
-  75% {
-    transform: rotate(-5deg);
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 0.1;
-  }
-  50% {
-    opacity: 0.2;
-  }
-}
-
 @keyframes scale-in {
-  0% {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
+  }
+}
+.animate-scale-in {
+  animation: scale-in 1.2s ease forwards;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #fbbf24, #f59e0b, #fde68a);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-move 4s linear infinite;
+}
+@keyframes gradient-move {
+  to {
+    background-position: 200% center;
   }
 }
 
-/* Animation Classes */
-.animate-spin-slow {
-  animation: spin-slow 12s linear infinite;
+.blinker {
+  animation: blink 1s step-start infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-float-delay {
-  animation: float-delay 8s ease-in-out infinite;
-}
-
-.animate-wave {
-  animation: wave 2.5s infinite;
-}
-
-.animate-bounce {
-  animation: bounce 2s infinite;
-}
-
-.animate-bounce-slow {
-  animation: bounce-slow 3s infinite;
-}
-
-.animate-wiggle {
-  animation: wiggle 1.5s infinite;
-}
-
-.animate-pulse-once {
-  animation: pulse 1s ease-in-out 1;
-}
-
-.animate-pulse-once-delay {
-  animation: pulse 1s ease-in-out 0.5s 1;
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 4s ease-in-out infinite;
-}
-
-.animate-scale-in {
-  animation: scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-slide-up {
-  animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.delay-100 {
-  animation-delay: 100ms;
-}
-.delay-200 {
-  animation-delay: 200ms;
-}
-.delay-300 {
-  animation-delay: 300ms;
-}
-.delay-400 {
-  animation-delay: 400ms;
-}
-.delay-500 {
-  animation-delay: 500ms;
-}
-
-/* Typewriter Effect */
-.typewrite > .wrap {
-  border-right: 0.08em solid rgba(251, 191, 36, 0.7);
-  padding-right: 2px;
-}
-
-/* Layout Adjustments */
-.overflow-hidden {
-  overflow: hidden;
+.animate-title {
+  animation: fade-in 1.3s ease forwards;
 }
 </style>
