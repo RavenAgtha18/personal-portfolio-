@@ -1,64 +1,44 @@
 <template>
-  <div
-    id="app"
-    class="relative bg-[#0a0a0a] text-white overflow-x-hidden font-inter"
-  >
-    <canvas ref="bgCanvas" class="fixed inset-0 -z-10 opacity-30"></canvas>
-
+  <div id="app" class="relative">
     <transition name="fade-page" mode="out-in">
       <router-view />
     </transition>
   </div>
 </template>
 
-<script>
-export default {
-  mounted() {
-    const canvas = this.$refs.bgCanvas;
-    const ctx = canvas.getContext("2d");
-    let w,
-      h,
-      dots = [];
+<script setup>
+import { onMounted } from 'vue'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
-    const resize = () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-      dots = Array.from({ length: 80 }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        dx: (Math.random() - 0.5) * 0.2,
-        dy: (Math.random() - 0.5) * 0.2,
-      }));
-    };
-    resize();
-    window.addEventListener("resize", resize);
+onMounted(() => {
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 50,
+    disable: 'mobile'
+  })
 
-    const draw = () => {
-      ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = "rgba(251,191,36,0.25)";
-      dots.forEach((p) => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-        ctx.fill();
-        p.x += p.dx;
-        p.y += p.dy;
-        if (p.x < 0 || p.x > w) p.dx *= -1;
-        if (p.y < 0 || p.y > h) p.dy *= -1;
-      });
-      requestAnimationFrame(draw);
-    };
-    draw();
-  },
-};
+  // Refresh AOS on route change
+  AOS.refresh()
+})
 </script>
 
 <style>
+/* Import Tailwind */
+@import './assets/tailwind.css';
+
+/* Page Transition */
 .fade-page-enter-active,
 .fade-page-leave-active {
-  transition: opacity 0.8s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
 .fade-page-enter-from,
 .fade-page-leave-to {
   opacity: 0;
+  transform: translateY(20px);
 }
 </style>
