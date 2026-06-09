@@ -119,22 +119,32 @@
 
                 <!-- Hover Actions -->
                 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-3">
-                  <a
-                    v-if="item.demo !== 'null'"
-                    :href="item.demo"
-                    target="_blank"
-                    class="p-3 rounded-full bg-amber-500 text-black hover:scale-110 transition-transform"
+                  <router-link
+                    v-if="item.isCaseStudy"
+                    :to="item.demo"
+                    class="px-4 py-2 rounded-xl bg-amber-500 text-black font-semibold text-sm hover:scale-105 transition-transform flex items-center gap-1.5"
                   >
-                    <ExternalLink class="w-5 h-5" />
-                  </a>
-                  <a
-                    v-if="item.github !== 'null'"
-                    :href="item.github"
-                    target="_blank"
-                    class="p-3 rounded-full bg-white/10 text-white hover:scale-110 transition-transform"
-                  >
-                    <Github class="w-5 h-5" />
-                  </a>
+                    <BookOpen class="w-4 h-4" />
+                    Read Case Study
+                  </router-link>
+                  <template v-else>
+                    <a
+                      v-if="item.demo !== 'null'"
+                      :href="item.demo"
+                      target="_blank"
+                      class="p-3 rounded-full bg-amber-500 text-black hover:scale-110 transition-transform"
+                    >
+                      <ExternalLink class="w-5 h-5" />
+                    </a>
+                    <a
+                      v-if="item.github !== 'null'"
+                      :href="item.github"
+                      target="_blank"
+                      class="p-3 rounded-full bg-white/10 text-white hover:scale-110 transition-transform"
+                    >
+                      <Github class="w-5 h-5" />
+                    </a>
+                  </template>
                 </div>
               </div>
 
@@ -236,7 +246,8 @@ import {
   PieChart as PieChartIcon,
   Layers,
   Cpu,
-  Code2
+  Code2,
+  BookOpen
 } from 'lucide-vue-next'
 import Chart from 'chart.js/auto'
 
@@ -250,6 +261,16 @@ let typeChartInstance = null
 const filters = ['All', 'Laravel', 'Vue.js', 'Python', 'Tailwind']
 
 const items = [
+  {
+    id: 10,
+    name: "SnapPack",
+    imageUrl: "snappack",
+    status: "Mendigitalisasi sistem manajemen dokumentasi pengiriman furnitur premium Christopher Guy. Memangkas birokrasi transfer media, mengintegrasikan tanda tangan digital, dan memotong waktu audit pencarian berkas hingga 95%.",
+    tech: "Laravel, Vue.js, MySQL, Tailwind CSS",
+    github: "null",
+    demo: "/portfolio/snappack",
+    isCaseStudy: true
+  },
   {
     id: 0,
     name: "Smart Money Intelligence Dashboard",

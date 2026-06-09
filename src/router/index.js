@@ -26,6 +26,12 @@ const routes = [
         meta: { title: 'Portfolio' }
       },
       {
+        path: 'portfolio/snappack',
+        name: 'snappack-case-study',
+        component: () => import('@/views/SnapPackView.vue'),
+        meta: { title: 'SnapPack Case Study' }
+      },
+      {
         path: 'blog',
         name: 'blog',
         component: () => import('@/views/BlogView.vue'),

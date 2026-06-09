@@ -178,8 +178,15 @@
               <h3 class="text-lg font-semibold text-white mb-2">{{ project.name }}</h3>
               <p class="text-sm text-gray-300 line-clamp-2">{{ project.status }}</p>
               <div class="flex gap-2 mt-3">
+                <router-link
+                  v-if="project.isCaseStudy"
+                  :to="project.demo"
+                  class="px-3 py-1.5 rounded-lg bg-amber-500 text-black text-xs font-semibold hover:bg-amber-400 transition-colors"
+                >
+                  Read Full Case Study
+                </router-link>
                 <a 
-                  v-if="project.demo !== 'null'"
+                  v-else-if="project.demo !== 'null'"
                   :href="project.demo" 
                   target="_blank"
                   class="px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-300 text-xs font-medium hover:bg-amber-500/30 transition-colors"
@@ -267,6 +274,15 @@ const stats = [
 
 // Featured Projects
 const featuredProjects = [
+  {
+    id: 10,
+    name: "SnapPack",
+    imageUrl: "snappack",
+    status: "Mendigitalisasi sistem manajemen dokumentasi pengiriman furnitur premium Christopher Guy. Memangkas birokrasi transfer media, mengintegrasikan tanda tangan digital, dan memotong waktu audit pencarian berkas hingga 95%.",
+    github: "null",
+    demo: "/portfolio/snappack",
+    isCaseStudy: true
+  },
   {
     id: 0,
     name: "Smart Money Intelligence",
