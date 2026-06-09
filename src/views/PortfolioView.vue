@@ -209,25 +209,131 @@
         <!-- Charts Grid -->
         <div class="grid md:grid-cols-2 gap-8">
           <div 
-            class="p-6 rounded-2xl glass"
+            class="p-6 rounded-2xl glass relative overflow-hidden"
             data-aos="fade-up"
           >
-            <h3 class="text-amber-400 mb-4 text-sm font-medium flex items-center gap-2">
+            <h3 class="text-amber-400 mb-6 text-sm font-semibold flex items-center gap-2">
               <BarChart3 class="w-4 h-4" />
               Technology Usage
             </h3>
-            <canvas ref="techChart" class="w-full"></canvas>
+            
+            <div class="space-y-4">
+              <div 
+                v-for="tech in aggregatedTech" 
+                :key="tech.name"
+                class="relative group"
+                @mouseenter="hoveredTech = tech.name"
+                @mouseleave="hoveredTech = null"
+              >
+                <div class="flex justify-between items-center mb-1.5">
+                  <div class="flex items-center gap-2">
+                    <component :is="tech.icon" class="w-4 h-4 text-amber-400" />
+                    <span class="text-xs font-semibold text-gray-300 group-hover:text-amber-400 transition-colors">{{ tech.name }}</span>
+                  </div>
+                  <span class="text-xs font-mono text-amber-400 font-semibold">{{ tech.percentage }}%</span>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="w-full bg-white/5 h-2.5 rounded-full overflow-hidden border border-white/5 relative">
+                  <div 
+                    class="h-full rounded-full transition-all duration-1000 ease-out"
+                    :class="tech.colorClass"
+                    :style="{ width: tech.percentage + '%' }"
+                  ></div>
+                </div>
+                
+                <!-- Tooltip -->
+                <Transition name="fade">
+                  <div 
+                    v-if="hoveredTech === tech.name"
+                    class="absolute left-1/2 -translate-x-1/2 -top-10 bg-amber-500 text-black text-[10px] font-bold px-2 py-1 rounded shadow-lg z-10 whitespace-nowrap animate-fade-in"
+                  >
+                    {{ tech.name }}: Used in {{ tech.count }} {{ tech.count > 1 ? 'Projects' : 'Project' }}
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-amber-500"></div>
+                  </div>
+                </Transition>
+              </div>
+            </div>
           </div>
+          
           <div 
-            class="p-6 rounded-2xl glass"
+            class="p-6 rounded-2xl glass relative overflow-hidden"
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            <h3 class="text-amber-400 mb-4 text-sm font-medium flex items-center gap-2">
+            <h3 class="text-amber-400 mb-6 text-sm font-semibold flex items-center gap-2">
               <PieChartIcon class="w-4 h-4" />
               Project Type Distribution
             </h3>
-            <canvas ref="typeChart" class="w-full"></canvas>
+            
+            <!-- Sleek Segmented Progress Bar -->
+            <div class="w-full h-3 rounded-full overflow-hidden flex mb-6 border border-white/5 bg-white/5">
+              <div 
+                v-for="cat in projectTypeDistribution" 
+                :key="cat.name"
+                class="h-full transition-all duration-500 hover:opacity-80 cursor-pointer relative"
+                :class="cat.color"
+                :style="{ width: cat.percentage + '%' }"
+                @mouseenter="hoveredCat = cat.name"
+                @mouseleave="hoveredCat = null"
+              >
+                <!-- Tooltip on Segment -->
+                <Transition name="fade">
+                  <div 
+                    v-if="hoveredCat === cat.name"
+                    class="absolute left-1/2 -translate-x-1/2 -top-10 bg-white text-black text-[10px] font-bold px-2 py-1 rounded shadow-lg z-10 whitespace-nowrap"
+                  >
+                    {{ cat.name }}: {{ cat.percentage }}%
+                  </div>
+                </Transition>
+              </div>
+            </div>
+            
+            <!-- Category Cards Grid -->
+            <div class="grid grid-cols-2 gap-4">
+              <div 
+                v-for="cat in projectTypeDistribution" 
+                :key="cat.name"
+                class="p-3.5 rounded-xl border transition-all duration-300 relative group overflow-hidden"
+                :class="[cat.bgColor, hoveredCatCard === cat.name ? 'scale-[1.02] shadow-lg' : '']"
+                @mouseenter="hoveredCatCard = cat.name"
+                @mouseleave="hoveredCatCard = null"
+              >
+                <div class="flex items-center justify-between mb-2">
+                  <component :is="cat.icon" class="w-5 h-5" :class="cat.textColor" />
+                  <span class="text-lg font-bold text-white font-mono">{{ cat.percentage }}%</span>
+                </div>
+                <h4 class="text-xs font-semibold text-gray-300 leading-tight group-hover:text-white transition-colors mb-1">
+                  {{ cat.name }}
+                </h4>
+                <p class="text-[10px] text-gray-500 font-mono">{{ cat.count }} {{ cat.count > 1 ? 'Projects' : 'Project' }}</p>
+                
+                <!-- Expanded Hover Panel (Shows project names in that category) -->
+                <Transition name="fade">
+                  <div 
+                    v-if="hoveredCatCard === cat.name"
+                    class="absolute inset-0 bg-black/95 p-3 flex flex-col justify-center"
+                  >
+                    <span class="text-[9px] uppercase tracking-wider text-amber-400 font-bold mb-1">Projects:</span>
+                    <ul class="space-y-0.5">
+                      <li 
+                        v-for="proj in items.filter(i => (i.category || 'Full-stack Applications') === cat.name).slice(0, 4)"
+                        :key="proj.id"
+                        class="text-[10px] text-gray-300 truncate"
+                      >
+                        • {{ proj.name }}
+                      </li>
+                      <li 
+                        v-if="items.filter(i => (i.category || 'Full-stack Applications') === cat.name).length > 4"
+                        class="text-[9px] text-gray-500 font-mono"
+                      >
+                        +{{ items.filter(i => (i.category || 'Full-stack Applications') === cat.name).length - 4 }} more
+                      </li>
+                    </ul>
+                  </div>
+                </Transition>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -236,7 +342,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted, nextTick } from 'vue'
+import { ref, computed } from 'vue'
 import { 
   FolderOpen, 
   Grid3x3, 
@@ -247,16 +353,17 @@ import {
   Layers,
   Cpu,
   Code2,
-  BookOpen
+  BookOpen,
+  Terminal,
+  Braces,
+  Database,
+  Wind,
+  Box,
+  Sparkles
 } from 'lucide-vue-next'
-import Chart from 'chart.js/auto'
 
 const activeMode = ref('portfolio')
 const activeFilter = ref('All')
-const techChart = ref(null)
-const typeChart = ref(null)
-let techChartInstance = null
-let typeChartInstance = null
 
 const filters = ['All', 'Laravel', 'Vue.js', 'Python', 'Tailwind']
 
@@ -269,7 +376,8 @@ const items = [
     tech: "Laravel, Vue.js, MySQL, Tailwind CSS",
     github: "null",
     demo: "/portfolio/snappack",
-    isCaseStudy: true
+    isCaseStudy: true,
+    category: "Full-stack Applications"
   },
   {
     id: 0,
@@ -278,16 +386,19 @@ const items = [
     status: "AI-powered dashboard detecting foreign accumulation (Smart Money) in IDX with real-time signal recommendations.",
     tech: "Python, Streamlit, Gemini 2.5 AI, Firebase",
     github: "https://github.com/RavenAgtha18/Smart-Money-Intelligence",
-    demo: "https://huggingface.co/spaces/ravenagtha18/smart-money-tracker"
+    demo: "https://huggingface.co/spaces/ravenagtha18/smart-money-tracker",
+    category: "AI/Data Engineering"
   },
   {
     id: 1,
     name: "Protrack System",
     imageUrl: "protrack",
-    status: "Production tracking system for workflow visibility and reporting.",
+    status: "Mendigitalisasi pelacakan lini produksi secara real-time, menghilangkan bottleneck operasional, dan menyediakan visibilitas workflow end-to-end bagi manajemen.",
     tech: "JavaScript, Tailwind, Laravel, Flowbite",
     github: "null",
-    demo: "null"
+    demo: "/portfolio/protrack",
+    isCaseStudy: true,
+    category: "Business Analysis & Systems"
   },
   {
     id: 2,
@@ -296,7 +407,8 @@ const items = [
     status: "Landing page leveraging Bootstrap for responsive UI.",
     tech: "HTML, Bootstrap, JS",
     github: "https://github.com/RavenAgtha18/slicing-productly.git",
-    demo: "https://polite-cat-ca7188.netlify.app/"
+    demo: "https://polite-cat-ca7188.netlify.app/",
+    category: "Scripting/Automation"
   },
   {
     id: 3,
@@ -305,7 +417,8 @@ const items = [
     status: "Modern restaurant showcase with clean UI.",
     tech: "HTML, Bootstrap",
     github: "https://github.com/RavenAgtha18/lading-page-resto.git",
-    demo: "https://majestic-khapse-51488b.netlify.app/"
+    demo: "https://majestic-khapse-51488b.netlify.app/",
+    category: "Scripting/Automation"
   },
   {
     id: 4,
@@ -314,7 +427,8 @@ const items = [
     status: "Retail management app with stock and supplier module.",
     tech: "Laravel 10, Bootstrap",
     github: "https://github.com/RavenAgtha18/store.git",
-    demo: "null"
+    demo: "null",
+    category: "Full-stack Applications"
   },
   {
     id: 5,
@@ -323,7 +437,8 @@ const items = [
     status: "Library system featuring catalog and loan transactions.",
     tech: "Laravel 9, Bootstrap, VueJS 3",
     github: "https://github.com/RavenAgtha18/perpustakaaan.gi",
-    demo: "null"
+    demo: "null",
+    category: "Full-stack Applications"
   },
   {
     id: 6,
@@ -332,7 +447,8 @@ const items = [
     status: "Clinic management app for appointments and medication.",
     tech: "Laravel 5, Bootstrap, AngularJs",
     github: "null",
-    demo: "null"
+    demo: "null",
+    category: "Full-stack Applications"
   },
   {
     id: 7,
@@ -341,7 +457,8 @@ const items = [
     status: "Factory QC system with automated report generation.",
     tech: "Laravel, JavaScript, Tailwind, Flowbite",
     github: "null",
-    demo: "null"
+    demo: "null",
+    category: "Business Analysis & Systems"
   },
   {
     id: 8,
@@ -350,7 +467,8 @@ const items = [
     status: "Personal budgeting app with smart tracking.",
     tech: "Laravel, JavaScript, Tailwind, Flowbite",
     github: "null",
-    demo: "null"
+    demo: "null",
+    category: "Full-stack Applications"
   },
   {
     id: 9,
@@ -359,7 +477,8 @@ const items = [
     status: "Inventory management with analytics and insights.",
     tech: "Laravel, JavaScript, Tailwind, Flowbite",
     github: "null",
-    demo: "null"
+    demo: "null",
+    category: "Full-stack Applications"
   }
 ]
 
@@ -395,103 +514,98 @@ const getTechClass = (tech) => {
   return "bg-amber-500/20 text-amber-400 border border-amber-500/30"
 }
 
-const renderCharts = () => {
-  nextTick(() => {
-    const ctxTech = techChart.value?.getContext('2d')
-    const ctxType = typeChart.value?.getContext('2d')
+const hoveredTech = ref(null)
+const hoveredCat = ref(null)
+const hoveredCatCard = ref(null)
 
-    if (!ctxTech || !ctxType) return
-
-    // Destroy existing charts
-    if (techChartInstance) techChartInstance.destroy()
-    if (typeChartInstance) typeChartInstance.destroy()
-
-    // Tech usage chart
-    const techCounts = {}
-    items.forEach(p =>
-      p.tech.split(', ').forEach(t => (techCounts[t] = (techCounts[t] || 0) + 1))
-    )
-
-    techChartInstance = new Chart(ctxTech, {
-      type: 'bar',
-      data: {
-        labels: Object.keys(techCounts),
-        datasets: [{
-          label: 'Usage',
-          data: Object.values(techCounts),
-          backgroundColor: 'rgba(251, 191, 36, 0.6)',
-          borderColor: 'rgba(251, 191, 36, 1)',
-          borderWidth: 1,
-          borderRadius: 8
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false }
-        },
-        scales: {
-          x: {
-            grid: { color: 'rgba(255,255,255,0.05)' },
-            ticks: { color: '#9ca3af', font: { size: 10 } }
-          },
-          y: {
-            beginAtZero: true,
-            grid: { color: 'rgba(255,255,255,0.05)' },
-            ticks: { color: '#9ca3af' }
-          }
-        }
-      }
-    })
-
-    // Type distribution chart
-    const laravelCount = items.filter(i => i.tech.includes('Laravel')).length
-    const aiCount = items.filter(i => i.tech.includes('AI')).length
-    const others = items.length - laravelCount - aiCount
-
-    typeChartInstance = new Chart(ctxType, {
-      type: 'doughnut',
-      data: {
-        labels: ['Laravel', 'AI', 'Others'],
-        datasets: [{
-          data: [laravelCount, aiCount, others],
-          backgroundColor: [
-            'rgba(239, 68, 68, 0.7)',
-            'rgba(251, 191, 36, 0.7)',
-            'rgba(75, 85, 99, 0.7)'
-          ],
-          borderColor: [
-            'rgba(239, 68, 68, 1)',
-            'rgba(251, 191, 36, 1)',
-            'rgba(75, 85, 99, 1)'
-          ],
-          borderWidth: 2
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: { color: '#9ca3af', padding: 20 }
-          }
-        }
-      }
-    })
-  })
-}
-
-watch(activeMode, (val) => {
-  if (val === 'dashboard') {
-    setTimeout(renderCharts, 300)
+const aggregatedTech = computed(() => {
+  const techMap = {
+    'Laravel': { count: 0, icon: Layers, colorClass: 'bg-gradient-to-r from-red-500 to-orange-500' },
+    'Vue.js': { count: 0, icon: Layers, colorClass: 'bg-gradient-to-r from-green-400 to-emerald-500' },
+    'Tailwind': { count: 0, icon: Wind, colorClass: 'bg-gradient-to-r from-cyan-400 to-blue-500' },
+    'JavaScript': { count: 0, icon: Braces, colorClass: 'bg-gradient-to-r from-amber-400 to-yellow-500' },
+    'Bootstrap': { count: 0, icon: Grid3x3, colorClass: 'bg-gradient-to-r from-purple-500 to-indigo-500' },
+    'Python': { count: 0, icon: Terminal, colorClass: 'bg-gradient-to-r from-blue-500 to-indigo-500' },
+    'Firebase': { count: 0, icon: Database, colorClass: 'bg-gradient-to-r from-orange-400 to-red-500' },
+    'Flowbite': { count: 0, icon: Box, colorClass: 'bg-gradient-to-r from-cyan-500 to-indigo-500' }
   }
+
+  items.forEach(item => {
+    const techString = item.tech.toLowerCase()
+    if (techString.includes('laravel')) techMap['Laravel'].count++
+    if (techString.includes('vue')) techMap['Vue.js'].count++
+    if (techString.includes('tailwind')) techMap['Tailwind'].count++
+    if (techString.includes('javascript') || techString.includes('js') || techString.includes('angularjs')) {
+      techMap['JavaScript'].count++
+    }
+    if (techString.includes('bootstrap')) techMap['Bootstrap'].count++
+    if (techString.includes('python')) techMap['Python'].count++
+    if (techString.includes('firebase')) techMap['Firebase'].count++
+    if (techString.includes('flowbite')) techMap['Flowbite'].count++
+  })
+
+  const total = items.length
+
+  return Object.entries(techMap)
+    .map(([name, data]) => ({
+      name,
+      count: data.count,
+      percentage: total > 0 ? Math.round((data.count / total) * 100) : 0,
+      icon: data.icon,
+      colorClass: data.colorClass
+    }))
+    .sort((a, b) => b.count - a.count)
 })
 
-onMounted(() => {
-  // Initialize if dashboard is active
-  if (activeMode.value === 'dashboard') {
-    renderCharts()
+const projectTypeDistribution = computed(() => {
+  const categories = {
+    'Full-stack Applications': {
+      count: 0,
+      color: 'bg-gradient-to-r from-amber-400 to-amber-600',
+      textColor: 'text-amber-400',
+      bgColor: 'bg-amber-500/10 border-amber-500/20 hover:border-amber-500/40',
+      icon: Layers
+    },
+    'Business Analysis & Systems': {
+      count: 0,
+      color: 'bg-gradient-to-r from-emerald-400 to-emerald-600',
+      textColor: 'text-emerald-400',
+      bgColor: 'bg-emerald-500/10 border-emerald-500/20 hover:border-emerald-500/40',
+      icon: Cpu
+    },
+    'AI/Data Engineering': {
+      count: 0,
+      color: 'bg-gradient-to-r from-indigo-400 to-indigo-600',
+      textColor: 'text-indigo-400',
+      bgColor: 'bg-indigo-500/10 border-indigo-500/20 hover:border-indigo-500/40',
+      icon: Sparkles
+    },
+    'Scripting/Automation': {
+      count: 0,
+      color: 'bg-gradient-to-r from-purple-400 to-purple-600',
+      textColor: 'text-purple-400',
+      bgColor: 'bg-purple-500/10 border-purple-500/20 hover:border-purple-500/40',
+      icon: Terminal
+    }
   }
+
+  items.forEach(item => {
+    const cat = item.category || 'Full-stack Applications'
+    if (categories[cat]) {
+      categories[cat].count++
+    }
+  })
+
+  const total = items.length
+  return Object.entries(categories).map(([name, data]) => ({
+    name,
+    count: data.count,
+    percentage: total > 0 ? Math.round((data.count / total) * 100) : 0,
+    color: data.color,
+    textColor: data.textColor,
+    bgColor: data.bgColor,
+    icon: data.icon
+  }))
 })
 </script>
 

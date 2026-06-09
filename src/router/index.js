@@ -32,6 +32,12 @@ const routes = [
         meta: { title: 'SnapPack Case Study' }
       },
       {
+        path: 'portfolio/protrack',
+        name: 'protrack-case-study',
+        component: () => import('@/views/ProtrackView.vue'),
+        meta: { title: 'Protrack Case Study' }
+      },
+      {
         path: 'blog',
         name: 'blog',
         component: () => import('@/views/BlogView.vue'),

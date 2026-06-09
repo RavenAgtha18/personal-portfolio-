@@ -268,7 +268,7 @@ const tiltStyle = computed(() => ({
 // Stats
 const stats = [
   { value: "10+", label: "Projects" },
-  { value: "3+", label: "Years Exp" },
+  { value: "2+", label: "Years Exp" },
   { value: "5+", label: "Tech Stack" }
 ]
 
@@ -295,9 +295,10 @@ const featuredProjects = [
     id: 1,
     name: "Protrack System",
     imageUrl: "protrack",
-    status: "Production tracking for workflow visibility",
+    status: "Mendigitalisasi pelacakan lini produksi secara real-time, menghilangkan bottleneck operasional, dan menyediakan visibilitas workflow end-to-end bagi manajemen.",
     github: "null",
-    demo: "null"
+    demo: "/portfolio/protrack",
+    isCaseStudy: true
   },
   {
     id: 8,

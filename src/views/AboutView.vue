@@ -35,7 +35,7 @@ const tools = [
 ]
 
 const highlights = [
-  { icon: Zap, title: "3+ Years Experience", desc: "Building production-ready applications" },
+  { icon: Zap, title: "2+ Years Experience", desc: "Building production-ready applications" },
   { icon: Target, title: "Business Focused", desc: "Bridging tech and business needs" },
   { icon: Heart, title: "Passionate Learner", desc: "Always exploring new technologies" },
 ]
@@ -260,7 +260,7 @@ const getProgressColor = (status) => {
             >
               <div class="flex-1 md:text-right order-2 md:order-1">
                 <div class="glass p-6 rounded-2xl hover:glass-amber transition-all duration-300">
-                  <span class="text-amber-400 text-sm font-medium">2022 - Present</span>
+                  <span class="text-amber-400 text-sm font-medium">2025 - Present</span>
                   <h3 class="text-lg font-bold text-white mt-1">Technical Business Analyst</h3>
                   <p class="text-sm text-gray-400 mt-2">
                     Leading system analysis and development for production tracking systems, 
@@ -281,7 +281,7 @@ const getProgressColor = (status) => {
               <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-amber-400 border-4 border-[#0a0a0a] order-2"></div>
               <div class="flex-1 order-3">
                 <div class="glass p-6 rounded-2xl hover:glass-amber transition-all duration-300 ml-8 md:ml-0">
-                  <span class="text-amber-400 text-sm font-medium">2020 - 2022</span>
+                  <span class="text-amber-400 text-sm font-medium">2023 - 2024</span>
                   <h3 class="text-lg font-bold text-white mt-1">Full-stack Developer</h3>
                   <p class="text-sm text-gray-400 mt-2">
                     Developed web applications using Laravel, Vue.js, and various 
