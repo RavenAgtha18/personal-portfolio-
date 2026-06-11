@@ -278,7 +278,7 @@ const featuredProjects = [
     id: 10,
     name: "SnapPack",
     imageUrl: "snappack",
-    status: "Mendigitalisasi sistem manajemen dokumentasi pengiriman furnitur premium Christopher Guy. Memangkas birokrasi transfer media, mengintegrasikan tanda tangan digital, dan memotong waktu audit pencarian berkas hingga 95%.",
+    status: "Digitizing the Christopher Guy premium furniture shipping documentation management system. Cuts down media transfer bureaucracy, integrates digital signatures, and slashes file audit search times by up to 95%.",
     github: "null",
     demo: "/portfolio/snappack",
     isCaseStudy: true
@@ -295,7 +295,7 @@ const featuredProjects = [
     id: 1,
     name: "Protrack System",
     imageUrl: "protrack",
-    status: "Mendigitalisasi pelacakan lini produksi secara real-time, menghilangkan bottleneck operasional, dan menyediakan visibilitas workflow end-to-end bagi manajemen.",
+    status: "Digitizing production line tracking in real-time, eliminating operational bottlenecks, and providing end-to-end workflow visibility for management.",
     github: "null",
     demo: "/portfolio/protrack",
     isCaseStudy: true
@@ -304,9 +304,58 @@ const featuredProjects = [
     id: 8,
     name: "FinWise",
     imageUrl: "finwise",
-    status: "Personal budgeting with smart tracking",
+    status: "Digitizing personal financial management through a precise data architecture. Integrates real-time expense tracking, multi-category budget limit management, and liquidity analytics visualization to prevent budget overruns by 100%.",
     github: "null",
-    demo: "null"
+    demo: "/portfolio/finwise",
+    isCaseStudy: true
+  },
+  {
+    id: 11,
+    name: "Nihongo-App",
+    imageUrl: "nihongo",
+    status: "Digitizing the JFT-Basic A2 Japanese language accelerated practice system. Integrates multi-script database management (Kanji/Kana/Romaji), a real-time score evaluation engine, and interactive drill simulations to track exam readiness metrics accurately.",
+    github: "null",
+    demo: "/portfolio/nihongo",
+    isCaseStudy: true
+  },
+  {
+    id: 12,
+    name: "finish-info",
+    imageUrl: "finish-info",
+    status: "Digitizing fabric list and cutting list management for premium furniture production. Eliminates manual blueprint reading errors, optimizes raw material yield calculations, and minimizes material waste risks.",
+    github: "null",
+    demo: "/portfolio/finish-info",
+    isCaseStudy: true
+  },
+  {
+    id: 7,
+    name: "Product Quality (QC)",
+    imageUrl: "qc",
+    status: "Digitizing the quality standardization and final product inspection system on the factory floor. Integrates dynamic compliance checklists, automated defect log tracking, and real-time validation gates to ensure zero defects before shipping.",
+    github: "null",
+    demo: "/portfolio/qcchecklist",
+    isCaseStudy: true,
+    tags: ['Laravel', 'Vue.js', 'MySQL']
+  },
+  {
+    id: 9,
+    name: "ProScan",
+    imageUrl: "stokku",
+    status: "Digitizing inventory audit and stock opname workflows in manufacturing warehouses. Integrates real-time barcode verification, automatic stock variance calculations, and a data adjustment module (stock adjustment) to trim logging errors to zero.",
+    github: "null",
+    demo: "/portfolio/proscan",
+    isCaseStudy: true,
+    tags: ['Laravel', 'Vue.js', 'MySQL']
+  },
+  {
+    id: 13,
+    name: "Stokku",
+    imageUrl: "stokku1",
+    status: "Digitizing stock control management and factory material lifecycles. Integrates expiration date monitoring, low-stock threshold notification automation, inter-divisional Material Request modules, and real-time warehouse rack zoning tracking.",
+    github: "null",
+    demo: "/portfolio/stokku",
+    isCaseStudy: true,
+    tags: ['Laravel', 'Vue.js', 'MySQL']
   }
 ]
 

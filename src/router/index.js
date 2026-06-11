@@ -38,6 +38,42 @@ const routes = [
         meta: { title: 'Protrack Case Study' }
       },
       {
+        path: 'portfolio/finwise',
+        name: 'finwise-case-study',
+        component: () => import('@/views/FinWiseView.vue'),
+        meta: { title: 'FinWise Case Study' }
+      },
+      {
+        path: 'portfolio/nihongo',
+        name: 'nihongo-case-study',
+        component: () => import('@/views/NihongoView.vue'),
+        meta: { title: 'Nihongo App Case Study' }
+      },
+      {
+        path: 'portfolio/finish-info',
+        name: 'finish-info-case-study',
+        component: () => import('@/views/FinishInfoView.vue'),
+        meta: { title: 'Finish Info Case Study' }
+      },
+      {
+        path: 'portfolio/qcchecklist',
+        name: 'qcchecklist-case-study',
+        component: () => import('@/views/QCChecklistView.vue'),
+        meta: { title: 'QC Checklist Case Study' }
+      },
+      {
+        path: 'portfolio/proscan',
+        name: 'proscan-case-study',
+        component: () => import('@/views/ProScanView.vue'),
+        meta: { title: 'ProScan Case Study' }
+      },
+      {
+        path: 'portfolio/stokku',
+        name: 'stokku-case-study',
+        component: () => import('@/views/StokkuView.vue'),
+        meta: { title: 'Stokku Case Study' }
+      },
+      {
         path: 'blog',
         name: 'blog',
         component: () => import('@/views/BlogView.vue'),
