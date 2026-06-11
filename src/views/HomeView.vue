@@ -1,41 +1,52 @@
 <template>
   <main class="relative min-h-screen overflow-hidden">
     <!-- Animated Background Canvas -->
-    <canvas 
-      ref="particleCanvas" 
+    <canvas
+      ref="particleCanvas"
       class="fixed inset-0 -z-10 opacity-40"
     ></canvas>
 
     <!-- Gradient Orbs -->
     <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      <div 
+      <div
         class="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-amber-500/20 to-transparent blur-3xl animate-blob"
       ></div>
-      <div 
+      <div
         class="absolute top-1/2 -right-40 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-amber-600/10 to-transparent blur-3xl animate-blob animation-delay-1000"
       ></div>
-      <div 
+      <div
         class="absolute -bottom-40 left-1/3 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-400/10 to-transparent blur-3xl animate-blob animation-delay-500"
       ></div>
     </div>
 
     <!-- Hero Content -->
-    <section class="relative z-10 min-h-screen flex flex-col justify-center items-center px-6 py-20">
+    <section
+      class="relative z-10 min-h-screen flex flex-col justify-center items-center px-6 py-20"
+    >
       <div class="max-w-4xl mx-auto text-center">
         <!-- Greeting Badge -->
-        <div 
+        <div
           ref="greetingRef"
           class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-8 opacity-0"
         >
           <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-          <span class="text-sm text-amber-300 font-medium">Available for new projects</span>
+          <span class="text-sm text-amber-300 font-medium"
+            >Bridge SE &amp; Technical Business Analyst</span
+          >
         </div>
 
         <!-- Main Heading -->
         <h1 ref="headingRef" class="overflow-hidden">
-          <span class="block text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
-            <span ref="line1" class="block opacity-0 translate-y-10">Hi, I'm</span>
-            <span ref="line2" class="block gradient-text opacity-0 translate-y-10">
+          <span
+            class="block text-4xl sm:text-5xl md:text-7xl font-bold leading-tight"
+          >
+            <span ref="line1" class="block opacity-0 translate-y-10"
+              >Hi, I'm</span
+            >
+            <span
+              ref="line2"
+              class="block gradient-text opacity-0 translate-y-10"
+            >
               Riki Andi Alfiyanto
             </span>
           </span>
@@ -44,9 +55,12 @@
         <!-- Subtitle with Typewriter -->
         <div ref="subtitleRef" class="mt-6 opacity-0">
           <p class="text-lg sm:text-xl text-gray-400 mb-4">
-            Technical Business Analyst & Full-stack Developer
+            Bridge System Engineer &amp; Technical Business Analyst —
+            <br class="hidden sm:inline" />
+            Delivering End-to-End Industrial Automation &amp; Cross-Cultural
+            Technical Solutions
           </p>
-          <div 
+          <div
             class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl glass-amber"
           >
             <Code2 class="w-5 h-5 text-amber-400" />
@@ -57,19 +71,26 @@
         </div>
 
         <!-- Profile Image -->
-        <div 
+        <div
           ref="imageRef"
           class="relative mt-12 mx-auto w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 opacity-0"
         >
           <!-- Rotating Ring -->
-          <div class="absolute -inset-4 rounded-full border border-amber-500/20 animate-spin-slow"></div>
-          <div class="absolute -inset-8 rounded-full border border-amber-500/10 animate-spin-slow" style="animation-direction: reverse;"></div>
-          
+          <div
+            class="absolute -inset-4 rounded-full border border-amber-500/20 animate-spin-slow"
+          ></div>
+          <div
+            class="absolute -inset-8 rounded-full border border-amber-500/10 animate-spin-slow"
+            style="animation-direction: reverse"
+          ></div>
+
           <!-- Glow Effect -->
-          <div class="absolute inset-0 rounded-full bg-amber-500/20 blur-2xl animate-pulse-glow"></div>
-          
+          <div
+            class="absolute inset-0 rounded-full bg-amber-500/20 blur-2xl animate-pulse-glow"
+          ></div>
+
           <!-- Image -->
-          <div 
+          <div
             ref="tiltRef"
             class="relative w-full h-full rounded-full overflow-hidden border-4 border-amber-400/50 shadow-2xl"
             @mousemove="handleTilt"
@@ -82,15 +103,15 @@
               :style="tiltStyle"
             />
           </div>
-          
+
           <!-- Floating Badges -->
-          <div 
+          <div
             class="absolute -right-4 top-4 px-3 py-1.5 rounded-lg glass text-xs font-medium text-amber-300 animate-float"
           >
             <Sparkles class="w-3 h-3 inline mr-1" />
             Vue.js
           </div>
-          <div 
+          <div
             class="absolute -left-4 bottom-8 px-3 py-1.5 rounded-lg glass text-xs font-medium text-amber-300 animate-float animation-delay-300"
           >
             <Sparkles class="w-3 h-3 inline mr-1" />
@@ -99,7 +120,10 @@
         </div>
 
         <!-- CTA Buttons -->
-        <div ref="ctaRef" class="flex flex-wrap justify-center gap-4 mt-12 opacity-0">
+        <div
+          ref="ctaRef"
+          class="flex flex-wrap justify-center gap-4 mt-12 opacity-0"
+        >
           <a
             href="https://wa.me/6285175180821"
             target="_blank"
@@ -126,25 +150,34 @@
         </div>
 
         <!-- Stats -->
-        <div ref="statsRef" class="grid grid-cols-3 gap-4 sm:gap-8 mt-16 max-w-lg mx-auto opacity-0">
-          <div 
-            v-for="(stat, index) in stats" 
+        <div
+          ref="statsRef"
+          class="grid grid-cols-3 gap-4 sm:gap-8 mt-16 max-w-lg mx-auto opacity-0"
+        >
+          <div
+            v-for="(stat, index) in stats"
             :key="stat.label"
             class="text-center p-4 rounded-2xl glass hover:glass-amber transition-all duration-300 hover:-translate-y-1"
             :style="{ animationDelay: `${index * 100}ms` }"
           >
-            <div class="text-2xl sm:text-3xl font-bold gradient-text">{{ stat.value }}</div>
-            <div class="text-xs sm:text-sm text-gray-400 mt-1">{{ stat.label }}</div>
+            <div class="text-2xl sm:text-3xl font-bold gradient-text">
+              {{ stat.value }}
+            </div>
+            <div class="text-xs sm:text-sm text-gray-400 mt-1">
+              {{ stat.label }}
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Scroll Indicator -->
-      <div 
+      <div
         ref="scrollIndicatorRef"
         class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0"
       >
-        <span class="text-xs text-gray-500 uppercase tracking-widest">Scroll to explore</span>
+        <span class="text-xs text-gray-500 uppercase tracking-widest"
+          >Scroll to explore</span
+        >
         <ChevronDown class="w-5 h-5 text-amber-400 animate-bounce-soft" />
       </div>
     </section>
@@ -154,14 +187,17 @@
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-12" data-aos="fade-up">
           <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-            <span class="gradient-text">Featured Work</span>
+            <span class="gradient-text">Enterprise Case Studies</span>
           </h2>
-          <p class="text-gray-400">Some of my recent projects</p>
+          <p class="text-gray-400 max-w-2xl mx-auto">
+            End-to-end manufacturing &amp; fintech systems delivered as Bridge
+            SE — from business requirements to production deployment
+          </p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div 
-            v-for="(project, index) in featuredProjects" 
+          <div
+            v-for="(project, index) in featuredProjects"
             :key="project.id"
             class="group relative rounded-2xl overflow-hidden glass card-hover cursor-pointer"
             :data-aos="'fade-up'"
@@ -174,9 +210,25 @@
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-              <h3 class="text-lg font-semibold text-white mb-2">{{ project.name }}</h3>
-              <p class="text-sm text-gray-300 line-clamp-2">{{ project.status }}</p>
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6"
+            >
+              <h3 class="text-lg font-semibold text-white mb-2">
+                {{ project.name }}
+              </h3>
+              <p class="text-sm text-gray-300 line-clamp-2">
+                {{ project.status }}
+              </p>
+              <!-- Tags -->
+              <div v-if="project.tags" class="flex flex-wrap gap-1 mt-2">
+                <span
+                  v-for="tag in project.tags.slice(0, 4)"
+                  :key="tag"
+                  class="px-1.5 py-0.5 rounded text-[9px] font-mono font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30"
+                >
+                  {{ tag }}
+                </span>
+              </div>
               <div class="flex gap-2 mt-3">
                 <router-link
                   v-if="project.isCaseStudy"
@@ -185,17 +237,17 @@
                 >
                   Read Full Case Study
                 </router-link>
-                <a 
+                <a
                   v-else-if="project.demo !== 'null'"
-                  :href="project.demo" 
+                  :href="project.demo"
                   target="_blank"
                   class="px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-300 text-xs font-medium hover:bg-amber-500/30 transition-colors"
                 >
                   Live Demo
                 </a>
-                <a 
+                <a
                   v-if="project.github !== 'null'"
-                  :href="project.github" 
+                  :href="project.github"
                   target="_blank"
                   class="px-3 py-1.5 rounded-lg bg-white/10 text-white text-xs font-medium hover:bg-white/20 transition-colors"
                 >
@@ -207,8 +259,8 @@
         </div>
 
         <div class="text-center mt-10" data-aos="fade-up">
-          <router-link 
-            to="/portfolio" 
+          <router-link
+            to="/portfolio"
             class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-medium transition-colors"
           >
             <span>View All Projects</span>
@@ -221,286 +273,303 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { gsap } from 'gsap'
-import { 
-  Code2, 
-  MessageCircle, 
-  FileText, 
-  FolderOpen, 
-  Sparkles, 
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import { gsap } from "gsap";
+import {
+  Code2,
+  MessageCircle,
+  FileText,
+  FolderOpen,
+  Sparkles,
   ChevronDown,
-  ArrowRight 
-} from 'lucide-vue-next'
+  ArrowRight,
+} from "lucide-vue-next";
 
 // Refs
-const particleCanvas = ref(null)
-const greetingRef = ref(null)
-const line1 = ref(null)
-const line2 = ref(null)
-const subtitleRef = ref(null)
-const imageRef = ref(null)
-const tiltRef = ref(null)
-const ctaRef = ref(null)
-const statsRef = ref(null)
-const scrollIndicatorRef = ref(null)
+const particleCanvas = ref(null);
+const greetingRef = ref(null);
+const line1 = ref(null);
+const line2 = ref(null);
+const subtitleRef = ref(null);
+const imageRef = ref(null);
+const tiltRef = ref(null);
+const ctaRef = ref(null);
+const statsRef = ref(null);
+const scrollIndicatorRef = ref(null);
 
 // Typewriter
 const texts = [
-  "Transforming ideas into scalable products...",
-  "Connecting code and business logic...",
-  "Designing data-driven experiences...",
-  "Building solutions that drive impact..."
-]
-const displayedText = ref("")
-let textIndex = 0
-let charIndex = 0
-let isDeleting = false
-let typewriterTimeout = null
+  "Architecting enterprise MES & ERP systems...",
+  "Bridging Japanese IT standards with execution...",
+  "Designing cross-cultural data pipelines...",
+  "Delivering zero-defect industrial automation...",
+  "Translating business specs into SQL schemas...",
+];
+const displayedText = ref("");
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typewriterTimeout = null;
 
 // 3D Tilt
-const tiltX = ref(0)
-const tiltY = ref(0)
+const tiltX = ref(0);
+const tiltY = ref(0);
 const tiltStyle = computed(() => ({
-  transform: `rotateX(${tiltX.value}deg) rotateY(${tiltY.value}deg) scale(1.05)`
-}))
+  transform: `rotateX(${tiltX.value}deg) rotateY(${tiltY.value}deg) scale(1.05)`,
+}));
 
 // Stats
 const stats = [
-  { value: "10+", label: "Projects" },
-  { value: "2+", label: "Years Exp" },
-  { value: "5+", label: "Tech Stack" }
-]
+  { value: "10+", label: "Enterprise Systems" },
+  { value: "2+", label: "Years Bridge SE" },
+  { value: "5+", label: "Manufacturing Clients" },
+];
 
-// Featured Projects
+// Featured Projects — Single Source of Truth (SSOT)
 const featuredProjects = [
   {
     id: 10,
     name: "SnapPack",
     imageUrl: "snappack",
-    status: "Digitizing the Christopher Guy premium furniture shipping documentation management system. Cuts down media transfer bureaucracy, integrates digital signatures, and slashes file audit search times by up to 95%.",
+    status:
+      "Digitizing the Christopher Guy premium furniture shipping documentation management system. Cuts down media transfer bureaucracy, integrates digital signatures, and slashes file audit search times by up to 95%.",
     github: "null",
     demo: "/portfolio/snappack",
-    isCaseStudy: true
+    isCaseStudy: true,
+    tags: ["Laravel", "Vue.js", "MySQL", "Supply Chain", "Digital Signature"],
   },
   {
     id: 0,
     name: "Smart Money Intelligence",
     imageUrl: "SM",
-    status: "AI-powered dashboard for IDX stock analysis",
+    status:
+      "AI-powered dashboard for IDX stock analysis detecting foreign accumulation patterns with real-time signal recommendations.",
     github: "https://github.com/RavenAgtha18/Smart-Money-Intelligence",
-    demo: "https://huggingface.co/spaces/ravenagtha18/smart-money-tracker"
+    demo: "https://huggingface.co/spaces/ravenagtha18/smart-money-tracker",
+    isCaseStudy: false,
+    tags: ["Python", "Streamlit", "Gemini AI", "Firebase", "FinTech"],
   },
   {
     id: 1,
     name: "Protrack System",
     imageUrl: "protrack",
-    status: "Digitizing production line tracking in real-time, eliminating operational bottlenecks, and providing end-to-end workflow visibility for management.",
+    status:
+      "Digitizing production line tracking in real-time, eliminating operational bottlenecks, and providing end-to-end workflow visibility for management.",
     github: "null",
     demo: "/portfolio/protrack",
-    isCaseStudy: true
+    isCaseStudy: true,
+    tags: ["Laravel", "Vue.js", "MySQL", "Manufacturing", "WIP Tracking"],
   },
   {
     id: 8,
     name: "FinWise",
     imageUrl: "finwise",
-    status: "Digitizing personal financial management through a precise data architecture. Integrates real-time expense tracking, multi-category budget limit management, and liquidity analytics visualization to prevent budget overruns by 100%.",
+    status:
+      "Digitizing personal financial management through a precise data architecture. Integrates real-time expense tracking, multi-category budget limit management, and liquidity analytics visualization to prevent budget overruns by 100%.",
     github: "null",
     demo: "/portfolio/finwise",
-    isCaseStudy: true
+    isCaseStudy: true,
+    tags: ["Laravel", "JavaScript", "Tailwind", "FinTech", "ACID Transactions"],
   },
   {
     id: 11,
     name: "Nihongo-App",
     imageUrl: "nihongo",
-    status: "Digitizing the JFT-Basic A2 Japanese language accelerated practice system. Integrates multi-script database management (Kanji/Kana/Romaji), a real-time score evaluation engine, and interactive drill simulations to track exam readiness metrics accurately.",
+    status:
+      "Digitizing the JFT-Basic A2 Japanese language accelerated practice system. Integrates multi-script database management (Kanji/Kana/Romaji), a real-time score evaluation engine, and interactive drill simulations to track exam readiness metrics accurately.",
     github: "null",
     demo: "/portfolio/nihongo",
-    isCaseStudy: true
+    isCaseStudy: true,
+    tags: ["Laravel", "Vue.js", "MySQL", "EdTech", "Localization"],
   },
   {
     id: 12,
     name: "finish-info",
     imageUrl: "finish-info",
-    status: "Digitizing fabric list and cutting list management for premium furniture production. Eliminates manual blueprint reading errors, optimizes raw material yield calculations, and minimizes material waste risks.",
+    status:
+      "Digitizing fabric list and cutting list management for premium furniture production. Eliminates manual blueprint reading errors, optimizes raw material yield calculations, and minimizes material waste risks.",
     github: "null",
     demo: "/portfolio/finish-info",
-    isCaseStudy: true
+    isCaseStudy: true,
+    tags: ["Laravel", "Vue.js", "MySQL", "MES", "Material Optimization"],
   },
   {
     id: 7,
     name: "Product Quality (QC)",
     imageUrl: "qc",
-    status: "Digitizing the quality standardization and final product inspection system on the factory floor. Integrates dynamic compliance checklists, automated defect log tracking, and real-time validation gates to ensure zero defects before shipping.",
+    status:
+      "Digitizing the quality standardization and final product inspection system on the factory floor. Integrates dynamic compliance checklists, automated defect log tracking, and real-time validation gates to ensure zero defects before shipping.",
     github: "null",
     demo: "/portfolio/qcchecklist",
     isCaseStudy: true,
-    tags: ['Laravel', 'Vue.js', 'MySQL']
+    tags: ["Laravel", "Vue.js", "MySQL", "Quality Control", "Manufacturing"],
   },
   {
     id: 9,
     name: "ProScan",
     imageUrl: "stokku",
-    status: "Digitizing inventory audit and stock opname workflows in manufacturing warehouses. Integrates real-time barcode verification, automatic stock variance calculations, and a data adjustment module (stock adjustment) to trim logging errors to zero.",
+    status:
+      "Digitizing inventory audit and stock opname workflows in manufacturing warehouses. Integrates real-time barcode verification, automatic stock variance calculations, and a data adjustment module (stock adjustment) to trim logging errors to zero.",
     github: "null",
     demo: "/portfolio/proscan",
     isCaseStudy: true,
-    tags: ['Laravel', 'Vue.js', 'MySQL']
+    tags: ["Laravel", "Vue.js", "MySQL", "Warehouse", "Barcode"],
   },
   {
     id: 13,
     name: "Stokku",
     imageUrl: "stokku1",
-    status: "Digitizing stock control management and factory material lifecycles. Integrates expiration date monitoring, low-stock threshold notification automation, inter-divisional Material Request modules, and real-time warehouse rack zoning tracking.",
+    status:
+      "Digitizing stock control management and factory material lifecycles. Integrates expiration date monitoring, low-stock threshold notification automation, inter-divisional Material Request modules, and real-time warehouse rack zoning tracking.",
     github: "null",
     demo: "/portfolio/stokku",
     isCaseStudy: true,
-    tags: ['Laravel', 'Vue.js', 'MySQL']
-  }
-]
+    tags: ["Laravel", "Vue.js", "MySQL", "Inventory", "Supply Chain"],
+  },
+];
 
 // Particle Animation
-let animationId = null
+let animationId = null;
 const initParticles = () => {
-  const canvas = particleCanvas.value
-  if (!canvas) return
-  
-  const ctx = canvas.getContext('2d')
-  let w = canvas.width = window.innerWidth
-  let h = canvas.height = window.innerHeight
-  
-  const particles = []
-  const particleCount = 80
-  
+  const canvas = particleCanvas.value;
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  let w = (canvas.width = window.innerWidth);
+  let h = (canvas.height = window.innerHeight);
+
+  const particles = [];
+  const particleCount = 80;
+
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * w,
       y: Math.random() * h,
       dx: (Math.random() - 0.5) * 0.5,
       dy: (Math.random() - 0.5) * 0.5,
-      size: Math.random() * 2 + 1
-    })
+      size: Math.random() * 2 + 1,
+    });
   }
-  
+
   const draw = () => {
-    ctx.clearRect(0, 0, w, h)
-    
+    ctx.clearRect(0, 0, w, h);
+
     // Draw connections
-    ctx.strokeStyle = 'rgba(251, 191, 36, 0.05)'
-    ctx.lineWidth = 1
+    ctx.strokeStyle = "rgba(251, 191, 36, 0.05)";
+    ctx.lineWidth = 1;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x
-        const dy = particles[i].y - particles[j].y
-        const dist = Math.sqrt(dx * dx + dy * dy)
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 120) {
-          ctx.beginPath()
-          ctx.moveTo(particles[i].x, particles[i].y)
-          ctx.lineTo(particles[j].x, particles[j].y)
-          ctx.stroke()
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
         }
       }
     }
-    
+
     // Draw particles
-    particles.forEach(p => {
-      ctx.fillStyle = 'rgba(251, 191, 36, 0.4)'
-      ctx.beginPath()
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-      ctx.fill()
-      
-      p.x += p.dx
-      p.y += p.dy
-      
-      if (p.x < 0 || p.x > w) p.dx *= -1
-      if (p.y < 0 || p.y > h) p.dy *= -1
-    })
-    
-    animationId = requestAnimationFrame(draw)
-  }
-  
-  draw()
-  
+    particles.forEach((p) => {
+      ctx.fillStyle = "rgba(251, 191, 36, 0.4)";
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+
+      p.x += p.dx;
+      p.y += p.dy;
+
+      if (p.x < 0 || p.x > w) p.dx *= -1;
+      if (p.y < 0 || p.y > h) p.dy *= -1;
+    });
+
+    animationId = requestAnimationFrame(draw);
+  };
+
+  draw();
+
   const handleResize = () => {
-    w = canvas.width = window.innerWidth
-    h = canvas.height = window.innerHeight
-  }
-  
-  window.addEventListener('resize', handleResize)
-}
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  };
+
+  window.addEventListener("resize", handleResize);
+};
 
 // Typewriter
 const typewriter = () => {
-  const current = texts[textIndex]
-  
+  const current = texts[textIndex];
+
   if (isDeleting) {
-    displayedText.value = current.substring(0, charIndex--)
+    displayedText.value = current.substring(0, charIndex--);
   } else {
-    displayedText.value = current.substring(0, charIndex++)
+    displayedText.value = current.substring(0, charIndex++);
   }
-  
-  let speed = isDeleting ? 30 : 70
-  
+
+  let speed = isDeleting ? 30 : 70;
+
   if (!isDeleting && displayedText.value === current) {
-    speed = 2000
-    isDeleting = true
+    speed = 2000;
+    isDeleting = true;
   } else if (isDeleting && displayedText.value === "") {
-    isDeleting = false
-    textIndex = (textIndex + 1) % texts.length
-    speed = 500
+    isDeleting = false;
+    textIndex = (textIndex + 1) % texts.length;
+    speed = 500;
   }
-  
-  typewriterTimeout = setTimeout(typewriter, speed)
-}
+
+  typewriterTimeout = setTimeout(typewriter, speed);
+};
 
 // 3D Tilt Effect
 const handleTilt = (e) => {
-  const el = tiltRef.value
-  if (!el) return
-  
-  const rect = el.getBoundingClientRect()
-  const x = e.clientX - rect.left
-  const y = e.clientY - rect.top
-  const centerX = rect.width / 2
-  const centerY = rect.height / 2
-  
-  tiltX.value = (y - centerY) / 10
-  tiltY.value = (centerX - x) / 10
-}
+  const el = tiltRef.value;
+  if (!el) return;
+
+  const rect = el.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+
+  tiltX.value = (y - centerY) / 10;
+  tiltY.value = (centerX - x) / 10;
+};
 
 const resetTilt = () => {
-  tiltX.value = 0
-  tiltY.value = 0
-}
+  tiltX.value = 0;
+  tiltY.value = 0;
+};
 
 // GSAP Animations
 const initGSAPAnimations = () => {
-  const tl = gsap.timeline({ defaults: { ease: 'power3.out' }})
-  
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
   tl.to(greetingRef.value, { opacity: 1, y: 0, duration: 0.6 })
-    .to(line1.value, { opacity: 1, y: 0, duration: 0.8 }, '-=0.3')
-    .to(line2.value, { opacity: 1, y: 0, duration: 0.8 }, '-=0.5')
-    .to(subtitleRef.value, { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
-    .to(imageRef.value, { opacity: 1, scale: 1, duration: 0.8 }, '-=0.3')
-    .to(ctaRef.value, { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
-    .to(statsRef.value, { opacity: 1, y: 0, duration: 0.6 }, '-=0.3')
-    .to(scrollIndicatorRef.value, { opacity: 1, duration: 0.6 }, '-=0.2')
-}
+    .to(line1.value, { opacity: 1, y: 0, duration: 0.8 }, "-=0.3")
+    .to(line2.value, { opacity: 1, y: 0, duration: 0.8 }, "-=0.5")
+    .to(subtitleRef.value, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
+    .to(imageRef.value, { opacity: 1, scale: 1, duration: 0.8 }, "-=0.3")
+    .to(ctaRef.value, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
+    .to(statsRef.value, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3")
+    .to(scrollIndicatorRef.value, { opacity: 1, duration: 0.6 }, "-=0.2");
+};
 
 onMounted(() => {
-  initParticles()
-  typewriter()
-  
+  initParticles();
+  typewriter();
+
   // Delay GSAP animations slightly
   setTimeout(() => {
-    initGSAPAnimations()
-  }, 100)
-})
+    initGSAPAnimations();
+  }, 100);
+});
 
 onUnmounted(() => {
-  if (animationId) cancelAnimationFrame(animationId)
-  if (typewriterTimeout) clearTimeout(typewriterTimeout)
-})
+  if (animationId) cancelAnimationFrame(animationId);
+  if (typewriterTimeout) clearTimeout(typewriterTimeout);
+});
 </script>
 
 <style scoped>
