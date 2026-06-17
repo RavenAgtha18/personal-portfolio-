@@ -92,11 +92,11 @@
               Operational &amp; Technical Problems Solved
             </h2>
             
-            <div class="space-y-6">
+            <div class="space-y-4">
               <!-- Problem 1 -->
-              <div class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10">
-                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
-                  <Scissors class="w-5 h-5" />
+              <div class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20">
+                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
+                  <AlertOctagon class="w-5 h-5" />
                 </div>
                 <div>
                   <h4 class="font-semibold text-white mb-1">High-Value Material Waste &amp; Scrap</h4>
@@ -107,14 +107,40 @@
               </div>
 
               <!-- Problem 2 -->
-              <div class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10">
-                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
-                  <AlertTriangle class="w-5 h-5" />
+              <div class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20">
+                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
+                  <FileX class="w-5 h-5" />
                 </div>
                 <div>
                   <h4 class="font-semibold text-white mb-1">Blueprint Desynchronization &amp; Dimension Leakage</h4>
                   <p class="text-sm text-gray-400 leading-relaxed">
                     Operators relying on printed cutting sheets frequently cut components using outdated engineering specs, leading to mismatched joints during final assembly. Additionally, printing blueprints risks design piracy. Finish-Info serves PDF assets dynamically to tablets with access restrictions locked to local department IP ranges.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Problem 3 -->
+              <div class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20">
+                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
+                  <RefreshCw class="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Blueprint Version Control Gaps</h4>
+                  <p class="text-sm text-gray-400 leading-relaxed">
+                    Engineering revisions to cutting dimensions were distributed as printed addendums with no audit trail. Operators often worked from superseded specs, producing batches with incorrect joint clearances that required costly re-work or material scrapping during final assembly QC.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Problem 4 -->
+              <div class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20">
+                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
+                  <Database class="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Cross-Department Data Silos</h4>
+                  <p class="text-sm text-gray-400 leading-relaxed">
+                    Fabric procurement, cutting floor, and QC each maintained separate spreadsheets for material tracking. No unified data layer existed to correlate roll consumption with production orders, making it impossible to reconcile material purchases against actual factory floor usage.
                   </p>
                 </div>
               </div>
@@ -148,10 +174,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300">id</td><td class="px-4 py-2 text-gray-400">BIGINT(20) UNSIGNED</td><td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td><td class="px-4 py-2 text-gray-400">Unique identifier for network control.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">ip_address</td><td class="px-4 py-2 text-gray-400">VARCHAR(45)</td><td class="px-4 py-2 text-amber-400">INDEX</td><td class="px-4 py-2 text-gray-400">Target terminal IP allowed to read blueprints.</td></tr>
+                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300 font-bold">id <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-red-500/20 text-red-400 border border-red-500/30">PK</span></td><td class="px-4 py-2 text-gray-400">BIGINT(20) UNSIGNED</td><td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td><td class="px-4 py-2 text-gray-400">Unique identifier for network control.</td></tr>
+                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">ip_address <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-amber-500/20 text-amber-400 border border-amber-500/30">INDEX</span></td><td class="px-4 py-2 text-gray-400">VARCHAR(45)</td><td class="px-4 py-2 text-amber-400">INDEX</td><td class="px-4 py-2 text-gray-400">Target terminal IP allowed to read blueprints.</td></tr>
                     <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">department</td><td class="px-4 py-2 text-gray-400">VARCHAR(100)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Production, QC, or warehouse area logs.</td></tr>
-                    <tr><td class="px-4 py-2 text-white">status</td><td class="px-4 py-2 text-gray-400">ENUM('active', 'inactive')</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">IP permission state.</td></tr>
+                    <tr><td class="px-4 py-2 text-white">status <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">VALIDATED</span></td><td class="px-4 py-2 text-gray-400">ENUM('active', 'inactive')</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">IP permission state.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -174,8 +200,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300">new_fabric_id</td><td class="px-4 py-2 text-gray-400">BIGINT(20)</td><td class="px-4 py-2 text-gray-500">PRI</td><td class="px-4 py-2 text-gray-400">Unique fabric ID.</td></tr>
-                    <tr><td class="px-4 py-2 text-white">fabric_name</td><td class="px-4 py-2 text-gray-400">VARCHAR(255)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Commercial name of fabric (e.g. Velvet Emerald).</td></tr>
+                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300 font-bold">new_fabric_id <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-red-500/20 text-red-400 border border-red-500/30">PK</span></td><td class="px-4 py-2 text-gray-400">BIGINT(20)</td><td class="px-4 py-2 text-gray-500">PRI</td><td class="px-4 py-2 text-gray-400">Unique fabric ID.</td></tr>
+                    <tr><td class="px-4 py-2 text-white">fabric_name <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">UNIQUE</span></td><td class="px-4 py-2 text-gray-400">VARCHAR(255)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Commercial name of fabric (e.g. Velvet Emerald).</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -198,9 +224,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300">id</td><td class="px-4 py-2 text-gray-400">BIGINT(20)</td><td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td><td class="px-4 py-2 text-gray-400">Unique identifier.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">new_fabric_id</td><td class="px-4 py-2 text-gray-400">BIGINT(20)</td><td class="px-4 py-2 text-red-400">MUL (FK new_fabric.id)</td><td class="px-4 py-2 text-gray-400">Links roll to fabric catalog.</td></tr>
-                    <tr><td class="px-4 py-2 text-white">barcode</td><td class="px-4 py-2 text-gray-400">VARCHAR(255)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Barcode attached to the specific roll.</td></tr>
+                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300 font-bold">id <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-red-500/20 text-red-400 border border-red-500/30">PK</span></td><td class="px-4 py-2 text-gray-400">BIGINT(20)</td><td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td><td class="px-4 py-2 text-gray-400">Unique identifier.</td></tr>
+                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">new_fabric_id <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-purple-500/20 text-purple-400 border border-purple-500/30">FK</span></td><td class="px-4 py-2 text-gray-400">BIGINT(20)</td><td class="px-4 py-2 text-red-400">MUL (FK new_fabric.id)</td><td class="px-4 py-2 text-gray-400">Links roll to fabric catalog.</td></tr>
+                    <tr><td class="px-4 py-2 text-white">barcode <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-amber-500/20 text-amber-400 border border-amber-500/30">INDEX</span></td><td class="px-4 py-2 text-gray-400">VARCHAR(255)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Barcode attached to the specific roll.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -366,10 +392,41 @@
         <!-- RIGHT SIDEBAR (1 Column: Insights & Telemetry) -->
         <div class="space-y-8">
           
-          <!-- Key Achievements -->
+          <!-- Business Impact -->
           <div class="p-6 rounded-2xl glass border border-white/10" data-aos="fade-left">
             <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-              <Sparkles class="w-5 h-5 text-amber-400" /> Key Features
+              <Sparkles class="w-5 h-5 text-amber-400" /> Business Impact
+            </h3>
+            
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 class="text-sm font-semibold text-white">100% Precision on Cutting Allocation</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">Eliminates manual blueprint reading errors. Every fabric roll and wood cut is digitally calculated to exact dimensions, reducing scrap to near zero.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 class="text-sm font-semibold text-white">Zero Blueprint Leakage</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">IP-fenced terminal access ensures proprietary cutting dimensions and nesting layouts never leave the factory floor network.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 class="text-sm font-semibold text-white">Unified Material Tracking</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">Replaces fragmented spreadsheets with a single relational schema linking fabric rolls, barcodes, and cutting orders across procurement, cutting floor, and QC.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Key Features -->
+          <div class="p-6 rounded-2xl glass border border-white/10" data-aos="fade-left" data-aos-delay="50">
+            <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+              <CheckCircle2 class="w-5 h-5 text-amber-400" /> Key Features
             </h3>
             
             <ul class="space-y-4">
@@ -437,18 +494,39 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { 
   ArrowLeft, 
   Scissors, 
   Ruler, 
   Boxes,
-  AlertTriangle,
+  AlertOctagon,
+  FileX,
+  RefreshCw,
+  Database,
   CheckCircle2,
   Sparkles,
   Check,
   Github
 } from 'lucide-vue-next'
+
+// localStorage Persistence Helpers
+const STORAGE_KEY = 'finishinfo_simulator_state';
+const loadPersistedState = () => {
+  try {
+    const data = localStorage.getItem(STORAGE_KEY);
+    return data ? JSON.parse(data) : null;
+  } catch {
+    return null;
+  }
+};
+const persistState = (state) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (e) {
+    /* quota exceeded */
+  }
+};
 
 // Mock Data for Luxury Furniture Items
 const furnitureItems = {
@@ -488,12 +566,29 @@ const furnitureItems = {
 const selectedItemName = ref('sofa')
 const activeItem = computed(() => furnitureItems[selectedItemName.value])
 
-// Interactive Yield State
+// Interactive Yield State (restored from localStorage on mount)
 const allocatedLength = ref(8.5)
 
-// Watch item changes to adjust initial allocated length
+onMounted(() => {
+  const saved = loadPersistedState();
+  if (saved) {
+    if (saved.selectedItemName && furnitureItems[saved.selectedItemName]) {
+      selectedItemName.value = saved.selectedItemName;
+    }
+    if (typeof saved.allocatedLength === 'number') {
+      allocatedLength.value = saved.allocatedLength;
+    }
+  }
+});
+
+// Watch item changes to adjust initial allocated length and persist state
 watch(selectedItemName, (newVal) => {
   allocatedLength.value = furnitureItems[newVal].requiredMeters
+  persistState({ selectedItemName: newVal, allocatedLength: allocatedLength.value });
+})
+
+watch(allocatedLength, () => {
+  persistState({ selectedItemName: selectedItemName.value, allocatedLength: allocatedLength.value });
 })
 
 const yieldRate = computed(() => {

@@ -55,10 +55,11 @@
         <!-- Subtitle with Typewriter -->
         <div ref="subtitleRef" class="mt-6 opacity-0">
           <p class="text-lg sm:text-xl text-gray-400 mb-4">
-            Bridge System Engineer &amp; Technical Business Analyst —
+            High-Caliber Bridge SE &amp; Technical Business Analyst —
             <br class="hidden sm:inline" />
-            Delivering End-to-End Industrial Automation &amp; Cross-Cultural
-            Technical Solutions
+            Architecting End-to-End Industrial Automation Across
+            <br class="hidden sm:inline" />
+            Japanese Manufacturing Standards &amp; Cross-Cultural Delivery
           </p>
           <div
             class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl glass-amber"
@@ -325,108 +326,9 @@ const stats = [
   { value: "5+", label: "Manufacturing Clients" },
 ];
 
-// Featured Projects — Single Source of Truth (SSOT)
-const featuredProjects = [
-  {
-    id: 10,
-    name: "SnapPack",
-    imageUrl: "snappack",
-    status:
-      "Digitizing the Christopher Guy premium furniture shipping documentation management system. Cuts down media transfer bureaucracy, integrates digital signatures, and slashes file audit search times by up to 95%.",
-    github: "null",
-    demo: "/portfolio/snappack",
-    isCaseStudy: true,
-    tags: ["Laravel", "Vue.js", "MySQL", "Supply Chain", "Digital Signature"],
-  },
-  {
-    id: 0,
-    name: "Smart Money Intelligence",
-    imageUrl: "SM",
-    status:
-      "AI-powered dashboard for IDX stock analysis detecting foreign accumulation patterns with real-time signal recommendations.",
-    github: "https://github.com/RavenAgtha18/Smart-Money-Intelligence",
-    demo: "https://huggingface.co/spaces/ravenagtha18/smart-money-tracker",
-    isCaseStudy: false,
-    tags: ["Python", "Streamlit", "Gemini AI", "Firebase", "FinTech"],
-  },
-  {
-    id: 1,
-    name: "Protrack System",
-    imageUrl: "protrack",
-    status:
-      "Digitizing production line tracking in real-time, eliminating operational bottlenecks, and providing end-to-end workflow visibility for management.",
-    github: "null",
-    demo: "/portfolio/protrack",
-    isCaseStudy: true,
-    tags: ["Laravel", "Vue.js", "MySQL", "Manufacturing", "WIP Tracking"],
-  },
-  {
-    id: 8,
-    name: "FinWise",
-    imageUrl: "finwise",
-    status:
-      "Digitizing personal financial management through a precise data architecture. Integrates real-time expense tracking, multi-category budget limit management, and liquidity analytics visualization to prevent budget overruns by 100%.",
-    github: "null",
-    demo: "/portfolio/finwise",
-    isCaseStudy: true,
-    tags: ["Laravel", "JavaScript", "Tailwind", "FinTech", "ACID Transactions"],
-  },
-  {
-    id: 11,
-    name: "Nihongo-App",
-    imageUrl: "nihongo",
-    status:
-      "Digitizing the JFT-Basic A2 Japanese language accelerated practice system. Integrates multi-script database management (Kanji/Kana/Romaji), a real-time score evaluation engine, and interactive drill simulations to track exam readiness metrics accurately.",
-    github: "null",
-    demo: "/portfolio/nihongo",
-    isCaseStudy: true,
-    tags: ["Laravel", "Vue.js", "MySQL", "EdTech", "Localization"],
-  },
-  {
-    id: 12,
-    name: "finish-info",
-    imageUrl: "finish-info",
-    status:
-      "Digitizing fabric list and cutting list management for premium furniture production. Eliminates manual blueprint reading errors, optimizes raw material yield calculations, and minimizes material waste risks.",
-    github: "null",
-    demo: "/portfolio/finish-info",
-    isCaseStudy: true,
-    tags: ["Laravel", "Vue.js", "MySQL", "MES", "Material Optimization"],
-  },
-  {
-    id: 7,
-    name: "Product Quality (QC)",
-    imageUrl: "qc",
-    status:
-      "Digitizing the quality standardization and final product inspection system on the factory floor. Integrates dynamic compliance checklists, automated defect log tracking, and real-time validation gates to ensure zero defects before shipping.",
-    github: "null",
-    demo: "/portfolio/qcchecklist",
-    isCaseStudy: true,
-    tags: ["Laravel", "Vue.js", "MySQL", "Quality Control", "Manufacturing"],
-  },
-  {
-    id: 9,
-    name: "ProScan",
-    imageUrl: "stokku",
-    status:
-      "Digitizing inventory audit and stock opname workflows in manufacturing warehouses. Integrates real-time barcode verification, automatic stock variance calculations, and a data adjustment module (stock adjustment) to trim logging errors to zero.",
-    github: "null",
-    demo: "/portfolio/proscan",
-    isCaseStudy: true,
-    tags: ["Laravel", "Vue.js", "MySQL", "Warehouse", "Barcode"],
-  },
-  {
-    id: 13,
-    name: "Stokku",
-    imageUrl: "stokku1",
-    status:
-      "Digitizing stock control management and factory material lifecycles. Integrates expiration date monitoring, low-stock threshold notification automation, inter-divisional Material Request modules, and real-time warehouse rack zoning tracking.",
-    github: "null",
-    demo: "/portfolio/stokku",
-    isCaseStudy: true,
-    tags: ["Laravel", "Vue.js", "MySQL", "Inventory", "Supply Chain"],
-  },
-];
+// Featured Projects — imported from SSOT data module
+import { projects } from "@/data/projects.js";
+const featuredProjects = projects.filter((p) => p.isCaseStudy);
 
 // Particle Animation
 let animationId = null;
