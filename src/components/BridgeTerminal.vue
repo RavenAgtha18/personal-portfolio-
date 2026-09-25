@@ -108,7 +108,7 @@ const history = ref([
   },
   {
     type: 'output',
-    text: 'Riki Andi Alfiyanto\nRole: Bridge Software Engineer & Senior Technical Business Analyst\nDomain: Industrial Manufacturing, MES Automation, Barcode Logistics & Bilingual Systems (ID/JP)\nStatus: AVAILABLE FOR HIGH-IMPACT ENTERPRISE INITIATIVES'
+    text: 'Riki Andi Alfiyanto\nRole: Software Engineer & Technical Business Analyst (1+ Years Exp)\nDomain: Manufacturing MES, Barcode Logistics & Web Systems\nStatus: AVAILABLE FOR ENTERPRISE & SOFTWARE INITIATIVES'
   }
 ])
 

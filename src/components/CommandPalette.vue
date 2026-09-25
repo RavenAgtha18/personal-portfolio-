@@ -155,6 +155,7 @@ import {
   ShieldCheck,
   Cpu,
   Globe,
+  Zap,
 } from 'lucide-vue-next'
 
 const router = useRouter()
@@ -254,7 +255,7 @@ const items = [
     id: 'nav-about',
     category: 'Navigation',
     title: 'About & Technical Competencies',
-    subtitle: 'Senior Technical BA & Bridge SE architecture profile',
+    subtitle: 'Software Engineer & Technical BA profile',
     badge: 'BIO',
     actionText: 'Navigate',
     icon: User,
@@ -269,6 +270,16 @@ const items = [
     actionText: 'Navigate',
     icon: FolderOpen,
     action: () => router.push('/portfolio'),
+  },
+  {
+    id: 'nav-physics',
+    category: 'Interactive',
+    title: 'Matter.js Physics Stack Sandbox',
+    subtitle: 'Interactive 2D rigid-body simulation with Zero-G mode',
+    badge: 'PHYSICS',
+    actionText: 'Launch',
+    icon: Zap,
+    action: () => router.push('/about#physics'),
   },
 
   // 3. Quick Actions

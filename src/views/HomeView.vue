@@ -175,7 +175,7 @@
                 </div>
                 <div class="text-[10px] font-mono leading-tight">
                   <span class="font-bold block" :class="isDark ? 'text-zinc-200' : 'text-slate-800'">Riki Andi Alfiyanto</span>
-                  <span :class="isDark ? 'text-amber-400' : 'text-amber-700'">Lead Bridge Engineer</span>
+                  <span :class="isDark ? 'text-amber-400' : 'text-amber-700'">Software Engineer &amp; Technical BA</span>
                 </div>
               </div>
             </div>

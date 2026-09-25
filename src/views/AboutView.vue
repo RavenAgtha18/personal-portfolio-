@@ -18,6 +18,7 @@ import {
 } from 'lucide-vue-next'
 import HolographicAvatarCard from '@/components/HolographicAvatarCard.vue'
 import InteractiveGridBackground from '@/components/InteractiveGridBackground.vue'
+import PhysicsStackSandbox from '@/components/PhysicsStackSandbox.vue'
 
 const activeCategory = ref('physical')
 
@@ -199,7 +200,7 @@ const highlights = [
             
             <p class="text-base text-zinc-300 leading-relaxed mb-6">
               Headquartered in <span class="text-amber-400 font-semibold">Semarang, Indonesia 🇮🇩</span>, I specialize as a 
-              <span class="text-amber-400 font-semibold">Bridge Software Engineer &amp; Senior Technical Business Analyst</span> 
+              <span class="text-amber-400 font-semibold">Software Engineer &amp; Technical Business Analyst</span> 
               for manufacturing execution systems (MES), factory barcode automation, and distributed web applications.
             </p>
             
@@ -226,7 +227,7 @@ const highlights = [
       </div>
     </section>
 
-    <!-- Senior Architecture Competency Matrix (Replaces Outdated Percent Bars) -->
+    <!-- Architecture Competency Matrix (Replaces Outdated Percent Bars) -->
     <section class="py-20 px-6 border-t border-zinc-800/80 bg-zinc-950/40">
       <div class="max-w-6xl mx-auto">
         <!-- Section Header -->
@@ -301,6 +302,26 @@ const highlights = [
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Interactive Physics Stack & Shop-Floor Sandbox (Matter.js 2D Physics) -->
+    <section id="physics" class="py-20 px-6 border-t border-zinc-800/80 bg-zinc-950/60">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10" data-aos="fade-up">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 font-mono text-xs mb-3">
+            <Zap class="w-3.5 h-3.5" />
+            <span>Matter.js 2D Physics Simulation</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">
+            Shop-Floor &amp; Tech Stack Physics Sandbox
+          </h2>
+          <p class="text-zinc-400 mt-2 text-xs sm:text-sm max-w-xl mx-auto font-mono">
+            Every library, hardware scanner, database, and protocol in my engineering stack modeled with real Newtonian collision dynamics. Grab &amp; fling badges across the floor or engage Zero-G mode.
+          </p>
+        </div>
+
+        <PhysicsStackSandbox />
       </div>
     </section>
 
