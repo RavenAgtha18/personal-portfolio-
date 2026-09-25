@@ -531,7 +531,7 @@ const persistState = (state) => {
 // Mock Data for Luxury Furniture Items
 const furnitureItems = {
   sofa: {
-    name: 'Christopher Guy Signature Sofa',
+    name: 'Signature Chesterfield Sofa',
     fabricName: 'Velvet Emerald',
     requiredMeters: 8.5,
     woodCuts: [
@@ -542,7 +542,7 @@ const furnitureItems = {
     ]
   },
   loungeChair: {
-    name: 'CG Luxury Lounge Chair',
+    name: 'Signature Lounge Chair',
     fabricName: 'CG Classic Linen',
     requiredMeters: 4.2,
     woodCuts: [

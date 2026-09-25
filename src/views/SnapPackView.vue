@@ -54,7 +54,7 @@
           <div>
             <span class="text-xs text-gray-400 block mb-1">Client Profile</span>
             <span class="text-sm font-semibold text-white"
-              >Christopher Guy (Luxury Furniture)</span
+              >Luxury Furniture Manufacturer</span
             >
           </div>
           <div>
@@ -93,11 +93,10 @@
               <p>
                 <strong>SnapPack</strong> is an enterprise-grade digital logging
                 and media tracking system built from the ground up to secure the
-                shipping documentation pipeline for Christopher Guy, a global
-                luxury furniture designer. By digitizing camera-to-server file
-                logs at shipping stations, the system acts as a single point of
-                truth that links packing operators, IT verifiers, and logistics
-                managers.
+                shipping documentation pipeline for a global luxury furniture
+                manufacturer. By digitizing camera-to-server file logs at shipping
+                stations, the system acts as a single point of truth that links
+                packing operators, IT verifiers, and logistics managers.
               </p>
               <p>
                 The primary objective is to replace error-prone physical memory
@@ -152,7 +151,7 @@
               The Business Problem
             </h2>
             <p class="text-gray-300 mb-6">
-              Christopher Guy's high-value exports require strict visual quality
+              The manufacturer's high-value exports require strict visual quality
               documentation (photos and videos) at packing stations to verify
               items are free from damage before container load-in. However,
               legacy paper-and-card workflows introduced critical operational

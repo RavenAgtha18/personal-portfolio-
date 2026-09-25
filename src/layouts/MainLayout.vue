@@ -30,30 +30,32 @@
             </div>
             <div class="absolute inset-0 rounded-xl bg-amber-500/50 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
-          <span class="text-lg font-semibold hidden sm:block">
-            <span class="text-white">Riki</span>
-            <span class="text-amber-400">.dev</span>
-          </span>
+          
         </router-link>
 
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center gap-1">
-          <router-link
-            v-for="link in navLinks"
-            :key="link.path"
-            :to="link.path"
-            class="nav-link relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 group"
-            :class="{ 'text-amber-400': $route.path === link.path }"
-          >
-            <span class="relative z-10">{{ link.name }}</span>
-            <span 
-              class="absolute inset-0 rounded-lg bg-amber-500/0 group-hover:bg-amber-500/10 transition-colors duration-300"
-            ></span>
-            <span 
-              v-if="$route.path === link.path"
-              class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-amber-400"
-            ></span>
-          </router-link>
+        <!-- Desktop Navigation & Command Palette -->
+        <div class="hidden md:flex items-center gap-3">
+          <div class="flex items-center gap-1">
+            <router-link
+              v-for="link in navLinks"
+              :key="link.path"
+              :to="link.path"
+              class="nav-link relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 group"
+              :class="{ 'text-amber-400': $route.path === link.path }"
+            >
+              <span class="relative z-10">{{ link.name }}</span>
+              <span 
+                class="absolute inset-0 rounded-lg bg-amber-500/0 group-hover:bg-amber-500/10 transition-colors duration-300"
+              ></span>
+              <span 
+                v-if="$route.path === link.path"
+                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-amber-400"
+              ></span>
+            </router-link>
+          </div>
+
+          <!-- Command Palette Trigger -->
+          <CommandPalette />
         </div>
 
         <!-- CTA Button -->
@@ -173,6 +175,7 @@ import { Menu, X, MessageCircle, Linkedin, Github, MessageSquare } from 'lucide-
 import { useRouter } from 'vue-router'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import CommandPalette from '@/components/CommandPalette.vue'
 
 const router = useRouter()
 const isScrolled = ref(false)

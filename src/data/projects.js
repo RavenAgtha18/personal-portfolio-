@@ -5,17 +5,11 @@
  * - HomeView displays items where isCaseStudy === true
  * - PortfolioView displays all items and uses `tech` + `category` for analytics
  *
- * Field schema:
- *   id           - Number (stable identifier)
- *   name         - String (display name)
- *   imageUrl     - String (matches /img/portfolio-{imageUrl}.png)
- *   status       - String (impact-driven description)
- *   tech         - String (comma-separated tech stack for analytics/filters)
- *   tags         - Array<String> (domain + tech badges for card hover display)
- *   github       - String (repo URL or "null")
- *   demo         - String (live URL, case study route, or "null")
- *   isCaseStudy  - Boolean (true = has dedicated case study page)
- *   category     - String (analytics domain bucket)
+ * Case Study 4-Pillar Schema:
+ *   problem       - String (The Problem: real business problem, not technical first)
+ *   requirements  - String (Requirements Process: stakeholders, discovery, needs)
+ *   solution      - String (Technical Solution: architecture, chosen stack, reasoning)
+ *   result        - String (Result: real impact, zero fabricated numbers)
  */
 
 export const projects = [
@@ -24,13 +18,18 @@ export const projects = [
     name: "SnapPack",
     imageUrl: "snappack",
     status:
-      "Digitizing the Christopher Guy premium furniture shipping documentation management system. Cuts down media transfer bureaucracy, integrates digital signatures, and slashes file audit search times by up to 95%.",
+      "Digitizing the shipping documentation management system for a luxury furniture manufacturing client. Cuts down media transfer bureaucracy, integrates digital signatures, and slashes file audit search times by up to 95%.",
     tech: "Laravel, Vue.js, MySQL, Tailwind CSS",
     tags: ["Laravel", "Vue.js", "MySQL", "Supply Chain", "Digital Signature"],
     github: "null",
     demo: "/portfolio/snappack",
     isCaseStudy: true,
+    isSimpleShowcase: false,
     category: "Full-stack Manufacturing Systems",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 0,
@@ -43,7 +42,30 @@ export const projects = [
     github: "https://github.com/RavenAgtha18/Smart-Money-Intelligence",
     demo: "https://huggingface.co/spaces/ravenagtha18/smart-money-tracker",
     isCaseStudy: false,
+    isSimpleShowcase: true,
     category: "FinTech Intelligence",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
+  },
+  {
+    id: 15,
+    name: "ISP Semarang Portal & Financial Tools",
+    imageUrl: "isp",
+    status:
+      "Official web platform and financial calculation portal for Komunitas Investor Saham Pemula Semarang (est. 2014). Integrates interactive investment calculators (CAGR, Dividend Yield, DCA simulation), community event tracking, and high-performance SEO architecture.",
+    tech: "Tailwind CSS, JavaScript, HTML5, Financial Tools",
+    tags: ["Tailwind CSS", "JavaScript", "HTML5", "FinTech", "SEO"],
+    github: "https://github.com/RavenAgtha18/ispsemarang.git",
+    demo: "https://www.ispsemarang.my.id",
+    isCaseStudy: false,
+    isSimpleShowcase: true,
+    category: "FinTech Intelligence",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 1,
@@ -56,7 +78,12 @@ export const projects = [
     github: "null",
     demo: "/portfolio/protrack",
     isCaseStudy: true,
+    isSimpleShowcase: false,
     category: "Full-stack Manufacturing Systems",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 2,
@@ -68,7 +95,12 @@ export const projects = [
     github: "https://github.com/RavenAgtha18/slicing-productly.git",
     demo: "https://polite-cat-ca7188.netlify.app/",
     isCaseStudy: false,
+    isSimpleShowcase: true,
     category: "Scripting/Automation",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 3,
@@ -80,7 +112,12 @@ export const projects = [
     github: "https://github.com/RavenAgtha18/lading-page-resto.git",
     demo: "https://majestic-khapse-51488b.netlify.app/",
     isCaseStudy: false,
+    isSimpleShowcase: true,
     category: "Scripting/Automation",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 4,
@@ -92,7 +129,12 @@ export const projects = [
     github: "https://github.com/RavenAgtha18/store.git",
     demo: "null",
     isCaseStudy: false,
+    isSimpleShowcase: true,
     category: "Full-stack Manufacturing Systems",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 5,
@@ -104,7 +146,12 @@ export const projects = [
     github: "https://github.com/RavenAgtha18/perpustakaaan.gi",
     demo: "null",
     isCaseStudy: false,
+    isSimpleShowcase: true,
     category: "Full-stack Manufacturing Systems",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 6,
@@ -116,7 +163,12 @@ export const projects = [
     github: "null",
     demo: "null",
     isCaseStudy: false,
+    isSimpleShowcase: true,
     category: "Full-stack Manufacturing Systems",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 7,
@@ -129,7 +181,12 @@ export const projects = [
     github: "null",
     demo: "/portfolio/qcchecklist",
     isCaseStudy: true,
+    isSimpleShowcase: false,
     category: "Full-stack Manufacturing Systems",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 8,
@@ -142,7 +199,12 @@ export const projects = [
     github: "null",
     demo: "/portfolio/finwise",
     isCaseStudy: true,
+    isSimpleShowcase: false,
     category: "FinTech Intelligence",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 11,
@@ -155,7 +217,12 @@ export const projects = [
     github: "null",
     demo: "/portfolio/nihongo",
     isCaseStudy: true,
+    isSimpleShowcase: true,
     category: "Localization Engineering",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 12,
@@ -168,12 +235,17 @@ export const projects = [
     github: "null",
     demo: "/portfolio/finish-info",
     isCaseStudy: true,
+    isSimpleShowcase: false,
     category: "Full-stack Manufacturing Systems",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 9,
     name: "ProScan",
-    imageUrl: "stokku",
+    imageUrl: "proscan",
     status:
       "Digitizing inventory audit and stock opname workflows in manufacturing warehouses. Integrates real-time barcode verification, automatic stock variance calculations, and a data adjustment module (stock adjustment) to trim logging errors to zero.",
     tech: "Laravel, Vue.js, Tailwind, MySQL",
@@ -181,7 +253,12 @@ export const projects = [
     github: "null",
     demo: "/portfolio/proscan",
     isCaseStudy: true,
+    isSimpleShowcase: false,
     category: "Full-stack Manufacturing Systems",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
   {
     id: 13,
@@ -194,6 +271,11 @@ export const projects = [
     github: "null",
     demo: "/portfolio/stokku",
     isCaseStudy: true,
+    isSimpleShowcase: false,
     category: "Full-stack Manufacturing Systems",
+    problem: "",
+    requirements: "",
+    solution: "",
+    result: "",
   },
 ];

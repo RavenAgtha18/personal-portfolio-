@@ -7,11 +7,34 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
+import { useTheme } from '@/composables/useTheme'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import Lenis from 'lenis'
+
+let lenis = null
 
 onMounted(() => {
+  const { initTheme } = useTheme()
+  initTheme()
+
+  // Initialize Lenis Smooth Scrolling (Awwwards / Studio-grade luxury feel)
+  lenis = new Lenis({
+    duration: 1.1,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    touchMultiplier: 2,
+  })
+
+  function raf(time) {
+    if (lenis) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+  }
+  requestAnimationFrame(raf)
+
   // Initialize AOS
   AOS.init({
     duration: 800,
@@ -23,6 +46,13 @@ onMounted(() => {
 
   // Refresh AOS on route change
   AOS.refresh()
+})
+
+onUnmounted(() => {
+  if (lenis) {
+    lenis.destroy()
+    lenis = null
+  }
 })
 </script>
 

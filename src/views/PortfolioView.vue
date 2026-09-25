@@ -1,62 +1,40 @@
 <template>
   <div class="relative overflow-hidden min-h-screen">
     <!-- Header Section -->
-    <section class="pt-20 pb-10 px-6">
-      <div class="max-w-7xl mx-auto text-center">
+    <section class="pt-20 pb-8 px-6">
+      <div class="max-w-5xl mx-auto text-center">
         <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-amber mb-6"
-          data-aos="fade-down"
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono mb-4 border border-zinc-800 bg-zinc-900/40 text-zinc-400"
         >
-          <FolderOpen class="w-4 h-4 text-amber-400" />
-          <span class="text-sm text-amber-300">Portfolio</span>
+          <FolderOpen class="w-3.5 h-3.5 text-amber-500" />
+          <span>Project Index &amp; Case Studies</span>
         </div>
 
-        <h1
-          class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4"
-          data-aos="fade-up"
-        >
-          <span class="gradient-text">Project Intelligence</span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3 text-white">
+          Engineering Architecture Portfolio
         </h1>
 
-        <p
-          class="text-gray-400 max-w-2xl mx-auto mb-8"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          Bridging <span class="text-amber-300">Technology</span> and
-          <span class="text-amber-300">Business Insight</span> through
-          innovative solutions
+        <p class="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto mb-8 leading-relaxed">
+          Comprehensive catalog of manufacturing MES integrations, financial applications, and specialized systems.
         </p>
 
         <!-- View Toggle -->
-        <div
-          class="flex justify-center gap-4"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
+        <div class="inline-flex p-1 rounded-xl border border-zinc-800 bg-zinc-900/60 text-xs font-mono">
           <button
             @click="activeMode = 'portfolio'"
-            :class="[
-              'px-6 py-3 rounded-xl font-medium text-sm transition-all duration-300 flex items-center gap-2',
-              activeMode === 'portfolio'
-                ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-lg shadow-amber-500/25'
-                : 'glass text-gray-300 hover:text-white hover:bg-white/10',
-            ]"
+            class="px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 font-medium"
+            :class="activeMode === 'portfolio' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'"
           >
-            <Grid3x3 class="w-4 h-4" />
-            Portfolio View
+            <Grid3x3 class="w-3.5 h-3.5 text-amber-500" />
+            Projects View
           </button>
           <button
             @click="activeMode = 'dashboard'"
-            :class="[
-              'px-6 py-3 rounded-xl font-medium text-sm transition-all duration-300 flex items-center gap-2',
-              activeMode === 'dashboard'
-                ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-lg shadow-amber-500/25'
-                : 'glass text-gray-300 hover:text-white hover:bg-white/10',
-            ]"
+            class="px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 font-medium"
+            :class="activeMode === 'dashboard' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'"
           >
-            <BarChart3 class="w-4 h-4" />
-            Analytics
+            <BarChart3 class="w-3.5 h-3.5 text-amber-500" />
+            Architecture Matrix
           </button>
         </div>
       </div>
@@ -70,127 +48,29 @@
         class="px-6 py-12 max-w-7xl mx-auto"
       >
         <!-- Filter Tags -->
-        <div
-          class="flex flex-wrap justify-center gap-2 mb-10"
-          data-aos="fade-up"
-        >
+        <div class="flex flex-wrap justify-center gap-1.5 mb-10">
           <button
             v-for="filter in filters"
             :key="filter"
             @click="activeFilter = filter"
+            class="px-3 py-1 rounded-lg text-xs font-mono transition-colors border"
             :class="[
-              'px-4 py-2 rounded-full text-sm font-medium transition-all duration-300',
               activeFilter === filter
-                ? 'bg-amber-500 text-black'
-                : 'glass text-gray-400 hover:text-white hover:bg-white/10',
+                ? 'bg-zinc-100 text-zinc-950 font-semibold border-zinc-100'
+                : 'bg-zinc-900/40 text-zinc-400 border-zinc-800/80 hover:border-zinc-700 hover:text-zinc-200'
             ]"
           >
             {{ filter }}
           </button>
         </div>
 
-        <!-- Projects Grid -->
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-        >
-          <TransitionGroup name="list">
-            <div
-              v-for="(item, index) in filteredItems"
-              :key="item.id"
-              class="group relative rounded-2xl overflow-hidden glass transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/10"
-              :data-aos="'fade-up'"
-              :data-aos-delay="index * 50"
-            >
-              <!-- Image Container -->
-              <div class="relative h-48 overflow-hidden">
-                <img
-                  :src="'/img/portfolio-' + item.imageUrl + '.png'"
-                  :alt="item.name"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <!-- Overlay -->
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60"
-                ></div>
-
-                <!-- Tech Badge on Image -->
-                <div
-                  class="absolute top-3 right-3 flex flex-wrap justify-end gap-1"
-                >
-                  <span
-                    v-for="tech in item.tech.split(', ').slice(0, 2)"
-                    :key="tech"
-                    class="px-2 py-1 rounded-md text-[10px] font-medium glass backdrop-blur-lg"
-                    :class="getTechClass(tech)"
-                  >
-                    {{ tech }}
-                  </span>
-                </div>
-
-                <!-- Hover Actions -->
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-3"
-                >
-                  <router-link
-                    v-if="item.isCaseStudy"
-                    :to="item.demo"
-                    class="px-4 py-2 rounded-xl bg-amber-500 text-black font-semibold text-sm hover:scale-105 transition-transform flex items-center gap-1.5"
-                  >
-                    <BookOpen class="w-4 h-4" />
-                    Read Case Study
-                  </router-link>
-                  <template v-else>
-                    <a
-                      v-if="item.demo !== 'null'"
-                      :href="item.demo"
-                      target="_blank"
-                      class="p-3 rounded-full bg-amber-500 text-black hover:scale-110 transition-transform"
-                    >
-                      <ExternalLink class="w-5 h-5" />
-                    </a>
-                    <a
-                      v-if="item.github !== 'null'"
-                      :href="item.github"
-                      target="_blank"
-                      class="p-3 rounded-full bg-white/10 text-white hover:scale-110 transition-transform"
-                    >
-                      <Github class="w-5 h-5" />
-                    </a>
-                  </template>
-                </div>
-              </div>
-
-              <!-- Content -->
-              <div class="p-5">
-                <h3
-                  class="font-semibold text-white mb-2 group-hover:text-amber-400 transition-colors line-clamp-1"
-                >
-                  {{ item.name }}
-                </h3>
-                <p class="text-sm text-gray-400 line-clamp-2 mb-4">
-                  {{ item.status }}
-                </p>
-
-                <!-- Tech Stack -->
-                <div class="flex flex-wrap gap-1.5">
-                  <span
-                    v-for="tech in item.tech.split(', ').slice(0, 3)"
-                    :key="tech"
-                    class="px-2 py-1 rounded-md text-[10px] font-medium"
-                    :class="getTechClass(tech)"
-                  >
-                    {{ tech }}
-                  </span>
-                  <span
-                    v-if="item.tech.split(', ').length > 3"
-                    class="px-2 py-1 rounded-md text-[10px] font-medium bg-white/5 text-gray-400"
-                  >
-                    +{{ item.tech.split(", ").length - 3 }}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </TransitionGroup>
+        <!-- Projects Grid with 4-Pillar Case Study Architecture -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <CaseStudyCard
+            v-for="item in filteredItems"
+            :key="item.id"
+            :project="item"
+          />
         </div>
       </section>
 
@@ -423,6 +303,84 @@
             </div>
           </div>
         </div>
+
+        <!-- Architecture Decision Matrix -->
+        <div
+          class="mt-8 p-6 rounded-2xl glass relative overflow-hidden"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <h3
+            class="text-amber-400 mb-6 text-sm font-semibold flex items-center gap-2"
+          >
+            <Grid3x3 class="w-4 h-4" />
+            Architecture Decision Matrix
+          </h3>
+          <p class="text-[11px] text-gray-500 mb-4">
+            Technology × Domain cross-reference — showing stack decisions across enterprise verticals
+          </p>
+
+          <!-- Matrix Table -->
+          <div class="overflow-x-auto -mx-2 px-2">
+            <table class="w-full text-xs">
+              <thead>
+                <tr class="border-b border-white/10">
+                  <th class="text-left py-2.5 px-3 text-gray-400 font-semibold">Technology</th>
+                  <th
+                    v-for="domain in architectureMatrix.domains"
+                    :key="domain.name"
+                    class="text-center py-2.5 px-3 font-semibold"
+                    :class="domain.headerClass"
+                  >
+                    {{ domain.name }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="row in architectureMatrix.matrix"
+                  :key="row.tech"
+                  class="border-b border-white/5 hover:bg-white/5 transition-colors"
+                >
+                  <td class="py-2.5 px-3 text-gray-300 font-medium">{{ row.tech }}</td>
+                  <td
+                    v-for="cell in row.domains"
+                    :key="cell.name"
+                    class="text-center py-2.5 px-3 relative"
+                    @mouseenter="hoveredMatrixCell = `${row.tech}-${cell.name}`"
+                    @mouseleave="hoveredMatrixCell = null"
+                  >
+                    <span
+                      v-if="cell.count > 0"
+                      class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-[11px] font-bold transition-all duration-300 cursor-default"
+                      :class="[
+                        hoveredMatrixCell === `${row.tech}-${cell.name}`
+                          ? cell.hoverClass
+                          : cell.baseClass,
+                      ]"
+                    >
+                      {{ cell.count }}
+                    </span>
+                    <span v-else class="text-gray-700">—</span>
+
+                    <!-- Tooltip -->
+                    <Transition name="fade">
+                      <div
+                        v-if="hoveredMatrixCell === `${row.tech}-${cell.name}` && cell.count > 0"
+                        class="absolute left-1/2 -translate-x-1/2 -top-8 bg-white text-black text-[10px] font-bold px-2 py-1 rounded shadow-lg z-10 whitespace-nowrap"
+                      >
+                        {{ row.tech }} in {{ cell.name }}: {{ cell.count }} {{ cell.count > 1 ? 'projects' : 'project' }}
+                        <div
+                          class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-white"
+                        ></div>
+                      </div>
+                    </Transition>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
     </Transition>
   </div>
@@ -434,12 +392,9 @@ import {
   FolderOpen,
   Grid3x3,
   BarChart3,
-  ExternalLink,
-  Github,
   PieChart as PieChartIcon,
   Layers,
   Cpu,
-  Code2,
   BookOpen,
   Terminal,
   Braces,
@@ -447,8 +402,10 @@ import {
   Wind,
   Box,
   Sparkles,
+  Factory,
 } from "lucide-vue-next";
 import { projects } from "@/data/projects.js";
+import CaseStudyCard from "@/components/CaseStudyCard.vue";
 
 const activeMode = ref("portfolio");
 const activeFilter = ref("All");
@@ -467,39 +424,22 @@ const filteredItems = computed(() => {
 const insights = computed(() => [
   { label: "Total Projects", value: items.length, icon: Layers },
   {
-    label: "AI Projects",
-    value: items.filter((i) => i.tech.includes("AI")).length,
-    icon: Cpu,
+    label: "Case Studies",
+    value: items.filter((i) => i.isCaseStudy).length,
+    icon: BookOpen,
   },
   {
-    label: "Laravel Apps",
-    value: items.filter((i) => i.tech.includes("Laravel")).length,
-    icon: Code2,
+    label: "Manufacturing Domain",
+    value: items.filter((i) => i.category === "Full-stack Manufacturing Systems").length,
+    icon: Factory,
   },
 ]);
 
-const getTechClass = (tech) => {
-  const map = {
-    Laravel: "bg-red-500/20 text-red-400 border border-red-500/30",
-    Tailwind: "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30",
-    Bootstrap: "bg-purple-500/20 text-purple-400 border border-purple-500/30",
-    VueJS: "bg-green-500/20 text-green-400 border border-green-500/30",
-    Vue: "bg-green-500/20 text-green-400 border border-green-500/30",
-    Python: "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30",
-    AI: "bg-pink-500/20 text-pink-400 border border-pink-500/30",
-    JavaScript: "bg-amber-500/20 text-amber-400 border border-amber-500/30",
-    JS: "bg-amber-500/20 text-amber-400 border border-amber-500/30",
-    Streamlit: "bg-rose-500/20 text-rose-400 border border-rose-500/30",
-    Firebase: "bg-orange-500/20 text-orange-400 border border-orange-500/30",
-    Flowbite: "bg-blue-500/20 text-blue-400 border border-blue-500/30",
-  };
-  for (const key in map) if (tech.includes(key)) return map[key];
-  return "bg-amber-500/20 text-amber-400 border border-amber-500/30";
-};
 
 const hoveredTech = ref(null);
 const hoveredCat = ref(null);
 const hoveredCatCard = ref(null);
+const hoveredMatrixCell = ref(null);
 
 const aggregatedTech = computed(() => {
   const techMap = {
@@ -533,10 +473,20 @@ const aggregatedTech = computed(() => {
       icon: Terminal,
       colorClass: "bg-gradient-to-r from-blue-500 to-indigo-500",
     },
+    MySQL: {
+      count: 0,
+      icon: Database,
+      colorClass: "bg-gradient-to-r from-sky-400 to-blue-600",
+    },
     Firebase: {
       count: 0,
       icon: Database,
       colorClass: "bg-gradient-to-r from-orange-400 to-red-500",
+    },
+    "Gemini AI": {
+      count: 0,
+      icon: Sparkles,
+      colorClass: "bg-gradient-to-r from-pink-400 to-rose-500",
     },
     Flowbite: {
       count: 0,
@@ -557,9 +507,11 @@ const aggregatedTech = computed(() => {
     ) {
       techMap["JavaScript"].count++;
     }
+    if (techString.includes("mysql")) techMap["MySQL"].count++;
     if (techString.includes("bootstrap")) techMap["Bootstrap"].count++;
     if (techString.includes("python")) techMap["Python"].count++;
     if (techString.includes("firebase")) techMap["Firebase"].count++;
+    if (techString.includes("gemini")) techMap["Gemini AI"].count++;
     if (techString.includes("flowbite")) techMap["Flowbite"].count++;
   });
 
@@ -633,6 +585,64 @@ const projectTypeDistribution = computed(() => {
     icon: data.icon,
     hexColor: data.hexColor,
   }));
+});
+
+// Architecture Decision Matrix — shows tech × domain cross-reference
+const architectureMatrix = computed(() => {
+  const techs = ["Laravel", "Vue.js", "MySQL", "Tailwind", "JavaScript", "Python"];
+  const domainConfigs = [
+    {
+      name: "Manufacturing",
+      key: "Full-stack Manufacturing Systems",
+      headerClass: "text-amber-400",
+      baseClass: "bg-amber-500/15 text-amber-400",
+      hoverClass: "bg-amber-500/30 text-amber-300 scale-110 shadow-lg",
+    },
+    {
+      name: "FinTech",
+      key: "FinTech Intelligence",
+      headerClass: "text-emerald-400",
+      baseClass: "bg-emerald-500/15 text-emerald-400",
+      hoverClass: "bg-emerald-500/30 text-emerald-300 scale-110 shadow-lg",
+    },
+    {
+      name: "Localization",
+      key: "Localization Engineering",
+      headerClass: "text-indigo-400",
+      baseClass: "bg-indigo-500/15 text-indigo-400",
+      hoverClass: "bg-indigo-500/30 text-indigo-300 scale-110 shadow-lg",
+    },
+    {
+      name: "Scripting",
+      key: "Scripting/Automation",
+      headerClass: "text-purple-400",
+      baseClass: "bg-purple-500/15 text-purple-400",
+      hoverClass: "bg-purple-500/30 text-purple-300 scale-110 shadow-lg",
+    },
+  ];
+
+  const matrix = techs.map((tech) => {
+    const row = { tech, domains: [] };
+    domainConfigs.forEach((domain) => {
+      const count = items.filter((item) => {
+        const cat = item.category || "Full-stack Manufacturing Systems";
+        const techLower = item.tech.toLowerCase();
+        const hasTech = techLower.includes(tech.toLowerCase())
+          || (tech === "Vue.js" && techLower.includes("vue"))
+          || (tech === "JavaScript" && (techLower.includes("js") || techLower.includes("javascript")));
+        return cat === domain.key && hasTech;
+      }).length;
+      row.domains.push({
+        name: domain.name,
+        count,
+        baseClass: domain.baseClass,
+        hoverClass: domain.hoverClass,
+      });
+    });
+    return row;
+  });
+
+  return { techs, domains: domainConfigs, matrix };
 });
 
 const donutGradientStyle = computed(() => {
