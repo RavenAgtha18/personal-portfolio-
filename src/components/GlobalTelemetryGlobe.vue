@@ -5,17 +5,20 @@
   >
     <!-- Header HUD -->
     <div
-      class="px-5 py-3 border-b flex flex-wrap items-center justify-between gap-3 text-xs"
+      class="px-3 sm:px-5 py-2.5 sm:py-3 border-b flex flex-wrap items-center justify-between gap-2 sm:gap-3 text-[11px] sm:text-xs"
       :class="isDark ? 'border-zinc-800/80 bg-zinc-900/60' : 'border-slate-100 bg-slate-50'"
     >
       <div class="flex items-center gap-2">
-        <Globe2 class="w-4 h-4 text-amber-500 animate-spin-slow" />
-        <span class="font-bold tracking-wider" :class="isDark ? 'text-zinc-200' : 'text-slate-800'">
+        <Globe2 class="w-4 h-4 text-amber-500 animate-spin-slow flex-shrink-0" />
+        <span class="font-bold tracking-wider hidden sm:inline" :class="isDark ? 'text-zinc-200' : 'text-slate-800'">
           GLOBAL DELIVERY TELEMETRY · 3D ORBITAL MATRIX
+        </span>
+        <span class="font-bold tracking-wider sm:hidden" :class="isDark ? 'text-zinc-200' : 'text-slate-800'">
+          3D TELEMETRY GLOBE
         </span>
       </div>
 
-      <div class="flex items-center gap-3 text-[11px]" :class="isDark ? 'text-zinc-400' : 'text-slate-500'">
+      <div class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px]" :class="isDark ? 'text-zinc-400' : 'text-slate-500'">
         <span class="inline-flex items-center gap-1.5">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
           <span>BASE: SEMARANG, ID 🇮🇩</span>
@@ -26,46 +29,47 @@
     </div>
 
     <!-- 3D WebGL Canvas Area -->
-    <div class="relative w-full h-[360px] sm:h-[440px] flex items-center justify-center overflow-hidden bg-radial-vignette">
+    <div class="relative w-full h-[300px] sm:h-[400px] md:h-[440px] flex items-center justify-center overflow-hidden bg-radial-vignette touch-none">
       <div ref="containerRef" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
 
       <!-- Top Overlay Coordinates -->
-      <div class="absolute top-4 left-4 pointer-events-none text-[10px] space-y-1" :class="isDark ? 'text-zinc-400' : 'text-slate-600'">
+      <div class="absolute top-3 sm:top-4 left-3 sm:left-4 pointer-events-none text-[9px] sm:text-[10px] space-y-1" :class="isDark ? 'text-zinc-400' : 'text-slate-600'">
         <div class="font-bold text-amber-500">ACTIVE ROUTE: {{ selectedRoute.label }}</div>
-        <div>LATENCY: <span class="text-emerald-400 font-bold">{{ selectedRoute.latency }}ms</span> · PROTOCOL: SECURE TLS 1.3</div>
+        <div>LATENCY: <span class="text-emerald-400 font-bold">{{ selectedRoute.latency }}ms</span> · <span class="hidden sm:inline">PROTOCOL: </span>TLS 1.3</div>
         <div class="hidden sm:block text-[9px] text-zinc-500">DRAG TO ROTATE GLOBE 360° · REAL-TIME 3D BEZIER ARCS</div>
       </div>
 
       <!-- Live Route Status Chip -->
-      <div class="absolute top-4 right-4 pointer-events-none text-[10px] px-2.5 py-1 rounded-full border backdrop-blur-md" :class="isDark ? 'bg-zinc-900/80 border-zinc-700 text-zinc-200' : 'bg-white/80 border-slate-200 text-slate-800'">
+      <div class="absolute top-3 sm:top-4 right-3 sm:right-4 pointer-events-none text-[9px] sm:text-[10px] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border backdrop-blur-md" :class="isDark ? 'bg-zinc-900/80 border-zinc-700 text-zinc-200' : 'bg-white/80 border-slate-200 text-slate-800'">
         {{ selectedRoute.tag }}
       </div>
 
       <!-- Central Semarang Anchor Marker HUD -->
-      <div class="absolute bottom-4 left-4 pointer-events-none flex items-center gap-2 text-[10px]" :class="isDark ? 'text-zinc-400' : 'text-slate-500'">
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-        <span>HOME HUB: INDONESIA (UTC+7) · TARGET REACH: GLOBAL &amp; JAPAN</span>
+      <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 pointer-events-none flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] max-w-[70%]" :class="isDark ? 'text-zinc-400' : 'text-slate-500'">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse flex-shrink-0"></span>
+        <span class="hidden sm:inline">HOME HUB: INDONESIA (UTC+7) · TARGET REACH: GLOBAL &amp; JAPAN</span>
+        <span class="sm:hidden truncate">HUB: ID 🇮🇩 (UTC+7) · GLOBAL</span>
       </div>
 
       <!-- 60 FPS Badge -->
-      <div class="absolute bottom-4 right-4 pointer-events-none text-[9px] px-2 py-0.5 rounded border" :class="isDark ? 'border-zinc-800 bg-zinc-950/80 text-zinc-500' : 'border-slate-200 bg-white/80 text-slate-400'">
-        WEBGL 3D · THREE.JS
+      <div class="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 pointer-events-none text-[9px] px-1.5 sm:px-2 py-0.5 rounded border" :class="isDark ? 'border-zinc-800 bg-zinc-950/80 text-zinc-500' : 'border-slate-200 bg-white/80 text-slate-400'">
+        WEBGL 3D
       </div>
     </div>
 
     <!-- Route Selector Controls Bar -->
     <div
-      class="p-4 border-t flex flex-wrap items-center justify-between gap-3 text-xs"
+      class="p-3 sm:p-4 border-t flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs"
       :class="isDark ? 'border-zinc-800/80 bg-zinc-900/40' : 'border-slate-100 bg-slate-50/60'"
     >
-      <div class="flex items-center gap-2">
-        <span class="text-[11px] font-semibold" :class="isDark ? 'text-zinc-400' : 'text-slate-600'">Focus Target:</span>
-        <div class="flex flex-wrap gap-1.5">
+      <div class="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+        <span class="text-[11px] font-semibold flex-shrink-0" :class="isDark ? 'text-zinc-400' : 'text-slate-600'">Target:</span>
+        <div class="flex items-center gap-1.5">
           <button
             v-for="route in routes"
             :key="route.id"
             @click="selectRoute(route)"
-            class="px-2.5 py-1 rounded-lg border text-[11px] font-semibold transition-all duration-200"
+            class="px-2 sm:px-2.5 py-1 rounded-lg border text-[10px] sm:text-[11px] font-semibold transition-all duration-200 whitespace-nowrap active:scale-95"
             :class="[
               selectedRoute.id === route.id
                 ? isDark
@@ -81,9 +85,9 @@
         </div>
       </div>
 
-      <div class="text-[11px] text-zinc-500 flex items-center gap-2">
+      <div class="text-[10px] sm:text-[11px] text-zinc-500 flex items-center gap-1.5 w-full sm:w-auto">
         <span class="text-amber-500">●</span>
-        <span>{{ selectedRoute.desc }}</span>
+        <span class="truncate">{{ selectedRoute.desc }}</span>
       </div>
     </div>
   </div>

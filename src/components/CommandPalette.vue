@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- Trigger Button (can be placed in Navbar or accessed globally via Ctrl+K / Cmd+K) -->
+    <!-- Desktop Trigger Pill -->
     <button
       @click="isOpen = true"
-      class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-mono transition-all duration-200 hover:border-amber-500/60"
+      class="hidden md:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-mono transition-all duration-200 hover:border-amber-500/60"
       :class="isDark ? 'bg-zinc-900/60 border-zinc-800 text-zinc-400 hover:text-zinc-200' : 'bg-slate-100 border-slate-200 text-slate-600 hover:text-slate-900'"
       title="Open Command Palette (Ctrl+K or ⌘K)"
     >
@@ -14,22 +14,33 @@
       </kbd>
     </button>
 
+    <!-- Mobile Trigger Icon -->
+    <button
+      @click="isOpen = true"
+      class="md:hidden p-2 rounded-xl border text-xs font-mono transition-all duration-200 flex items-center justify-center active:scale-95"
+      :class="isDark ? 'bg-zinc-900/70 border-zinc-800 text-amber-400 hover:text-white' : 'bg-white border-slate-200 text-amber-700 shadow-sm'"
+      title="Quick Search"
+      aria-label="Search portfolio"
+    >
+      <Search class="w-4 h-4 text-amber-400" />
+    </button>
+
     <!-- Modal Backdrop -->
     <Teleport to="body">
       <Transition name="palette-fade">
         <div
           v-if="isOpen"
-          class="fixed inset-0 z-[100] flex items-start justify-center pt-20 sm:pt-28 px-4 bg-black/70 backdrop-blur-md"
+          class="fixed inset-0 z-[100] flex items-start justify-center pt-14 sm:pt-28 px-3 sm:px-4 bg-black/75 backdrop-blur-md"
           @click.self="closePalette"
         >
           <!-- Command Window -->
           <div
-            class="relative w-full max-w-xl rounded-2xl border overflow-hidden shadow-2xl transition-all duration-200 font-mono"
+            class="relative w-full max-w-xl rounded-2xl border overflow-hidden shadow-2xl transition-all duration-200 font-mono max-h-[85vh] flex flex-col"
             :class="isDark ? 'bg-zinc-950 border-zinc-800 text-zinc-100 shadow-amber-500/5' : 'bg-white border-slate-200 text-slate-900'"
           >
             <!-- Search Input Header -->
             <div
-              class="px-4 py-3 border-b flex items-center gap-3"
+              class="px-3.5 sm:px-4 py-2.5 sm:py-3 border-b flex items-center gap-2.5 sm:gap-3 flex-shrink-0"
               :class="isDark ? 'border-zinc-800 bg-zinc-900/50' : 'border-slate-100 bg-slate-50'"
             >
               <Search class="w-4 h-4 text-amber-500 flex-shrink-0" />
@@ -37,8 +48,8 @@
                 ref="inputRef"
                 v-model="query"
                 type="text"
-                placeholder="Search case studies, systems, actions, or jump to page..."
-                class="w-full bg-transparent text-sm focus:outline-none placeholder-zinc-500"
+                placeholder="Search case studies, systems, actions..."
+                class="w-full bg-transparent text-xs sm:text-sm focus:outline-none placeholder-zinc-500 min-w-0"
                 @keydown.down.prevent="navigateResults(1)"
                 @keydown.up.prevent="navigateResults(-1)"
                 @keydown.enter.prevent="selectActive"
@@ -46,7 +57,7 @@
               />
               <kbd
                 @click="closePalette"
-                class="px-2 py-0.5 rounded text-[10px] border cursor-pointer hover:border-amber-500 transition-colors"
+                class="px-2 py-0.5 rounded text-[10px] border cursor-pointer hover:border-amber-500 transition-colors flex-shrink-0"
                 :class="isDark ? 'border-zinc-800 bg-zinc-900 text-zinc-400' : 'border-slate-200 bg-slate-100 text-slate-500'"
               >
                 ESC
@@ -54,7 +65,7 @@
             </div>
 
             <!-- Results List -->
-            <div class="max-h-[380px] overflow-y-auto p-2 space-y-1 text-xs">
+            <div class="max-h-[50vh] sm:max-h-[380px] overflow-y-auto p-2 space-y-1 text-xs flex-1">
               <div v-if="filteredItems.length === 0" class="py-8 text-center text-zinc-500 text-xs">
                 No commands or projects match "{{ query }}"
               </div>

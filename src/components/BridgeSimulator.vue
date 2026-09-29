@@ -5,29 +5,32 @@
   >
     <!-- Console Top Bar -->
     <div
-      class="px-4 py-2.5 border-b flex items-center justify-between"
+      class="px-3 sm:px-4 py-2.5 border-b flex items-center justify-between gap-2"
       :class="isDark ? 'border-zinc-800/80 bg-zinc-900/60' : 'border-slate-100 bg-slate-50'"
     >
-      <div class="flex items-center gap-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-        <span class="ml-2 font-semibold tracking-wider text-[11px]" :class="isDark ? 'text-zinc-300' : 'text-slate-700'">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 flex-shrink-0"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 flex-shrink-0"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 flex-shrink-0"></span>
+        <span class="ml-1 sm:ml-2 font-semibold tracking-wider text-[11px] hidden sm:inline" :class="isDark ? 'text-zinc-300' : 'text-slate-700'">
           BRIDGE ARCHITECTURE TELEMETRY SIMULATOR
+        </span>
+        <span class="ml-1 font-semibold tracking-wider text-[11px] sm:hidden truncate" :class="isDark ? 'text-zinc-300' : 'text-slate-700'">
+          TELEMETRY SIMULATOR
         </span>
       </div>
 
-      <div class="flex items-center gap-3 text-[10px]" :class="isDark ? 'text-zinc-400' : 'text-slate-500'">
+      <div class="flex items-center gap-2 sm:gap-3 text-[10px] flex-shrink-0" :class="isDark ? 'text-zinc-400' : 'text-slate-500'">
         <span class="inline-flex items-center gap-1">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-          REAL-TIME ENGINE
+          REAL-TIME
         </span>
         <span class="hidden sm:inline">LATENCY: {{ currentLatency }}ms</span>
       </div>
     </div>
 
     <!-- Interactive Architecture Pipeline View -->
-    <div class="p-5 sm:p-7">
+    <div class="p-4 sm:p-7">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
         <!-- Connecting Data Bus Line (Desktop) -->
         <div
@@ -123,20 +126,20 @@
 
       <!-- Action Simulation Triggers (Interactive for Recruiter) -->
       <div class="mt-6 flex flex-wrap items-center justify-between gap-3 pt-4 border-t" :class="isDark ? 'border-zinc-800/80' : 'border-slate-100'">
-        <div class="flex items-center gap-2">
-          <span class="text-[11px] font-semibold" :class="isDark ? 'text-zinc-400' : 'text-slate-600'">Test Bridge Event:</span>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-[11px] font-semibold" :class="isDark ? 'text-zinc-400' : 'text-slate-600'">Test Event:</span>
           <button
             @click="triggerSimulation('barcode')"
             :disabled="isTransmitting"
-            class="px-3 py-1.5 rounded-lg border text-xs transition-all duration-200 disabled:opacity-50"
+            class="px-2.5 sm:px-3 py-1.5 rounded-lg border text-[11px] sm:text-xs transition-all duration-200 disabled:opacity-50 active:scale-95"
             :class="isDark ? 'bg-zinc-900 border-zinc-700 text-zinc-200 hover:border-amber-500 hover:text-amber-400' : 'bg-slate-100 border-slate-300 text-slate-800 hover:border-amber-500'"
           >
-            ⚡ Scan Pallet Barcode
+            ⚡ Scan Pallet
           </button>
           <button
             @click="triggerSimulation('qc')"
             :disabled="isTransmitting"
-            class="px-3 py-1.5 rounded-lg border text-xs transition-all duration-200 disabled:opacity-50"
+            class="px-2.5 sm:px-3 py-1.5 rounded-lg border text-[11px] sm:text-xs transition-all duration-200 disabled:opacity-50 active:scale-95"
             :class="isDark ? 'bg-zinc-900 border-zinc-700 text-zinc-200 hover:border-amber-500 hover:text-amber-400' : 'bg-slate-100 border-slate-300 text-slate-800 hover:border-amber-500'"
           >
             🔍 Log QC Defect
@@ -144,9 +147,9 @@
         </div>
 
         <!-- Terminal Output Stream -->
-        <div class="text-[10px] text-zinc-500 flex items-center gap-1.5">
-          <Terminal class="w-3.5 h-3.5 text-amber-500" />
-          <span class="truncate max-w-[280px] font-mono">{{ consoleLog }}</span>
+        <div class="text-[10px] text-zinc-500 flex items-center gap-1.5 w-full sm:w-auto">
+          <Terminal class="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
+          <span class="truncate max-w-full sm:max-w-[280px] font-mono">{{ consoleLog }}</span>
         </div>
       </div>
     </div>

@@ -179,9 +179,9 @@ const highlights = [
     <InteractiveGridBackground />
 
     <!-- About Hero Section -->
-    <section class="relative py-20 px-6">
+    <section class="relative py-12 sm:py-20 px-4 sm:px-6">
       <div class="max-w-6xl mx-auto">
-        <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="flex flex-col lg:flex-row items-center gap-8 sm:gap-12">
           <!-- Holographic 3D Tilt Avatar Card -->
           <div class="relative w-full max-w-[360px] flex justify-center" data-aos="fade-right">
             <HolographicAvatarCard />
@@ -194,11 +194,11 @@ const highlights = [
               <span>Bridge Software Engineer &amp; Technical BA</span>
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
               Riki Andi Alfiyanto
             </h1>
             
-            <p class="text-base text-zinc-300 leading-relaxed mb-6">
+            <p class="text-sm sm:text-base text-zinc-300 leading-relaxed mb-6">
               Headquartered in <span class="text-amber-400 font-semibold">Semarang, Indonesia 🇮🇩</span>, I specialize as a 
               <span class="text-amber-400 font-semibold">Software Engineer &amp; Technical Business Analyst</span> 
               for manufacturing execution systems (MES), factory barcode automation, and distributed web applications.
@@ -209,7 +209,7 @@ const highlights = [
             </blockquote>
 
             <!-- Highlight Cards -->
-            <div class="grid sm:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               <div 
                 v-for="(item, index) in highlights" 
                 :key="item.title"
@@ -228,7 +228,7 @@ const highlights = [
     </section>
 
     <!-- Architecture Competency Matrix (Replaces Outdated Percent Bars) -->
-    <section class="py-20 px-6 border-t border-zinc-800/80 bg-zinc-950/40">
+    <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-zinc-800/80 bg-zinc-950/40">
       <div class="max-w-6xl mx-auto">
         <!-- Section Header -->
         <div class="text-center mb-12" data-aos="fade-up">
@@ -306,14 +306,14 @@ const highlights = [
     </section>
 
     <!-- Interactive Physics Stack & Shop-Floor Sandbox (Matter.js 2D Physics) -->
-    <section id="physics" class="py-20 px-6 border-t border-zinc-800/80 bg-zinc-950/60">
+    <section id="physics" class="py-12 sm:py-20 px-3 sm:px-6 border-t border-zinc-800/80 bg-zinc-950/60">
       <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-10" data-aos="fade-up">
+        <div class="text-center mb-8 sm:mb-10" data-aos="fade-up">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 font-mono text-xs mb-3">
             <Zap class="w-3.5 h-3.5" />
             <span>Matter.js 2D Physics Simulation</span>
           </div>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
             Shop-Floor &amp; Tech Stack Physics Sandbox
           </h2>
           <p class="text-zinc-400 mt-2 text-xs sm:text-sm max-w-xl mx-auto font-mono">
@@ -326,7 +326,7 @@ const highlights = [
     </section>
 
     <!-- Experience Timeline -->
-    <section class="py-20 px-6 border-t border-zinc-800/80">
+    <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-zinc-800/80">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12" data-aos="fade-up">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 font-mono text-xs mb-3">
@@ -348,7 +348,7 @@ const highlights = [
               data-aos="fade-up"
             >
               <div class="flex-1 md:text-right order-2 md:order-1">
-                <div class="border border-zinc-800 bg-zinc-950/80 p-6 rounded-2xl hover:border-amber-500/50 transition-all duration-300">
+                <div class="border border-zinc-800 bg-zinc-950/80 p-4 sm:p-6 rounded-2xl hover:border-amber-500/50 transition-all duration-300 ml-8 md:ml-0">
                   <span class="text-amber-400 text-xs font-mono font-semibold">2025 - Present</span>
                   <h3 class="text-base font-bold text-white mt-1">Software Engineer &amp; Technical BA</h3>
                   <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
@@ -368,7 +368,7 @@ const highlights = [
               <div class="flex-1 hidden md:block order-1"></div>
               <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-amber-400 border-4 border-[#0a0a0a] order-2"></div>
               <div class="flex-1 order-3">
-                <div class="border border-zinc-800 bg-zinc-950/80 p-6 rounded-2xl hover:border-amber-500/50 transition-all duration-300 ml-8 md:ml-0">
+                <div class="border border-zinc-800 bg-zinc-950/80 p-4 sm:p-6 rounded-2xl hover:border-amber-500/50 transition-all duration-300 ml-8 md:ml-0">
                   <span class="text-amber-400 text-xs font-mono font-semibold">2023 - 2024</span>
                   <h3 class="text-base font-bold text-white mt-1">Full-Stack Software Engineer</h3>
                   <p class="text-xs text-zinc-400 mt-2 leading-relaxed">

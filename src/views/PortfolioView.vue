@@ -1,7 +1,7 @@
 <template>
   <div class="relative overflow-hidden min-h-screen">
     <!-- Header Section -->
-    <section class="pt-20 pb-8 px-6">
+    <section class="pt-16 sm:pt-20 pb-6 sm:pb-8 px-4 sm:px-6">
       <div class="max-w-5xl mx-auto text-center">
         <div
           class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono mb-4 border border-zinc-800 bg-zinc-900/40 text-zinc-400"
@@ -10,19 +10,19 @@
           <span>Project Index &amp; Case Studies</span>
         </div>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3 text-white">
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3 text-white">
           Engineering Architecture Portfolio
         </h1>
 
-        <p class="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto mb-8 leading-relaxed">
+        <p class="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
           Comprehensive catalog of manufacturing MES integrations, financial applications, and specialized systems.
         </p>
 
         <!-- View Toggle -->
-        <div class="inline-flex p-1 rounded-xl border border-zinc-800 bg-zinc-900/60 text-xs font-mono">
+        <div class="inline-flex p-0.5 sm:p-1 rounded-xl border border-zinc-800 bg-zinc-900/60 text-[11px] sm:text-xs font-mono max-w-full">
           <button
             @click="activeMode = 'portfolio'"
-            class="px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 font-medium"
+            class="px-3 sm:px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 font-medium"
             :class="activeMode === 'portfolio' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'"
           >
             <Grid3x3 class="w-3.5 h-3.5 text-amber-500" />
@@ -30,7 +30,7 @@
           </button>
           <button
             @click="activeMode = 'dashboard'"
-            class="px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 font-medium"
+            class="px-3 sm:px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 font-medium"
             :class="activeMode === 'dashboard' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'"
           >
             <BarChart3 class="w-3.5 h-3.5 text-amber-500" />
@@ -45,15 +45,15 @@
       <section
         v-if="activeMode === 'portfolio'"
         key="portfolio"
-        class="px-6 py-12 max-w-7xl mx-auto"
+        class="px-4 sm:px-6 py-8 sm:py-12 max-w-7xl mx-auto"
       >
         <!-- Filter Tags -->
-        <div class="flex flex-wrap justify-center gap-1.5 mb-10">
+        <div class="flex flex-wrap justify-center gap-1 sm:gap-1.5 mb-6 sm:mb-10">
           <button
             v-for="filter in filters"
             :key="filter"
             @click="activeFilter = filter"
-            class="px-3 py-1 rounded-lg text-xs font-mono transition-colors border"
+            class="px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-mono transition-colors border"
             :class="[
               activeFilter === filter
                 ? 'bg-zinc-100 text-zinc-950 font-semibold border-zinc-100'
@@ -65,7 +65,7 @@
         </div>
 
         <!-- Projects Grid with 4-Pillar Case Study Architecture -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
           <CaseStudyCard
             v-for="item in filteredItems"
             :key="item.id"
@@ -75,7 +75,7 @@
       </section>
 
       <!-- Analytics Dashboard View -->
-      <section v-else key="dashboard" class="px-6 py-12 max-w-7xl mx-auto">
+      <section v-else key="dashboard" class="px-4 sm:px-6 py-8 sm:py-12 max-w-7xl mx-auto">
         <!-- Stats Cards -->
         <div
           class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"

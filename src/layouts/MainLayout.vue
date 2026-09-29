@@ -18,7 +18,7 @@
           : 'bg-transparent py-5',
       ]"
     >
-      <div class="max-w-7xl mx-auto flex justify-between items-center px-6">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6">
         <!-- Logo -->
         <router-link
           to="/"
@@ -33,49 +33,51 @@
           
         </router-link>
 
-        <!-- Desktop Navigation & Command Palette -->
-        <div class="hidden md:flex items-center gap-3">
-          <div class="flex items-center gap-1">
-            <router-link
-              v-for="link in navLinks"
-              :key="link.path"
-              :to="link.path"
-              class="nav-link relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 group"
-              :class="{ 'text-amber-400': $route.path === link.path }"
-            >
-              <span class="relative z-10">{{ link.name }}</span>
-              <span 
-                class="absolute inset-0 rounded-lg bg-amber-500/0 group-hover:bg-amber-500/10 transition-colors duration-300"
-              ></span>
-              <span 
-                v-if="$route.path === link.path"
-                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-amber-400"
-              ></span>
-            </router-link>
-          </div>
-
-          <!-- Command Palette Trigger -->
-          <CommandPalette />
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center gap-1">
+          <router-link
+            v-for="link in navLinks"
+            :key="link.path"
+            :to="link.path"
+            class="nav-link relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 group"
+            :class="{ 'text-amber-400': $route.path === link.path }"
+          >
+            <span class="relative z-10">{{ link.name }}</span>
+            <span 
+              class="absolute inset-0 rounded-lg bg-amber-500/0 group-hover:bg-amber-500/10 transition-colors duration-300"
+            ></span>
+            <span 
+              v-if="$route.path === link.path"
+              class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-amber-400"
+            ></span>
+          </router-link>
         </div>
 
-        <!-- CTA Button -->
-        <a
-          href="https://wa.me/6285175180821"
-          target="_blank"
-          class="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold text-sm hover:shadow-lg hover:shadow-amber-500/25 hover:scale-105 transition-all duration-300"
-        >
-          <MessageCircle class="w-4 h-4" />
-          <span>Let's Talk</span>
-        </a>
+        <!-- Right Side Actions (Desktop & Mobile) -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Command Palette Trigger (Responsive: Desktop pill or Mobile icon) -->
+          <CommandPalette />
 
-        <!-- Mobile Menu Button -->
-        <button 
-          @click="isMobileMenuOpen = !isMobileMenuOpen"
-          class="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
-        >
-          <Menu v-if="!isMobileMenuOpen" class="w-6 h-6" />
-          <X v-else class="w-6 h-6" />
-        </button>
+          <!-- CTA Button (Desktop) -->
+          <a
+            href="https://wa.me/6285175180821"
+            target="_blank"
+            class="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold text-sm hover:shadow-lg hover:shadow-amber-500/25 hover:scale-105 transition-all duration-300"
+          >
+            <MessageCircle class="w-4 h-4" />
+            <span>Let's Talk</span>
+          </a>
+
+          <!-- Mobile Menu Button -->
+          <button 
+            @click="isMobileMenuOpen = !isMobileMenuOpen"
+            class="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
+            aria-label="Toggle Navigation Menu"
+          >
+            <Menu v-if="!isMobileMenuOpen" class="w-6 h-6" />
+            <X v-else class="w-6 h-6" />
+          </button>
+        </div>
       </div>
 
       <!-- Mobile Menu -->
@@ -84,7 +86,7 @@
           v-if="isMobileMenuOpen"
           class="md:hidden absolute top-full left-0 w-full bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/5"
         >
-          <div class="px-6 py-4 space-y-2">
+          <div class="px-4 sm:px-6 py-4 space-y-2">
             <router-link
               v-for="link in navLinks"
               :key="link.path"

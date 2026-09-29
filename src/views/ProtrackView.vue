@@ -1,11 +1,11 @@
 <template>
-  <div class="relative min-h-screen pt-24 pb-20 px-6 overflow-hidden">
+  <div class="relative min-h-screen pt-20 sm:pt-24 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
     <!-- Background Accents -->
     <div class="fixed inset-0 -z-10 gradient-mesh opacity-70"></div>
     <div class="fixed inset-0 -z-10 grid-pattern opacity-30"></div>
 
     <!-- Top Nav / Back Button -->
-    <div class="max-w-7xl mx-auto mb-10" data-aos="fade-down">
+    <div class="max-w-7xl mx-auto mb-8 sm:mb-10" data-aos="fade-down">
       <router-link
         to="/portfolio"
         class="inline-flex items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors group text-sm font-medium"
@@ -20,18 +20,18 @@
     <!-- Main Container -->
     <article class="max-w-6xl mx-auto">
       <!-- HERO HEADER -->
-      <header class="mb-16 text-center md:text-left" data-aos="fade-up">
+      <header class="mb-12 sm:mb-16 text-center md:text-left" data-aos="fade-up">
         <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-amber mb-6"
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-amber mb-5 sm:mb-6"
         >
           <Cpu class="w-4 h-4 text-amber-400" />
           <span
-            class="text-xs text-amber-300 font-semibold tracking-wider uppercase"
-            >Technical Business Analyst Case Study</span
+            class="text-xs text-amber-300 font-semibold tracking-wider uppercase font-mono"
+            >Enterprise Case Study</span
           >
         </div>
         <h1
-          class="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-8"
+          class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 sm:mb-8"
         >
           Protrack System –
           <span class="gradient-text">Real-Time Production Tracking</span>
@@ -40,14 +40,14 @@
         </h1>
 
         <div
-          class="grid grid-cols-1 md:grid-cols-4 gap-6 p-6 rounded-2xl glass mt-8"
+          class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 p-4 sm:p-6 rounded-2xl glass mt-6 sm:mt-8"
         >
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Architecture Strategy</span
+              >Role &amp; Scope</span
             >
             <span class="text-sm font-semibold text-amber-300"
-              >Bridge SE / Database Analyst</span
+              >Technical BA / Full-stack Developer</span
             >
           </div>
           <div>

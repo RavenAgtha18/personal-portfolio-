@@ -25,14 +25,14 @@
     </button>
 
     <!-- Hero Content (Split Layout: High-Impact Typography & Interactive 3D WebGL Core) -->
-    <section class="relative z-10 min-h-screen flex items-center px-6 py-20">
-      <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section class="relative z-10 min-h-screen flex items-center px-4 sm:px-6 py-12 sm:py-20">
+      <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <!-- Left Column: Editorial & Value Proposition -->
         <div class="lg:col-span-7 text-center lg:text-left">
           <!-- Status / Positioning Eyebrow with Live Radar Ping -->
           <div
             ref="greetingRef"
-            class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border text-xs font-mono mb-8 opacity-0 transition-transform duration-300 hover:scale-[1.02]"
+            class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border text-xs font-mono mb-6 sm:mb-8 opacity-0 transition-transform duration-300 hover:scale-[1.02]"
             :class="isDark ? 'bg-zinc-900/80 border-zinc-800 text-zinc-300 shadow-sm' : 'bg-white border-slate-200 text-slate-700 shadow-sm'"
           >
             <span class="relative flex h-2 w-2">
@@ -46,7 +46,7 @@
           <h1 ref="headingRef" class="overflow-hidden mb-4">
             <span
               ref="line1"
-              class="block text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight opacity-0 translate-y-4 shimmer-name"
+              class="block text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight opacity-0 translate-y-4 shimmer-name"
               :class="isDark ? 'text-zinc-100' : 'text-slate-900'"
             >
               Riki Andi Alfiyanto
@@ -133,10 +133,10 @@
         <!-- Right Column: Interactive Holographic Portrait & 3D WebGL Core -->
         <div class="lg:col-span-5 flex flex-col items-center">
           <!-- View Toggle Switch (Holo ID vs 3D Core) -->
-          <div class="inline-flex items-center p-1 rounded-xl border mb-3 text-xs font-mono" :class="isDark ? 'bg-zinc-900/80 border-zinc-800' : 'bg-slate-100 border-slate-200'">
+          <div class="inline-flex items-center p-0.5 sm:p-1 rounded-xl border mb-3 text-[11px] sm:text-xs font-mono max-w-full justify-center" :class="isDark ? 'bg-zinc-900/80 border-zinc-800' : 'bg-slate-100 border-slate-200'">
             <button
               @click="activeHeroVisual = 'holo'"
-              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all duration-200 font-semibold"
+              class="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition-all duration-200 font-semibold"
               :class="activeHeroVisual === 'holo'
                 ? isDark ? 'bg-zinc-800 text-amber-300 shadow-sm' : 'bg-white text-amber-800 shadow-sm'
                 : isDark ? 'text-zinc-400 hover:text-zinc-200' : 'text-slate-500 hover:text-slate-900'"
@@ -146,7 +146,7 @@
             </button>
             <button
               @click="activeHeroVisual = 'core3d'"
-              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all duration-200 font-semibold"
+              class="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition-all duration-200 font-semibold"
               :class="activeHeroVisual === 'core3d'
                 ? isDark ? 'bg-zinc-800 text-amber-300 shadow-sm' : 'bg-white text-amber-800 shadow-sm'
                 : isDark ? 'text-zinc-400 hover:text-zinc-200' : 'text-slate-500 hover:text-slate-900'"
@@ -233,7 +233,7 @@
     </section>
 
     <!-- Real-Time Telemetry Bento Grid (Solves Empty Space & Proves Bridge SE Mindset) -->
-    <section class="relative z-10 py-16 px-6 border-b" :class="isDark ? 'border-zinc-800/80' : 'border-slate-200'">
+    <section class="relative z-10 py-12 sm:py-16 px-4 sm:px-6 border-b" :class="isDark ? 'border-zinc-800/80' : 'border-slate-200'">
       <div class="max-w-6xl mx-auto">
         <div class="mb-8 text-center sm:text-left">
           <span class="text-[11px] font-mono uppercase tracking-wider font-semibold" :class="isDark ? 'text-amber-400' : 'text-amber-800'">
@@ -252,7 +252,7 @@
     </section>
 
     <!-- Global Delivery 3D Orbital Matrix (Proves International Reach & Semarang Base) -->
-    <section class="relative z-10 py-16 px-6 border-b" :class="isDark ? 'border-zinc-800/80 bg-zinc-950/30' : 'border-slate-200/80 bg-slate-50/50'">
+    <section class="relative z-10 py-12 sm:py-16 px-4 sm:px-6 border-b" :class="isDark ? 'border-zinc-800/80 bg-zinc-950/30' : 'border-slate-200/80 bg-slate-50/50'">
       <div class="max-w-6xl mx-auto">
         <div class="mb-8 text-center sm:text-left">
           <span class="text-[11px] font-mono uppercase tracking-wider font-semibold" :class="isDark ? 'text-amber-400' : 'text-amber-800'">
@@ -271,9 +271,9 @@
     </section>
 
     <!-- Interactive Live Bridge Telemetry Simulator (The Ultimate Technical BA Showcase) -->
-    <section class="relative z-10 py-20 px-6 border-b" :class="isDark ? 'border-zinc-800/80' : 'border-slate-200'">
+    <section class="relative z-10 py-12 sm:py-20 px-4 sm:px-6 border-b" :class="isDark ? 'border-zinc-800/80' : 'border-slate-200'">
       <div class="max-w-6xl mx-auto">
-        <div class="mb-10 text-center sm:text-left">
+        <div class="mb-8 sm:mb-10 text-center sm:text-left">
           <span class="text-[11px] font-mono uppercase tracking-wider font-semibold" :class="isDark ? 'text-amber-400' : 'text-amber-800'">
             Live Architecture Simulator
           </span>
@@ -291,7 +291,7 @@
     </section>
 
     <!-- Interactive Developer & Recruiter Terminal (Gen Z CLI Experience) -->
-    <section class="relative z-10 py-16 px-6 border-b" :class="isDark ? 'border-zinc-800/80 bg-zinc-950/20' : 'border-slate-200/80 bg-slate-100/30'">
+    <section class="relative z-10 py-12 sm:py-16 px-4 sm:px-6 border-b" :class="isDark ? 'border-zinc-800/80 bg-zinc-950/20' : 'border-slate-200/80 bg-slate-100/30'">
       <div class="max-w-6xl mx-auto">
         <div class="mb-8 text-center sm:text-left">
           <span class="text-[11px] font-mono uppercase tracking-wider font-semibold" :class="isDark ? 'text-amber-400' : 'text-amber-800'">
@@ -310,9 +310,9 @@
     </section>
 
     <!-- Bridge SE Methodology Pipeline (Proves BA / Bridge Mindset) -->
-    <section class="relative z-10 py-16 px-6 border-b" :class="isDark ? 'border-zinc-800/80 bg-zinc-950/30' : 'border-slate-200/80 bg-slate-50/50'">
+    <section class="relative z-10 py-12 sm:py-16 px-4 sm:px-6 border-b" :class="isDark ? 'border-zinc-800/80 bg-zinc-950/30' : 'border-slate-200/80 bg-slate-50/50'">
       <div class="max-w-6xl mx-auto">
-        <div class="mb-10 text-center sm:text-left">
+        <div class="mb-8 sm:mb-10 text-center sm:text-left">
           <span class="text-[11px] font-mono uppercase tracking-wider font-semibold" :class="isDark ? 'text-amber-400' : 'text-amber-800'">
             Execution Methodology
           </span>
@@ -343,7 +343,7 @@
     </section>
 
     <!-- Curated Flagship Projects (Highlights Only on Home to Stay Clean & Minimalist) -->
-    <section class="relative z-10 py-20 px-6">
+    <section class="relative z-10 py-12 sm:py-20 px-4 sm:px-6">
       <div class="max-w-6xl mx-auto">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>

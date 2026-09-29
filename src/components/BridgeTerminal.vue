@@ -5,33 +5,35 @@
   >
     <!-- Terminal Header Bar -->
     <div
-      class="px-4 py-2.5 border-b flex items-center justify-between"
+      class="px-3 sm:px-4 py-2.5 border-b flex items-center justify-between"
       :class="isDark ? 'border-zinc-800 bg-zinc-900/90' : 'border-slate-800 bg-slate-950'"
     >
-      <div class="flex items-center gap-2">
-        <button @click="clearTerminal" class="w-3 h-3 rounded-full bg-rose-500/80 hover:bg-rose-500 transition-colors" title="Clear"></button>
-        <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
-        <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
-        <span class="ml-2 text-[11px] font-bold text-zinc-400">riki-bridge-os v2.4 (x86_64-industrial-linux)</span>
+      <div class="flex items-center gap-2 min-w-0">
+        <button @click="clearTerminal" class="w-3 h-3 rounded-full bg-rose-500/80 hover:bg-rose-500 transition-colors flex-shrink-0" title="Clear"></button>
+        <span class="w-3 h-3 rounded-full bg-amber-500/80 flex-shrink-0"></span>
+        <span class="w-3 h-3 rounded-full bg-emerald-500/80 flex-shrink-0"></span>
+        <span class="ml-1 sm:ml-2 text-[11px] font-bold text-zinc-400 hidden sm:inline">riki-bridge-os v2.4 (x86_64-linux)</span>
+        <span class="ml-1 text-[11px] font-bold text-zinc-400 sm:hidden truncate">riki-bridge-os</span>
       </div>
 
-      <div class="flex items-center gap-2 text-[10px] text-zinc-500">
+      <div class="flex items-center gap-2 text-[10px] text-zinc-500 flex-shrink-0">
         <Terminal class="w-3.5 h-3.5 text-amber-500" />
         <span class="hidden sm:inline">TYPE 'help' OR CLICK COMMANDS</span>
+        <span class="sm:hidden text-amber-500 font-bold">CLI</span>
       </div>
     </div>
 
     <!-- Quick Command Suggestions Bar -->
     <div
-      class="px-4 py-2 border-b flex flex-wrap items-center gap-1.5 text-[10px]"
+      class="px-3 sm:px-4 py-2 border-b flex flex-wrap items-center gap-1.5 text-[10px]"
       :class="isDark ? 'border-zinc-800/80 bg-zinc-950/60' : 'border-slate-800 bg-slate-900'"
     >
-      <span class="text-zinc-500">Quick run:</span>
+      <span class="text-zinc-500 font-semibold">Run:</span>
       <button
         v-for="cmd in availableCommands"
         :key="cmd"
         @click="executeCommand(cmd)"
-        class="px-2 py-0.5 rounded border border-zinc-800 bg-zinc-900/80 text-amber-400 hover:border-amber-500 hover:text-amber-300 transition-colors"
+        class="px-2 py-0.5 rounded border border-zinc-800 bg-zinc-900/80 text-amber-400 hover:border-amber-500 hover:text-amber-300 transition-colors active:scale-95"
       >
         {{ cmd }}
       </button>
@@ -40,20 +42,21 @@
     <!-- Terminal Output Window -->
     <div
       ref="outputContainerRef"
-      class="p-4 sm:p-5 h-64 overflow-y-auto space-y-2 text-zinc-300 text-xs font-mono leading-relaxed"
+      class="p-3.5 sm:p-5 h-56 sm:h-64 overflow-y-auto space-y-2 text-zinc-300 text-xs font-mono leading-relaxed"
     >
       <div v-for="(entry, idx) in history" :key="idx">
         <div v-if="entry.type === 'input'" class="flex items-center gap-2 text-amber-400">
-          <span class="text-emerald-400">guest@bridge-se:~$</span>
+          <span class="text-emerald-400 hidden xs:inline">guest@bridge-se:~$</span>
+          <span class="text-emerald-400 xs:hidden">~$</span>
           <span>{{ entry.text }}</span>
         </div>
-        <div v-else-if="entry.type === 'output'" class="whitespace-pre-wrap text-zinc-300 pl-4 border-l border-zinc-800">
+        <div v-else-if="entry.type === 'output'" class="whitespace-pre-wrap text-zinc-300 pl-3 sm:pl-4 border-l border-zinc-800 text-[11px] sm:text-xs">
           {{ entry.text }}
         </div>
-        <div v-else-if="entry.type === 'success'" class="whitespace-pre-wrap text-emerald-400 pl-4 border-l border-emerald-500/40">
+        <div v-else-if="entry.type === 'success'" class="whitespace-pre-wrap text-emerald-400 pl-3 sm:pl-4 border-l border-emerald-500/40 text-[11px] sm:text-xs">
           {{ entry.text }}
         </div>
-        <div v-else-if="entry.type === 'special'" class="whitespace-pre-wrap text-amber-300 pl-4 border-l border-amber-500/40 font-bold">
+        <div v-else-if="entry.type === 'special'" class="whitespace-pre-wrap text-amber-300 pl-3 sm:pl-4 border-l border-amber-500/40 font-bold text-[11px] sm:text-xs">
           {{ entry.text }}
         </div>
       </div>
@@ -62,21 +65,22 @@
     <!-- Terminal Input Prompt -->
     <form
       @submit.prevent="handleInputSubmit"
-      class="px-4 py-2.5 border-t flex items-center gap-2"
+      class="px-3 sm:px-4 py-2 sm:py-2.5 border-t flex items-center gap-2"
       :class="isDark ? 'border-zinc-800 bg-zinc-950' : 'border-slate-800 bg-slate-950'"
     >
-      <span class="text-emerald-400 text-xs flex-shrink-0">guest@bridge-se:~$</span>
+      <span class="text-emerald-400 text-xs flex-shrink-0 hidden xs:inline">guest@bridge-se:~$</span>
+      <span class="text-emerald-400 text-xs flex-shrink-0 xs:hidden">~$</span>
       <input
         v-model="inputCommand"
         type="text"
-        placeholder="type command (e.g. 'sudo hire', 'specs', 'telemetry')..."
-        class="w-full bg-transparent text-amber-300 placeholder-zinc-600 focus:outline-none text-xs font-mono"
+        placeholder="type command (e.g. 'sudo hire', 'specs')..."
+        class="w-full bg-transparent text-amber-300 placeholder-zinc-600 focus:outline-none text-xs font-mono min-w-0"
         autocomplete="off"
         spellcheck="false"
       />
       <button
         type="submit"
-        class="px-2.5 py-1 rounded bg-amber-500 text-black font-bold text-[10px] hover:bg-amber-400 transition-colors flex-shrink-0"
+        class="px-2.5 py-1 rounded bg-amber-500 text-black font-bold text-[10px] hover:bg-amber-400 transition-colors flex-shrink-0 active:scale-95"
       >
         EXEC
       </button>
@@ -151,9 +155,9 @@ const executeCommand = (cmd) => {
       history.value.push({
         type: 'output',
         text: `Riki Andi Alfiyanto
-● Bridge Software Engineer & Technical Business Analyst
-● Core Philosophy: Bridging physical shop-floor realities with resilient software architecture.
-● Location: Semarang, Indonesia (Serving Global & Japanese Clients)`
+● Software Engineer & Technical Business Analyst (1+ Years Experience)
+● Core Focus: Bridging physical shop-floor realities with resilient software architecture.
+● Location: Semarang, Indonesia (Open for Local, Global & Japanese Opportunities)`
       })
       break
 

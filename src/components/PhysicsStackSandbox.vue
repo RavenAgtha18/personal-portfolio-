@@ -1,10 +1,10 @@
 <template>
   <div class="relative w-full rounded-2xl border border-zinc-800 bg-zinc-950/80 backdrop-blur-xl overflow-hidden shadow-2xl transition-all duration-300">
     <!-- Header / HUD Controls -->
-    <div class="px-5 py-3.5 border-b border-zinc-800/80 flex flex-wrap items-center justify-between gap-3 bg-zinc-900/60">
+    <div class="px-3 sm:px-5 py-2.5 sm:py-3.5 border-b border-zinc-800/80 flex flex-wrap items-center justify-between gap-2 sm:gap-3 bg-zinc-900/60">
       <!-- Title & Live Badge -->
-      <div class="flex items-center gap-3">
-        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 font-mono text-xs">
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 font-mono text-[11px] sm:text-xs">
           <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
           <span>MATTER.JS 2D PHYSICS</span>
         </div>
@@ -14,25 +14,26 @@
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex items-center gap-2 font-mono text-xs">
+      <div class="flex items-center gap-1.5 sm:gap-2 font-mono text-[11px] sm:text-xs w-full sm:w-auto justify-between sm:justify-end">
         <!-- Zero-G Toggle -->
         <button
           @click="toggleZeroG"
           type="button"
-          class="px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1.5 active:scale-95"
+          class="px-2 sm:px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1 sm:gap-1.5 active:scale-95"
           :class="isZeroG 
             ? 'border-cyan-500/60 bg-cyan-500/20 text-cyan-300 shadow-lg shadow-cyan-500/20' 
             : 'border-zinc-700 bg-zinc-800/70 text-zinc-300 hover:border-zinc-600 hover:text-white'"
           title="Toggle Zero-Gravity mode"
         >
-          <span>{{ isZeroG ? '🚀 ZERO-G: ON' : '🌍 GRAVITY: 1.0G' }}</span>
+          <span class="hidden sm:inline">{{ isZeroG ? '🚀 ZERO-G: ON' : '🌍 GRAVITY: 1.0G' }}</span>
+          <span class="sm:hidden">{{ isZeroG ? '🚀 0-G' : '🌍 1-G' }}</span>
         </button>
 
         <!-- Kinetic Blast / Scatter -->
         <button
           @click="applyKineticBlast"
           type="button"
-          class="px-3 py-1.5 rounded-lg border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 transition-all flex items-center gap-1.5 active:scale-95"
+          class="px-2 sm:px-3 py-1.5 rounded-lg border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 transition-all flex items-center gap-1 sm:gap-1.5 active:scale-95"
           title="Blast tokens with kinetic impulse"
         >
           <span>💥 BLAST</span>
@@ -42,17 +43,17 @@
         <button
           @click="spawnRandomToken"
           type="button"
-          class="px-3 py-1.5 rounded-lg border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 transition-all flex items-center gap-1.5 active:scale-95"
+          class="px-2 sm:px-3 py-1.5 rounded-lg border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 transition-all flex items-center gap-1 sm:gap-1.5 active:scale-95"
           title="Spawn an extra badge"
         >
-          <span>➕ SPAWN</span>
+          <span>➕ ADD</span>
         </button>
 
         <!-- Reset / Re-drop -->
         <button
           @click="resetSandbox"
           type="button"
-          class="px-2.5 py-1.5 rounded-lg border border-zinc-700 bg-zinc-800/50 hover:border-zinc-600 text-zinc-400 hover:text-zinc-200 transition-all active:scale-95"
+          class="px-2 sm:px-2.5 py-1.5 rounded-lg border border-zinc-700 bg-zinc-800/50 hover:border-zinc-600 text-zinc-400 hover:text-zinc-200 transition-all active:scale-95"
           title="Reset and cascade all badges"
         >
           <span>🔄</span>
@@ -63,7 +64,7 @@
     <!-- Canvas Simulation Area -->
     <div 
       ref="containerRef" 
-      class="relative w-full h-[420px] sm:h-[480px] bg-gradient-to-b from-[#0b0c10] to-[#060709] overflow-hidden select-none cursor-grab active:cursor-grabbing"
+      class="relative w-full h-[320px] sm:h-[420px] md:h-[480px] bg-gradient-to-b from-[#0b0c10] to-[#060709] overflow-hidden select-none cursor-grab active:cursor-grabbing touch-none"
     >
       <!-- Subtle Grid Background -->
       <div 
@@ -77,33 +78,33 @@
       <!-- Center Floating Instruction Overlay (Fades out after interaction) -->
       <div 
         v-if="showHint"
-        class="absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-700"
+        class="absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-700 px-4"
         :class="{ 'opacity-0': !showHint }"
       >
-        <div class="px-4 py-2 rounded-xl bg-zinc-900/90 border border-amber-500/30 text-zinc-300 font-mono text-xs flex items-center gap-2 backdrop-blur shadow-2xl animate-bounce">
+        <div class="px-3.5 py-2 rounded-xl bg-zinc-900/90 border border-amber-500/30 text-zinc-300 font-mono text-[11px] sm:text-xs flex items-center gap-2 backdrop-blur shadow-2xl animate-bounce text-center">
           <span class="text-amber-400">👆</span>
-          <span>Click &amp; throw badges across the floor or toggle Zero-G!</span>
+          <span>Drag &amp; toss badges or toggle Zero-G!</span>
         </div>
       </div>
     </div>
 
     <!-- Footer HUD Telemetry -->
-    <div class="px-5 py-2.5 border-t border-zinc-800/80 bg-zinc-900/40 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] text-zinc-400">
-      <div class="flex items-center gap-4">
+    <div class="px-3 sm:px-5 py-2.5 border-t border-zinc-800/80 bg-zinc-900/40 flex flex-wrap items-center justify-between gap-2 sm:gap-4 font-mono text-[10px] sm:text-[11px] text-zinc-400">
+      <div class="flex items-center gap-2 sm:gap-4">
         <span class="flex items-center gap-1.5 text-zinc-300">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
           <span>PHYSICS ACTIVE</span>
         </span>
         <span class="text-zinc-500">|</span>
         <span>BODIES: <strong class="text-amber-400">{{ bodyCount }}</strong></span>
-        <span class="text-zinc-500">|</span>
-        <span>ENGINE: <strong class="text-zinc-300">Matter.js v0.20</strong></span>
+        <span class="text-zinc-500 hidden xs:inline">|</span>
+        <span class="hidden xs:inline">ENGINE: <strong class="text-zinc-300">Matter.js v0.20</strong></span>
       </div>
 
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 sm:gap-3">
         <span class="text-zinc-500 hidden sm:inline">Rigid-Body 2D Dynamics</span>
         <span class="px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 text-[10px] border border-zinc-700/60">
-          {{ isZeroG ? 'ORBITAL 0G' : 'RESTITUTION 0.75' }}
+          {{ isZeroG ? 'ORBITAL 0G' : 'RESTITUTION 0.72' }}
         </span>
       </div>
     </div>
@@ -258,6 +259,7 @@ function initPhysics() {
       const isDragged = mouseConstraint.body === body
       const w = body.pillWidth
       const h = body.pillHeight
+      const isMobile = width < 640
 
       // Outer Glow when dragged
       if (isDragged) {
@@ -265,11 +267,11 @@ function initPhysics() {
         ctx.shadowBlur = 18
       } else {
         ctx.shadowColor = 'rgba(0, 0, 0, 0.5)'
-        ctx.shadowBlur = 8
+        ctx.shadowBlur = 6
       }
 
       // Background Pill
-      drawPill(ctx, 0, 0, w, h, 14)
+      drawPill(ctx, 0, 0, w, h, isMobile ? 11 : 14)
       ctx.fillStyle = isDragged ? 'rgba(24, 24, 27, 0.95)' : 'rgba(18, 18, 22, 0.88)'
       ctx.fill()
 
@@ -281,27 +283,27 @@ function initPhysics() {
       // Inside accent light indicator
       ctx.shadowBlur = 0
       ctx.beginPath()
-      ctx.arc(-w / 2 + 16, 0, 3, 0, Math.PI * 2)
+      ctx.arc(-w / 2 + (isMobile ? 12 : 16), 0, isMobile ? 2.5 : 3, 0, Math.PI * 2)
       ctx.fillStyle = meta.color
       ctx.fill()
 
       // Emoji Icon
-      ctx.font = '13px "Apple Color Emoji", "Segoe UI Emoji", sans-serif'
+      ctx.font = `${isMobile ? 11 : 13}px "Apple Color Emoji", "Segoe UI Emoji", sans-serif`
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
-      ctx.fillText(meta.icon, -w / 2 + 32, 1)
+      ctx.fillText(meta.icon, -w / 2 + (isMobile ? 24 : 32), 1)
 
       // Main Text Label
-      ctx.font = '600 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace'
+      ctx.font = `600 ${isMobile ? 10 : 12}px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace`
       ctx.fillStyle = '#f4f4f5'
       ctx.textAlign = 'left'
-      ctx.fillText(meta.label, -w / 2 + 48, -1)
+      ctx.fillText(meta.label, -w / 2 + (isMobile ? 36 : 48), -1)
 
       // Micro Tag pill on the right
-      ctx.font = '700 8px ui-monospace, SFMono-Regular, monospace'
+      ctx.font = `700 ${isMobile ? 7 : 8}px ui-monospace, SFMono-Regular, monospace`
       ctx.fillStyle = meta.color
       ctx.textAlign = 'right'
-      ctx.fillText(meta.tag, w / 2 - 12, 0)
+      ctx.fillText(meta.tag, w / 2 - (isMobile ? 8 : 12), 0)
 
       ctx.restore()
     })
@@ -314,20 +316,23 @@ function initPhysics() {
 }
 
 function createBadgeBody(badge, index, width) {
+  const isMobile = width < 640
   // Approximate width based on label length + tag
-  const pillWidth = Math.max(150, (badge.label.length + badge.tag.length) * 7.5 + 46)
-  const pillHeight = 36
+  const pillWidth = isMobile
+    ? Math.max(115, (badge.label.length + badge.tag.length) * 5.8 + 34)
+    : Math.max(150, (badge.label.length + badge.tag.length) * 7.5 + 46)
+  const pillHeight = isMobile ? 28 : 36
 
   // Cascade drop positions
-  const cols = Math.max(2, Math.floor(width / (pillWidth + 20)))
+  const cols = Math.max(2, Math.floor(width / (pillWidth + 12)))
   const col = index % cols
   const row = Math.floor(index / cols)
   
-  const startX = (width / (cols + 1)) * (col + 1) + (Math.random() - 0.5) * 40
-  const startY = 40 + row * 46 + Math.random() * 20
+  const startX = (width / (cols + 1)) * (col + 1) + (Math.random() - 0.5) * 30
+  const startY = (isMobile ? 25 : 40) + row * (isMobile ? 36 : 46) + Math.random() * 15
 
   const body = Bodies.rectangle(startX, startY, pillWidth, pillHeight, {
-    chamfer: { radius: 14 },
+    chamfer: { radius: isMobile ? 11 : 14 },
     restitution: 0.72,
     friction: 0.15,
     frictionAir: 0.015,
