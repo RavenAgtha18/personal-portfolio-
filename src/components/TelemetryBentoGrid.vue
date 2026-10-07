@@ -50,12 +50,12 @@
         </div>
 
         <div class="mt-3 text-[10px] flex items-center justify-between border-t pt-2" :class="isDark ? 'border-zinc-800/80 text-zinc-500' : 'border-slate-100 text-slate-400'">
-          <span>BRIDGE LATENCY: 24ms</span>
-          <span class="text-amber-500">CROSS-BORDER &amp; BILINGUAL SPEC READY</span>
+          <span>TIMEZONE OFFSET: +2h JST</span>
+          <span class="text-amber-500">INDONESIA PRODUCTION · JAPAN ALIGNED</span>
         </div>
       </div>
 
-      <!-- 2. Interactive Tactile Cyber Sound Station (Web Audio API) -->
+      <!-- 2. Interactive Tactile Barcode Sound Simulator -->
       <div
         class="p-5 rounded-2xl border transition-all duration-300 hover:border-amber-500/50 flex flex-col justify-between"
         :class="isDark ? 'bg-zinc-950/70 border-zinc-800/80 shadow-lg' : 'bg-white border-slate-200 shadow-sm'"
@@ -64,7 +64,7 @@
           <div class="flex items-center gap-2">
             <Volume2 class="w-4 h-4 text-amber-500" />
             <span class="text-xs font-bold uppercase tracking-wider" :class="isDark ? 'text-zinc-200' : 'text-slate-800'">
-              Audio Station
+              Scanner Audio Feedback
             </span>
           </div>
           <span class="text-[9px] px-1.5 py-0.5 rounded border" :class="isDark ? 'border-zinc-800 bg-zinc-900 text-zinc-400' : 'border-slate-200 bg-slate-100 text-slate-600'">
@@ -73,35 +73,29 @@
         </div>
 
         <p class="text-[11px] leading-relaxed mb-3" :class="isDark ? 'text-zinc-400' : 'text-slate-600'">
-          Tactile industrial sound effects and ambient 432Hz focus drone synthesized directly in-browser.
+          Industrial scanner audio feedback synthesized directly in-browser to simulate shop-floor validation beeps.
         </p>
 
-        <!-- Ambient Drone Button -->
+        <!-- Test Scanner Audio Button -->
         <button
-          @click="toggleAmbientDrone"
-          class="w-full py-2 px-3 rounded-xl border text-xs font-semibold flex items-center justify-between transition-all duration-200"
-          :class="isDroneActive
-            ? isDark
-              ? 'bg-amber-500/20 border-amber-500/60 text-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.2)]'
-              : 'bg-amber-50 border-amber-400 text-amber-900'
-            : isDark
-            ? 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-zinc-200'
-            : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200'"
+          @click="playScanSound"
+          class="w-full py-2 px-3 rounded-xl border text-xs font-semibold flex items-center justify-between transition-all duration-200 active:scale-95"
+          :class="isDark ? 'bg-zinc-900 border-zinc-800 text-amber-400 hover:bg-zinc-800 hover:border-amber-500/50' : 'bg-slate-100 border-slate-200 text-amber-800 hover:bg-slate-200'"
         >
           <span class="inline-flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full" :class="isDroneActive ? 'bg-amber-400 animate-ping' : 'bg-zinc-600'"></span>
-            <span>{{ isDroneActive ? 'Ambient Drone: PLAYING' : '432Hz Focus Drone' }}</span>
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span>Test Scan Beep (Pass)</span>
           </span>
-          <Activity class="w-3.5 h-3.5" :class="{ 'animate-pulse text-amber-400': isDroneActive }" />
+          <Activity class="w-3.5 h-3.5 text-amber-500" />
         </button>
 
         <div class="mt-3 text-[10px] text-zinc-500 flex items-center justify-between">
-          <span>Click to toggle ambient hum</span>
-          <span v-if="isDroneActive" class="text-amber-400 font-bold">432Hz · 0.03 VOL</span>
+          <span>Click to trigger scan feedback</span>
+          <span class="text-amber-500 font-bold">1850Hz · HIGH BEEP</span>
         </div>
       </div>
 
-      <!-- 3. Zero-Defect SLA Quality Metrics -->
+      <!-- 3. Operational System Capabilities -->
       <div
         class="p-5 rounded-2xl border transition-all duration-300 hover:border-amber-500/50 flex flex-col justify-between"
         :class="isDark ? 'bg-zinc-950/70 border-zinc-800/80 shadow-lg' : 'bg-white border-slate-200 shadow-sm'"
@@ -110,32 +104,32 @@
           <div class="flex items-center gap-2">
             <ShieldCheck class="w-4 h-4 text-emerald-400" />
             <span class="text-xs font-bold uppercase tracking-wider" :class="isDark ? 'text-zinc-200' : 'text-slate-800'">
-              Shop-Floor SLA
+              System Capabilities
             </span>
           </div>
-          <span class="text-[9px] text-emerald-400 font-bold">VERIFIED</span>
+          <span class="text-[9px] text-emerald-400 font-bold">OPERATIONAL</span>
         </div>
 
         <div class="space-y-2.5 my-2">
           <div class="flex items-center justify-between text-xs">
-            <span :class="isDark ? 'text-zinc-400' : 'text-slate-600'">Audit Search Time</span>
-            <span class="text-emerald-400 font-bold font-mono">-95% (SnapPack)</span>
+            <span :class="isDark ? 'text-zinc-400' : 'text-slate-600'">WIP Stage Tracking</span>
+            <span class="text-emerald-400 font-bold font-mono">Protrack (Route Cards)</span>
           </div>
           <div class="w-full bg-zinc-800/60 rounded-full h-1.5 overflow-hidden">
-            <div class="bg-emerald-400 h-full rounded-full" style="width: 95%"></div>
+            <div class="bg-emerald-400 h-full rounded-full" style="width: 100%"></div>
           </div>
 
           <div class="flex items-center justify-between text-xs">
-            <span :class="isDark ? 'text-zinc-400' : 'text-slate-600'">Inventory Variance</span>
-            <span class="text-amber-400 font-bold font-mono">0-Error (ProScan)</span>
+            <span :class="isDark ? 'text-zinc-400' : 'text-slate-600'">Shipping Media &amp; Sign</span>
+            <span class="text-amber-400 font-bold font-mono">SnapPack (Audit Trail)</span>
           </div>
           <div class="w-full bg-zinc-800/60 rounded-full h-1.5 overflow-hidden">
             <div class="bg-amber-400 h-full rounded-full" style="width: 100%"></div>
           </div>
 
           <div class="flex items-center justify-between text-xs">
-            <span :class="isDark ? 'text-zinc-400' : 'text-slate-600'">WIP Floor Visibility</span>
-            <span class="text-indigo-400 font-bold font-mono">100% Real-Time</span>
+            <span :class="isDark ? 'text-zinc-400' : 'text-slate-600'">Batch Expiry &amp; FEFO</span>
+            <span class="text-indigo-400 font-bold font-mono">Stokku (Zoning)</span>
           </div>
           <div class="w-full bg-zinc-800/60 rounded-full h-1.5 overflow-hidden">
             <div class="bg-indigo-400 h-full rounded-full" style="width: 100%"></div>
@@ -143,7 +137,7 @@
         </div>
 
         <div class="text-[9px] text-zinc-500 pt-2 border-t" :class="isDark ? 'border-zinc-800' : 'border-slate-100'">
-          Verified across furniture &amp; manufacturing production lines.
+          Deployed for internal production lines at PT. Harrison And Gil-Java.
         </div>
       </div>
 
@@ -229,57 +223,36 @@ const updateTimes = () => {
   }).format(now)
 }
 
-// Web Audio API Synthesizer (Ambient 432Hz Focus Drone)
-const isDroneActive = ref(false)
+// Web Audio API Barcode Scanner Beep Simulator
 let audioCtx = null
-let droneOsc1 = null
-let droneOsc2 = null
-let droneGain = null
 
-const toggleAmbientDrone = () => {
+const playScanSound = () => {
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext
     if (!AudioContext) return
 
-    if (isDroneActive.value) {
-      // Stop drone
-      if (droneGain) {
-        droneGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5)
-        setTimeout(() => {
-          if (droneOsc1) droneOsc1.stop()
-          if (droneOsc2) droneOsc2.stop()
-          isDroneActive.value = false
-        }, 500)
-      } else {
-        isDroneActive.value = false
-      }
-      return
+    if (!audioCtx) audioCtx = new AudioContext()
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume()
     }
 
-    // Start drone
-    audioCtx = new AudioContext()
-    droneGain = audioCtx.createGain()
-    droneGain.gain.setValueAtTime(0.0001, audioCtx.currentTime)
-    droneGain.gain.exponentialRampToValueAtTime(0.03, audioCtx.currentTime + 1)
+    const osc = audioCtx.createOscillator()
+    const gain = audioCtx.createGain()
 
-    // Fundamental 432Hz binaural pair
-    droneOsc1 = audioCtx.createOscillator()
-    droneOsc1.type = 'sine'
-    droneOsc1.frequency.setValueAtTime(432, audioCtx.currentTime)
+    // 1850Hz sharp scanner confirmation tone
+    osc.type = 'sine'
+    osc.frequency.setValueAtTime(1850, audioCtx.currentTime)
 
-    droneOsc2 = audioCtx.createOscillator()
-    droneOsc2.type = 'triangle'
-    droneOsc2.frequency.setValueAtTime(216, audioCtx.currentTime) // 1 octave down warmth
+    gain.gain.setValueAtTime(0.08, audioCtx.currentTime)
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.09)
 
-    droneOsc1.connect(droneGain)
-    droneOsc2.connect(droneGain)
-    droneGain.connect(audioCtx.destination)
+    osc.connect(gain)
+    gain.connect(audioCtx.destination)
 
-    droneOsc1.start()
-    droneOsc2.start()
-    isDroneActive.value = true
+    osc.start()
+    osc.stop(audioCtx.currentTime + 0.09)
   } catch (e) {
-    console.warn('Audio error:', e)
+    console.warn('Audio feedback error:', e)
   }
 }
 
@@ -300,13 +273,5 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (timer) clearInterval(timer)
-  if (isDroneActive.value && droneOsc1) {
-    try {
-      droneOsc1.stop()
-      droneOsc2.stop()
-    } catch (e) {
-      // ignore
-    }
-  }
 })
 </script>

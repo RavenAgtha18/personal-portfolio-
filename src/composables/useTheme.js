@@ -1,15 +1,15 @@
 import { ref } from 'vue'
 
-const isDark = ref(false)
+const isDark = ref(true)
 
 export function useTheme() {
   const initTheme = () => {
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      isDark.value = true
-      document.documentElement.classList.add('dark')
-    } else {
+    if (localStorage.theme === 'light') {
       isDark.value = false
       document.documentElement.classList.remove('dark')
+    } else {
+      isDark.value = true
+      document.documentElement.classList.add('dark')
     }
   }
 

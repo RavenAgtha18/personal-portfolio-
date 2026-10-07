@@ -7,13 +7,13 @@
     <!-- Top Nav / Back Button -->
     <div class="max-w-7xl mx-auto mb-8 sm:mb-10" data-aos="fade-down">
       <router-link
-        to="/portfolio"
+        to="/work"
         class="inline-flex items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors group text-sm font-medium"
       >
         <ArrowLeft
           class="w-4 h-4 group-hover:-translate-x-1 transition-transform"
         />
-        <span>Back to Projects</span>
+        <span>Back to Work</span>
       </router-link>
     </div>
 
@@ -47,13 +47,13 @@
               >Role &amp; Scope</span
             >
             <span class="text-sm font-semibold text-amber-300"
-              >Technical BA / Full-stack Developer</span
+              >System Developer (SysDev)</span
             >
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Client Profile</span>
+            <span class="text-xs text-gray-400 block mb-1">Production Facility</span>
             <span class="text-sm font-semibold text-white"
-              >Export Manufacturing Plants</span
+              >PT. Harrison And Gil-Java</span
             >
           </div>
           <div>
@@ -64,10 +64,10 @@
           </div>
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Operation Efficiency</span
+              >Operational Capability</span
             >
             <span class="text-sm font-semibold text-green-400"
-              >100% Real-Time WIP Visibility</span
+              >Dynamic Aging &amp; Real-Time WIP Tracking</span
             >
           </div>
         </div>
@@ -191,6 +191,25 @@
                     maps reject statuses (`reject_id`, `loc_before_reject`) to
                     calculate rework costs and identify repeating failure
                     points.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Problem 4 -->
+              <div
+                class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
+              >
+                <div
+                  class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400"
+                >
+                  <Clock class="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">
+                    Station Stagnation &amp; Bottleneck Detection (Dynamic Aging Days)
+                  </h4>
+                  <p class="text-sm text-gray-400">
+                    Without continuous time tracking, batches idling at intermediate stations (e.g., kiln drying, finishing cure, upholstery queues) remained hidden until delivery deadlines were compromised. Protrack calculates <strong>Dynamic Aging Days</strong> by comparing the station check-in timestamp against current server time, triggering proactive alerts when batches exceed acceptable dwell thresholds.
                   </p>
                 </div>
               </div>
@@ -508,7 +527,7 @@
               </div>
 
               <!-- Metrics Widgets -->
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
                 <div class="bg-[#0e0e0e] border border-white/5 p-4 rounded-xl">
                   <span class="text-[10px] text-gray-400 block uppercase"
                     >Batch Code</span
@@ -524,6 +543,18 @@
                   <span class="text-sm font-bold text-amber-400 font-mono">{{
                     activeBatch.location
                   }}</span>
+                </div>
+                <div class="bg-[#0e0e0e] border border-white/5 p-4 rounded-xl">
+                  <span class="text-[10px] text-gray-400 block uppercase"
+                    >Dynamic Aging</span
+                  >
+                  <span
+                    class="text-sm font-bold font-mono"
+                    :class="activeBatch.agingDays >= 4.0 ? 'text-red-400' : 'text-emerald-400'"
+                  >
+                    {{ activeBatch.agingDays || '1.8' }}d
+                    <span class="text-[10px] font-normal text-gray-400 block">{{ (activeBatch.agingDays || 1.8) >= 4.0 ? 'Bottleneck Flag' : 'Within SLA (<5d)' }}</span>
+                  </span>
                 </div>
                 <div class="bg-[#0e0e0e] border border-white/5 p-4 rounded-xl">
                   <span class="text-[10px] text-gray-400 block uppercase"
@@ -812,6 +843,7 @@ import {
   EyeOff,
   Database,
   Compass,
+  Clock,
   Network,
   ChevronRight,
   PlayCircle,
@@ -866,6 +898,7 @@ const activeBatch = ref(
     barcode: "20-0617-B-0012",
     location: "MCH",
     state: "PROCESSING",
+    agingDays: 1.8,
   },
 );
 
@@ -897,6 +930,9 @@ const advanceBatch = () => {
   activeBatch.value.location = activeStation.code;
   activeBatch.value.state =
     activeStepIndex.value === 6 ? "COMPLETED" : "PROCESSING";
+  activeBatch.value.agingDays = +(
+    Number(activeBatch.value.agingDays || 1.8) + 0.6
+  ).toFixed(1);
 
   // Append transaction log
   mockTransactions.value.unshift({
@@ -916,6 +952,9 @@ const simulateReject = () => {
     return;
 
   activeBatch.value.state = "REJECTED";
+  activeBatch.value.agingDays = +(
+    Number(activeBatch.value.agingDays || 1.8) + 2.8
+  ).toFixed(1);
 
   // Append reject transaction log
   mockTransactions.value.unshift({
@@ -935,6 +974,7 @@ const jumpToStep = (idx) => {
   const activeStation = pipelineStations[idx];
   activeBatch.value.location = activeStation.code;
   activeBatch.value.state = idx === 6 ? "COMPLETED" : "PROCESSING";
+  activeBatch.value.agingDays = +(0.8 + idx * 0.7).toFixed(1);
 
   mockTransactions.value.unshift({
     id: mockTransactions.value.length + 1,
@@ -953,6 +993,7 @@ const resetSimulator = () => {
     barcode: `20-0617-B-00${Math.floor(Math.random() * 90) + 10}`,
     location: "MCH",
     state: "PROCESSING",
+    agingDays: 0.8,
   };
   mockTransactions.value = [
     {

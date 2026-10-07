@@ -7,15 +7,15 @@
           class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono mb-4 border border-zinc-800 bg-zinc-900/40 text-zinc-400"
         >
           <FolderOpen class="w-3.5 h-3.5 text-amber-500" />
-          <span>Project Index &amp; Case Studies</span>
+          <span>{{ messages?.portfolio?.badge || 'Project Index & Case Studies' }}</span>
         </div>
 
         <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3 text-white">
-          Engineering Architecture Portfolio
+          {{ messages?.portfolio?.title || 'Engineering Architecture Portfolio' }}
         </h1>
 
         <p class="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
-          Comprehensive catalog of manufacturing MES integrations, financial applications, and specialized systems.
+          {{ messages?.portfolio?.desc || 'Comprehensive catalog of manufacturing MES integrations, financial applications, and specialized systems.' }}
         </p>
 
         <!-- View Toggle -->
@@ -26,7 +26,7 @@
             :class="activeMode === 'portfolio' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'"
           >
             <Grid3x3 class="w-3.5 h-3.5 text-amber-500" />
-            Projects View
+            {{ messages?.portfolio?.viewProjects || 'Projects View' }}
           </button>
           <button
             @click="activeMode = 'dashboard'"
@@ -34,7 +34,7 @@
             :class="activeMode === 'dashboard' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'"
           >
             <BarChart3 class="w-3.5 h-3.5 text-amber-500" />
-            Architecture Matrix
+            {{ messages?.portfolio?.viewMatrix || 'Architecture Matrix' }}
           </button>
         </div>
       </div>
@@ -50,17 +50,17 @@
         <!-- Filter Tags -->
         <div class="flex flex-wrap justify-center gap-1 sm:gap-1.5 mb-6 sm:mb-10">
           <button
-            v-for="filter in filters"
-            :key="filter"
-            @click="activeFilter = filter"
+            v-for="filter in filterList"
+            :key="filter.key"
+            @click="activeFilter = filter.key"
             class="px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-mono transition-colors border"
             :class="[
-              activeFilter === filter
+              activeFilter === filter.key
                 ? 'bg-zinc-100 text-zinc-950 font-semibold border-zinc-100'
                 : 'bg-zinc-900/40 text-zinc-400 border-zinc-800/80 hover:border-zinc-700 hover:text-zinc-200'
             ]"
           >
-            {{ filter }}
+            {{ filter.label }}
           </button>
         </div>
 
@@ -108,7 +108,7 @@
               class="text-amber-400 mb-6 text-sm font-semibold flex items-center gap-2"
             >
               <BarChart3 class="w-4 h-4" />
-              Technology Usage
+              {{ messages?.portfolio?.techUsage || 'Technology Usage' }}
             </h3>
 
             <div class="space-y-4">
@@ -149,8 +149,7 @@
                     v-if="hoveredTech === tech.name"
                     class="absolute left-1/2 -translate-x-1/2 -top-10 bg-amber-500 text-black text-[10px] font-bold px-2 py-1 rounded shadow-lg z-10 whitespace-nowrap animate-fade-in"
                   >
-                    {{ tech.name }}: Used in {{ tech.count }}
-                    {{ tech.count > 1 ? "Projects" : "Project" }}
+                    {{ tech.name }}: {{ tech.percentage }}% ({{ tech.count }} {{ isJapanese ? '件' : (tech.count > 1 ? 'Projects' : 'Project') }})
                     <div
                       class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-amber-500"
                     ></div>
@@ -169,7 +168,7 @@
               class="text-amber-400 mb-6 text-sm font-semibold flex items-center gap-2"
             >
               <PieChartIcon class="w-4 h-4" />
-              Project Type Distribution
+              {{ messages?.portfolio?.typeDistribution || 'Project Type Distribution' }}
             </h3>
 
             <!-- CSS Conic-Gradient Donut Ring -->
@@ -187,7 +186,7 @@
                   }}</span>
                   <span
                     class="text-[10px] text-gray-400 uppercase tracking-wider"
-                    >Projects</span
+                    >{{ isJapanese ? '件' : 'Projects' }}</span
                   >
                 </div>
               </div>
@@ -247,7 +246,7 @@
                   {{ cat.name }}
                 </h4>
                 <p class="text-[10px] text-gray-500 font-mono">
-                  {{ cat.count }} {{ cat.count > 1 ? "Projects" : "Project" }}
+                  {{ cat.count }} {{ isJapanese ? '件' : (cat.count > 1 ? "Projects" : "Project") }}
                 </p>
 
                 <!-- Expanded Hover Panel (Shows project names in that category) -->
@@ -258,7 +257,7 @@
                   >
                     <span
                       class="text-[9px] uppercase tracking-wider text-amber-400 font-bold mb-1"
-                      >Projects:</span
+                      >{{ isJapanese ? 'プロジェクト一覧:' : 'Projects:' }}</span
                     >
                     <ul class="space-y-0.5">
                       <li
@@ -273,7 +272,7 @@
                         :key="proj.id"
                         class="text-[10px] text-gray-300 truncate"
                       >
-                        • {{ proj.name }}
+                        • {{ isJapanese && proj.nameJa ? proj.nameJa : proj.name }}
                       </li>
                       <li
                         v-if="
@@ -294,7 +293,7 @@
                               cat.name,
                           ).length - 4
                         }}
-                        more
+                        {{ isJapanese ? '件以上' : 'more' }}
                       </li>
                     </ul>
                   </div>
@@ -314,10 +313,10 @@
             class="text-amber-400 mb-6 text-sm font-semibold flex items-center gap-2"
           >
             <Grid3x3 class="w-4 h-4" />
-            Architecture Decision Matrix
+            {{ messages?.portfolio?.decisionMatrixTitle || 'Architecture Decision Matrix' }}
           </h3>
           <p class="text-[11px] text-gray-500 mb-4">
-            Technology × Domain cross-reference — showing stack decisions across enterprise verticals
+            {{ messages?.portfolio?.decisionMatrixDesc || 'Technology × Domain cross-reference — showing stack decisions across enterprise verticals' }}
           </p>
 
           <!-- Matrix Table -->
@@ -404,13 +403,22 @@ import {
   Sparkles,
   Factory,
 } from "lucide-vue-next";
+import { useLanguage } from "@/composables/useLanguage";
 import { projects } from "@/data/projects.js";
 import CaseStudyCard from "@/components/CaseStudyCard.vue";
+
+const { isJapanese, messages } = useLanguage();
 
 const activeMode = ref("portfolio");
 const activeFilter = ref("All");
 
-const filters = ["All", "Laravel", "Vue.js", "Python", "Tailwind"];
+const filterList = computed(() => [
+  { key: "All", label: isJapanese.value ? "すべて" : "All" },
+  { key: "Laravel", label: "Laravel" },
+  { key: "Vue.js", label: "Vue.js" },
+  { key: "Python", label: "Python" },
+  { key: "Tailwind", label: "Tailwind" },
+]);
 
 const items = projects;
 
@@ -422,14 +430,18 @@ const filteredItems = computed(() => {
 });
 
 const insights = computed(() => [
-  { label: "Total Projects", value: items.length, icon: Layers },
+  { 
+    label: messages.value?.portfolio?.insightsTotal || "Total Projects", 
+    value: items.length, 
+    icon: Layers 
+  },
   {
-    label: "Case Studies",
+    label: messages.value?.portfolio?.insightsCaseStudies || "Case Studies",
     value: items.filter((i) => i.isCaseStudy).length,
     icon: BookOpen,
   },
   {
-    label: "Manufacturing Domain",
+    label: messages.value?.portfolio?.insightsMfg || "Manufacturing Domain",
     value: items.filter((i) => i.category === "Full-stack Manufacturing Systems").length,
     icon: Factory,
   },

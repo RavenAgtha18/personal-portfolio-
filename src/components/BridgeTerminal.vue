@@ -104,7 +104,7 @@ const availableCommands = ['help', 'whoami', 'specs', 'telemetry', 'japan', 'sud
 const history = ref([
   {
     type: 'output',
-    text: 'Welcome to Riki Andi Alfiyanto (Bridge SE / Technical BA) Interactive Shell.\nType "help" to list available operational commands.'
+    text: 'Welcome to Riki Andi Alfiyanto (System Developer · 2-Person Core SysDev Team) Shell.\nType "help" to list available operational commands.'
   },
   {
     type: 'input',
@@ -112,7 +112,7 @@ const history = ref([
   },
   {
     type: 'output',
-    text: 'Riki Andi Alfiyanto\nRole: Software Engineer & Technical Business Analyst (3+ Years Exp)\nDomain: Manufacturing MES, Barcode Logistics & Web Systems\nStatus: AVAILABLE FOR ENTERPRISE & SOFTWARE INITIATIVES'
+    text: 'Riki Andi Alfiyanto\nRole: System Developer (SysDev) · 2-Person Core Team\nCompany: PT. Harrison And Gil-Java\nDomain: Manufacturing MES, Barcode Tracking & Internal Operations\nStatus: OPEN FOR IN-HOUSE SE (社内SE) & SYSTEMS ENGINEERING ROLES'
   }
 ])
 
@@ -143,10 +143,10 @@ const executeCommand = (cmd) => {
         text: `AVAILABLE COMMANDS:
   whoami      - Identity and professional executive summary
   specs       - Technical architecture and industrial stack specifications
-  telemetry   - Stream real-time simulated shop-floor telemetry
-  japan       - Japanese bilingual capability (JFT-Basic A2, Monozukuri)
-  projects    - List flagship enterprise case studies
-  sudo hire   - Trigger celebratory recruiter protocol + direct contact
+  telemetry   - Stream simulated shop-floor scanner events
+  japan       - Japanese language capability (JFT-Basic A2, Monozukuri mindset)
+  projects    - List flagship manufacturing and internal systems
+  sudo hire   - Trigger direct WhatsApp & email contact options
   clear       - Wipe the current terminal session`
       })
       break
@@ -155,9 +155,12 @@ const executeCommand = (cmd) => {
       history.value.push({
         type: 'output',
         text: `Riki Andi Alfiyanto
-● Software Engineer & Technical Business Analyst (1+ Years Experience)
-● Core Focus: Bridging physical shop-floor realities with resilient software architecture.
-● Location: Semarang, Indonesia (Open for Local, Global & Japanese Opportunities)`
+● System Developer (SysDev) at PT. Harrison And Gil-Java
+● Structure: 2-Person Core SysDev Division (Direct frontline ownership across factory operations)
+● Target Path: In-House Systems Engineer (社内SE) / Technical Systems Specialist
+● Core Focus: Understanding frontline operational bottlenecks and translating them into robust, usable internal systems.
+● Certification: JFT-Basic A2 & Actively Preparing for Fundamental IT Engineer Exam (基本情報技術者試験)
+● Location: Semarang, Indonesia (Open for In-House Systems Engineering & Japan-bound Career Paths)`
       })
       break
 
@@ -179,30 +182,33 @@ const executeCommand = (cmd) => {
 [0.01s] EDGE: Zebra TC26 Handheld #SN-8924 scanned pallet CG-LUX-8924
 [0.02s] GATEWAY: Validating checksum against shipping manifest... PASS
 [0.03s] MIDDLEWARE: ACID Transaction committed to MariaDB cluster.
-[0.04s] STATUS: 200 OK · Shipping locked · Variance 0% · Floor cleared.`
+[0.04s] STATUS: 200 OK · Shipping locked · Audit record created · Floor cleared.`
       })
       break
 
     case 'japan':
       history.value.push({
         type: 'output',
-        text: `JAPANESE BILINGUAL & TECHNICAL BA PROFICIENCY:
+        text: `JAPANESE BILINGUAL & SYSDEV PROFICIENCY:
   ● Language: JFT-Basic A2 (Certified & Active Daily SRS Practice)
+  ● IT Standard: In active preparation for Fundamental Information Technology Engineer Examination (基本情報技術者試験 - FE Exam)
   ● Cultural Mindset: Monozukuri (匠の技, dedication to craftsmanship) & Kaizen (5S, continuous waste reduction)
-  ● Capability: Translating complex Japanese stakeholder requirements into concrete technical database schemas and user stories.`
+  ● Capability: Translating complex stakeholder requirements into concrete technical database schemas and user stories.`
       })
       break
 
     case 'projects':
       history.value.push({
         type: 'output',
-        text: `FLAGSHIP CASE STUDIES:
-  1. SnapPack   - Luxury furniture shipping verification (-95% audit search time)
-  2. Protrack   - Real-time WIP production line tracking (100% floor visibility)
-  3. ISP SMR    - High-volume internet service provider operational portal
-  4. ProScan    - Barcode stock opname with zero recording discrepancy
-  5. QC Gate    - Defect tolerance checkpoint system
-  6. Stokku     - Chemical expiration & rack locator control system`
+        text: `PRODUCTION SYSTEMS CATALOG (PT. HARRISON AND GIL-JAVA · 2-PERSON SYSDEV TEAM):
+  1. SnapPack       - Export shipping verification, digital touch signatures & EUDR compliance
+  2. Protrack       - Real-time shop-floor WIP tracking & dynamic aging calculations
+  3. Stokku         - Warehouse inventory control, FEFO chemical routing & 2-tier rack zoning
+  4. finish-info    - Cutting list optimization, fabric nesting yield & monthly output reporting
+  5. QC Checklist   - Shop-floor quality inspection gateway & defect classification logs
+  6. ProScan        - Barcode stock opname audits & ERP ledger variance reconciliation
+  7. Toolin         - Factory equipment requisition & multi-tier department approvals
+  8. Doc Control    - ISO/SOP document management & multi-version audit history`
       })
       break
 

@@ -5,13 +5,14 @@
     <div class="fixed inset-0 -z-10 grid-pattern opacity-30"></div>
     
     <!-- Top Nav / Back Button -->
+    <!-- Top Nav / Back Button -->
     <div class="max-w-7xl mx-auto mb-8 sm:mb-10" data-aos="fade-down">
       <router-link
-        to="/portfolio"
+        to="/work"
         class="inline-flex items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors group text-sm font-medium"
       >
         <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        <span>Back to Projects</span>
+        <span>Back to Work</span>
       </router-link>
     </div>
 
@@ -32,19 +33,19 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 p-4 sm:p-6 rounded-2xl glass mt-6 sm:mt-8">
           <div>
             <span class="text-xs text-gray-400 block mb-1">Role &amp; Positioning</span>
-            <span class="text-sm font-semibold text-amber-300">Technical BA / Full-stack Developer</span>
+            <span class="text-sm font-semibold text-amber-300">System Developer (SysDev)</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Domain Focus</span>
-            <span class="text-sm font-semibold text-white">Quality Assurance / MES Gateways</span>
+            <span class="text-xs text-gray-400 block mb-1">Production Facility</span>
+            <span class="text-sm font-semibold text-white">PT. Harrison And Gil-Java</span>
           </div>
           <div>
             <span class="text-xs text-gray-400 block mb-1">Core Tech Stack</span>
             <span class="text-sm font-semibold text-white">Laravel REST API + Vue 3 SPA</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Key Impact</span>
-            <span class="text-sm font-semibold text-green-400">Zero Defect Slippage &amp; Compliance Logs</span>
+            <span class="text-xs text-gray-400 block mb-1">Key Capability</span>
+            <span class="text-sm font-semibold text-green-400">Multi-Stage Inspection &amp; Defect Gates</span>
           </div>
         </div>
       </header>
@@ -62,25 +63,25 @@
             </h2>
             <div class="space-y-4 text-gray-300 leading-relaxed text-base">
               <p>
-                <strong>QCChecklist-Quality</strong> is a shop-floor compliance and quality audit system developed to enforce product standards in luxury furniture manufacturing. By digitizing finished-product inspection checklists, the system acts as a mandatory validation gate that items must pass before getting approved for packaging and container loading.
+                <strong>QCChecklist-Quality</strong> is a shop-floor compliance and quality audit system developed for PT. Harrison And Gil-Java to enforce product standards in luxury furniture manufacturing. By digitizing finished-product inspection checklists, the system acts as a mandatory validation gate that items must pass before getting approved for packaging and container loading.
               </p>
               <p>
-                The backend governs inspection parameters dynamically based on the product category, logging results in a structured JSON schema. It replaces subjective, human-biased paper inspection checklists with a strict digital audit trail that links verified inspectors, barcodes, locations, and defect photo logs.
+                The backend governs inspection parameters dynamically based on the product category, logging results in a structured JSON schema. It replaces subjective paper inspection checklists with a strict digital audit trail that links verified inspectors, barcodes, locations, and defect photo logs.
               </p>
               <p>
-                By connecting final product approvals to real-time database locks, the application prevents unverified or defective batches from leaking into shipments, saving thousands of dollars in international rework and claims overhead.
+                By connecting final product approvals to real-time database locks, the application prevents unverified or defective batches from leaking into shipments, minimizing rework and ensuring compliance.
               </p>
             </div>
 
             <!-- Highlight Stat -->
             <div class="mt-8 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl p-6 flex items-center justify-between">
               <div>
-                <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">Operational Success</span>
-                <h3 class="text-xl font-bold text-white mt-1">Defect Slippage Prevention</h3>
+                <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">Quality Assurance</span>
+                <h3 class="text-xl font-bold text-white mt-1">Inspection Gate Verification</h3>
               </div>
               <div class="text-right">
-                <span class="text-3xl md:text-4xl font-extrabold text-amber-400">100%</span>
-                <span class="text-xs text-gray-400 block">Digital compliance compliance log</span>
+                <span class="text-2xl md:text-3xl font-extrabold text-amber-400">Gate Locked</span>
+                <span class="text-xs text-gray-400 block">Mandatory digital sign-off before packaging</span>
               </div>
             </div>
           </section>

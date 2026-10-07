@@ -7,13 +7,13 @@
     <!-- Top Nav / Back Button -->
     <div class="max-w-7xl mx-auto mb-8 sm:mb-10" data-aos="fade-down">
       <router-link
-        to="/portfolio"
+        to="/work"
         class="inline-flex items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors group text-sm font-medium"
       >
         <ArrowLeft
           class="w-4 h-4 group-hover:-translate-x-1 transition-transform"
         />
-        <span>Back to Projects</span>
+        <span>Back to Work</span>
       </router-link>
     </div>
 
@@ -121,18 +121,18 @@
               <div>
                 <span
                   class="text-xs text-amber-400 block font-mono uppercase tracking-wider"
-                  >Metrics Achieved</span
+                  >Practice Methodology</span
                 >
                 <h3 class="text-xl font-bold text-white mt-1">
-                  Study Speed &amp; Accuracy
+                  SRS Drill &amp; Scoring Engine
                 </h3>
               </div>
               <div class="text-right">
-                <span class="text-3xl md:text-4xl font-extrabold text-amber-400"
-                  >40%</span
+                <span class="text-2xl md:text-3xl font-extrabold text-amber-400"
+                  >SRS Cycle</span
                 >
                 <span class="text-xs text-gray-400 block"
-                  >Faster vocab retention rate</span
+                  >Multi-script practice &amp; scoring</span
                 >
               </div>
             </div>

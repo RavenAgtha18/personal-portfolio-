@@ -7,11 +7,11 @@
     <!-- Top Nav / Back Button -->
     <div class="max-w-7xl mx-auto mb-8 sm:mb-10" data-aos="fade-down">
       <router-link
-        to="/portfolio"
+        to="/work"
         class="inline-flex items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors group text-sm font-medium"
       >
         <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        <span>Back to Projects</span>
+        <span>Back to Work</span>
       </router-link>
     </div>
 
@@ -32,19 +32,19 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 p-4 sm:p-6 rounded-2xl glass mt-6 sm:mt-8">
           <div>
             <span class="text-xs text-gray-400 block mb-1">Role &amp; Positioning</span>
-            <span class="text-sm font-semibold text-amber-300">Technical BA / Full-stack Developer</span>
+            <span class="text-sm font-semibold text-amber-300">System Developer (SysDev)</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Domain Focus</span>
-            <span class="text-sm font-semibold text-white">Warehouse / Material Lifecycle</span>
+            <span class="text-xs text-gray-400 block mb-1">Production Facility</span>
+            <span class="text-sm font-semibold text-white">PT. Harrison And Gil-Java</span>
           </div>
           <div>
             <span class="text-xs text-gray-400 block mb-1">Core Tech Stack</span>
             <span class="text-sm font-semibold text-white">Laravel REST API + Vue 3 SPA</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Key Impact</span>
-            <span class="text-sm font-semibold text-green-400">100% Expiry Prevention &amp; Zero Bottlenecks</span>
+            <span class="text-xs text-gray-400 block mb-1">Key Capability</span>
+            <span class="text-sm font-semibold text-green-400">FEFO Expiry Tracking &amp; Disposal Audit</span>
           </div>
         </div>
       </header>
@@ -62,7 +62,7 @@
             </h2>
             <div class="space-y-4 text-gray-300 leading-relaxed text-base">
               <p>
-                <strong>Stokku</strong> is an enterprise-grade material lifecycle and stock control system designed to govern factory floor raw materials. By logging primary storage shelves and nested secondary coordinates in a structured JSON database structure, the application guarantees that materials are traced precisely from the moment they enter the receiving dock until they are checked out to assembly lines.
+                <strong>Stokku</strong> is an enterprise-grade material lifecycle and stock control system designed to govern factory floor raw materials at PT. Harrison And Gil-Java. By logging primary storage shelves and nested secondary coordinates in a structured JSON database structure, the application guarantees that materials are traced precisely from the moment they enter the receiving dock until they are checked out to assembly lines.
               </p>
               <p>
                 The backend automates material expiration tracking using individual batch date tables (`material_expired_dates`). It acts as an early warning gateway, prompting operators with visual warnings and notification emails when items approach expiry, mitigating industrial waste and safety non-compliance.
@@ -75,12 +75,12 @@
             <!-- Highlight Stat -->
             <div class="mt-8 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl p-6 flex items-center justify-between">
               <div>
-                <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">Operational Success</span>
-                <h3 class="text-xl font-bold text-white mt-1">Material Waste Eliminated</h3>
+                <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">Operational Focus</span>
+                <h3 class="text-xl font-bold text-white mt-1">Item Expiry &amp; Disposal Management</h3>
               </div>
               <div class="text-right">
-                <span class="text-3xl md:text-4xl font-extrabold text-amber-400">100%</span>
-                <span class="text-xs text-gray-400 block">Digital compliance log &amp; shelf-life tracking</span>
+                <span class="text-2xl md:text-3xl font-extrabold text-amber-400">FEFO Protocol</span>
+                <span class="text-xs text-gray-400 block">Audited shelf-life &amp; scrap disposal logs</span>
               </div>
             </div>
           </section>
@@ -115,6 +115,19 @@
                   <h4 class="font-semibold text-white mb-1">Procurement Communication &amp; Stock Lags</h4>
                   <p class="text-sm text-gray-400 leading-relaxed">
                     Production stoppages occur when raw materials run out unexpectedly due to delays in reporting low stock to the procurement office. Stokku resolves this with a database-backed low-stock alert engine. When stock levels drop below the warning threshold, an automated trigger queues digital Material Requests to alert purchasing agents immediately.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Challenge 3 -->
+              <div class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10">
+                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
+                  <Trash2 class="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Item Disposal Management &amp; Scrap Audits</h4>
+                  <p class="text-sm text-gray-400 leading-relaxed">
+                    When volatile chemicals or past-expiry finishes cannot be reclaimed, strict safety and regulatory guidelines require formal disposal protocols. Stokku implements a verified disposal audit log, recording supervisor authorizations, scrap quantity adjustments, and waste manifests so expired batches can never inadvertently re-enter active production.
                   </p>
                 </div>
               </div>
@@ -469,6 +482,7 @@ import {
   FileCheck,
   Wrench,
   Check,
+  Trash2,
   Github,
   RefreshCw,
   Sparkles

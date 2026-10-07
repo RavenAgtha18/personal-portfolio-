@@ -1,5 +1,5 @@
 <template>
-  <div class="relative font-inter text-white bg-[#0a0a0a] min-h-screen overflow-x-hidden">
+  <div class="relative font-inter text-white bg-[#0a0a0a] min-h-screen overflow-x-clip">
     <!-- Animated Background -->
     <div class="fixed inset-0 -z-10 gradient-mesh"></div>
     <div class="fixed inset-0 -z-10 grid-pattern opacity-50"></div>
@@ -55,6 +55,20 @@
 
         <!-- Right Side Actions (Desktop & Mobile) -->
         <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Language Switcher Toggle -->
+          <LanguageToggle />
+
+          <!-- Theme Toggle -->
+          <button
+            @click="toggleTheme"
+            class="p-2 rounded-full border transition-all duration-200 hover:scale-105"
+            :class="isDark ? 'bg-zinc-900/80 border-white/10 text-zinc-300 hover:text-white' : 'bg-white border-slate-200 text-slate-700 hover:text-slate-900 shadow-sm'"
+            aria-label="Toggle Theme"
+          >
+            <Sun v-if="!isDark" class="w-4 h-4 text-amber-500" />
+            <Moon v-else class="w-4 h-4 text-amber-300" />
+          </button>
+
           <!-- Command Palette Trigger (Responsive: Desktop pill or Mobile icon) -->
           <CommandPalette />
 
@@ -65,7 +79,7 @@
             class="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold text-sm hover:shadow-lg hover:shadow-amber-500/25 hover:scale-105 transition-all duration-300"
           >
             <MessageCircle class="w-4 h-4" />
-            <span>Let's Talk</span>
+            <span>{{ t('nav.letsTalk') }}</span>
           </a>
 
           <!-- Mobile Menu Button -->
@@ -97,12 +111,16 @@
             >
               {{ link.name }}
             </router-link>
+            <div class="pt-3 pb-1 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs text-zinc-400 font-mono">Language / 言語</span>
+              <LanguageToggle />
+            </div>
             <a
               href="https://wa.me/6285175180821"
               target="_blank"
               class="block w-full mt-4 px-4 py-3 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold text-center"
             >
-              Let's Talk
+              {{ t('nav.letsTalk') }}
             </a>
           </div>
         </div>
@@ -128,10 +146,10 @@
           </div>
           
           <h3 class="text-2xl font-bold mb-2">
-            <span class="gradient-text">Let's Build Something Amazing</span>
+            <span class="gradient-text">{{ t('footer.heading') }}</span>
           </h3>
           <p class="text-gray-400 mb-8 max-w-md">
-            Open for collaborations, freelance projects, and full-time opportunities.
+            {{ t('footer.desc') }}
           </p>
 
           <!-- Social Links -->
@@ -161,9 +179,7 @@
 
           <!-- Copyright -->
           <p class="text-xs text-gray-500">
-            © {{ currentYear }} Riki Andi Alfiyanto — Crafted with 
-            <span class="text-amber-400">♥</span> 
-            using Vue.js & Tailwind CSS
+            © {{ currentYear }} Riki Andi Alfiyanto — {{ t('footer.copyright') }}
           </p>
         </div>
       </div>
@@ -173,22 +189,27 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { Menu, X, MessageCircle, Linkedin, Github, MessageSquare } from 'lucide-vue-next'
+import { Menu, X, MessageCircle, Linkedin, Github, MessageSquare, Sun, Moon } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import CommandPalette from '@/components/CommandPalette.vue'
+import LanguageToggle from '@/components/LanguageToggle.vue'
+import { useLanguage } from '@/composables/useLanguage'
+import { useTheme } from '@/composables/useTheme'
 
+const { t } = useLanguage()
+const { isDark, toggleTheme } = useTheme()
 const router = useRouter()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 const currentYear = computed(() => new Date().getFullYear())
 
-const navLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Projects', path: '/portfolio' },
-]
+const navLinks = computed(() => [
+  { name: t('nav.home'), path: '/' },
+  { name: t('nav.work'), path: '/portfolio' },
+  { name: t('nav.about'), path: '/about' },
+])
 
 const socialLinks = [
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/riki-andi-alfiyanto/', icon: Linkedin },

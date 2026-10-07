@@ -7,13 +7,13 @@
     <!-- Top Nav / Back Button -->
     <div class="max-w-7xl mx-auto mb-8 sm:mb-10" data-aos="fade-down">
       <router-link
-        to="/portfolio"
+        to="/work"
         class="inline-flex items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors group text-sm font-medium"
       >
         <ArrowLeft
           class="w-4 h-4 group-hover:-translate-x-1 transition-transform"
         />
-        <span>Back to Projects</span>
+        <span>Back to Work</span>
       </router-link>
     </div>
 
@@ -46,7 +46,7 @@
               >Role &amp; Scope</span
             >
             <span class="text-sm font-semibold text-amber-300"
-              >Technical BA / Full-stack Developer</span
+              >Full-stack Engineer (Creator)</span
             >
           </div>
           <div>
@@ -65,10 +65,10 @@
           </div>
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Financial Integrity</span
+              >Core Features</span
             >
             <span class="text-sm font-semibold text-green-400"
-              >100% Data Accuracy &amp; Overrun Prevention</span
+              >Currency Conversion &amp; ACID Ledger</span
             >
           </div>
         </div>
@@ -168,6 +168,25 @@
                     validator at the database request layer, evaluating
                     transaction amount limits against remaining allocated
                     buffers before executing commit operations.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Problem 3 -->
+              <div
+                class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
+              >
+                <div
+                  class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400"
+                >
+                  <RefreshCw class="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">
+                    Multi-Currency Discrepancies &amp; Exchange Reconciliation
+                  </h4>
+                  <p class="text-sm text-gray-400 leading-relaxed">
+                    Personal finance logs frequently cross multiple currencies (e.g., IDR, USD, JPY) for SaaS subscriptions, digital services, and travel. Logging raw amounts without normalized conversion corrupts budget tracking. FinWise features a built-in <strong>Currency Conversion Feature</strong> that standardizes multi-currency transactions into the base ledger using validated exchange rates before validating against category limits.
                   </p>
                 </div>
               </div>
@@ -519,20 +538,38 @@
 
                 <form
                   @submit.prevent="addExpense"
-                  class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end"
+                  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 items-end"
                 >
                   <div>
                     <label
                       class="block text-[10px] text-gray-400 uppercase mb-1"
-                      >Expense Amount ($)</label
+                      >Input Currency</label
+                    >
+                    <select
+                      v-model="newExpense.currency"
+                      class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:border-amber-400 focus:outline-none"
+                    >
+                      <option value="USD" class="bg-neutral-900">USD ($ base 1.0)</option>
+                      <option value="JPY" class="bg-neutral-900">JPY (¥ 150 = $1)</option>
+                      <option value="IDR" class="bg-neutral-900">IDR (Rp 16k = $1)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      class="block text-[10px] text-gray-400 uppercase mb-1"
+                      >Amount ({{ newExpense.currency }})</label
                     >
                     <input
-                      v-model.number="newExpense.amount"
+                      v-model.number="newExpense.rawAmount"
                       type="number"
                       min="1"
                       required
                       class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:border-amber-400 focus:outline-none"
                     />
+                    <span class="text-[10px] text-amber-400 font-mono block mt-1">
+                      ≈ ${{ formatMoney(convertedBaseAmount) }} USD
+                    </span>
                   </div>
 
                   <div>
@@ -557,7 +594,7 @@
 
                   <button
                     type="submit"
-                    class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold py-2 rounded-lg text-xs transition-all flex items-center justify-center gap-1.5"
+                    class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold py-2 rounded-lg text-xs transition-all flex items-center justify-center gap-1.5 h-[34px]"
                   >
                     <CheckCircle2 class="w-4 h-4" />
                     <span>Commit Outflow</span>
@@ -612,6 +649,7 @@
                       <td class="p-3 text-white">{{ log.category }}</td>
                       <td class="p-3 text-amber-400 font-bold">
                         ${{ formatMoney(log.amount) }}
+                        <span v-if="log.currencyNote" class="text-[9px] text-gray-400 block font-normal font-sans">{{ log.currencyNote }}</span>
                       </td>
                       <td class="p-3">{{ log.supplier }}</td>
                       <td class="p-3">
@@ -739,6 +777,7 @@ import {
   Database,
   PiggyBank,
   CheckCircle2,
+  RefreshCw,
   Sparkles,
   Check,
   Github,
@@ -819,10 +858,24 @@ const availableBalance = computed(() => {
   return totalBudgetLimit.value - totalExpensesSpent.value;
 });
 
+// Currency conversion rates
+const exchangeRates = {
+  USD: 1,
+  JPY: 150,
+  IDR: 16000,
+};
+
 // New Expense Form State
 const newExpense = ref({
-  amount: 200,
+  currency: "USD",
+  rawAmount: 200,
   category: "Operational & Materials",
+});
+
+const convertedBaseAmount = computed(() => {
+  const rate = exchangeRates[newExpense.value.currency] || 1;
+  const raw = Number(newExpense.value.rawAmount) || 0;
+  return Math.round(raw / rate);
 });
 
 const overrunAlert = ref("");
@@ -832,6 +885,7 @@ const realizationLogs = ref(
       id: 401,
       category: "Operational & Materials",
       amount: 3500,
+      currencyNote: null,
       supplier: "Mitra Kayu Sejahtera",
       time: "10:14:25",
     },
@@ -839,6 +893,7 @@ const realizationLogs = ref(
       id: 402,
       category: "Logistics & Shipping",
       amount: 1200,
+      currencyNote: null,
       supplier: "Jasa Kargo Logistics",
       time: "09:44:12",
     },
@@ -846,6 +901,7 @@ const realizationLogs = ref(
       id: 403,
       category: "Marketing & Material",
       amount: 500,
+      currencyNote: null,
       supplier: "Global Printing Sol",
       time: "09:05:03",
     },
@@ -867,20 +923,26 @@ const addExpense = () => {
   );
   if (!category) return;
 
+  const baseAmount = Math.max(1, convertedBaseAmount.value);
+
   // Overrun checks
-  const futureSpent = category.spent + newExpense.value.amount;
+  const futureSpent = category.spent + baseAmount;
   if (futureSpent > category.limit) {
-    overrunAlert.value = `Warning: This transaction of $${newExpense.value.amount} will cause an overrun on category [${category.name}] budget limit!`;
+    overrunAlert.value = `Warning: This transaction of $${baseAmount} USD will cause an overrun on category [${category.name}] budget limit!`;
   }
 
   // Deduct/Add to spent
-  category.spent += newExpense.value.amount;
+  category.spent += baseAmount;
 
   // Add realization log
   realizationLogs.value.unshift({
     id: realizationLogs.value.length + 401,
     category: category.name,
-    amount: newExpense.value.amount,
+    amount: baseAmount,
+    currencyNote:
+      newExpense.value.currency !== "USD"
+        ? `${Number(newExpense.value.rawAmount).toLocaleString()} ${newExpense.value.currency} converted`
+        : null,
     supplier: getRandomSupplier(category.name),
     time: new Date().toTimeString().split(" ")[0],
   });
@@ -889,7 +951,12 @@ const addExpense = () => {
   saveState();
 
   // Reset Input
-  newExpense.value.amount = 200;
+  newExpense.value.rawAmount =
+    newExpense.value.currency === "IDR"
+      ? 1600000
+      : newExpense.value.currency === "JPY"
+        ? 15000
+        : 100;
 };
 
 const getRandomSupplier = (category) => {

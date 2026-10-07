@@ -13,19 +13,19 @@
         <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 flex-shrink-0"></span>
         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 flex-shrink-0"></span>
         <span class="ml-1 sm:ml-2 font-semibold tracking-wider text-[11px] hidden sm:inline" :class="isDark ? 'text-zinc-300' : 'text-slate-700'">
-          BRIDGE ARCHITECTURE TELEMETRY SIMULATOR
+          FACTORY-TO-DATABASE ARCHITECTURE SIMULATOR
         </span>
         <span class="ml-1 font-semibold tracking-wider text-[11px] sm:hidden truncate" :class="isDark ? 'text-zinc-300' : 'text-slate-700'">
-          TELEMETRY SIMULATOR
+          ARCHITECTURE SIMULATOR
         </span>
       </div>
 
       <div class="flex items-center gap-2 sm:gap-3 text-[10px] flex-shrink-0" :class="isDark ? 'text-zinc-400' : 'text-slate-500'">
         <span class="inline-flex items-center gap-1">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-          REAL-TIME
+          ACTIVE
         </span>
-        <span class="hidden sm:inline">LATENCY: {{ currentLatency }}ms</span>
+        <span class="hidden sm:inline">STATE: VERIFIED</span>
       </div>
     </div>
 
@@ -71,7 +71,7 @@
           </div>
         </div>
 
-        <!-- Node 2: Bridge SE Middleware -->
+        <!-- Node 2: Backend Application & API Middleware -->
         <div
           class="p-4 rounded-xl border relative z-10 transition-all duration-300"
           :class="[
@@ -85,12 +85,12 @@
           ]"
         >
           <div class="flex items-center justify-between mb-2">
-            <span class="text-[10px] uppercase font-bold text-amber-500">Tier 2 · Bridge Logic</span>
+            <span class="text-[10px] uppercase font-bold text-amber-500">Tier 2 · Systems Logic</span>
             <Cpu class="w-4 h-4 text-zinc-400" />
           </div>
-          <h4 class="font-bold text-sm mb-1" :class="isDark ? 'text-zinc-100' : 'text-slate-900'">Bridge SE Middleware</h4>
+          <h4 class="font-bold text-sm mb-1" :class="isDark ? 'text-zinc-100' : 'text-slate-900'">Backend Application &amp; API</h4>
           <p class="text-[11px] leading-relaxed mb-3" :class="isDark ? 'text-zinc-400' : 'text-slate-600'">
-            Validates business rules, isolates ACID transactions, formats Japanese requirements into SQL.
+            Validates business constraints, executes ACID database transactions, and logs immutable audit events.
           </p>
           <div class="text-[10px] px-2 py-1 rounded bg-black/20 font-mono" :class="isDark ? 'text-zinc-300' : 'text-slate-700'">
             State: <span class="text-emerald-400 font-semibold">{{ currentEvent.status }}</span>

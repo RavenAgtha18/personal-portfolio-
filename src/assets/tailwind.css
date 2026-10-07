@@ -14,33 +14,43 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Inter', system-ui, sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
   }
 
   body {
     @apply bg-slate-50 text-slate-900 dark:bg-[#0a0a0a] dark:text-white antialiased transition-colors duration-500;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
     width: 100%;
+    top: 0 !important;
   }
 
-  /* Custom Scrollbar */
+  /* Force suppress any external Google Translate injected banners/bars */
+  .goog-te-banner-frame,
+  .goog-te-banner-frame.skiptranslate,
+  #goog-gt-tt,
+  .goog-te-balloon-frame,
+  div#goog-gt- {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Custom Scrollbar (Sleek, Minimalist, Luxury Dark-Mode) */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-slate-100 dark:bg-zinc-900;
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gradient-to-b from-amber-500 to-amber-700 rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply from-amber-400 to-amber-600;
+    @apply bg-zinc-700/60 hover:bg-amber-500/80 rounded-full transition-colors;
   }
 
   /* Selection */

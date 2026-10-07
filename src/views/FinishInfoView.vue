@@ -7,11 +7,11 @@
     <!-- Top Nav / Back Button -->
     <div class="max-w-7xl mx-auto mb-8 sm:mb-10" data-aos="fade-down">
       <router-link
-        to="/portfolio"
+        to="/work"
         class="inline-flex items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors group text-sm font-medium"
       >
         <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        <span>Back to Projects</span>
+        <span>Back to Work</span>
       </router-link>
     </div>
 
@@ -32,19 +32,19 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 p-4 sm:p-6 rounded-2xl glass mt-6 sm:mt-8">
           <div>
             <span class="text-xs text-gray-400 block mb-1">Role &amp; positioning</span>
-            <span class="text-sm font-semibold text-amber-300">Technical BA / Full-stack Developer</span>
+            <span class="text-sm font-semibold text-amber-300">System Developer (SysDev)</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Domain Focus</span>
-            <span class="text-sm font-semibold text-white">MES / Material Optimization</span>
+            <span class="text-xs text-gray-400 block mb-1">Production Facility</span>
+            <span class="text-sm font-semibold text-white">PT. Harrison And Gil-Java</span>
           </div>
           <div>
             <span class="text-xs text-gray-400 block mb-1">Core Tech Stack</span>
             <span class="text-sm font-semibold text-white">Laravel REST API + Vue 3 SPA</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Key Impact</span>
-            <span class="text-sm font-semibold text-green-400">Zero Raw Material Waste &amp; Precision Logs</span>
+            <span class="text-xs text-gray-400 block mb-1">Key Capability</span>
+            <span class="text-sm font-semibold text-green-400">Monthly Output Reporting &amp; Nesting Yields</span>
           </div>
         </div>
       </header>
@@ -62,25 +62,25 @@
             </h2>
             <div class="space-y-4 text-gray-300 leading-relaxed text-base">
               <p>
-                <strong>Finish-Info</strong> is an enterprise-grade material control and pre-assembly management system built to digitize the textile and wood cutting workflows for luxury furniture manufacturing. By centralizing fabric roll allocations, cutting lists, and part dimensions, the system eliminates traditional errors related to outdated paper blueprints.
+                <strong>Finish-Info</strong> is an enterprise-grade material control and pre-assembly management system built for PT. Harrison And Gil-Java to digitize textile and wood cutting workflows. By centralizing fabric roll allocations, cutting lists, and part dimensions, the system eliminates traditional errors related to outdated paper blueprints.
               </p>
               <p>
                 The platform operates as a secure gateway for production workers, reading files from local directories and filtering access rights based on the terminal's IP address. This network-level control prevents sensitive proprietary design specifications and cutting layout dimensions from leaking outside the factory floor.
               </p>
               <p>
-                By moving material calculations and nesting specifications into a reactive digital interface, Finish-Info ensures maximum fabric roll yield rates, optimizes raw wood cutting sequences, and eliminates costly material waste.
+                By moving material calculations and nesting specifications into a reactive digital interface, Finish-Info ensures maximum fabric roll yield rates, optimizes raw material cutting sequences, and generates structured monthly production output reports for plant leadership.
               </p>
             </div>
 
             <!-- Highlight Stat -->
             <div class="mt-8 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl p-6 flex items-center justify-between">
               <div>
-                <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">Operational Success</span>
-                <h3 class="text-xl font-bold text-white mt-1">Material Scrap Minimization</h3>
+                <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">Operational Focus</span>
+                <h3 class="text-xl font-bold text-white mt-1">Monthly Output Reporting &amp; Yields</h3>
               </div>
               <div class="text-right">
-                <span class="text-3xl md:text-4xl font-extrabold text-amber-400">100%</span>
-                <span class="text-xs text-gray-400 block">Precision on cutting allocation</span>
+                <span class="text-2xl md:text-3xl font-extrabold text-amber-400">Output Sync</span>
+                <span class="text-xs text-gray-400 block">Monthly output summaries &amp; nesting yield records</span>
               </div>
             </div>
           </section>
@@ -141,6 +141,19 @@
                   <h4 class="font-semibold text-white mb-1">Cross-Department Data Silos</h4>
                   <p class="text-sm text-gray-400 leading-relaxed">
                     Fabric procurement, cutting floor, and QC each maintained separate spreadsheets for material tracking. No unified data layer existed to correlate roll consumption with production orders, making it impossible to reconcile material purchases against actual factory floor usage.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Problem 5: Monthly Output Reporting -->
+              <div class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20">
+                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
+                  <BarChart3 class="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Monthly Production Output Reporting Delays</h4>
+                  <p class="text-sm text-gray-400 leading-relaxed">
+                    At month-end, compiling total completed cut pieces and textile consumption required manual physical tally collection from floor supervisors, creating multi-day reporting lag. Finish-Info automates monthly output reporting, aggregating verified cuts, completed work orders, and fabric yield rates into structured monthly summaries for plant leadership.
                   </p>
                 </div>
               </div>
@@ -507,6 +520,7 @@ import {
   CheckCircle2,
   Sparkles,
   Check,
+  BarChart3,
   Github
 } from 'lucide-vue-next'
 

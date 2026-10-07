@@ -149,6 +149,7 @@
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { useTheme } from '@/composables/useTheme'
+import { useLanguage } from '@/composables/useLanguage'
 import {
   Search,
   ArrowRight,
@@ -171,6 +172,7 @@ import {
 
 const router = useRouter()
 const { isDark, toggleTheme } = useTheme()
+const { isJapanese, toggleLanguage } = useLanguage()
 
 const isOpen = ref(false)
 const query = ref('')
@@ -266,7 +268,7 @@ const items = [
     id: 'nav-about',
     category: 'Navigation',
     title: 'About & Technical Competencies',
-    subtitle: 'Software Engineer & Technical BA profile',
+    subtitle: 'System Developer (SysDev) Profile',
     badge: 'BIO',
     actionText: 'Navigate',
     icon: User,
@@ -313,6 +315,19 @@ const items = [
     actionText: 'Toggle',
     icon: isDark.value ? Sun : Moon,
     action: () => toggleTheme(),
+  },
+  {
+    id: 'act-lang',
+    category: 'Actions',
+    title: 'Switch Language / 日本語・英語 切り替え',
+    subtitle: 'Toggle bilingual mode between English and Japanese (日本語)',
+    badge: 'I18N',
+    actionText: 'Switch',
+    icon: Globe,
+    action: () => {
+      toggleLanguage()
+      showToast(isJapanese.value ? '日本語に切り替えました' : 'Switched to English')
+    },
   },
   {
     id: 'act-wa',

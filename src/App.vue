@@ -19,29 +19,34 @@ onMounted(() => {
   const { initTheme } = useTheme()
   initTheme()
 
-  // Initialize Lenis Smooth Scrolling (Awwwards / Studio-grade luxury feel)
-  lenis = new Lenis({
-    duration: 1.1,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-    touchMultiplier: 2,
-  })
+  // Respect prefers-reduced-motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  function raf(time) {
-    if (lenis) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+  if (!prefersReduced) {
+    // Initialize Lenis Smooth Scrolling (Awwwards / Studio-grade luxury feel)
+    lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 2,
+    })
+
+    const raf = (time) => {
+      if (lenis) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+      }
     }
+    requestAnimationFrame(raf)
   }
-  requestAnimationFrame(raf)
 
   // Initialize AOS
   AOS.init({
-    duration: 800,
+    duration: prefersReduced ? 0 : 800,
     easing: 'ease-out-cubic',
     once: true,
     offset: 50,
-    disable: 'mobile'
+    disable: prefersReduced || 'mobile'
   })
 
   // Refresh AOS on route change

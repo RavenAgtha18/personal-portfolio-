@@ -1,33 +1,9 @@
 <template>
-  <div class="relative w-full max-w-[380px] sm:max-w-[420px] mx-auto select-none perspective-[1200px]">
-    <!-- Mode Selection Pills (Cyber Industrial Controls) -->
-    <div class="flex items-center justify-between mb-3 px-1">
-      <div class="flex items-center gap-1.5">
-        <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
-        <span class="text-[10px] font-mono tracking-wider font-semibold uppercase" :class="isDark ? 'text-zinc-400' : 'text-slate-600'">
-          Sensor Lens:
-        </span>
-      </div>
-      <div class="flex items-center gap-1 p-0.5 rounded-lg border text-[10px] font-mono" :class="isDark ? 'bg-zinc-900/80 border-zinc-800' : 'bg-slate-100 border-slate-200'">
-        <button
-          v-for="mode in modes"
-          :key="mode.id"
-          @click="selectMode(mode.id)"
-          class="px-2 py-0.5 rounded transition-all duration-200 font-medium"
-          :class="[
-            currentMode === mode.id
-              ? isDark
-                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
-                : 'bg-white text-amber-800 border border-slate-200 shadow-sm'
-              : isDark
-              ? 'text-zinc-400 hover:text-zinc-200'
-              : 'text-slate-500 hover:text-slate-900'
-          ]"
-        >
-          {{ mode.label }}
-        </button>
-      </div>
-    </div>
+  <div class="relative w-full max-w-[330px] sm:max-w-[350px] mx-auto select-none perspective-[1200px] living-card-float">
+    <!-- Ambient Prismatic Flow Glow Aura -->
+    <div
+      class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-amber-500/25 via-emerald-500/15 to-amber-500/25 blur-2xl opacity-70 pointer-events-none -z-10 animate-pulse"
+    ></div>
 
     <!-- The 3D Interactive Tilt Card -->
     <div
@@ -43,15 +19,9 @@
       :class="isDark ? 'bg-zinc-950 border-zinc-800 shadow-2xl shadow-black/80' : 'bg-white border-slate-200 shadow-xl'"
       @click="triggerDiagnosticScan"
     >
-      <!-- Corner Industrial Framing Reticles -->
-      <div class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 pointer-events-none z-30 transition-colors duration-200" :class="reticleColorClass"></div>
-      <div class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 pointer-events-none z-30 transition-colors duration-200" :class="reticleColorClass"></div>
-      <div class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 pointer-events-none z-30 transition-colors duration-200" :class="reticleColorClass"></div>
-      <div class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 pointer-events-none z-30 transition-colors duration-200" :class="reticleColorClass"></div>
-
       <!-- Top HUD Header -->
       <div
-        class="absolute top-0 inset-x-0 z-30 px-4 py-2.5 flex items-center justify-between text-[10px] font-mono pointer-events-none backdrop-blur-md border-b"
+        class="absolute top-0 inset-x-0 z-30 px-3.5 py-2.5 flex items-center justify-between text-[10px] font-mono pointer-events-none backdrop-blur-md border-b"
         :class="isDark ? 'bg-zinc-950/70 border-zinc-800/80 text-zinc-400' : 'bg-white/70 border-slate-200/80 text-slate-600'"
       >
         <div class="flex items-center gap-2">
@@ -59,19 +29,30 @@
           <span class="text-zinc-600">|</span>
           <span class="hidden sm:inline">SYS.SECURE</span>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="inline-flex items-center gap-1">
+        <div class="flex items-center gap-1.5">
+          <span class="inline-flex items-center gap-1 mr-1">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
             <span>{{ isScanning ? 'SCANNING...' : 'VERIFIED' }}</span>
           </span>
-          <span class="text-[9px] px-1.5 py-0.2 rounded border" :class="isDark ? 'border-zinc-800 bg-zinc-900 text-zinc-300' : 'border-slate-200 bg-slate-100 text-slate-700'">
-            {{ activeModeConfig.badge }}
-          </span>
+          <button
+            @click.stop="cycleNextMode"
+            class="pointer-events-auto text-[9px] px-2 py-0.5 rounded border transition-colors flex items-center gap-1 hover:border-amber-500/60 active:scale-95"
+            :class="isDark ? 'border-zinc-800 bg-zinc-900/90 text-zinc-300 hover:text-amber-300' : 'border-slate-200 bg-slate-100 text-slate-700 hover:text-slate-900'"
+            title="Click to cycle sensor lens"
+          >
+            <span>{{ activeModeConfig.badge }}</span>
+            <span class="text-[8px] text-amber-500 font-bold">⟳</span>
+          </button>
         </div>
       </div>
 
       <!-- Portrait Image Container with Mode Filters -->
-      <div class="relative w-full aspect-[4/5] overflow-hidden bg-zinc-950">
+      <div class="relative w-full aspect-[4/4.6] overflow-hidden bg-zinc-950">
+        <!-- Viewfinder Reticles on Photo -->
+        <div class="absolute top-12 left-3 w-3.5 h-3.5 border-t-2 border-l-2 pointer-events-none z-30 transition-colors duration-200" :class="reticleColorClass"></div>
+        <div class="absolute top-12 right-3 w-3.5 h-3.5 border-t-2 border-r-2 pointer-events-none z-30 transition-colors duration-200" :class="reticleColorClass"></div>
+        <div class="absolute bottom-3 left-3 w-3.5 h-3.5 border-b-2 border-l-2 pointer-events-none z-30 transition-colors duration-200" :class="reticleColorClass"></div>
+        <div class="absolute bottom-3 right-3 w-3.5 h-3.5 border-b-2 border-r-2 pointer-events-none z-30 transition-colors duration-200" :class="reticleColorClass"></div>
         <!-- Photo Element -->
         <img
           src="/img/profile.jpg"
@@ -97,7 +78,7 @@
           <div class="relative w-44 h-48 mx-auto mt-10 border border-emerald-400/80 rounded-lg p-2 flex flex-col justify-between animate-pulse">
             <div class="flex justify-between text-[8px] font-mono text-emerald-400">
               <span>FACE_RECOG: LOCK</span>
-              <span>CONF: 99.8%</span>
+              <span>VERIFIED: PASS</span>
             </div>
             <div class="w-6 h-6 border-b-2 border-r-2 border-emerald-400 self-end"></div>
           </div>
@@ -105,8 +86,8 @@
           <!-- Live Telemetry Tele-text -->
           <div class="relative z-10 text-[9px] font-mono text-emerald-400 space-y-0.5 bg-black/60 p-2 rounded backdrop-blur-sm border border-emerald-500/30">
             <div>TARGET: RIKI ANDI ALFIYANTO</div>
-            <div>ROLE: BRIDGE SE / TECHNICAL BA</div>
-            <div>SPEC: FACTORY AUTOMATION &amp; MES</div>
+            <div>ROLE: SYSTEM DEVELOPER (SYSDEV) · 2-PERSON TEAM</div>
+            <div>BASE: PT. HARRISON AND GIL-JAVA</div>
           </div>
         </div>
 
@@ -190,7 +171,7 @@
             Riki Andi Alfiyanto
           </div>
           <div class="text-[10px] mt-0.5" :class="isDark ? 'text-amber-400' : 'text-amber-700'">
-            Bridge SE &amp; Technical BA
+            System Developer · 2-Person SysDev Core Team
           </div>
         </div>
 
@@ -285,6 +266,12 @@ const playBeep = (freq = 880, type = 'sine', duration = 0.08) => {
 const selectMode = (modeId) => {
   currentMode.value = modeId
   playBeep(modeId === 'cyber' ? 1200 : modeId === 'thermal' ? 600 : 880)
+}
+
+const cycleNextMode = () => {
+  const idx = modes.findIndex(m => m.id === currentMode.value)
+  const nextIdx = (idx + 1) % modes.length
+  selectMode(modes[nextIdx].id)
 }
 
 // 3D Parallax Tilt State
@@ -440,22 +427,17 @@ const triggerDiagnosticScan = () => {
 }
 
 /* Laser sweep animation */
-.laser-sweep {
-  animation: sweep 1.2s ease-in-out infinite;
+/* Living breathing float animation */
+.living-card-float {
+  animation: organicFloat 6s ease-in-out infinite;
 }
 
-@keyframes sweep {
-  0% {
-    top: 0%;
-    opacity: 0.2;
+@keyframes organicFloat {
+  0%, 100% {
+    transform: translateY(0px);
   }
   50% {
-    top: 98%;
-    opacity: 1;
-  }
-  100% {
-    top: 0%;
-    opacity: 0.2;
+    transform: translateY(-8px);
   }
 }
 </style>

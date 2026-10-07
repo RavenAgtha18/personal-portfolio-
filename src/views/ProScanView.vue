@@ -5,13 +5,14 @@
     <div class="fixed inset-0 -z-10 grid-pattern opacity-30"></div>
     
     <!-- Top Nav / Back Button -->
+    <!-- Top Nav / Back Button -->
     <div class="max-w-7xl mx-auto mb-8 sm:mb-10" data-aos="fade-down">
       <router-link
-        to="/portfolio"
+        to="/work"
         class="inline-flex items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors group text-sm font-medium"
       >
         <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        <span>Back to Projects</span>
+        <span>Back to Work</span>
       </router-link>
     </div>
 
@@ -32,19 +33,19 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 p-4 sm:p-6 rounded-2xl glass mt-6 sm:mt-8">
           <div>
             <span class="text-xs text-gray-400 block mb-1">Role &amp; Positioning</span>
-            <span class="text-sm font-semibold text-amber-300">Technical BA / Full-stack Developer</span>
+            <span class="text-sm font-semibold text-amber-300">System Developer (SysDev)</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Domain Focus</span>
-            <span class="text-sm font-semibold text-white">Inventory Control / WMS</span>
+            <span class="text-xs text-gray-400 block mb-1">Production Facility</span>
+            <span class="text-sm font-semibold text-white">PT. Harrison And Gil-Java</span>
           </div>
           <div>
             <span class="text-xs text-gray-400 block mb-1">Core Tech Stack</span>
             <span class="text-sm font-semibold text-white">Laravel REST API + Vue 3 SPA</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Key Impact</span>
-            <span class="text-sm font-semibold text-green-400">100% Stock Variance Elimination</span>
+            <span class="text-xs text-gray-400 block mb-1">Key Capability</span>
+            <span class="text-sm font-semibold text-green-400">Barcode Stock Opname &amp; Variance Audit</span>
           </div>
         </div>
       </header>
@@ -62,13 +63,13 @@
             </h2>
             <div class="space-y-4 text-gray-300 leading-relaxed text-base">
               <p>
-                <strong>ProScan</strong> is a high-performance inventory verification and stock opname auditing application built to digitize warehouse logging. The system enables real-time physical-to-database barcode scanning on the factory floor, matching current inventory logs directly against active stock periods.
+                <strong>ProScan</strong> is a high-performance inventory verification and stock opname auditing application built for PT. Harrison And Gil-Java to digitize warehouse logging. The system enables real-time physical-to-database barcode scanning on the factory floor, matching current inventory logs directly against active stock periods.
               </p>
               <p>
-                The application replaces paper-based tally sheets with a lightning-fast verification engine. By executing transactional lookup indexing on barcodes and physical location IDs, operators can perform high-speed scans that automatically reconcile discrepancies between physical counts and system-of-record ERP ledgers.
+                The application replaces paper-based tally sheets with a barcode verification engine. By executing transactional lookup indexing on barcodes and physical location IDs, operators perform high-speed scans that reconcile discrepancies between physical counts and system ERP ledgers.
               </p>
               <p>
-                By linking physical stock takes to automated adjustment triggers, ProScan cuts down manual stock recount times from days to hours, ensuring complete traceability and eliminating phantom stock variance in heavy manufacturing pipelines.
+                By linking physical stock takes to automated adjustment triggers, ProScan significantly accelerates stock recount cycles, ensuring complete traceability and audit-ready stock adjustment logs.
               </p>
             </div>
 
@@ -76,11 +77,11 @@
             <div class="mt-8 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl p-6 flex items-center justify-between">
               <div>
                 <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">Audit Efficiency</span>
-                <h3 class="text-xl font-bold text-white mt-1">Manual Variance Reconciled</h3>
+                <h3 class="text-xl font-bold text-white mt-1">Stock Variance Reconciliation</h3>
               </div>
               <div class="text-right">
-                <span class="text-3xl md:text-4xl font-extrabold text-amber-400">Zero Error</span>
-                <span class="text-xs text-gray-400 block">100% digital stock opname logs</span>
+                <span class="text-2xl md:text-3xl font-extrabold text-amber-400">Reconciled</span>
+                <span class="text-xs text-gray-400 block">Digital stock opname audit trail &amp; adjustments</span>
               </div>
             </div>
           </section>

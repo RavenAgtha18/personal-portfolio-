@@ -32,7 +32,7 @@
           class="text-[11px] font-mono font-medium tracking-wide uppercase"
           :class="isDark ? 'text-amber-400/90' : 'text-amber-800'"
         >
-          {{ project.category || 'System' }}
+          {{ isJapanese && project.categoryJa ? project.categoryJa : (project.category || 'System') }}
         </span>
 
         <span
@@ -40,14 +40,14 @@
           class="text-[10px] font-mono"
           :class="isDark ? 'text-zinc-500' : 'text-slate-400'"
         >
-          Bridge SE / Tech BA
+          {{ isJapanese ? '社内SE (SysDev)' : 'System Developer (SysDev)' }}
         </span>
         <span
           v-else
           class="text-[10px] font-mono"
           :class="isDark ? 'text-zinc-500' : 'text-slate-400'"
         >
-          Web / Tool
+          {{ isJapanese ? 'Web / ツール' : 'Web / Tool' }}
         </span>
       </div>
 
@@ -56,7 +56,7 @@
         class="text-lg sm:text-xl font-bold tracking-tight mb-2 transition-colors"
         :class="isDark ? 'text-zinc-100 group-hover:text-amber-300' : 'text-slate-900 group-hover:text-amber-800'"
       >
-        {{ project.name }}
+        {{ isJapanese && project.nameJa ? project.nameJa : project.name }}
       </h3>
 
       <!-- Executive Overview -->
@@ -64,73 +64,25 @@
         class="text-xs sm:text-sm leading-relaxed"
         :class="isDark ? 'text-zinc-400' : 'text-slate-600'"
       >
-        {{ project.status }}
+        {{ isJapanese && project.statusJa ? project.statusJa : project.status }}
       </p>
     </div>
 
-    <!-- 4-Pillar Case Study Structure (Minimalist Tabs & Note View) -->
-    <div v-if="!project.isSimpleShowcase" class="px-5 py-2 flex-1 flex flex-col justify-between">
-      <!-- Minimal Tab Navigation -->
-      <div class="border-b mb-3" :class="isDark ? 'border-zinc-800/80' : 'border-slate-200'">
-        <div class="flex items-center gap-4 text-xs font-mono overflow-x-auto pb-1" role="tablist">
-          <button
-            v-for="pillar in pillars"
-            :key="pillar.key"
-            @click="activePillar = pillar.key"
-            role="tab"
-            :aria-selected="activePillar === pillar.key"
-            class="pb-1.5 transition-colors relative whitespace-nowrap"
-            :class="[
-              activePillar === pillar.key
-                ? isDark
-                  ? 'text-amber-300 font-semibold border-b-2 border-amber-400 -mb-[1px]'
-                  : 'text-slate-900 font-semibold border-b-2 border-slate-900 -mb-[1px]'
-                : isDark
-                ? 'text-zinc-500 hover:text-zinc-300'
-                : 'text-slate-400 hover:text-slate-700'
-            ]"
-          >
-            {{ pillar.tabName }}
-          </button>
-        </div>
-      </div>
-
-      <!-- Active Pillar Note Content with Tactile Micro-Transition -->
-      <Transition name="pillar-fade" mode="out-in">
-        <div :key="activePillar" class="border-l-2 pl-3 py-1 mb-2 min-h-[70px] flex flex-col justify-center" :class="isDark ? 'border-amber-500/70' : 'border-amber-500'">
-          <div class="text-[10px] font-mono uppercase tracking-wider font-semibold mb-1" :class="isDark ? 'text-zinc-400' : 'text-slate-500'">
-            {{ currentPillarData.title }}
-          </div>
-          <p
-            v-if="currentPillarData.content"
-            class="text-xs sm:text-sm leading-relaxed"
-            :class="isDark ? 'text-zinc-300' : 'text-slate-700'"
-          >
-            {{ currentPillarData.content }}
-          </p>
-          <p
-            v-else
-            class="text-xs italic leading-relaxed"
-            :class="isDark ? 'text-zinc-500' : 'text-slate-400'"
-          >
-            Pending brief: {{ currentPillarData.placeholder }}
-          </p>
-        </div>
-      </Transition>
-    </div>
-
-    <!-- Simple Showcase Mode (Minimalist Note) -->
-    <div v-else class="px-5 py-2 flex-1 flex flex-col justify-center">
-      <div
-        class="border-l-2 pl-3 py-1 text-xs leading-relaxed"
-        :class="isDark ? 'border-zinc-700 text-zinc-400' : 'border-slate-300 text-slate-600'"
-      >
-        <span class="font-mono text-[10px] uppercase font-semibold block mb-0.5" :class="isDark ? 'text-zinc-300' : 'text-slate-700'">
-          Showcase Overview
+    <!-- Key Highlights / Architecture Badges -->
+    <div v-if="displayTags && displayTags.length" class="px-5 py-2">
+      <div class="flex flex-wrap gap-1.5">
+        <span
+          v-for="tag in displayTags.slice(0, 4)"
+          :key="tag"
+          class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono border"
+          :class="isDark ? 'bg-zinc-800/50 border-zinc-700/60 text-amber-300/90' : 'bg-amber-50/80 border-amber-200 text-amber-900'"
+        >
+          <span class="w-1 h-1 rounded-full bg-amber-500"></span>
+          {{ tag }}
         </span>
-        Focused application emphasizing streamlined user workflows, responsive interfaces, and targeted utility.
       </div>
     </div>
+
 
     <!-- Card Footer: Minimal Tech Stack & Action Links -->
     <div
@@ -157,7 +109,7 @@
           class="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide transition-colors"
           :class="isDark ? 'text-amber-400 hover:text-amber-300' : 'text-slate-900 hover:text-amber-700'"
         >
-          <span>Deep-Dive Case Study</span>
+          <span>{{ isJapanese ? '詳細ケーススタディ' : 'Deep-Dive Case Study' }}</span>
           <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
         </router-link>
 
@@ -169,7 +121,7 @@
           class="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide transition-colors"
           :class="isDark ? 'text-amber-400 hover:text-amber-300' : 'text-slate-900 hover:text-amber-700'"
         >
-          <span>Live Demo</span>
+          <span>{{ isJapanese ? 'デモを見る' : 'Live Demo' }}</span>
           <ExternalLink class="w-3.5 h-3.5" />
         </a>
 
@@ -184,7 +136,7 @@
           title="View Source Code"
         >
           <Github class="w-3.5 h-3.5" />
-          <span>Code</span>
+          <span>{{ isJapanese ? 'コード' : 'Code' }}</span>
         </a>
       </div>
     </div>
@@ -193,8 +145,9 @@
 
 <script setup>
 /* global defineProps */
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useTheme } from '@/composables/useTheme'
+import { useLanguage } from '@/composables/useLanguage'
 import {
   ArrowRight,
   ExternalLink,
@@ -209,44 +162,13 @@ const props = defineProps({
 })
 
 const { isDark } = useTheme()
+const { isJapanese } = useLanguage()
 
-// 4 Case Study Pillars definitions
-const pillars = [
-  {
-    key: 'problem',
-    tabName: 'Problem',
-    title: 'The Problem (Operational Pain Point)',
-    placeholder: 'Real business bottleneck and shop-floor constraint before the system.'
-  },
-  {
-    key: 'requirements',
-    tabName: 'Reqs',
-    title: 'Requirements Process (Discovery)',
-    placeholder: 'Stakeholder discovery, frontline interviews, and functional requirements.'
-  },
-  {
-    key: 'solution',
-    tabName: 'Solution',
-    title: 'Technical Solution (Architecture)',
-    placeholder: 'Architectural blueprint, database schema decisions, and technical trade-offs.'
-  },
-  {
-    key: 'result',
-    tabName: 'Result',
-    title: 'Result & Impact (Verified)',
-    placeholder: 'Verified production outcomes or qualitative adoption impact.'
+const displayTags = computed(() => {
+  if (isJapanese.value && props.project.tagsJa && props.project.tagsJa.length) {
+    return props.project.tagsJa
   }
-]
-
-const activePillar = ref('problem')
-
-const currentPillarData = computed(() => {
-  const p = pillars.find(item => item.key === activePillar.value) || pillars[0]
-  const content = props.project[p.key] || ''
-  return {
-    ...p,
-    content
-  }
+  return props.project.tags || []
 })
 
 const parsedTech = computed(() => {

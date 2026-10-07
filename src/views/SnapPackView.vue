@@ -7,13 +7,13 @@
     <!-- Top Nav / Back Button -->
     <div class="max-w-7xl mx-auto mb-8 sm:mb-10" data-aos="fade-down">
       <router-link
-        to="/portfolio"
+        to="/work"
         class="inline-flex items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors group text-sm font-medium"
       >
         <ArrowLeft
           class="w-4 h-4 group-hover:-translate-x-1 transition-transform"
         />
-        <span>Back to Projects</span>
+        <span>Back to Work</span>
       </router-link>
     </div>
 
@@ -48,13 +48,13 @@
               >Role &amp; Positioning</span
             >
             <span class="text-sm font-semibold text-amber-300"
-              >Technical Business Analyst / Bridge SE</span
+              >Software Developer (Systems &amp; BA)</span
             >
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Client Profile</span>
+            <span class="text-xs text-gray-400 block mb-1">Company Profile</span>
             <span class="text-sm font-semibold text-white"
-              >Luxury Furniture Manufacturer</span
+              >PT. Harrison And Gil-Java</span
             >
           </div>
           <div>
@@ -66,9 +66,9 @@
             >
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Key Impact</span>
+            <span class="text-xs text-gray-400 block mb-1">Operational Impact</span>
             <span class="text-sm font-semibold text-green-400"
-              >95%+ Audit Search Time Reduction</span
+              >EUDR Traceability &amp; Digital Signatures</span
             >
           </div>
         </div>
@@ -93,10 +93,10 @@
               <p>
                 <strong>SnapPack</strong> is an enterprise-grade digital logging
                 and media tracking system built from the ground up to secure the
-                shipping documentation pipeline for a global luxury furniture
-                manufacturer. By digitizing camera-to-server file logs at shipping
-                stations, the system acts as a single point of truth that links
-                packing operators, IT verifiers, and logistics managers.
+                shipping documentation pipeline for luxury furniture manufacturing.
+                By digitizing camera-to-server file logs at shipping stations, the
+                system acts as a single point of truth linking packing operators,
+                IT verifiers, and logistics managers.
               </p>
               <p>
                 The primary objective is to replace error-prone physical memory
@@ -107,10 +107,8 @@
               </p>
               <p>
                 The resulting digital transformation has eliminated lost visual
-                proof of product quality, protecting the company against
-                fraudulent damage claims and reducing the time required to
-                search and locate shipping media files from
-                <strong>days to mere seconds</strong>.
+                proof of product quality, protecting against cargo damage disputes
+                and providing instant searchable shipping media records.
               </p>
             </div>
 
@@ -121,18 +119,18 @@
               <div>
                 <span
                   class="text-xs text-amber-400 block font-mono uppercase tracking-wider"
-                  >Metric Highlight</span
+                  >Operational Highlight</span
                 >
                 <h3 class="text-xl font-bold text-white mt-1">
-                  Audit Search Efficiency
+                  Centralized Retrieval Architecture
                 </h3>
               </div>
               <div class="text-right">
-                <span class="text-3xl md:text-4xl font-extrabold text-amber-400"
-                  >99.8%</span
+                <span class="text-lg md:text-xl font-extrabold text-amber-400 font-mono"
+                  >DIRECT SEARCH</span
                 >
                 <span class="text-xs text-gray-400 block"
-                  >Faster documentation lookup</span
+                  >Instant manifest &amp; photo lookup</span
                 >
               </div>
             </div>
@@ -681,7 +679,7 @@
                     {{ totalMockVideos }}
                   </h4>
                   <span class="text-[10px] text-gray-500 block mt-1"
-                    >100% cloud-uploaded</span
+                    >Synchronized storage</span
                   >
                 </div>
 
@@ -694,10 +692,10 @@
                   >
                     <UserCheck class="w-12 h-12" />
                   </div>
-                  <span class="text-xs text-gray-400">IT Approval Ratio</span>
-                  <h4 class="text-2xl font-bold text-white mt-1">100%</h4>
+                  <span class="text-xs text-gray-400">Review Status</span>
+                  <h4 class="text-2xl font-bold text-white mt-1">Verified</h4>
                   <span class="text-[10px] text-green-400 block mt-1"
-                    >Zero pending logs</span
+                    >Real-time audit logs</span
                   >
                 </div>
               </div>
@@ -982,7 +980,7 @@
                 <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                 <div>
                   <h4 class="text-sm font-semibold text-white">
-                    95% Administrative Reduction
+                    Paperless Workflow Automation
                   </h4>
                   <p class="text-xs text-gray-400 mt-0.5">
                     Eliminates physical SD card handovers, spreadsheet logging,
@@ -994,11 +992,10 @@
                 <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                 <div>
                   <h4 class="text-sm font-semibold text-white">
-                    100% Compliance
+                    EUDR Traceability &amp; Chain of Custody
                   </h4>
                   <p class="text-xs text-gray-400 mt-0.5">
-                    Ensures every box sent matches visual records in the server
-                    storage database.
+                    Ensures every export container and carton matches immutable visual records supporting EUDR timber traceability standards.
                   </p>
                 </div>
               </li>
