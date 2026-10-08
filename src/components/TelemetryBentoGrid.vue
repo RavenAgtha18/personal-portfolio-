@@ -49,9 +49,9 @@
           </div>
         </div>
 
-        <div class="mt-3 text-[10px] flex items-center justify-between border-t pt-2" :class="isDark ? 'border-zinc-800/80 text-zinc-500' : 'border-slate-100 text-slate-400'">
+        <div class="mt-3 text-[10px] flex flex-col xs:flex-row items-start xs:items-center justify-between border-t pt-2 gap-1" :class="isDark ? 'border-zinc-800/80 text-zinc-500' : 'border-slate-100 text-slate-400'">
           <span>TIMEZONE OFFSET: +2h JST</span>
-          <span class="text-amber-500">INDONESIA PRODUCTION · JAPAN ALIGNED</span>
+          <span class="text-amber-500 font-semibold">INDONESIA PRODUCTION · JAPAN ALIGNED</span>
         </div>
       </div>
 

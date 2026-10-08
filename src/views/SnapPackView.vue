@@ -48,7 +48,7 @@
               >Role &amp; Positioning</span
             >
             <span class="text-sm font-semibold text-amber-300"
-              >Software Developer (Systems &amp; BA)</span
+              >System Developer (SysDev)</span
             >
           </div>
           <div>

@@ -73,12 +73,12 @@
             </div>
 
             <!-- Highlight Stat -->
-            <div class="mt-8 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl p-6 flex items-center justify-between">
+            <div class="mt-8 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
                 <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">Operational Focus</span>
-                <h3 class="text-xl font-bold text-white mt-1">Monthly Output Reporting &amp; Yields</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-white mt-1">Monthly Output Reporting &amp; Yields</h3>
               </div>
-              <div class="text-right">
+              <div class="text-left sm:text-right">
                 <span class="text-2xl md:text-3xl font-extrabold text-amber-400">Output Sync</span>
                 <span class="text-xs text-gray-400 block">Monthly output summaries &amp; nesting yield records</span>
               </div>

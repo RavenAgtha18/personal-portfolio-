@@ -315,12 +315,17 @@
             <Grid3x3 class="w-4 h-4" />
             {{ messages?.portfolio?.decisionMatrixTitle || 'Architecture Decision Matrix' }}
           </h3>
-          <p class="text-[11px] text-gray-500 mb-4">
-            {{ messages?.portfolio?.decisionMatrixDesc || 'Technology × Domain cross-reference — showing stack decisions across enterprise verticals' }}
-          </p>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 text-[11px] text-gray-500">
+            <p>
+              {{ messages?.portfolio?.decisionMatrixDesc || 'Technology × Domain cross-reference — showing stack decisions across enterprise verticals' }}
+            </p>
+            <span class="sm:hidden inline-flex items-center gap-1 text-[10px] text-amber-400 font-mono shrink-0 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">
+              <span>← スクロール可能 / Scroll →</span>
+            </span>
+          </div>
 
           <!-- Matrix Table -->
-          <div class="overflow-x-auto -mx-2 px-2">
+          <div class="overflow-x-auto -mx-2 px-2 pb-2">
             <table class="w-full text-xs">
               <thead>
                 <tr class="border-b border-white/10">

@@ -20,15 +20,18 @@
       <div class="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-[#06080e] via-transparent to-[#06080e]/60"></div>
 
       <!-- Top Ambient Bar (Minimalist Luxury Telemetry) -->
-      <div class="relative z-20 w-full px-6 sm:px-12 pt-20 flex items-center justify-between pointer-events-none font-mono text-xs">
+      <div class="relative z-20 w-full px-3.5 sm:px-12 pt-16 sm:pt-20 flex items-center justify-between pointer-events-none font-mono text-xs gap-2">
         <!-- Division Tag -->
-        <div class="flex items-center gap-3 bg-black/40 backdrop-blur-xl px-4 py-2 rounded-full border border-white/10 shadow-lg shadow-black/50">
-          <span class="relative flex h-2 w-2">
+        <div class="flex items-center gap-2 sm:gap-3 bg-black/40 backdrop-blur-xl px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 shadow-lg shadow-black/50 text-[10px] sm:text-xs min-w-0">
+          <span class="relative flex h-2 w-2 shrink-0">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
           </span>
-          <span class="text-zinc-200 tracking-wider font-semibold">PT. HARRISON AND GIL-JAVA</span>
-          <span class="text-zinc-600">/</span>
+          <span class="text-zinc-200 tracking-wider font-semibold truncate max-w-[130px] xs:max-w-none">
+            <span class="sm:hidden">H&G SYSDEV</span>
+            <span class="hidden sm:inline">PT. HARRISON AND GIL-JAVA</span>
+          </span>
+          <span class="text-zinc-600 hidden xs:inline">/</span>
           <span class="hidden sm:inline text-zinc-400">SYSDEV (2-PERSON CORE)</span>
         </div>
 
@@ -49,21 +52,21 @@
         </div>
 
         <!-- Scroll Progress Indicator -->
-        <div class="flex items-center gap-3 bg-black/40 backdrop-blur-xl px-4 py-2 rounded-full border border-white/10 shadow-lg">
-          <span class="text-zinc-400 text-[11px] uppercase tracking-wider">{{ t('hero.journey') }}</span>
-          <div class="w-20 sm:w-28 h-1 rounded-full bg-white/10 overflow-hidden relative">
+        <div class="flex items-center gap-1.5 sm:gap-3 bg-black/40 backdrop-blur-xl px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 shadow-lg text-[10px] sm:text-xs shrink-0">
+          <span class="text-zinc-400 text-[10px] sm:text-[11px] uppercase tracking-wider hidden xs:inline">{{ t('hero.journey') }}</span>
+          <div class="w-14 xs:w-20 sm:w-28 h-1 rounded-full bg-white/10 overflow-hidden relative">
             <div
               class="h-full bg-gradient-to-r from-amber-400 to-emerald-400 transition-all duration-100"
               :style="{ width: `${Math.round(scrollProgress * 100)}%` }"
             ></div>
           </div>
-          <span class="text-zinc-200 font-bold text-xs w-8 text-right">{{ Math.round(scrollProgress * 100) }}%</span>
+          <span class="text-zinc-200 font-bold text-[11px] sm:text-xs w-7 sm:w-8 text-right">{{ Math.round(scrollProgress * 100) }}%</span>
         </div>
       </div>
 
       <!-- Stage: Editorial Content Layer (Lower-Thirds for all phases to keep visuals unobstructed) -->
       <div
-        class="relative z-20 flex-1 max-w-6xl mx-auto w-full px-6 sm:px-12 flex items-end justify-between pb-6 sm:pb-10 pointer-events-none transition-all duration-500"
+        class="relative z-20 flex-1 max-w-6xl mx-auto w-full px-4 sm:px-12 flex items-end justify-between pb-4 sm:pb-10 pointer-events-none transition-all duration-500"
       >
         <Transition name="fade-slide" mode="out-in">
           <!-- PHASE 0: Grand Editorial Hero (Cinema Scale - Lower Thirds, Zero Blockage) -->
@@ -73,49 +76,49 @@
             class="w-full max-w-xl lg:max-w-2xl pointer-events-auto"
           >
             <!-- Status Badge -->
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 text-xs font-mono mb-3 bg-black/55 backdrop-blur-md text-zinc-200 shadow-lg">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-              <span class="tracking-wide">{{ t('hero.statusBadge') }}</span>
+            <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/20 text-[10px] sm:text-xs font-mono mb-2 sm:mb-3 bg-black/55 backdrop-blur-md text-zinc-200 shadow-lg max-w-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
+              <span class="tracking-wide truncate">{{ t('hero.statusBadge') }}</span>
             </div>
 
             <!-- Grand Headline with deep cinema shadow -->
-            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2 leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+            <h1 class="text-2xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2 leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
               {{ t('hero.name') }}
             </h1>
 
             <!-- Subtitle -->
-            <p class="text-base sm:text-xl font-light text-zinc-200 mb-2.5 tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+            <p class="text-xs xs:text-base sm:text-xl font-light text-zinc-200 mb-2 sm:mb-2.5 tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
               {{ t('hero.headline') }} <span class="text-amber-400 font-normal">/</span> {{ t('hero.headlineSub') }}
             </p>
 
             <!-- Bio Statement -->
-            <p class="text-xs sm:text-sm text-zinc-300 max-w-lg mb-5 leading-relaxed font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            <p class="text-[11px] xs:text-xs sm:text-sm text-zinc-300 max-w-lg mb-4 sm:mb-5 leading-relaxed font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] line-clamp-3 xs:line-clamp-none">
               {{ t('hero.bio') }}
             </p>
 
             <!-- Action Pill Buttons -->
-            <div class="flex flex-wrap items-center gap-2.5">
+            <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
               <button
                 @click="scrollToProjects"
-                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide bg-white text-zinc-950 hover:bg-zinc-100 transition-all duration-300 hover:scale-[1.02] shadow-xl shadow-black/60 cursor-pointer"
+                class="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide bg-white text-zinc-950 hover:bg-zinc-100 transition-all duration-300 hover:scale-[1.02] shadow-xl shadow-black/60 cursor-pointer"
               >
-                <FolderOpen class="w-3.5 h-3.5 text-amber-600" />
+                <FolderOpen class="w-3.5 h-3.5 text-amber-600 shrink-0" />
                 <span>{{ t('hero.exploreSystems') }}</span>
               </button>
               <a
                 href="https://wa.me/6285175180821"
                 target="_blank"
-                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
+                class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
               >
-                <MessageCircle class="w-3.5 h-3.5" />
+                <MessageCircle class="w-3.5 h-3.5 shrink-0" />
                 <span>{{ t('hero.contactMe') }}</span>
               </a>
               <a
                 href="/cv_rikiandi.pdf"
                 target="_blank"
-                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
+                class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
               >
-                <FileText class="w-3.5 h-3.5" />
+                <FileText class="w-3.5 h-3.5 shrink-0" />
                 <span>{{ t('hero.resume') }}</span>
               </a>
             </div>
@@ -125,36 +128,36 @@
           <div
             v-else
             key="narrative-stage"
-            class="w-full flex items-end justify-between pointer-events-auto gap-6 sm:gap-10"
+            class="w-full flex items-end justify-between pointer-events-auto gap-4 sm:gap-10"
           >
             <!-- Cinema Editorial Story Block -->
             <div class="w-full max-w-xl lg:max-w-2xl transition-all duration-500">
               <!-- Eyebrow Pill -->
-              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 text-xs font-mono mb-3 bg-black/55 backdrop-blur-md text-zinc-200 shadow-lg">
-                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-                <span class="text-amber-400 font-semibold tracking-wider uppercase">{{ currentPhaseData.phaseNumber }}</span>
-                <span class="text-zinc-500">&bull;</span>
-                <span class="text-zinc-300 tracking-wide">{{ currentPhaseData.tagline }}</span>
+              <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/20 text-[10px] sm:text-xs font-mono mb-2 sm:mb-3 bg-black/55 backdrop-blur-md text-zinc-200 shadow-lg max-w-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
+                <span class="text-amber-400 font-semibold tracking-wider uppercase shrink-0">{{ currentPhaseData.phaseNumber }}</span>
+                <span class="text-zinc-500 shrink-0">&bull;</span>
+                <span class="text-zinc-300 tracking-wide truncate">{{ currentPhaseData.tagline }}</span>
               </div>
 
               <!-- Title -->
-              <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-2 leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+              <h2 class="text-xl xs:text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-2 leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
                 {{ currentPhaseData.title }}
               </h2>
 
               <!-- Description -->
-              <p class="text-xs sm:text-sm text-zinc-200 leading-relaxed mb-4 max-w-xl font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+              <p class="text-xs sm:text-sm text-zinc-200 leading-relaxed mb-3 sm:mb-4 max-w-xl font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] line-clamp-3 xs:line-clamp-none">
                 {{ currentPhaseData.description }}
               </p>
 
               <!-- Tags -->
-              <div class="flex flex-wrap items-center gap-2 font-mono text-[11px]">
+              <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-[10px] sm:text-[11px]">
                 <span
                   v-for="tag in currentPhaseData.tags"
                   :key="tag"
-                  class="px-3 py-1 rounded-full bg-black/55 backdrop-blur-md text-zinc-300 border border-white/15 flex items-center gap-2 shadow-md"
+                  class="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/55 backdrop-blur-md text-zinc-300 border border-white/15 flex items-center gap-1.5 shadow-md"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
                   {{ tag }}
                 </span>
               </div>
@@ -197,14 +200,14 @@
       </div>
 
       <!-- Bottom HUD Scrubber & Stage Navigation -->
-      <div class="relative z-20 w-full px-6 sm:px-12 pb-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
+      <div class="relative z-20 w-full px-3.5 sm:px-12 pb-4 sm:pb-8 flex items-center justify-between gap-2 sm:gap-4 font-mono text-xs">
         <!-- Interactive Phase Jump Pills -->
-        <div class="flex items-center gap-1.5 bg-black/40 backdrop-blur-xl p-1 rounded-full border border-white/10 shadow-xl">
+        <div class="flex items-center gap-1 sm:gap-1.5 bg-black/40 backdrop-blur-xl p-1 rounded-full border border-white/10 shadow-xl max-w-full overflow-x-auto no-scrollbar">
           <button
             v-for="(phase, index) in phases"
             :key="phase.id"
             @click="scrollToPhase(index)"
-            class="px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs transition-all duration-300 flex items-center gap-2 cursor-pointer"
+            class="px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs transition-all duration-300 flex items-center gap-1.5 sm:gap-2 cursor-pointer shrink-0"
             :class="currentPhaseIndex === index
               ? 'bg-amber-400 text-black font-bold shadow-md shadow-amber-400/20'
               : 'text-zinc-400 hover:text-white hover:bg-white/5'"
@@ -215,9 +218,9 @@
         </div>
 
         <!-- Scroll Explore Indicator -->
-        <div class="flex items-center gap-2 text-zinc-400 text-xs">
+        <div class="hidden xs:flex items-center gap-2 text-zinc-400 text-xs shrink-0">
           <span class="uppercase tracking-widest text-[10px]">{{ t('hero.scrollExplore') }}</span>
-          <svg class="w-4 h-4 text-amber-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-3.5 h-3.5 text-amber-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>

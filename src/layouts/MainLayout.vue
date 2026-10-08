@@ -22,10 +22,10 @@
         <!-- Logo -->
         <router-link
           to="/"
-          class="group flex items-center gap-3"
+          class="group flex items-center gap-3 shrink-0"
         >
           <div class="relative">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-bold text-black group-hover:scale-110 transition-transform duration-300">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-bold text-black text-sm sm:text-base group-hover:scale-110 transition-transform duration-300">
               R
             </div>
             <div class="absolute inset-0 rounded-xl bg-amber-500/50 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -54,19 +54,19 @@
         </div>
 
         <!-- Right Side Actions (Desktop & Mobile) -->
-        <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3">
           <!-- Language Switcher Toggle -->
           <LanguageToggle />
 
           <!-- Theme Toggle -->
           <button
             @click="toggleTheme"
-            class="p-2 rounded-full border transition-all duration-200 hover:scale-105"
+            class="p-1.5 xs:p-2 rounded-full border transition-all duration-200 hover:scale-105"
             :class="isDark ? 'bg-zinc-900/80 border-white/10 text-zinc-300 hover:text-white' : 'bg-white border-slate-200 text-slate-700 hover:text-slate-900 shadow-sm'"
             aria-label="Toggle Theme"
           >
-            <Sun v-if="!isDark" class="w-4 h-4 text-amber-500" />
-            <Moon v-else class="w-4 h-4 text-amber-300" />
+            <Sun v-if="!isDark" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-500" />
+            <Moon v-else class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300" />
           </button>
 
           <!-- Command Palette Trigger (Responsive: Desktop pill or Mobile icon) -->
@@ -85,11 +85,11 @@
           <!-- Mobile Menu Button -->
           <button 
             @click="isMobileMenuOpen = !isMobileMenuOpen"
-            class="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
+            class="md:hidden p-1.5 xs:p-2 rounded-lg hover:bg-white/5 transition-colors"
             aria-label="Toggle Navigation Menu"
           >
-            <Menu v-if="!isMobileMenuOpen" class="w-6 h-6" />
-            <X v-else class="w-6 h-6" />
+            <Menu v-if="!isMobileMenuOpen" class="w-5 h-5 sm:w-6 sm:h-6" />
+            <X v-else class="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
       </div>

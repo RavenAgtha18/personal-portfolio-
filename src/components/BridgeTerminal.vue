@@ -46,7 +46,7 @@
     >
       <div v-for="(entry, idx) in history" :key="idx">
         <div v-if="entry.type === 'input'" class="flex items-center gap-2 text-amber-400">
-          <span class="text-emerald-400 hidden xs:inline">guest@bridge-se:~$</span>
+          <span class="text-emerald-400 hidden xs:inline">guest@sysdev:~$</span>
           <span class="text-emerald-400 xs:hidden">~$</span>
           <span>{{ entry.text }}</span>
         </div>
@@ -68,7 +68,7 @@
       class="px-3 sm:px-4 py-2 sm:py-2.5 border-t flex items-center gap-2"
       :class="isDark ? 'border-zinc-800 bg-zinc-950' : 'border-slate-800 bg-slate-950'"
     >
-      <span class="text-emerald-400 text-xs flex-shrink-0 hidden xs:inline">guest@bridge-se:~$</span>
+      <span class="text-emerald-400 text-xs flex-shrink-0 hidden xs:inline">guest@sysdev:~$</span>
       <span class="text-emerald-400 text-xs flex-shrink-0 xs:hidden">~$</span>
       <input
         v-model="inputCommand"

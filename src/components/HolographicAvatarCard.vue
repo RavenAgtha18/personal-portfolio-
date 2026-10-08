@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full max-w-[330px] sm:max-w-[350px] mx-auto select-none perspective-[1200px] living-card-float">
+  <div class="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[350px] mx-auto select-none perspective-[1200px] living-card-float">
     <!-- Ambient Prismatic Flow Glow Aura -->
     <div
       class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-amber-500/25 via-emerald-500/15 to-amber-500/25 blur-2xl opacity-70 pointer-events-none -z-10 animate-pulse"
@@ -56,7 +56,7 @@
         <!-- Photo Element -->
         <img
           src="/img/profile.jpg"
-          alt="Riki Andi Alfiyanto - Bridge Software Engineer"
+          alt="Riki Andi Alfiyanto - System Developer (SysDev)"
           class="w-full h-full object-cover object-center transition-all duration-500"
           :class="[
             activeModeConfig.imgClass,
@@ -69,13 +69,13 @@
         <!-- 1. CYBER HUD OVERLAY -->
         <div
           v-if="currentMode === 'cyber'"
-          class="absolute inset-0 pointer-events-none z-20 flex flex-col justify-between p-6 cyber-overlay"
+          class="absolute inset-0 pointer-events-none z-20 flex flex-col justify-between p-3.5 sm:p-6 cyber-overlay"
         >
           <!-- Scanlines -->
           <div class="absolute inset-0 bg-scanlines opacity-40 pointer-events-none"></div>
 
           <!-- Face Target Box -->
-          <div class="relative w-44 h-48 mx-auto mt-10 border border-emerald-400/80 rounded-lg p-2 flex flex-col justify-between animate-pulse">
+          <div class="relative w-36 xs:w-44 h-38 xs:h-48 mx-auto mt-6 xs:mt-10 border border-emerald-400/80 rounded-lg p-2 flex flex-col justify-between animate-pulse">
             <div class="flex justify-between text-[8px] font-mono text-emerald-400">
               <span>FACE_RECOG: LOCK</span>
               <span>VERIFIED: PASS</span>
@@ -84,7 +84,7 @@
           </div>
 
           <!-- Live Telemetry Tele-text -->
-          <div class="relative z-10 text-[9px] font-mono text-emerald-400 space-y-0.5 bg-black/60 p-2 rounded backdrop-blur-sm border border-emerald-500/30">
+          <div class="relative z-10 text-[8px] xs:text-[9px] font-mono text-emerald-400 space-y-0.5 bg-black/60 p-2 rounded backdrop-blur-sm border border-emerald-500/30">
             <div>TARGET: RIKI ANDI ALFIYANTO</div>
             <div>ROLE: SYSTEM DEVELOPER (SYSDEV) · 2-PERSON TEAM</div>
             <div>BASE: PT. HARRISON AND GIL-JAVA</div>
