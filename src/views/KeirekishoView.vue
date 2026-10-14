@@ -191,7 +191,10 @@
                     前職・経歴
                   </th>
                   <td colspan="3" class="border border-zinc-400 p-0.5 px-1 text-zinc-800 text-[9.5px]">
-                    {{ docData.company.previousExperience }}
+                    <div class="flex items-center justify-between">
+                      <span><strong>2023年01月 ～ 2024年12月</strong>：フルスタックWebエンジニア（受託開発）</span>
+                      <span class="text-zinc-600 font-sans">環境: Laravel, Vue.js, Python, MySQL</span>
+                    </div>
                   </td>
                 </tr>
               </tbody>

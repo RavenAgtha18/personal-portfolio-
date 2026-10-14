@@ -68,7 +68,7 @@ export const shokumuKeirekishoData = {
     employmentType: "正社員",
     position: "社内SE (システムエンジニア)",
     previousExperience:
-      "2023年01月 ～ 2024年12月：フルスタックWebエンジニア（受託開発 / Laravel, Vue.js, Python, MySQLを用いたWebアプリ・自動化ツール開発）",
+      "2023年01月 ～ 2024年12月：フルスタックWebエンジニア（受託開発 / Laravel, Vue.js, Python, MySQL）",
   },
 
   // プロジェクト詳細（2025年2月入社以降、現在も全システム稼働中・継続保守およびエンハンス開発中）
