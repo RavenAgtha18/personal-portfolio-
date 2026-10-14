@@ -11,7 +11,7 @@
         class="inline-flex items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors group text-sm font-medium"
       >
         <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        <span>Back to Work</span>
+        <span>{{ t.backToWork }}</span>
       </router-link>
     </div>
 
@@ -22,29 +22,29 @@
       <header class="mb-12 sm:mb-16 text-center md:text-left" data-aos="fade-up">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-amber mb-5 sm:mb-6">
           <Scissors class="w-4 h-4 text-amber-400" />
-          <span class="text-xs text-amber-300 font-semibold tracking-wider uppercase font-mono">Enterprise Case Study</span>
+          <span class="text-xs text-amber-300 font-semibold tracking-wider uppercase font-mono">{{ t.badge }}</span>
         </div>
         <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 sm:mb-8">
-          Finish-Info – <span class="gradient-text">Material Optimization Engine:</span> <br class="hidden lg:inline"/>
-          Automated Fabric &amp; Cutting List Management
+          {{ t.hero.titlePrefix }} <span class="gradient-text">{{ t.hero.titleHighlight }}</span> <br class="hidden lg:inline"/>
+          {{ t.hero.titleSuffix }}
         </h1>
         
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 p-4 sm:p-6 rounded-2xl glass mt-6 sm:mt-8">
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Role &amp; positioning</span>
-            <span class="text-sm font-semibold text-amber-300">System Developer (SysDev)</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.roleLabel }}</span>
+            <span class="text-sm font-semibold text-amber-300">{{ t.hero.roleValue }}</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Production Facility</span>
-            <span class="text-sm font-semibold text-white">PT. Harrison And Gil-Java</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.facilityLabel }}</span>
+            <span class="text-sm font-semibold text-white">{{ t.hero.facilityValue }}</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Core Tech Stack</span>
-            <span class="text-sm font-semibold text-white">Laravel REST API + Vue 3 SPA</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.stackLabel }}</span>
+            <span class="text-sm font-semibold text-white">{{ t.hero.stackValue }}</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Key Capability</span>
-            <span class="text-sm font-semibold text-green-400">Monthly Output Reporting &amp; Nesting Yields</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.capabilityLabel }}</span>
+            <span class="text-sm font-semibold text-green-400">{{ t.hero.capabilityValue }}</span>
           </div>
         </div>
       </header>
@@ -58,29 +58,29 @@
           <section id="executive-summary" class="scroll-mt-24" data-aos="fade-up">
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3">
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Executive Summary
+              {{ t.exec.title }}
             </h2>
             <div class="space-y-4 text-gray-300 leading-relaxed text-base">
               <p>
-                <strong>Finish-Info</strong> is an enterprise-grade material control and pre-assembly management system built for PT. Harrison And Gil-Java to digitize textile and wood cutting workflows. By centralizing fabric roll allocations, cutting lists, and part dimensions, the system eliminates traditional errors related to outdated paper blueprints.
+                <strong>Finish-Info</strong> – {{ t.exec.p1 }}
               </p>
               <p>
-                The platform operates as a secure gateway for production workers, reading files from local directories and filtering access rights based on the terminal's IP address. This network-level control prevents sensitive proprietary design specifications and cutting layout dimensions from leaking outside the factory floor.
+                {{ t.exec.p2 }}
               </p>
               <p>
-                By moving material calculations and nesting specifications into a reactive digital interface, Finish-Info ensures maximum fabric roll yield rates, optimizes raw material cutting sequences, and generates structured monthly production output reports for plant leadership.
+                {{ t.exec.p3 }}
               </p>
             </div>
 
             <!-- Highlight Stat -->
             <div class="mt-8 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
-                <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">Operational Focus</span>
-                <h3 class="text-lg sm:text-xl font-bold text-white mt-1">Monthly Output Reporting &amp; Yields</h3>
+                <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">{{ t.exec.statFocus }}</span>
+                <h3 class="text-lg sm:text-xl font-bold text-white mt-1">{{ t.exec.statTitle }}</h3>
               </div>
               <div class="text-left sm:text-right">
-                <span class="text-2xl md:text-3xl font-extrabold text-amber-400">Output Sync</span>
-                <span class="text-xs text-gray-400 block">Monthly output summaries &amp; nesting yield records</span>
+                <span class="text-2xl md:text-3xl font-extrabold text-amber-400">{{ t.exec.statHighlight }}</span>
+                <span class="text-xs text-gray-400 block">{{ t.exec.statDesc }}</span>
               </div>
             </div>
           </section>
@@ -89,71 +89,22 @@
           <section id="problems-solved" class="scroll-mt-24" data-aos="fade-up">
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3">
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Operational &amp; Technical Problems Solved
+              {{ t.problems.title }}
             </h2>
             
             <div class="space-y-4">
-              <!-- Problem 1 -->
-              <div class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20">
+              <div
+                v-for="(prob, idx) in t.problems.items"
+                :key="idx"
+                class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20"
+              >
                 <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
-                  <AlertOctagon class="w-5 h-5" />
+                  <component :is="problemIcons[idx % problemIcons.length]" class="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 class="font-semibold text-white mb-1">High-Value Material Waste &amp; Scrap</h4>
+                  <h4 class="font-semibold text-white mb-1">{{ prob.title }}</h4>
                   <p class="text-sm text-gray-400 leading-relaxed">
-                    Upholstering high-end furniture involves using expensive textiles and leather. Without automated yield calculations and precise dimension blueprints, cutting operators often cut excessive lengths from rolls, leaving massive amounts of un-reusable scrap. Finish-Info digitizes the nesting rules to maximize the surface area utilization per roll.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Problem 2 -->
-              <div class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20">
-                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
-                  <FileX class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">Blueprint Desynchronization &amp; Dimension Leakage</h4>
-                  <p class="text-sm text-gray-400 leading-relaxed">
-                    Operators relying on printed cutting sheets frequently cut components using outdated engineering specs, leading to mismatched joints during final assembly. Additionally, printing blueprints risks design piracy. Finish-Info serves PDF assets dynamically to tablets with access restrictions locked to local department IP ranges.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Problem 3 -->
-              <div class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20">
-                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
-                  <RefreshCw class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">Blueprint Version Control Gaps</h4>
-                  <p class="text-sm text-gray-400 leading-relaxed">
-                    Engineering revisions to cutting dimensions were distributed as printed addendums with no audit trail. Operators often worked from superseded specs, producing batches with incorrect joint clearances that required costly re-work or material scrapping during final assembly QC.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Problem 4 -->
-              <div class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20">
-                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
-                  <Database class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">Cross-Department Data Silos</h4>
-                  <p class="text-sm text-gray-400 leading-relaxed">
-                    Fabric procurement, cutting floor, and QC each maintained separate spreadsheets for material tracking. No unified data layer existed to correlate roll consumption with production orders, making it impossible to reconcile material purchases against actual factory floor usage.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Problem 5: Monthly Output Reporting -->
-              <div class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20">
-                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
-                  <BarChart3 class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">Monthly Production Output Reporting Delays</h4>
-                  <p class="text-sm text-gray-400 leading-relaxed">
-                    At month-end, compiling total completed cut pieces and textile consumption required manual physical tally collection from floor supervisors, creating multi-day reporting lag. Finish-Info automates monthly output reporting, aggregating verified cuts, completed work orders, and fabric yield rates into structured monthly summaries for plant leadership.
+                    {{ prob.desc }}
                   </p>
                 </div>
               </div>
@@ -164,17 +115,17 @@
           <section id="database-schema" class="scroll-mt-24" data-aos="fade-up">
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3">
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Database Schema &amp; Access Controls
+              {{ t.schema.title }}
             </h2>
             <p class="text-gray-300 mb-6">
-              The application uses a relational schema containing user access logs, network address controls, and raw fabric specifications to enforce strict access rules on the assembly line.
+              {{ t.schema.intro }}
             </p>
 
             <!-- Table 1: access_controls -->
             <div class="mb-6 rounded-xl glass border border-white/10 overflow-hidden">
               <div class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between">
-                <span>1. Table: access_controls</span>
-                <span class="text-amber-400">IP Filtering &amp; Security</span>
+                <span>{{ t.schema.table1Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table1Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -183,14 +134,16 @@
                       <th class="px-4 py-2">Column Name</th>
                       <th class="px-4 py-2">Type</th>
                       <th class="px-4 py-2">Key</th>
-                      <th class="px-4 py-2">Purpose</th>
+                      <th class="px-4 py-2">{{ isJapanese ? '用途・機能' : 'Purpose' }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300 font-bold">id <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-red-500/20 text-red-400 border border-red-500/30">PK</span></td><td class="px-4 py-2 text-gray-400">BIGINT(20) UNSIGNED</td><td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td><td class="px-4 py-2 text-gray-400">Unique identifier for network control.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">ip_address <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-amber-500/20 text-amber-400 border border-amber-500/30">INDEX</span></td><td class="px-4 py-2 text-gray-400">VARCHAR(45)</td><td class="px-4 py-2 text-amber-400">INDEX</td><td class="px-4 py-2 text-gray-400">Target terminal IP allowed to read blueprints.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">department</td><td class="px-4 py-2 text-gray-400">VARCHAR(100)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Production, QC, or warehouse area logs.</td></tr>
-                    <tr><td class="px-4 py-2 text-white">status <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">VALIDATED</span></td><td class="px-4 py-2 text-gray-400">ENUM('active', 'inactive')</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">IP permission state.</td></tr>
+                    <tr v-for="col in t.schema.table1Cols" :key="col.name" class="border-b border-white/5">
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-amber-300 font-bold' : 'text-white'">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-gray-500' : (col.key && col.key.includes('INDEX') ? 'text-amber-400' : 'text-gray-500')">{{ col.key }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.purpose }}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -199,8 +152,8 @@
             <!-- Table 2: new_fabric -->
             <div class="mb-6 rounded-xl glass border border-white/10 overflow-hidden">
               <div class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between">
-                <span>2. Table: new_fabric</span>
-                <span class="text-amber-400">Fabric Catalog</span>
+                <span>{{ t.schema.table2Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table2Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -209,12 +162,16 @@
                       <th class="px-4 py-2">Column Name</th>
                       <th class="px-4 py-2">Type</th>
                       <th class="px-4 py-2">Key</th>
-                      <th class="px-4 py-2">Purpose</th>
+                      <th class="px-4 py-2">{{ isJapanese ? '用途・機能' : 'Purpose' }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300 font-bold">new_fabric_id <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-red-500/20 text-red-400 border border-red-500/30">PK</span></td><td class="px-4 py-2 text-gray-400">BIGINT(20)</td><td class="px-4 py-2 text-gray-500">PRI</td><td class="px-4 py-2 text-gray-400">Unique fabric ID.</td></tr>
-                    <tr><td class="px-4 py-2 text-white">fabric_name <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">UNIQUE</span></td><td class="px-4 py-2 text-gray-400">VARCHAR(255)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Commercial name of fabric (e.g. Velvet Emerald).</td></tr>
+                    <tr v-for="col in t.schema.table2Cols" :key="col.name" class="border-b border-white/5">
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-amber-300 font-bold' : 'text-white'">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2 text-gray-500">{{ col.key }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.purpose }}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -223,8 +180,8 @@
             <!-- Table 3: new_fabric_barcode -->
             <div class="mb-6 rounded-xl glass border border-white/10 overflow-hidden">
               <div class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between">
-                <span>3. Table: new_fabric_barcode</span>
-                <span class="text-amber-400">Roll Telemetry</span>
+                <span>{{ t.schema.table3Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table3Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -233,13 +190,16 @@
                       <th class="px-4 py-2">Column Name</th>
                       <th class="px-4 py-2">Type</th>
                       <th class="px-4 py-2">Key</th>
-                      <th class="px-4 py-2">Purpose</th>
+                      <th class="px-4 py-2">{{ isJapanese ? '用途・機能' : 'Purpose' }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300 font-bold">id <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-red-500/20 text-red-400 border border-red-500/30">PK</span></td><td class="px-4 py-2 text-gray-400">BIGINT(20)</td><td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td><td class="px-4 py-2 text-gray-400">Unique identifier.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">new_fabric_id <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-purple-500/20 text-purple-400 border border-purple-500/30">FK</span></td><td class="px-4 py-2 text-gray-400">BIGINT(20)</td><td class="px-4 py-2 text-red-400">MUL (FK new_fabric.id)</td><td class="px-4 py-2 text-gray-400">Links roll to fabric catalog.</td></tr>
-                    <tr><td class="px-4 py-2 text-white">barcode <span class="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-amber-500/20 text-amber-400 border border-amber-500/30">INDEX</span></td><td class="px-4 py-2 text-gray-400">VARCHAR(255)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Barcode attached to the specific roll.</td></tr>
+                    <tr v-for="col in t.schema.table3Cols" :key="col.name" class="border-b border-white/5">
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-amber-300 font-bold' : 'text-white'">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-gray-500' : (col.key && col.key.includes('MUL') ? 'text-red-400' : (col.key && col.key.includes('INDEX') ? 'text-amber-400' : 'text-gray-500'))">{{ col.key }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.purpose }}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -251,10 +211,10 @@
             <div>
               <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 text-white border-b border-white/10 pb-3">
                 <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-                Interactive Fabric &amp; Cutting List Simulator
+                {{ t.sim.title }}
               </h2>
               <p class="text-gray-300">
-                Select a luxury furniture item to load its automated cutting dimensions blueprint. Adjust the length of fabric cut from the roll to run a real-time yield rate optimization calculation.
+                {{ t.sim.desc }}
               </p>
             </div>
 
@@ -266,13 +226,13 @@
                 <div class="flex items-center gap-3">
                   <Boxes class="w-5 h-5 text-amber-400" />
                   <div class="text-left">
-                    <span class="text-[10px] text-gray-400 uppercase block">Product Selector</span>
+                    <span class="text-[10px] text-gray-400 uppercase block">{{ t.sim.productSelector }}</span>
                     <select 
                       v-model="selectedItemName" 
                       class="bg-transparent text-white font-bold text-sm focus:outline-none"
                     >
                       <option v-for="(item, key) in furnitureItems" :key="key" :value="key" class="bg-neutral-900 text-white">
-                        {{ item.name }}
+                        {{ isJapanese ? item.nameJa : item.name }}
                       </option>
                     </select>
                   </div>
@@ -280,7 +240,7 @@
 
                 <div class="flex items-center gap-6">
                   <div class="text-right">
-                    <span class="text-[10px] text-gray-400 block uppercase">Fabric Standard Width</span>
+                    <span class="text-[10px] text-gray-400 block uppercase">{{ t.sim.standardWidth }}</span>
                     <span class="text-xs font-mono font-bold text-white">140 cm (1.4m)</span>
                   </div>
                 </div>
@@ -289,19 +249,19 @@
               <!-- Dimensions List -->
               <div class="mb-8">
                 <h4 class="text-xs font-mono font-bold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-1.5">
-                  <Ruler class="w-4 h-4 text-amber-500" /> Wood Frame Cutting Specifications
+                  <Ruler class="w-4 h-4 text-amber-500" /> {{ t.sim.woodTableTitle }}
                 </h4>
                 
                 <div class="overflow-x-auto rounded-xl bg-[#0c0c0c] border border-white/5">
                   <table class="w-full text-left font-mono text-xs">
                     <thead>
                       <tr class="bg-white/5 text-gray-400 border-b border-white/5">
-                        <th class="p-3">Component</th>
-                        <th class="p-3 text-right">Length (cm)</th>
-                        <th class="p-3 text-right">Width (cm)</th>
-                        <th class="p-3 text-right">Thickness (cm)</th>
-                        <th class="p-3 text-right">Quantity</th>
-                        <th class="p-3">Material</th>
+                        <th class="p-3">{{ t.sim.thComponent }}</th>
+                        <th class="p-3 text-right">{{ t.sim.thLength }}</th>
+                        <th class="p-3 text-right">{{ t.sim.thWidth }}</th>
+                        <th class="p-3 text-right">{{ t.sim.thThickness }}</th>
+                        <th class="p-3 text-right">{{ t.sim.thQty }}</th>
+                        <th class="p-3">{{ t.sim.thMaterial }}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -310,12 +270,12 @@
                         :key="cut.part"
                         class="border-b border-white/5 text-gray-300"
                       >
-                        <td class="p-3 text-white font-semibold">{{ cut.part }}</td>
+                        <td class="p-3 text-white font-semibold">{{ isJapanese ? cut.partJa : cut.part }}</td>
                         <td class="p-3 text-right">{{ cut.l }}</td>
                         <td class="p-3 text-right">{{ cut.w }}</td>
                         <td class="p-3 text-right">{{ cut.t }}</td>
                         <td class="p-3 text-right font-bold text-amber-400">x{{ cut.qty }}</td>
-                        <td class="p-3 text-gray-400">{{ cut.material }}</td>
+                        <td class="p-3 text-gray-400">{{ isJapanese ? cut.materialJa : cut.material }}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -326,20 +286,20 @@
               <div v-if="activeItem.fabricName !== 'None'" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[#0e0e0e] border border-white/5 p-5 rounded-xl">
                 
                 <div class="space-y-4">
-                  <h4 class="text-xs font-bold text-white uppercase tracking-wider">Fabric Nesting Optimizer</h4>
+                  <h4 class="text-xs font-bold text-white uppercase tracking-wider">{{ t.sim.nestingTitle }}</h4>
                   
                   <div class="space-y-1">
-                    <span class="text-[10px] text-gray-400 block uppercase">Fabric Required for Pattern</span>
+                    <span class="text-[10px] text-gray-400 block uppercase">{{ t.sim.fabricRequired }}</span>
                     <span class="text-sm font-semibold text-white">
-                      {{ activeItem.fabricName }} — <span class="text-amber-400 font-mono">{{ activeItem.requiredMeters }} meters</span>
+                      {{ isJapanese ? activeItem.fabricNameJa : activeItem.fabricName }} — <span class="text-amber-400 font-mono">{{ activeItem.requiredMeters }} {{ isJapanese ? 'メートル' : 'meters' }}</span>
                     </span>
                   </div>
 
                   <!-- Range Slider to adjust cut length -->
                   <div class="space-y-2">
                     <div class="flex justify-between text-xs font-mono">
-                      <span class="text-gray-400">Allocated Cut Length:</span>
-                      <strong class="text-white">{{ allocatedLength }} meters</strong>
+                      <span class="text-gray-400">{{ t.sim.allocatedLength }}</span>
+                      <strong class="text-white">{{ allocatedLength }} {{ isJapanese ? 'メートル' : 'meters' }}</strong>
                     </div>
                     <input 
                       type="range" 
@@ -347,7 +307,7 @@
                       :min="activeItem.requiredMeters - 1" 
                       :max="activeItem.requiredMeters + 4" 
                       step="0.1" 
-                      class="w-full accent-amber-500 bg-white/10 rounded-lg appearance-none h-2"
+                      class="w-full accent-amber-500 bg-white/10 rounded-lg appearance-none h-2 cursor-pointer"
                     />
                   </div>
 
@@ -357,20 +317,20 @@
                       class="px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold rounded-lg text-xs transition-all flex items-center gap-1"
                     >
                       <CheckCircle2 class="w-3.5 h-3.5" />
-                      <span>Nesting Auto-Layout</span>
+                      <span>{{ t.sim.btnAutoLayout }}</span>
                     </button>
                     <button 
                       @click="resetYieldLength" 
                       class="px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs text-gray-300 font-mono"
                     >
-                      Reset
+                      {{ t.sim.btnReset }}
                     </button>
                   </div>
                 </div>
 
                 <!-- Yield Meter Graphic -->
                 <div class="flex flex-col justify-center items-center p-4 border border-white/5 rounded-xl bg-black/40 text-center space-y-3">
-                  <span class="text-[10px] text-gray-400 uppercase tracking-widest block">Material Yield Rate</span>
+                  <span class="text-[10px] text-gray-400 uppercase tracking-widest block">{{ t.sim.yieldRateLabel }}</span>
                   
                   <!-- Circle or Bar Gauge -->
                   <div class="relative w-full">
@@ -395,7 +355,7 @@
               </div>
               
               <div v-else class="p-6 rounded-xl bg-[#0e0e0e] border border-white/5 text-center text-gray-400 text-xs font-mono">
-                * Selected item (CG Modern Dining Table) requires wood-only cuts and is upholstery-free. Fabric yield calculations omitted.
+                {{ t.sim.woodOnlyNote }}
               </div>
 
             </div>
@@ -408,29 +368,29 @@
           <!-- Business Impact -->
           <div class="p-6 rounded-2xl glass border border-white/10" data-aos="fade-left">
             <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-              <Sparkles class="w-5 h-5 text-amber-400" /> Business Impact
+              <Sparkles class="w-5 h-5 text-amber-400" /> {{ isJapanese ? '業務革新・導入効果' : 'Business Impact' }}
             </h3>
             
             <ul class="space-y-4">
               <li class="flex items-start gap-3">
                 <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                 <div>
-                  <h4 class="text-sm font-semibold text-white">100% Precision on Cutting Allocation</h4>
-                  <p class="text-xs text-gray-400 mt-0.5">Eliminates manual blueprint reading errors. Every fabric roll and wood cut is digitally calculated to exact dimensions, reducing scrap to near zero.</p>
+                  <h4 class="text-sm font-semibold text-white">{{ t.sim.impact1Title }}</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">{{ t.sim.impact1Desc }}</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
                 <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                 <div>
-                  <h4 class="text-sm font-semibold text-white">Zero Blueprint Leakage</h4>
-                  <p class="text-xs text-gray-400 mt-0.5">IP-fenced terminal access ensures proprietary cutting dimensions and nesting layouts never leave the factory floor network.</p>
+                  <h4 class="text-sm font-semibold text-white">{{ t.sim.impact2Title }}</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">{{ t.sim.impact2Desc }}</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
                 <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                 <div>
-                  <h4 class="text-sm font-semibold text-white">Unified Material Tracking</h4>
-                  <p class="text-xs text-gray-400 mt-0.5">Replaces fragmented spreadsheets with a single relational schema linking fabric rolls, barcodes, and cutting orders across procurement, cutting floor, and QC.</p>
+                  <h4 class="text-sm font-semibold text-white">{{ t.sim.impact3Title }}</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">{{ t.sim.impact3Desc }}</p>
                 </div>
               </li>
             </ul>
@@ -439,29 +399,19 @@
           <!-- Key Features -->
           <div class="p-6 rounded-2xl glass border border-white/10" data-aos="fade-left" data-aos-delay="50">
             <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-              <CheckCircle2 class="w-5 h-5 text-amber-400" /> Key Features
+              <CheckCircle2 class="w-5 h-5 text-amber-400" /> {{ t.features.title }}
             </h3>
             
             <ul class="space-y-4">
-              <li class="flex items-start gap-3">
+              <li
+                v-for="(item, idx) in t.features.items"
+                :key="idx"
+                class="flex items-start gap-3"
+              >
                 <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                 <div>
-                  <h4 class="text-sm font-semibold text-white">Directory-File Integration</h4>
-                  <p class="text-xs text-gray-400 mt-0.5">Scans local system storage data folders directly, avoiding database duplication for large engineering documents.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">Nesting Yield Analytics</h4>
-                  <p class="text-xs text-gray-400 mt-0.5">Calculates optimal cutting lists from fabric rolls and wood pieces to reduce raw scrap overhead.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">IP-Fenced Gateways</h4>
-                  <p class="text-xs text-gray-400 mt-0.5">Restricts display access to sensitive cutting dimension records to registered factory floor terminals.</p>
+                  <h4 class="text-sm font-semibold text-white">{{ item.title }}</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">{{ item.desc }}</p>
                 </div>
               </li>
             </ul>
@@ -469,24 +419,24 @@
 
           <!-- Project Specs -->
           <div class="p-6 rounded-2xl glass border border-white/10" data-aos="fade-left" data-aos-delay="100">
-            <h3 class="text-lg font-bold text-white mb-4">Project Telemetry</h3>
+            <h3 class="text-lg font-bold text-white mb-4">{{ t.telemetry.title }}</h3>
             
             <div class="space-y-3 text-xs border-b border-white/5 pb-4 mb-4">
               <div class="flex justify-between">
-                <span class="text-gray-400">Backend API</span>
-                <span class="text-white font-mono">Laravel 11 / PHP 8.2</span>
+                <span class="text-gray-400">{{ isJapanese ? 'バックエンドAPI' : 'Backend API' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.backend }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Frontend Client</span>
-                <span class="text-white font-mono">Vue 3 / Blade Views</span>
+                <span class="text-gray-400">{{ isJapanese ? 'フロントエンド' : 'Frontend Client' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.frontend }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Database Layer</span>
-                <span class="text-white font-mono">MySQL 8 / InnoDB</span>
+                <span class="text-gray-400">{{ isJapanese ? 'データベース基盤' : 'Database Layer' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.database }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Authorization</span>
-                <span class="text-white font-mono">IP Address Filter table</span>
+                <span class="text-gray-400">{{ isJapanese ? 'アクセス権限制御' : 'Authorization' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.auth }}</span>
               </div>
             </div>
 
@@ -496,7 +446,7 @@
               class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-colors flex items-center justify-center gap-2 text-xs font-semibold"
             >
               <Github class="w-4 h-4" />
-              <span>Explore GitHub Repository</span>
+              <span>{{ t.telemetry.viewGithub }}</span>
             </a>
           </div>
         </div>
@@ -512,17 +462,24 @@ import {
   ArrowLeft, 
   Scissors, 
   Ruler, 
-  Boxes,
-  AlertOctagon,
-  FileX,
-  RefreshCw,
-  Database,
-  CheckCircle2,
-  Sparkles,
-  Check,
-  BarChart3,
-  Github
+  Boxes, 
+  AlertOctagon, 
+  FileX, 
+  RefreshCw, 
+  Database, 
+  CheckCircle2, 
+  Sparkles, 
+  Check, 
+  BarChart3, 
+  Github 
 } from 'lucide-vue-next'
+import { useLanguage } from '@/composables/useLanguage'
+import { finishInfoI18n } from '@/locales/caseStudies/finishInfo'
+
+const { isJapanese } = useLanguage()
+const t = computed(() => (isJapanese.value ? finishInfoI18n.ja : finishInfoI18n.en))
+
+const problemIcons = [AlertOctagon, FileX, RefreshCw, Database, BarChart3]
 
 // localStorage Persistence Helpers
 const STORAGE_KEY = 'finishinfo_simulator_state';
@@ -546,33 +503,39 @@ const persistState = (state) => {
 const furnitureItems = {
   sofa: {
     name: 'Signature Chesterfield Sofa',
+    nameJa: 'シグネチャー・チェスターフィールドソファ',
     fabricName: 'Velvet Emerald',
+    fabricNameJa: 'エメラルド・ベルベット',
     requiredMeters: 8.5,
     woodCuts: [
-      { part: 'Main Backrest Frame', l: 180, w: 45, t: 4, qty: 1, material: 'Premium Mahogany' },
-      { part: 'Bottom Seat Base Beams', l: 200, w: 15, t: 5, qty: 2, material: 'Premium Mahogany' },
-      { part: 'Curved Armrest Blocks', l: 80, w: 30, t: 6, qty: 2, material: 'Premium Mahogany' },
-      { part: 'Support Leg Corner Blocks', l: 15, w: 15, t: 8, qty: 4, material: 'Mahogany Block' }
+      { part: 'Main Backrest Frame', partJa: 'メイン背もたれフレーム', l: 180, w: 45, t: 4, qty: 1, material: 'Premium Mahogany', materialJa: '最高級マホガニー' },
+      { part: 'Bottom Seat Base Beams', partJa: '座面構造支持梁', l: 200, w: 15, t: 5, qty: 2, material: 'Premium Mahogany', materialJa: '最高級マホガニー' },
+      { part: 'Curved Armrest Blocks', partJa: '曲線アームレスト芯材', l: 80, w: 30, t: 6, qty: 2, material: 'Premium Mahogany', materialJa: '最高級マホガニー' },
+      { part: 'Support Leg Corner Blocks', partJa: '脚部補強コーナーブロック', l: 15, w: 15, t: 8, qty: 4, material: 'Mahogany Block', materialJa: 'マホガニーブロック' }
     ]
   },
   loungeChair: {
     name: 'Signature Lounge Chair',
+    nameJa: 'シグネチャー・ラウンジチェア',
     fabricName: 'CG Classic Linen',
+    fabricNameJa: 'CGクラシック・リネン',
     requiredMeters: 4.2,
     woodCuts: [
-      { part: 'Curved Backrest Staves', l: 90, w: 60, t: 3, qty: 1, material: 'Solid Teakwood' },
-      { part: 'Saddle Seat Panel', l: 65, w: 60, t: 4, qty: 1, material: 'Solid Teakwood' },
-      { part: 'Tapered Support Legs', l: 45, w: 8, t: 8, qty: 4, material: 'Solid Teakwood' }
+      { part: 'Curved Backrest Staves', partJa: '背もたれ湾曲リブ材', l: 90, w: 60, t: 3, qty: 1, material: 'Solid Teakwood', materialJa: '無垢チーク材' },
+      { part: 'Saddle Seat Panel', partJa: 'サドル座面構造パネル', l: 65, w: 60, t: 4, qty: 1, material: 'Solid Teakwood', materialJa: '無垢チーク材' },
+      { part: 'Tapered Support Legs', partJa: 'テーパー脚支柱', l: 45, w: 8, t: 8, qty: 4, material: 'Solid Teakwood', materialJa: '無垢チーク材' }
     ]
   },
   diningTable: {
     name: 'CG Modern Dining Table',
+    nameJa: 'CGモダン・無垢ダイニングテーブル',
     fabricName: 'None',
+    fabricNameJa: 'なし（木工品）',
     requiredMeters: 0,
     woodCuts: [
-      { part: 'Slab Top Panel', l: 220, w: 100, t: 4, qty: 1, material: 'Prime Grade Teak' },
-      { part: 'Under-top Supporting Rails', l: 190, w: 10, t: 5, qty: 2, material: 'Prime Grade Teak' },
-      { part: 'Heavy Dining Table Legs', l: 75, w: 12, t: 12, qty: 4, material: 'Solid Teak Pillar' }
+      { part: 'Slab Top Panel', partJa: '無垢天板スラブパネル', l: 220, w: 100, t: 4, qty: 1, material: 'Prime Grade Teak', materialJa: '特級チーク材' },
+      { part: 'Under-top Supporting Rails', partJa: '天板下補強幕板', l: 190, w: 10, t: 5, qty: 2, material: 'Prime Grade Teak', materialJa: '特級チーク材' },
+      { part: 'Heavy Dining Table Legs', partJa: '角脚メインピラー', l: 75, w: 12, t: 12, qty: 4, material: 'Solid Teak Pillar', materialJa: 'チーク無垢柱材' }
     ]
   }
 }
@@ -595,7 +558,6 @@ onMounted(() => {
   }
 });
 
-// Watch item changes to adjust initial allocated length and persist state
 watch(selectedItemName, (newVal) => {
   allocatedLength.value = furnitureItems[newVal].requiredMeters
   persistState({ selectedItemName: newVal, allocatedLength: allocatedLength.value });
@@ -612,13 +574,10 @@ const yieldRate = computed(() => {
   
   if (alloc <= 0) return 0
   
-  // Calculate relative yield efficiency
   if (alloc < req) {
-    // Insufficient fabric allocation
     const ratio = (alloc / req) * 100
-    return Math.round(ratio * 0.7) // Heavily penalize insufficient layouts
+    return Math.round(ratio * 0.7)
   } else {
-    // Normal to wasteful layouts
     const diff = alloc - req
     const efficiency = 100 - (diff / req) * 100
     return Math.max(Math.round(efficiency), 0)
@@ -627,10 +586,12 @@ const yieldRate = computed(() => {
 
 const yieldStatusText = computed(() => {
   const y = yieldRate.value
-  if (allocatedLength.value < activeItem.value.requiredMeters) return 'INSUFFICIENT MATERIAL'
-  if (y >= 85) return 'OPTIMAL RETENTION'
-  if (y >= 70) return 'SUB-OPTIMAL LAYOUT'
-  return 'EXCESS MATERIAL WASTE'
+  if (allocatedLength.value < activeItem.value.requiredMeters) {
+    return isJapanese.value ? '生地不足（裁断不可）' : 'INSUFFICIENT MATERIAL'
+  }
+  if (y >= 85) return isJapanese.value ? '最適歩留まり（高効率）' : 'OPTIMAL RETENTION'
+  if (y >= 70) return isJapanese.value ? '準最適（軽微な余剰あり）' : 'SUB-OPTIMAL LAYOUT'
+  return isJapanese.value ? '過剰廃棄（不経済な木取り）' : 'EXCESS MATERIAL WASTE'
 })
 
 const yieldColorClass = computed(() => {
@@ -652,17 +613,25 @@ const yieldProgressColor = computed(() => {
 const yieldFeedbackMsg = computed(() => {
   if (allocatedLength.value < activeItem.value.requiredMeters) {
     const diff = (activeItem.value.requiredMeters - allocatedLength.value).toFixed(1)
-    return `⚠️ Insufficient material length! You need at least ${diff} meters more to cover this furniture pattern.`
+    return isJapanese.value
+      ? `⚠️ 生地長が不足しています！この家具の木取りにはあと ${diff} メートル必要です。`
+      : `⚠️ Insufficient material length! You need at least ${diff} meters more to cover this furniture pattern.`
   }
   
   const y = yieldRate.value
   if (y >= 85) {
-    return '✅ Nesting pattern fits perfectly. Cutting scraps are kept within factory standard allowance.'
+    return isJapanese.value
+      ? '✅ 裁断ネスティングが最適に収まっています。端材ロスは工場基準内に抑えられています。'
+      : '✅ Nesting pattern fits perfectly. Cutting scraps are kept within factory standard allowance.'
   }
   if (y >= 70) {
-    return '⚠️ Fabric layout is somewhat inefficient. Consider adjusting the nesting rows to save material.'
+    return isJapanese.value
+      ? '⚠️ やや余剰が発生しています。ネスティング配列を微調整することで材料費を削減できます。'
+      : '⚠️ Fabric layout is somewhat inefficient. Consider adjusting the nesting rows to save material.'
   }
-  return '❌ High fabric wastage! The current cut length results in massive unusable scrap pieces.'
+  return isJapanese.value
+    ? '❌ 端材ロスが過大です！現在の切り出し長さでは再利用困難な廃棄スクラップが大量に発生します。'
+    : '❌ High fabric wastage! The current cut length results in massive unusable scrap pieces.'
 })
 
 const optimizeLayout = () => {

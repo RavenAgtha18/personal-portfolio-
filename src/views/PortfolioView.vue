@@ -4,26 +4,26 @@
     <section class="pt-16 sm:pt-20 pb-6 sm:pb-8 px-4 sm:px-6">
       <div class="max-w-5xl mx-auto text-center">
         <div
-          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono mb-4 border border-zinc-800 bg-zinc-900/40 text-zinc-400"
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono mb-4 border border-slate-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/40 text-slate-700 dark:text-zinc-400 shadow-sm dark:shadow-none"
         >
           <FolderOpen class="w-3.5 h-3.5 text-amber-500" />
           <span>{{ messages?.portfolio?.badge || 'Project Index & Case Studies' }}</span>
         </div>
 
-        <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3 text-white">
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3 text-slate-900 dark:text-white">
           {{ messages?.portfolio?.title || 'Engineering Architecture Portfolio' }}
         </h1>
 
-        <p class="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
           {{ messages?.portfolio?.desc || 'Comprehensive catalog of manufacturing MES integrations, financial applications, and specialized systems.' }}
         </p>
 
         <!-- View Toggle -->
-        <div class="inline-flex p-0.5 sm:p-1 rounded-xl border border-zinc-800 bg-zinc-900/60 text-[11px] sm:text-xs font-mono max-w-full">
+        <div class="inline-flex p-0.5 sm:p-1 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-200/70 dark:bg-zinc-900/60 text-[11px] sm:text-xs font-mono max-w-full shadow-inner">
           <button
             @click="activeMode = 'portfolio'"
             class="px-3 sm:px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 font-medium"
-            :class="activeMode === 'portfolio' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'"
+            :class="activeMode === 'portfolio' ? 'bg-white dark:bg-zinc-800 text-slate-900 dark:text-white shadow-sm' : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-200'"
           >
             <Grid3x3 class="w-3.5 h-3.5 text-amber-500" />
             {{ messages?.portfolio?.viewProjects || 'Projects View' }}
@@ -31,7 +31,7 @@
           <button
             @click="activeMode = 'dashboard'"
             class="px-3 sm:px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 font-medium"
-            :class="activeMode === 'dashboard' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'"
+            :class="activeMode === 'dashboard' ? 'bg-white dark:bg-zinc-800 text-slate-900 dark:text-white shadow-sm' : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-200'"
           >
             <BarChart3 class="w-3.5 h-3.5 text-amber-500" />
             {{ messages?.portfolio?.viewMatrix || 'Architecture Matrix' }}
@@ -56,8 +56,8 @@
             class="px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-mono transition-colors border"
             :class="[
               activeFilter === filter.key
-                ? 'bg-zinc-100 text-zinc-950 font-semibold border-zinc-100'
-                : 'bg-zinc-900/40 text-zinc-400 border-zinc-800/80 hover:border-zinc-700 hover:text-zinc-200'
+                ? 'bg-amber-500 text-black font-semibold border-amber-500 shadow-sm'
+                : 'bg-white dark:bg-zinc-900/40 text-slate-700 dark:text-zinc-400 border-slate-200 dark:border-zinc-800/80 hover:border-slate-300 dark:hover:border-zinc-700 hover:text-slate-900 dark:hover:text-zinc-200 shadow-sm dark:shadow-none'
             ]"
           >
             {{ filter.label }}

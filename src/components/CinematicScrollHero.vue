@@ -217,13 +217,17 @@
           </button>
         </div>
 
-        <!-- Scroll Explore Indicator -->
-        <div class="hidden xs:flex items-center gap-2 text-zinc-400 text-xs shrink-0">
-          <span class="uppercase tracking-widest text-[10px]">{{ t('hero.scrollExplore') }}</span>
-          <svg class="w-3.5 h-3.5 text-amber-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Interactive Skip to Projects Pill -->
+        <button
+          @click="scrollToProjects"
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/55 hover:bg-black/80 backdrop-blur-xl border border-white/15 hover:border-amber-400/50 text-zinc-300 hover:text-amber-300 transition-all text-[10px] sm:text-xs shrink-0 cursor-pointer shadow-lg group pointer-events-auto"
+          title="Directly view projects catalog"
+        >
+          <span class="uppercase tracking-wider font-mono">{{ isJapanese ? '実績一覧へスキップ' : 'Skip to Projects' }}</span>
+          <svg class="w-3.5 h-3.5 text-amber-400 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
-        </div>
+        </button>
       </div>
     </div>
   </section>
@@ -238,7 +242,7 @@ import {
 } from "lucide-vue-next";
 import { useLanguage } from "@/composables/useLanguage";
 
-const { t, messages } = useLanguage();
+const { t, messages, isJapanese } = useLanguage();
 
 const sectionRef = ref(null);
 const canvasRef = ref(null);

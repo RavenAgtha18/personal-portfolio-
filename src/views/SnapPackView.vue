@@ -13,7 +13,7 @@
         <ArrowLeft
           class="w-4 h-4 group-hover:-translate-x-1 transition-transform"
         />
-        <span>Back to Work</span>
+        <span>{{ t.backToWork }}</span>
       </router-link>
     </div>
 
@@ -27,17 +27,16 @@
           <Layers class="w-4 h-4 text-amber-400" />
           <span
             class="text-xs text-amber-300 font-semibold tracking-wider uppercase font-mono"
-            >Enterprise Case Study</span
+            >{{ t.badge }}</span
           >
         </div>
         <h1
           class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 sm:mb-8"
         >
-          SnapPack –
-          <span class="gradient-text">End-to-End Digital Transformation:</span>
+          {{ t.hero.titlePrefix }}
+          <span class="gradient-text">{{ t.hero.titleHighlight }}</span>
           <br class="hidden lg:inline" />
-          Securing Luxury Product Media &amp; Audit Trail via Laravue
-          Architecture
+          {{ t.hero.titleSuffix }}
         </h1>
 
         <div
@@ -45,30 +44,30 @@
         >
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Role &amp; Positioning</span
+              >{{ t.hero.roleLabel }}</span
             >
             <span class="text-sm font-semibold text-amber-300"
-              >System Developer (SysDev)</span
+              >{{ t.hero.roleValue }}</span
             >
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Company Profile</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.companyLabel }}</span>
             <span class="text-sm font-semibold text-white"
-              >PT. Harrison And Gil-Java</span
+              >{{ t.hero.companyValue }}</span
             >
           </div>
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Core Tech Stack</span
+              >{{ t.hero.stackLabel }}</span
             >
             <span class="text-sm font-semibold text-white"
-              >Laravue (Laravel + Vue 3 SPA)</span
+              >{{ t.hero.stackValue }}</span
             >
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Operational Impact</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.impactLabel }}</span>
             <span class="text-sm font-semibold text-green-400"
-              >EUDR Traceability &amp; Digital Signatures</span
+              >{{ t.hero.impactValue }}</span
             >
           </div>
         </div>
@@ -87,28 +86,17 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Executive Summary
+              {{ t.exec.title }}
             </h2>
             <div class="space-y-4 text-gray-300 leading-relaxed text-base">
               <p>
-                <strong>SnapPack</strong> is an enterprise-grade digital logging
-                and media tracking system built from the ground up to secure the
-                shipping documentation pipeline for luxury furniture manufacturing.
-                By digitizing camera-to-server file logs at shipping stations, the
-                system acts as a single point of truth linking packing operators,
-                IT verifiers, and logistics managers.
+                <strong>SnapPack</strong> – {{ t.exec.p1 }}
               </p>
               <p>
-                The primary objective is to replace error-prone physical memory
-                card transfers with a robust, auditable digital workflow. Every
-                photo or video asset transferred is cataloged with precise
-                telemetry, operator logs, and a binding digital signature to
-                create an immutable audit trail.
+                {{ t.exec.p2 }}
               </p>
               <p>
-                The resulting digital transformation has eliminated lost visual
-                proof of product quality, protecting against cargo damage disputes
-                and providing instant searchable shipping media records.
+                {{ t.exec.p3 }}
               </p>
             </div>
 
@@ -119,18 +107,18 @@
               <div>
                 <span
                   class="text-xs text-amber-400 block font-mono uppercase tracking-wider"
-                  >Operational Highlight</span
+                  >{{ t.exec.statFocus }}</span
                 >
                 <h3 class="text-xl font-bold text-white mt-1">
-                  Centralized Retrieval Architecture
+                  {{ t.exec.statTitle }}
                 </h3>
               </div>
               <div class="text-right">
                 <span class="text-lg md:text-xl font-extrabold text-amber-400 font-mono"
-                  >DIRECT SEARCH</span
+                  >{{ t.exec.statHighlight }}</span
                 >
                 <span class="text-xs text-gray-400 block"
-                  >Instant manifest &amp; photo lookup</span
+                  >{{ t.exec.statDesc }}</span
                 >
               </div>
             </div>
@@ -146,78 +134,29 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              The Business Problem
+              {{ t.problems.title }}
             </h2>
             <p class="text-gray-300 mb-6">
-              The manufacturer's high-value exports require strict visual quality
-              documentation (photos and videos) at packing stations to verify
-              items are free from damage before container load-in. However,
-              legacy paper-and-card workflows introduced critical operational
-              vulnerabilities:
+              {{ t.problems.intro }}
             </p>
 
             <div class="space-y-4">
-              <!-- Bottleneck 1 -->
               <div
+                v-for="(prob, idx) in t.problems.items"
+                :key="idx"
                 class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20"
               >
                 <div
                   class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400"
                 >
-                  <AlertOctagon class="w-5 h-5" />
+                  <component :is="problemIcons[idx % problemIcons.length]" class="w-5 h-5" />
                 </div>
                 <div>
                   <h4 class="font-semibold text-white mb-1">
-                    Missing SD Cards &amp; Lost Media
+                    {{ prob.title }}
                   </h4>
                   <p class="text-sm text-gray-400">
-                    Operators had to physically transport SD cards from cameras
-                    to the IT room at the end of each shift. This resulted in
-                    frequent media misplacement, card damage, and unrecoverable
-                    packing records.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Bottleneck 2 -->
-              <div
-                class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20"
-              >
-                <div
-                  class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400"
-                >
-                  <FileX class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">
-                    Zero Audit Trail for Claim Defense
-                  </h4>
-                  <p class="text-sm text-gray-400">
-                    Without structured timestamps, verified names of transfer
-                    operators, or digital signatures, claims by international
-                    cargo handlers of "pre-shipping damage" could not be
-                    disproven reliably.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Bottleneck 3 -->
-              <div
-                class="flex gap-4 p-4 rounded-xl bg-red-950/20 border border-red-500/20"
-              >
-                <div
-                  class="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400"
-                >
-                  <RefreshCw class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">
-                    Production-Logistics Desynchronization
-                  </h4>
-                  <p class="text-sm text-gray-400">
-                    The number of items boxed on the production floor often
-                    desynchronized from the actual media counts copied to
-                    servers, leading to delayed audits and shipment holds.
+                    {{ prob.desc }}
                   </p>
                 </div>
               </div>
@@ -230,44 +169,37 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Architecture &amp; Technical Innovation
+              {{ t.arch.title }}
             </h2>
 
             <div class="space-y-6 text-gray-300">
               <p>
-                To resolve these bottlenecks, we designed a decoupled
-                <strong>Laravue Architecture</strong>: a lightweight
-                <strong>Laravel API</strong> backend paired with a
-                high-performance <strong>Vue.js SPA</strong> frontend deployed
-                on terminal tablets right at the packing floor.
+                {{ t.arch.intro }}
               </p>
 
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
                 <div class="p-4 rounded-xl glass border-t-2 border-amber-500">
                   <h4 class="font-semibold text-white mb-1">
-                    Decoupled Security
+                    {{ t.arch.card1Title }}
                   </h4>
                   <p class="text-xs text-gray-400">
-                    Protects the central database from directly facing the
-                    factory network terminals via stateless API auth.
+                    {{ t.arch.card1Desc }}
                   </p>
                 </div>
                 <div class="p-4 rounded-xl glass border-t-2 border-amber-500">
                   <h4 class="font-semibold text-white mb-1">
-                    Role-Based Gateways
+                    {{ t.arch.card2Title }}
                   </h4>
                   <p class="text-xs text-gray-400">
-                    Restricts media log editing, approval actions, and
-                    statistical views based on verified user profiles.
+                    {{ t.arch.card2Desc }}
                   </p>
                 </div>
                 <div class="p-4 rounded-xl glass border-t-2 border-amber-500">
                   <h4 class="font-semibold text-white mb-1">
-                    Optimized Indexing
+                    {{ t.arch.card3Title }}
                   </h4>
                   <p class="text-xs text-gray-400">
-                    Implements relational indexing on date, department, and
-                    shipper fields to retrieve logs instantly.
+                    {{ t.arch.card3Desc }}
                   </p>
                 </div>
               </div>
@@ -278,7 +210,7 @@
               <h3
                 class="text-lg font-semibold mb-4 text-amber-400 flex items-center gap-2"
               >
-                <Network class="w-4 h-4" /> Data Flow Sequence Diagram
+                <Network class="w-4 h-4" /> {{ t.arch.diagTitle }}
               </h3>
 
               <div class="p-6 rounded-2xl glass overflow-x-auto">
@@ -289,10 +221,10 @@
                   <div
                     class="grid grid-cols-4 text-center font-bold text-white border-b border-white/10 pb-2"
                   >
-                    <div>1. Operator Tablet</div>
-                    <div>2. Vue SPA Router</div>
-                    <div>3. Laravel REST API</div>
-                    <div>4. Database Server</div>
+                    <div>{{ t.arch.col1 }}</div>
+                    <div>{{ t.arch.col2 }}</div>
+                    <div>{{ t.arch.col3 }}</div>
+                    <div>{{ t.arch.col4 }}</div>
                   </div>
 
                   <!-- Step 1 -->
@@ -300,7 +232,7 @@
                     <div
                       class="text-center bg-amber-500/10 text-amber-300 py-2 rounded border border-amber-500/20"
                     >
-                      Input log + Sign
+                      {{ t.arch.step1 }}
                     </div>
                     <div
                       class="relative flex items-center justify-center col-span-2"
@@ -312,7 +244,7 @@
                         class="w-3 h-3 text-amber-400 absolute right-0"
                       />
                       <span class="absolute -top-4 text-[10px] text-amber-400"
-                        >1. Submits Form Payload</span
+                        >{{ t.arch.step1Action }}</span
                       >
                     </div>
                     <div></div>
@@ -324,7 +256,7 @@
                     <div
                       class="text-center bg-zinc-800 text-white py-2 rounded"
                     >
-                      Process signature
+                      {{ t.arch.step2 }}
                     </div>
                     <div
                       class="relative flex items-center justify-center col-span-2"
@@ -336,7 +268,7 @@
                         class="w-3 h-3 text-amber-400 absolute right-0"
                       />
                       <span class="absolute -top-4 text-[10px] text-amber-400"
-                        >2. HTTP POST Request</span
+                        >{{ t.arch.step2Action }}</span
                       >
                     </div>
                   </div>
@@ -347,7 +279,7 @@
                     <div
                       class="text-center bg-zinc-800 text-white py-2 rounded"
                     >
-                      Validate &amp; Authorize
+                      {{ t.arch.step3 }}
                     </div>
                     <div class="relative flex items-center justify-center">
                       <div
@@ -357,7 +289,7 @@
                         class="w-3 h-3 text-amber-400 absolute right-0"
                       />
                       <span class="absolute -top-4 text-[10px] text-amber-400"
-                        >3. SQL Insert</span
+                        >{{ t.arch.step3Action }}</span
                       >
                     </div>
                   </div>
@@ -368,7 +300,7 @@
                     <div
                       class="text-center bg-green-500/10 text-green-300 py-2 rounded border border-green-500/20"
                     >
-                      Commit Log ID
+                      {{ t.arch.step4 }}
                     </div>
                   </div>
                 </div>
@@ -380,7 +312,7 @@
               <h3
                 class="text-lg font-semibold mb-4 text-amber-400 flex items-center gap-2"
               >
-                <Database class="w-4 h-4" /> Relational Database Schema (ERD)
+                <Database class="w-4 h-4" /> {{ t.schema.title }}
               </h3>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -391,8 +323,8 @@
                   <div
                     class="bg-white/5 px-4 py-2 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between"
                   >
-                    <span>table: users</span>
-                    <span class="text-amber-400">Auth &amp; RBAC</span>
+                    <span>{{ t.schema.tableUsers }}</span>
+                    <span class="text-amber-400">{{ t.schema.tableUsersTag }}</span>
                   </div>
                   <table class="w-full font-mono text-xs">
                     <tbody>
@@ -433,8 +365,8 @@
                   <div
                     class="bg-white/5 px-4 py-2 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between"
                   >
-                    <span>table: photo_transfers</span>
-                    <span class="text-amber-400">Transactional Log</span>
+                    <span>{{ t.schema.tableTransfers }}</span>
+                    <span class="text-amber-400">{{ t.schema.tableTransfersTag }}</span>
                   </div>
                   <table class="w-full font-mono text-xs">
                     <tbody>
@@ -496,13 +428,10 @@
                 class="text-2xl font-bold mb-4 flex items-center gap-2 text-white border-b border-white/10 pb-3"
               >
                 <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-                UI Flow &amp; Interactive Mockups
+                {{ t.mockups.title }}
               </h2>
               <p class="text-gray-300">
-                Below are real, interactive mockups built directly with CSS and
-                JS simulating the user interface modules of SnapPack. Click or
-                draw on the components to see how the system operates in real
-                time.
+                {{ t.mockups.desc }}
               </p>
             </div>
 
@@ -512,12 +441,11 @@
                 <h3
                   class="text-lg font-semibold text-white flex items-center gap-2"
                 >
-                  <Lock class="w-5 h-5 text-amber-500" /> Module 1: Login.vue
-                  (Role Authentication)
+                  <Lock class="w-5 h-5 text-amber-500" /> {{ t.mockups.mod1Title }}
                 </h3>
                 <span
                   class="px-2 py-1 text-[10px] rounded bg-green-500/20 text-green-400 font-mono"
-                  >Role Gate Enabled</span
+                  >{{ t.mockups.mod1Tag }}</span
                 >
               </div>
 
@@ -525,13 +453,13 @@
                 class="max-w-md mx-auto p-6 rounded-xl bg-[#0e0e0e] border border-white/5"
               >
                 <h4 class="text-center text-lg font-bold mb-4 text-white">
-                  SnapPack Portal
+                  {{ t.mockups.portalTitle }}
                 </h4>
 
                 <div class="space-y-4">
                   <div>
                     <label class="block text-xs text-gray-400 mb-1"
-                      >Authentication Role</label
+                      >{{ t.mockups.roleLabel }}</label
                     >
                     <div class="grid grid-cols-2 gap-2">
                       <button
@@ -543,7 +471,7 @@
                             : 'bg-transparent text-gray-400 border-white/10 hover:text-white',
                         ]"
                       >
-                        IT Staff / Approver
+                        {{ t.mockups.roleIt }}
                       </button>
                       <button
                         @click="mockUserRole = 'admin'"
@@ -554,14 +482,14 @@
                             : 'bg-transparent text-gray-400 border-white/10 hover:text-white',
                         ]"
                       >
-                        Supervisor / Admin
+                        {{ t.mockups.roleAdmin }}
                       </button>
                     </div>
                   </div>
 
                   <div>
                     <label class="block text-xs text-gray-400 mb-1"
-                      >Email Address</label
+                      >{{ t.mockups.emailLabel }}</label
                     >
                     <input
                       type="text"
@@ -577,7 +505,7 @@
 
                   <div>
                     <label class="block text-xs text-gray-400 mb-1"
-                      >Password</label
+                      >{{ t.mockups.passwordLabel }}</label
                     >
                     <input
                       type="password"
@@ -591,7 +519,7 @@
                     @click="simulateLogin"
                     class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold py-2 rounded text-xs transition-all flex items-center justify-center gap-2"
                   >
-                    <span>Authenticate Account</span>
+                    <span>{{ t.mockups.authBtn }}</span>
                     <ArrowRight class="w-3.5 h-3.5" />
                   </button>
 
@@ -611,20 +539,19 @@
                 <h3
                   class="text-lg font-semibold text-white flex items-center gap-2"
                 >
-                  <LayoutDashboard class="w-5 h-5 text-amber-500" /> Module 2:
-                  Dashboard.vue (Analytics)
+                  <LayoutDashboard class="w-5 h-5 text-amber-500" /> {{ t.mockups.mod2Title }}
                 </h3>
                 <div class="flex gap-2">
                   <span
                     class="px-2 py-1 text-[10px] rounded bg-white/5 text-gray-400 font-mono"
-                    >Real-Time Sync</span
+                    >{{ t.mockups.mod2Tag }}</span
                   >
                 </div>
               </div>
 
               <!-- Interactive Dashboard Filter -->
               <div class="mb-6 flex flex-wrap gap-2 items-center">
-                <span class="text-xs text-gray-400">Filter Mock Data:</span>
+                <span class="text-xs text-gray-400">{{ t.mockups.filterLabel }}</span>
                 <button
                   v-for="dept in [
                     'All',
@@ -641,7 +568,7 @@
                       : 'bg-white/5 text-gray-400 hover:text-white',
                   ]"
                 >
-                  {{ dept }}
+                  {{ dept === 'All' ? (isJapanese ? '全て' : 'All') : dept }}
                 </button>
               </div>
 
@@ -656,12 +583,12 @@
                   >
                     <Camera class="w-12 h-12" />
                   </div>
-                  <span class="text-xs text-gray-400">Total Photos Logged</span>
+                  <span class="text-xs text-gray-400">{{ t.mockups.statPhotos }}</span>
                   <h4 class="text-2xl font-bold text-white mt-1">
                     {{ totalMockPhotos }}
                   </h4>
                   <span class="text-[10px] text-green-400 block mt-1"
-                    >+12% increase from yesterday</span
+                    >{{ isJapanese ? '前日比 +12% 増加' : '+12% increase from yesterday' }}</span
                   >
                 </div>
 
@@ -674,12 +601,12 @@
                   >
                     <Video class="w-12 h-12" />
                   </div>
-                  <span class="text-xs text-gray-400">Total Videos Logged</span>
+                  <span class="text-xs text-gray-400">{{ t.mockups.statVideos }}</span>
                   <h4 class="text-2xl font-bold text-white mt-1">
                     {{ totalMockVideos }}
                   </h4>
                   <span class="text-[10px] text-gray-500 block mt-1"
-                    >Synchronized storage</span
+                    >{{ isJapanese ? 'ストレージ同期済' : 'Synchronized storage' }}</span
                   >
                 </div>
 
@@ -692,10 +619,10 @@
                   >
                     <UserCheck class="w-12 h-12" />
                   </div>
-                  <span class="text-xs text-gray-400">Review Status</span>
-                  <h4 class="text-2xl font-bold text-white mt-1">Verified</h4>
+                  <span class="text-xs text-gray-400">{{ t.mockups.statReview }}</span>
+                  <h4 class="text-2xl font-bold text-white mt-1">{{ t.mockups.statVerified }}</h4>
                   <span class="text-[10px] text-green-400 block mt-1"
-                    >Real-time audit logs</span
+                    >{{ isJapanese ? 'リアルタイム監査済' : 'Real-time audit logs' }}</span
                   >
                 </div>
               </div>
@@ -705,7 +632,7 @@
                 <h4
                   class="text-xs text-gray-400 font-bold mb-4 uppercase tracking-wider"
                 >
-                  Volume Transfer Share per Department
+                  {{ t.mockups.chartTitle }}
                 </h4>
 
                 <div class="space-y-3">
@@ -717,7 +644,7 @@
                     <div class="flex justify-between text-xs">
                       <span class="text-white">{{ bar.name }}</span>
                       <span class="text-amber-400 font-semibold"
-                        >{{ bar.percent }}% ({{ bar.photos }} Photos)</span
+                        >{{ bar.percent }}% ({{ bar.photos }} {{ isJapanese ? '枚' : 'Photos' }})</span
                       >
                     </div>
                     <div
@@ -739,12 +666,11 @@
                 <h3
                   class="text-lg font-semibold text-white flex items-center gap-2"
                 >
-                  <PenTool class="w-5 h-5 text-amber-500" /> Module 3:
-                  PhotoTransfers.vue (Signature Pad)
+                  <PenTool class="w-5 h-5 text-amber-500" /> {{ t.mockups.mod3Title }}
                 </h3>
                 <span
                   class="px-2 py-1 text-[10px] rounded bg-amber-500/20 text-amber-400 font-mono"
-                  >Canvas Enabled</span
+                  >{{ t.mockups.mod3Tag }}</span
                 >
               </div>
 
@@ -755,14 +681,14 @@
                 <table class="w-full text-left border-collapse text-xs">
                   <thead>
                     <tr class="bg-white/5 text-gray-400 font-mono">
-                      <th class="p-3">Date</th>
-                      <th class="p-3">Shipper</th>
-                      <th class="p-3">Dept</th>
-                      <th class="p-3">Photos</th>
-                      <th class="p-3">Videos</th>
-                      <th class="p-3">IT Approver</th>
-                      <th class="p-3">Status</th>
-                      <th class="p-3 text-center">Signature</th>
+                      <th class="p-3">{{ t.mockups.thDate }}</th>
+                      <th class="p-3">{{ t.mockups.thShipper }}</th>
+                      <th class="p-3">{{ t.mockups.thDept }}</th>
+                      <th class="p-3">{{ t.mockups.thPhotos }}</th>
+                      <th class="p-3">{{ t.mockups.thVideos }}</th>
+                      <th class="p-3">{{ t.mockups.thApprover }}</th>
+                      <th class="p-3">{{ t.mockups.thStatus }}</th>
+                      <th class="p-3 text-center">{{ t.mockups.thSignature }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -785,14 +711,14 @@
                         <span
                           class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-green-500/10 text-green-400 border border-green-500/20"
                         >
-                          Approved
+                          {{ isJapanese ? '承認済' : 'Approved' }}
                         </span>
                       </td>
                       <td class="p-3 text-center">
                         <div
                           class="inline-block bg-white/5 px-2 py-1 rounded text-[10px] text-amber-300 font-mono border border-amber-500/15"
                         >
-                          [Verified Base64]
+                          {{ isJapanese ? '[電子署名検証済]' : '[Verified Base64]' }}
                         </div>
                       </td>
                     </tr>
@@ -805,8 +731,7 @@
                 <h4
                   class="text-sm font-bold text-white mb-4 flex items-center gap-1.5"
                 >
-                  <PlusCircle class="w-4 h-4 text-amber-400" /> Create Real-Time
-                  Transfer Log
+                  <PlusCircle class="w-4 h-4 text-amber-400" /> {{ t.mockups.formTitle }}
                 </h4>
 
                 <form
@@ -817,7 +742,7 @@
                     <div class="grid grid-cols-2 gap-3">
                       <div>
                         <label class="block text-xs text-gray-400 mb-1"
-                          >Shipper Name</label
+                          >{{ t.mockups.shipperLabel }}</label
                         >
                         <input
                           v-model="newLog.shipper"
@@ -829,7 +754,7 @@
                       </div>
                       <div>
                         <label class="block text-xs text-gray-400 mb-1"
-                          >Department</label
+                          >{{ t.mockups.deptLabel }}</label
                         >
                         <select
                           v-model="newLog.dept"
@@ -854,7 +779,7 @@
                     <div class="grid grid-cols-2 gap-3">
                       <div>
                         <label class="block text-xs text-gray-400 mb-1"
-                          >Photo Count</label
+                          >{{ t.mockups.photoCountLabel }}</label
                         >
                         <input
                           v-model.number="newLog.photos"
@@ -866,7 +791,7 @@
                       </div>
                       <div>
                         <label class="block text-xs text-gray-400 mb-1"
-                          >Video Count</label
+                          >{{ t.mockups.videoCountLabel }}</label
                         >
                         <input
                           v-model.number="newLog.videos"
@@ -880,7 +805,7 @@
 
                     <div>
                       <label class="block text-xs text-gray-400 mb-1"
-                        >IT Approver Name</label
+                        >{{ t.mockups.approverLabel }}</label
                       >
                       <input
                         v-model="newLog.approver"
@@ -897,13 +822,13 @@
                     <label
                       class="block text-xs text-gray-400 mb-1 flex justify-between"
                     >
-                      <span>Operator Signature Pad (Draw Below)</span>
+                      <span>{{ t.mockups.signPadLabel }}</span>
                       <button
                         type="button"
                         @click="clearSignature"
                         class="text-amber-400 hover:text-amber-300 text-[10px] font-mono"
                       >
-                        Clear Pad
+                        {{ t.mockups.clearPadBtn }}
                       </button>
                     </label>
 
@@ -925,7 +850,7 @@
                         v-if="!isSigned"
                         class="absolute inset-0 flex items-center justify-center text-gray-500 text-xs font-mono pointer-events-none"
                       >
-                        [ Sign using mouse or stylus ]
+                        {{ t.mockups.signHint }}
                       </div>
                     </div>
 
@@ -934,7 +859,7 @@
                       class="w-full mt-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold py-2 rounded text-xs transition-all flex items-center justify-center gap-2"
                     >
                       <CheckCircle2 class="w-4 h-4" />
-                      <span>Verify &amp; Save Log entry</span>
+                      <span>{{ t.mockups.verifySaveBtn }}</span>
                     </button>
                   </div>
                 </form>
@@ -960,42 +885,22 @@
             <h3
               class="text-lg font-bold text-white mb-6 flex items-center gap-2"
             >
-              <Sparkles class="w-5 h-5 text-amber-400" /> Business Impact
+              <Sparkles class="w-5 h-5 text-amber-400" /> {{ t.features?.title || t.impact?.title || 'Key Features' }}
             </h3>
 
             <ul class="space-y-4">
-              <li class="flex items-start gap-3">
+              <li
+                v-for="(item, idx) in (t.features?.items || t.impact?.items || [])"
+                :key="idx"
+                class="flex items-start gap-3"
+              >
                 <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                 <div>
                   <h4 class="text-sm font-semibold text-white">
-                    Liability Shield
+                    {{ item.title }}
                   </h4>
                   <p class="text-xs text-gray-400 mt-0.5">
-                    Creates binding visual documentation verifying shipping
-                    quality, protecting against cargo handlers claims.
-                  </p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">
-                    Paperless Workflow Automation
-                  </h4>
-                  <p class="text-xs text-gray-400 mt-0.5">
-                    Eliminates physical SD card handovers, spreadsheet logging,
-                    and manual verification steps.
-                  </p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">
-                    EUDR Traceability &amp; Chain of Custody
-                  </h4>
-                  <p class="text-xs text-gray-400 mt-0.5">
-                    Ensures every export container and carton matches immutable visual records supporting EUDR timber traceability standards.
+                    {{ item.desc }}
                   </p>
                 </div>
               </li>
@@ -1008,43 +913,43 @@
             data-aos="fade-left"
             data-aos-delay="100"
           >
-            <h3 class="text-lg font-bold text-white mb-4">Project Telemetry</h3>
+            <h3 class="text-lg font-bold text-white mb-4">{{ t.telemetry?.title || 'Project Telemetry' }}</h3>
 
             <div class="space-y-3 text-xs border-b border-white/5 pb-4 mb-4">
               <div class="flex justify-between">
-                <span class="text-gray-400">Backend API</span>
-                <span class="text-white font-mono">Laravel 11 / PHP 8.3</span>
+                <span class="text-gray-400">{{ isJapanese ? 'バックエンドAPI' : 'Backend API' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.backend }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Frontend client</span>
+                <span class="text-gray-400">{{ isJapanese ? 'フロントエンド' : 'Frontend Client' }}</span>
                 <span class="text-white font-mono"
-                  >Vue 3 / Vue Router / Tailwind</span
+                  >{{ t.telemetry.frontend }}</span
                 >
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Database layer</span>
-                <span class="text-white font-mono">MariaDB / MySQL</span>
+                <span class="text-gray-400">{{ isJapanese ? 'データベース基盤' : 'Database Layer' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.database }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Auth Paradigm</span>
-                <span class="text-white font-mono">Laravel Sanctum Token</span>
+                <span class="text-gray-400">{{ isJapanese ? '認証方式' : 'Auth Paradigm' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.auth }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Input Module</span>
+                <span class="text-gray-400">{{ isJapanese ? '電子署名技術' : 'Input Module' }}</span>
                 <span class="text-white font-mono"
-                  >SignaturePad (HTML5 Canvas)</span
+                  >{{ t.telemetry.input }}</span
                 >
               </div>
             </div>
 
-            <!-- Download PDF or CTA -->
+            <!-- GitHub CTA -->
             <a
               href="https://github.com/RavenAgtha18"
               target="_blank"
               class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-colors flex items-center justify-center gap-2 text-xs font-semibold"
             >
               <Github class="w-4 h-4" />
-              <span>Explore GitHub Repository</span>
+              <span>{{ t.telemetry.viewGithub }}</span>
             </a>
           </div>
         </div>
@@ -1076,6 +981,13 @@ import {
   Check,
   Github,
 } from "lucide-vue-next";
+import { useLanguage } from "@/composables/useLanguage";
+import { snappackI18n } from "@/locales/caseStudies/snappack";
+
+const { isJapanese } = useLanguage();
+const t = computed(() => (isJapanese.value ? snappackI18n.ja : snappackI18n.en));
+
+const problemIcons = [AlertOctagon, FileX, RefreshCw];
 
 // LocalStorage Persistence Helpers
 const STORAGE_KEY_LOGS = "snappack_mock_logs";
@@ -1099,11 +1011,11 @@ const persistLogs = (logs) => {
 const mockUserRole = ref("it_staff");
 const loginFeedback = ref("");
 const simulateLogin = () => {
-  loginFeedback.value = "Authenticating...";
+  loginFeedback.value = isJapanese.value ? "認証中..." : "Authenticating...";
   setTimeout(() => {
-    loginFeedback.value = `Access Granted as ${
-      mockUserRole.value === "it_staff" ? "IT Approver" : "Supervisor Admin"
-    }!`;
+    loginFeedback.value = isJapanese.value
+      ? `${mockUserRole.value === "it_staff" ? "IT承認担当者" : "管理者"} としてアクセスが承認されました！`
+      : `Access Granted as ${mockUserRole.value === "it_staff" ? "IT Approver" : "Supervisor Admin"}!`;
   }, 600);
 };
 
@@ -1209,7 +1121,6 @@ const initCanvas = () => {
   const canvas = signatureCanvas.value;
   if (!canvas) return;
 
-  // Set physical display scale mapping
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
 
@@ -1274,14 +1185,14 @@ const clearSignature = () => {
 
 const submitMockTransfer = () => {
   if (!isSigned.value) {
-    submissionFeedback.value =
-      "Error: Draw operator signature before submitting.";
+    submissionFeedback.value = isJapanese.value
+      ? "エラー: 提出前に担当者の電子署名を描画してください。"
+      : "Error: Draw operator signature before submitting.";
     return;
   }
 
   const today = new Date().toISOString().split("T")[0];
 
-  // Add to head of mock logs
   mockLogs.value.unshift({
     id: Date.now(),
     date: today,
@@ -1292,13 +1203,12 @@ const submitMockTransfer = () => {
     approver: newLog.value.approver,
   });
 
-  // Persist to localStorage
   persistLogs(mockLogs.value);
 
-  submissionFeedback.value =
-    "Success: Photo transfer log created, signature saved as base64 asset in SQL database!";
+  submissionFeedback.value = isJapanese.value
+    ? "完了: 写真転送ログが作成され、電子署名はBase64アセットとしてMySQLへ安全にコミットされました！"
+    : "Success: Photo transfer log created, signature saved as base64 asset in SQL database!";
 
-  // Reset Form
   newLog.value.shipper = "";
   newLog.value.photos = 6;
   newLog.value.videos = 0;

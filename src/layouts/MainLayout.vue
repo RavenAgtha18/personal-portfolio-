@@ -1,8 +1,8 @@
 <template>
-  <div class="relative font-inter text-white bg-[#0a0a0a] min-h-screen overflow-x-clip">
+  <div class="relative font-inter text-slate-900 bg-slate-50 dark:text-white dark:bg-[#0a0a0a] min-h-screen overflow-x-clip transition-colors duration-300">
     <!-- Animated Background -->
-    <div class="fixed inset-0 -z-10 gradient-mesh"></div>
-    <div class="fixed inset-0 -z-10 grid-pattern opacity-50"></div>
+    <div class="fixed inset-0 -z-10 gradient-mesh opacity-70 dark:opacity-100"></div>
+    <div class="fixed inset-0 -z-10 grid-pattern opacity-30 dark:opacity-50"></div>
     
     <!-- Floating Orbs -->
     <div class="fixed top-20 left-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl animate-blob"></div>
@@ -14,7 +14,7 @@
       :class="[
         'fixed top-0 w-full z-50 transition-all duration-500',
         isScrolled 
-          ? 'bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5 py-3' 
+          ? 'bg-white/85 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/5 py-3 shadow-sm dark:shadow-none' 
           : 'bg-transparent py-5',
       ]"
     >
@@ -39,8 +39,8 @@
             v-for="link in navLinks"
             :key="link.path"
             :to="link.path"
-            class="nav-link relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 group"
-            :class="{ 'text-amber-400': $route.path === link.path }"
+            class="nav-link relative px-4 py-2 text-sm font-medium text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 group"
+            :class="{ 'text-amber-600 dark:text-amber-400 font-semibold': $route.path === link.path }"
           >
             <span class="relative z-10">{{ link.name }}</span>
             <span 
@@ -55,6 +55,17 @@
 
         <!-- Right Side Actions (Desktop & Mobile) -->
         <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3">
+          <!-- Shokumu Keirekisho (Resume JP) Trigger -->
+          <button
+            @click="openKeirekishoModal"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20 text-xs font-mono font-semibold transition-all hover:scale-105 active:scale-95"
+            title="職務経歴書 (A4・2枚) Word/PDFダウンロード"
+          >
+            <FileText class="w-3.5 h-3.5 text-amber-400" />
+            <span class="hidden sm:inline">{{ isJapanese ? '職務経歴書' : 'Resume (JP)' }}</span>
+            <span class="sm:hidden">経歴書</span>
+          </button>
+
           <!-- Language Switcher Toggle -->
           <LanguageToggle />
 
@@ -98,7 +109,7 @@
       <Transition name="slide-down">
         <div 
           v-if="isMobileMenuOpen"
-          class="md:hidden absolute top-full left-0 w-full bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/5"
+          class="md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-slate-200 dark:border-white/5 shadow-xl dark:shadow-none"
         >
           <div class="px-4 sm:px-6 py-4 space-y-2">
             <router-link
@@ -106,19 +117,29 @@
               :key="link.path"
               :to="link.path"
               @click="isMobileMenuOpen = false"
-              class="block px-4 py-3 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
-              :class="{ 'text-amber-400 bg-amber-500/10': $route.path === link.path }"
+              class="block px-4 py-3 rounded-lg text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+              :class="{ 'text-amber-600 dark:text-amber-400 bg-amber-500/10 font-semibold': $route.path === link.path }"
             >
               {{ link.name }}
             </router-link>
-            <div class="pt-3 pb-1 border-t border-white/10 flex items-center justify-between">
-              <span class="text-xs text-zinc-400 font-mono">Language / 言語</span>
+            <button
+              @click="isMobileMenuOpen = false; openKeirekishoModal()"
+              class="w-full flex items-center justify-between px-4 py-3 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300 font-mono text-sm font-semibold text-left transition-colors hover:bg-amber-500/20"
+            >
+              <span class="flex items-center gap-2">
+                <FileText class="w-4 h-4 text-amber-500" />
+                <span>{{ isJapanese ? '職務経歴書 (Word/PDF)' : 'Japanese Resume (Word/PDF)' }}</span>
+              </span>
+              <span class="text-[10px] bg-amber-500/25 px-2 py-0.5 rounded text-amber-800 dark:text-amber-200 font-bold">2枚規格</span>
+            </button>
+            <div class="pt-3 pb-1 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
+              <span class="text-xs text-slate-600 dark:text-zinc-400 font-mono">Language / 言語</span>
               <LanguageToggle />
             </div>
             <a
               href="https://wa.me/6285175180821"
               target="_blank"
-              class="block w-full mt-4 px-4 py-3 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold text-center"
+              class="block w-full mt-4 px-4 py-3 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold text-center shadow-md shadow-amber-500/20"
             >
               {{ t('nav.letsTalk') }}
             </a>
@@ -137,18 +158,18 @@
     </div>
 
     <!-- Footer -->
-    <footer class="relative py-16 border-t border-white/5 bg-gradient-to-t from-[#050505] to-transparent">
+    <footer class="relative py-16 border-t border-slate-200/80 dark:border-white/5 bg-gradient-to-t from-slate-200/50 to-transparent dark:from-[#050505] dark:to-transparent">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex flex-col items-center text-center">
           <!-- Logo -->
-          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-bold text-black text-xl mb-6">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-bold text-black text-xl mb-6 shadow-md shadow-amber-500/20">
             R
           </div>
           
           <h3 class="text-2xl font-bold mb-2">
             <span class="gradient-text">{{ t('footer.heading') }}</span>
           </h3>
-          <p class="text-gray-400 mb-8 max-w-md">
+          <p class="text-slate-600 dark:text-gray-400 mb-8 max-w-md">
             {{ t('footer.desc') }}
           </p>
 
@@ -159,9 +180,9 @@
               :key="social.name"
               :href="social.url"
               target="_blank"
-              class="group w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-amber-500/20 hover:scale-110 transition-all duration-300"
+              class="group w-12 h-12 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-sm dark:shadow-none flex items-center justify-center hover:bg-amber-500/20 hover:scale-110 transition-all duration-300"
             >
-              <component :is="social.icon" class="w-5 h-5 text-gray-400 group-hover:text-amber-400 transition-colors" />
+              <component :is="social.icon" class="w-5 h-5 text-slate-600 dark:text-gray-400 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors" />
             </a>
           </div>
 
@@ -171,39 +192,54 @@
               v-for="link in navLinks"
               :key="link.path"
               :to="link.path"
-              class="text-gray-400 hover:text-amber-400 transition-colors"
+              class="text-slate-600 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
             >
               {{ link.name }}
+            </router-link>
+            <router-link
+              to="/keirekisho"
+              class="text-amber-600 dark:text-amber-400 hover:text-amber-500 transition-colors font-mono font-semibold"
+            >
+              {{ isJapanese ? '職務経歴書 (A4・2枚)' : 'Shokumu Keirekisho (PDF/Word)' }}
             </router-link>
           </div>
 
           <!-- Copyright -->
-          <p class="text-xs text-gray-500">
+          <p class="text-xs text-slate-500 dark:text-gray-500">
             © {{ currentYear }} Riki Andi Alfiyanto — {{ t('footer.copyright') }}
           </p>
         </div>
       </div>
     </footer>
+
+    <!-- Shokumu Keirekisho Interactive Modal -->
+    <ShokumuKeirekishoModal ref="keirekishoModalRef" />
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { Menu, X, MessageCircle, Linkedin, Github, MessageSquare, Sun, Moon } from 'lucide-vue-next'
+import { Menu, X, MessageCircle, Linkedin, Github, MessageSquare, Sun, Moon, FileText } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import CommandPalette from '@/components/CommandPalette.vue'
 import LanguageToggle from '@/components/LanguageToggle.vue'
+import ShokumuKeirekishoModal from '@/components/ShokumuKeirekishoModal.vue'
 import { useLanguage } from '@/composables/useLanguage'
 import { useTheme } from '@/composables/useTheme'
 
-const { t } = useLanguage()
+const { t, isJapanese } = useLanguage()
 const { isDark, toggleTheme } = useTheme()
 const router = useRouter()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 const currentYear = computed(() => new Date().getFullYear())
+const keirekishoModalRef = ref(null)
+
+const openKeirekishoModal = () => {
+  keirekishoModalRef.value?.openModal()
+}
 
 const navLinks = computed(() => [
   { name: t('nav.home'), path: '/' },

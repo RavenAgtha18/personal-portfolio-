@@ -96,6 +96,15 @@
             >
               <span>{{ isJapanese ? '経歴・プロフィールを見る' : 'About My SysDev Journey' }}</span>
             </router-link>
+
+            <router-link
+              to="/keirekisho"
+              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs font-semibold border transition-all duration-300 hover:scale-[1.02]"
+              :class="isDark ? 'bg-amber-500/10 text-amber-300 border-amber-500/30 hover:bg-amber-500/20' : 'bg-amber-50 text-amber-900 border-amber-300 hover:bg-amber-100 shadow-sm'"
+            >
+              <FileText class="w-4 h-4 text-amber-400" />
+              <span>{{ isJapanese ? '職務経歴書 (A4・2枚)' : 'Shokumu Keirekisho (2P)' }}</span>
+            </router-link>
           </div>
         </div>
       </div>
@@ -113,6 +122,7 @@ import CinematicScrollHero from "@/components/CinematicScrollHero.vue";
 import {
   Briefcase,
   ArrowRight,
+  FileText,
 } from "lucide-vue-next";
 
 // Theme & Language

@@ -159,7 +159,7 @@ const executeCommand = (cmd) => {
 ● Structure: 2-Person Core SysDev Division (Direct frontline ownership across factory operations)
 ● Target Path: In-House Systems Engineer (社内SE) / Technical Systems Specialist
 ● Core Focus: Understanding frontline operational bottlenecks and translating them into robust, usable internal systems.
-● Certification: JFT-Basic A2 & Actively Preparing for Fundamental IT Engineer Exam (基本情報技術者試験)
+● Language & Standards: JFT-Basic A2 Certified · Japanese Enterprise Monozukuri & Kaizen Methodology
 ● Location: Semarang, Indonesia (Open for In-House Systems Engineering & Japan-bound Career Paths)`
       })
       break
@@ -191,7 +191,7 @@ const executeCommand = (cmd) => {
         type: 'output',
         text: `JAPANESE BILINGUAL & SYSDEV PROFICIENCY:
   ● Language: JFT-Basic A2 (Certified & Active Daily SRS Practice)
-  ● IT Standard: In active preparation for Fundamental Information Technology Engineer Examination (基本情報技術者試験 - FE Exam)
+  ● Engineering Standard: Japanese In-House Systems (社内SE) & High-Availability Factory Operations
   ● Cultural Mindset: Monozukuri (匠の技, dedication to craftsmanship) & Kaizen (5S, continuous waste reduction)
   ● Capability: Translating complex stakeholder requirements into concrete technical database schemas and user stories.`
       })

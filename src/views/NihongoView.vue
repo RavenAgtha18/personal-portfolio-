@@ -13,7 +13,7 @@
         <ArrowLeft
           class="w-4 h-4 group-hover:-translate-x-1 transition-transform"
         />
-        <span>Back to Work</span>
+        <span>{{ t.backToWork }}</span>
       </router-link>
     </div>
 
@@ -27,16 +27,16 @@
           <Languages class="w-4 h-4 text-amber-400" />
           <span
             class="text-xs text-amber-300 font-semibold tracking-wider uppercase font-mono"
-            >Localization Case Study</span
+            >{{ t.badge }}</span
           >
         </div>
         <h1
           class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 sm:mb-8"
         >
-          Nihongo-App –
-          <span class="gradient-text">Language Localization</span>
+          {{ t.hero.titlePrefix }}
+          <span class="gradient-text">{{ t.hero.titleHighlight }}</span>
           <br class="hidden lg:inline" />
-          &amp; JFT-Basic A2 Speed-Run Drill Engine
+          {{ t.hero.titleSuffix }}
         </h1>
 
         <div
@@ -44,30 +44,30 @@
         >
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Role &amp; Positioning</span
+              >{{ t.hero.roleLabel }}</span
             >
             <span class="text-sm font-semibold text-amber-300"
-              >Full-stack Developer (JFT-Basic A2)</span
+              >{{ t.hero.roleValue }}</span
             >
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Domain Focus</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.domainLabel }}</span>
             <span class="text-sm font-semibold text-white"
-              >EdTech / Localization / CBT Drills</span
+              >{{ t.hero.domainValue }}</span
             >
           </div>
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Core Tech Stack</span
+              >{{ t.hero.stackLabel }}</span
             >
             <span class="text-sm font-semibold text-white"
-              >Laravel REST API + Vue 3 SPA</span
+              >{{ t.hero.stackValue }}</span
             >
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Key Impact</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.impactLabel }}</span>
             <span class="text-sm font-semibold text-green-400"
-              >Optimized SRS &amp; Exam Readiness</span
+              >{{ t.hero.impactValue }}</span
             >
           </div>
         </div>
@@ -86,32 +86,12 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Executive Summary
+              {{ t.exec.title }}
             </h2>
             <div class="space-y-4 text-gray-300 leading-relaxed text-base">
-              <p>
-                <strong>Nihongo-App</strong> is a specialized localization and
-                exam preparation platform designed to accelerate Japanese
-                language acquisition up to the JFT-Basic A2 certification
-                standard. By coupling multi-script dictionary database indexing
-                with an interactive Computer Based Test (CBT) simulator, the app
-                helps prospective workers master vocabulary, kanji, and grammar
-                patterns efficiently.
-              </p>
-              <p>
-                The platform utilizes a customized
-                <strong>Spaced Repetition System (SRS)</strong> that dynamically
-                prioritizes words with high mistake rates, tracking user recall
-                logs directly at the database layer. This ensures that difficult
-                concepts are automatically rescheduled for review, cutting exam
-                preparation times significantly.
-              </p>
-              <p>
-                Through precise database schema design supporting full Japanese
-                multi-script collations, Nihongo-App ensures data consistency
-                across Kanji, Hiragana, Katakana, and Romaji scripts, delivering
-                rapid data loads and a native exam-grade experience.
-              </p>
+              <p>{{ t.exec.p1 }}</p>
+              <p>{{ t.exec.p2 }}</p>
+              <p>{{ t.exec.p3 }}</p>
             </div>
 
             <!-- Highlight Stat -->
@@ -121,18 +101,18 @@
               <div>
                 <span
                   class="text-xs text-amber-400 block font-mono uppercase tracking-wider"
-                  >Practice Methodology</span
+                  >{{ t.exec.statFocus }}</span
                 >
                 <h3 class="text-xl font-bold text-white mt-1">
-                  SRS Drill &amp; Scoring Engine
+                  {{ t.exec.statTitle }}
                 </h3>
               </div>
               <div class="text-right">
                 <span class="text-2xl md:text-3xl font-extrabold text-amber-400"
-                  >SRS Cycle</span
+                  >{{ t.exec.statHighlight }}</span
                 >
                 <span class="text-xs text-gray-400 block"
-                  >Multi-script practice &amp; scoring</span
+                  >{{ t.exec.statDesc }}</span
                 >
               </div>
             </div>
@@ -148,56 +128,26 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Technical &amp; Localization Challenges
+              {{ t.problems.title }}
             </h2>
 
             <div class="space-y-6">
-              <!-- Challenge 1 -->
               <div
+                v-for="(item, idx) in t.problems.items"
+                :key="idx"
                 class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
               >
                 <div
                   class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400"
                 >
-                  <Languages class="w-5 h-5" />
+                  <component :is="idx === 0 ? Languages : Brain" class="w-5 h-5" />
                 </div>
                 <div>
                   <h4 class="font-semibold text-white mb-1">
-                    Multi-Script Indexing Performance
+                    {{ item.title }}
                   </h4>
                   <p class="text-sm text-gray-400 leading-relaxed">
-                    Querying dictionary elements across fluid combinations of
-                    Kanji, Hiragana, Katakana, and Romaji can result in slow
-                    full-table scans. Nihongo-App structures its tables with
-                    separate indexed columns for each script, enforcing
-                    <code class="text-amber-300">utf8mb4_unicode_ci</code>
-                    collations to enable exact and wildcard search matches
-                    without query bottlenecks.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Challenge 2 -->
-              <div
-                class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
-              >
-                <div
-                  class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400"
-                >
-                  <Brain class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">
-                    Spaced Repetition &amp; Mistake-Weight Tracking
-                  </h4>
-                  <p class="text-sm text-gray-400 leading-relaxed">
-                    Calculating recall intervals dynamically requires tracking
-                    error rates per user and word. Instead of performing
-                    expensive subquery calculations for every quiz, the
-                    application logs accumulated mistakes directly inside a
-                    progress tracker table (<code class="text-amber-300"
-                      >learning_progress</code
-                    >), updating review intervals during transaction commits.
+                    {{ item.desc }}
                   </p>
                 </div>
               </div>
@@ -210,13 +160,10 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Database Schema &amp; Character Collations
+              {{ t.schema.title }}
             </h2>
             <p class="text-gray-300 mb-6 font-medium">
-              Because Japanese vocabulary involves Kanji logographs and phonetic
-              Kana, all text columns are configured with the
-              <code class="text-amber-400">utf8mb4_unicode_ci</code> character
-              set to prevent encoding truncation or corruption.
+              {{ t.schema.intro }}
             </p>
 
             <!-- Table 1: vocabularies -->
@@ -226,8 +173,8 @@
               <div
                 class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between"
               >
-                <span>1. Table: vocabularies</span>
-                <span class="text-amber-400">Multi-Script Dictionary</span>
+                <span>{{ t.schema.table1Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table1Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -237,55 +184,23 @@
                     >
                       <th class="px-4 py-2">Column</th>
                       <th class="px-4 py-2">Type</th>
-                      <th class="px-4 py-2">Collation</th>
+                      <th class="px-4 py-2">Collation / Key</th>
                       <th class="px-4 py-2">Purpose</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-amber-300">id</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Primary key identifier.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">kanji</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(255)</td>
-                      <td class="px-4 py-2 text-amber-300">
-                        utf8mb4_unicode_ci
+                    <tr
+                      v-for="col in t.schema.table1Cols"
+                      :key="col.name"
+                      class="border-b border-white/5"
+                    >
+                      <td class="px-4 py-2 text-amber-300 font-medium">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2" :class="col.key === 'utf8mb4_unicode_ci' ? 'text-amber-300' : 'text-gray-500'">
+                        {{ col.key }}
                       </td>
                       <td class="px-4 py-2 text-gray-400">
-                        Kanji script representation (e.g. 電話).
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">kana</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(255)</td>
-                      <td class="px-4 py-2 text-amber-300">
-                        utf8mb4_unicode_ci
-                      </td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Phonetic Hiragana/Katakana (e.g. でんわ).
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">romaji</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(255)</td>
-                      <td class="px-4 py-2 text-gray-500">latin1_swedish_ci</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Latin script alphabet reading (e.g. denwa).
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-4 py-2 text-white">meaning</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(255)</td>
-                      <td class="px-4 py-2 text-amber-300">
-                        utf8mb4_unicode_ci
-                      </td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Indonesian equivalent translation.
+                        {{ col.purpose }}
                       </td>
                     </tr>
                   </tbody>
@@ -300,9 +215,9 @@
               <div
                 class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between"
               >
-                <span>2. Table: learning_progress</span>
+                <span>{{ t.schema.table2Title }}</span>
                 <span class="text-amber-400"
-                  >SRS Mistake Tracker &amp; Schedule</span
+                  >{{ t.schema.table2Tag }}</span
                 >
               </div>
               <div class="overflow-x-auto">
@@ -318,52 +233,18 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-amber-300">id</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Unique log identifier.
+                    <tr
+                      v-for="col in t.schema.table2Cols"
+                      :key="col.name"
+                      class="border-b border-white/5"
+                    >
+                      <td class="px-4 py-2 text-amber-300 font-medium">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2" :class="col.key.includes('FK') ? 'text-red-400' : col.key === 'INDEX' ? 'text-amber-400' : 'text-gray-500'">
+                        {{ col.key }}
                       </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">user_id</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-red-400">MUL (FK users.id)</td>
                       <td class="px-4 py-2 text-gray-400">
-                        Links progress to specific student.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">vocabulary_id</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-red-400">MUL (FK vocab.id)</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Links to vocabulary row.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">box_number</td>
-                      <td class="px-4 py-2 text-gray-400">INT</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        SRS Box levels 1 (frequent) to 5 (known).
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">error_count</td>
-                      <td class="px-4 py-2 text-gray-400">INT</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Weight counter storing mistake logs.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-4 py-2 text-white">next_review_at</td>
-                      <td class="px-4 py-2 text-gray-400">TIMESTAMP</td>
-                      <td class="px-4 py-2 text-amber-400">INDEX</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Calculated review date based on SRS logic.
+                        {{ col.purpose }}
                       </td>
                     </tr>
                   </tbody>
@@ -378,8 +259,8 @@
               <div
                 class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between"
               >
-                <span>3. Table: drill_logs</span>
-                <span class="text-amber-400">Telemetry History Logs</span>
+                <span>{{ t.schema.table3Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table3Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -394,43 +275,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-amber-300">id</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td>
-                      <td class="px-4 py-2 text-gray-400">Unique log ID.</td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">user_id</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-gray-500">MUL</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Student FK reference.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">is_correct</td>
-                      <td class="px-4 py-2 text-gray-400">TINYINT(1)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Whether student answered correctly (1/0).
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">response_time_ms</td>
-                      <td class="px-4 py-2 text-gray-400">INT</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Student answer speed in milliseconds.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-4 py-2 text-white">created_at</td>
-                      <td class="px-4 py-2 text-gray-400">TIMESTAMP</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Date and time stamp of response event.
-                      </td>
+                    <tr
+                      v-for="col in t.schema.table3Cols"
+                      :key="col.name"
+                      class="border-b border-white/5"
+                    >
+                      <td class="px-4 py-2 text-amber-300 font-medium">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2 text-gray-500">{{ col.key }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.purpose }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -449,13 +302,10 @@
                 class="text-2xl font-bold mb-4 flex items-center gap-2 text-white border-b border-white/10 pb-3"
               >
                 <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-                Interactive JFT-Basic A2 CBT Simulator
+                {{ t.sim.title }}
               </h2>
               <p class="text-gray-300">
-                Test the computer-based vocabulary training simulator. Answer
-                the questions based on the A2 requirements. Observe the reactive
-                score trackers, correct streaks, and how items get flagged with
-                errors to be re-introduced.
+                {{ t.sim.desc }}
               </p>
             </div>
 
@@ -469,7 +319,7 @@
                   <div class="flex items-center gap-1.5">
                     <Trophy class="w-4 h-4 text-amber-400" />
                     <span class="text-xs font-mono text-gray-400 uppercase"
-                      >Score:</span
+                      >{{ t.sim.scoreLabel }}</span
                     >
                     <strong class="text-sm font-mono text-white"
                       >{{ score }} XP</strong
@@ -478,7 +328,7 @@
                   <div class="flex items-center gap-1.5">
                     <Flame class="w-4 h-4 text-orange-500" />
                     <span class="text-xs font-mono text-gray-400 uppercase"
-                      >Streak:</span
+                      >{{ t.sim.streakLabel }}</span
                     >
                     <strong class="text-sm font-mono text-orange-400"
                       >{{ streak }} 🔥</strong
@@ -491,7 +341,7 @@
                   class="text-amber-400 hover:text-amber-300 text-xs font-mono flex items-center gap-1"
                 >
                   <RefreshCw class="w-3.5 h-3.5" />
-                  <span>Reset Quiz</span>
+                  <span>{{ t.sim.btnReset }}</span>
                 </button>
               </div>
 
@@ -504,13 +354,13 @@
                   class="absolute top-2 right-2 text-[10px] font-mono text-gray-500"
                 >
                   Question {{ currentQuestionIndex + 1 }} /
-                  {{ quizQuestionsData.length }}
+                  {{ quizQuestions.length }}
                 </div>
 
                 <div class="space-y-4">
                   <span
                     class="text-[10px] text-amber-400 font-mono uppercase tracking-wider block"
-                    >Context: JFT-Basic A2 Drill</span
+                    >{{ t.sim.context }}</span
                   >
 
                   <div class="flex items-center gap-3">
@@ -532,7 +382,7 @@
                     v-if="audioPlaying"
                     class="text-[10px] text-amber-500/80 italic font-mono animate-pulse"
                   >
-                    🔊 Simulating audio reading: "{{
+                    🔊 {{ t.sim.simAudio }} "{{
                       currentQuestion.reading || currentQuestion.prompt
                     }}"
                   </p>
@@ -588,8 +438,8 @@
                   <div>
                     <strong class="block font-bold">{{
                       isCorrect
-                        ? "Correct Response! +10 XP"
-                        : "Incorrect Choice!"
+                        ? t.sim.correctFeedback
+                        : t.sim.incorrectFeedback
                     }}</strong>
                     <span>{{ currentQuestion.explanation }}</span>
                   </div>
@@ -601,7 +451,7 @@
                     class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold rounded-lg text-xs transition-all flex items-center gap-1.5"
                   >
                     <span>{{
-                      isLastQuestion ? "View Summary Results" : "Next Question"
+                      isLastQuestion ? t.sim.btnSummary : t.sim.btnNext
                     }}</span>
                     <ArrowRight class="w-3.5 h-3.5" />
                   </button>
@@ -617,25 +467,25 @@
                 <h3
                   class="text-base font-bold text-white uppercase tracking-wider"
                 >
-                  Drill Session Completed!
+                  {{ t.sim.completedTitle }}
                 </h3>
                 <p class="text-xs text-gray-400 max-w-sm mx-auto">
-                  You scored
+                  {{ t.sim.completedSummary }}
                   <span class="text-amber-400 font-bold font-mono"
                     >{{ score }} XP</span
                   >
-                  with a peak streak of
+                  {{ t.sim.completedWithPeak }}
                   <span class="text-orange-400 font-bold font-mono">{{
                     peakStreak
                   }}</span>
-                  answers.
+                  {{ t.sim.completedAnswers }}
                 </p>
                 <div class="flex justify-center gap-3">
                   <button
                     @click="resetQuizSimulator"
                     class="px-4 py-2 bg-white/5 border border-white/10 hover:bg-white/20 rounded-lg text-xs text-white transition-colors"
                   >
-                    Re-Run Drills
+                    {{ t.sim.btnRerun }}
                   </button>
                 </div>
               </div>
@@ -646,8 +496,7 @@
               <h3
                 class="text-sm font-bold text-white mb-4 uppercase tracking-wider font-mono flex items-center gap-2"
               >
-                <Database class="w-4 h-4 text-amber-500" /> Live Spaced
-                Repetition Telemetry Log
+                <Database class="w-4 h-4 text-amber-500" /> {{ t.sim.srsLogsTitle }}
               </h3>
 
               <div
@@ -660,13 +509,13 @@
                     <tr
                       class="bg-white/5 text-gray-400 border-b border-white/5"
                     >
-                      <th class="p-3">SRS id</th>
-                      <th class="p-3">Kanji/Kana</th>
-                      <th class="p-3">Romaji Reading</th>
-                      <th class="p-3">Errors</th>
-                      <th class="p-3">SRS Box</th>
-                      <th class="p-3">Next Review In</th>
-                      <th class="p-3">Collation Col</th>
+                      <th class="p-3">{{ t.sim.thId }}</th>
+                      <th class="p-3">{{ t.sim.thJapanese }}</th>
+                      <th class="p-3">{{ t.sim.thRomaji }}</th>
+                      <th class="p-3">{{ t.sim.thErrors }}</th>
+                      <th class="p-3">{{ t.sim.thBox }}</th>
+                      <th class="p-3">{{ t.sim.thNext }}</th>
+                      <th class="p-3">{{ t.sim.thCollation }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -701,16 +550,14 @@
                           Box {{ word.box }}
                         </span>
                       </td>
-                      <td class="p-3 text-gray-400">{{ word.nextReview }}</td>
+                      <td class="p-3 text-gray-400">{{ localizedNextReview(word) }}</td>
                       <td class="p-3 text-gray-500">utf8mb4_unicode_ci</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <p class="text-[10px] text-gray-500 mt-2 font-mono">
-                * Note: When users answer incorrectly, the system updates the
-                `error_count` and demotes the word to Box 1, scheduling it for
-                instant re-drills.
+                {{ t.sim.srsNote }}
               </p>
             </div>
           </section>
@@ -726,43 +573,22 @@
             <h3
               class="text-lg font-bold text-white mb-6 flex items-center gap-2"
             >
-              <Sparkles class="w-5 h-5 text-amber-400" /> Key Features
+              <Sparkles class="w-5 h-5 text-amber-400" /> {{ t.features.title }}
             </h3>
 
             <ul class="space-y-4">
-              <li class="flex items-start gap-3">
+              <li
+                v-for="(feat, fIdx) in t.features.items"
+                :key="fIdx"
+                class="flex items-start gap-3"
+              >
                 <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                 <div>
                   <h4 class="text-sm font-semibold text-white">
-                    Multi-Script Encoding
+                    {{ feat.title }}
                   </h4>
                   <p class="text-xs text-gray-400 mt-0.5">
-                    Full support for double-byte characters preventing data
-                    truncation during Japanese string manipulation.
-                  </p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">
-                    Mistake Weighting Engine
-                  </h4>
-                  <p class="text-xs text-gray-400 mt-0.5">
-                    Logically schedules high-error words for review frequency
-                    increase to eliminate memory gaps.
-                  </p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">
-                    CBT Exam Telemetry
-                  </h4>
-                  <p class="text-xs text-gray-400 mt-0.5">
-                    Tracks response metrics, streak achievements, and logs score
-                    events in real-time.
+                    {{ feat.desc }}
                   </p>
                 </div>
               </li>
@@ -775,24 +601,24 @@
             data-aos="fade-left"
             data-aos-delay="100"
           >
-            <h3 class="text-lg font-bold text-white mb-4">Project Telemetry</h3>
+            <h3 class="text-lg font-bold text-white mb-4">{{ t.features.telemetryTitle }}</h3>
 
             <div class="space-y-3 text-xs border-b border-white/5 pb-4 mb-4">
               <div class="flex justify-between">
-                <span class="text-gray-400">Backend API</span>
+                <span class="text-gray-400">{{ t.features.backend }}</span>
                 <span class="text-white font-mono">Laravel 10 / PHP 8.2</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Frontend Client</span>
+                <span class="text-gray-400">{{ t.features.frontend }}</span>
                 <span class="text-white font-mono">Vue 3 / Axios / Pinia</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Database Layer</span>
-                <span class="text-white font-mono">MySQL / InnoDB</span>
+                <span class="text-gray-400">{{ t.features.charset }}</span>
+                <span class="text-white font-mono">utf8mb4_unicode_ci</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Character Set</span>
-                <span class="text-white font-mono">utf8mb4_unicode_ci</span>
+                <span class="text-gray-400">{{ t.features.algorithm }}</span>
+                <span class="text-white font-mono">Leitner SRS Box 1-5</span>
               </div>
             </div>
 
@@ -802,7 +628,7 @@
               class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-colors flex items-center justify-center gap-2 text-xs font-semibold"
             >
               <Github class="w-4 h-4" />
-              <span>Explore GitHub Repository</span>
+              <span>{{ t.features.btnGithub }}</span>
             </a>
           </div>
         </div>
@@ -829,6 +655,11 @@ import {
   Github,
   Database,
 } from "lucide-vue-next";
+import { useLanguage } from "@/composables/useLanguage";
+import { nihongoI18n } from "@/locales/caseStudies/nihongo";
+
+const { isJapanese } = useLanguage();
+const t = computed(() => (isJapanese.value ? nihongoI18n.ja : nihongoI18n.en));
 
 // LocalStorage Persistence
 const STORAGE_KEY = "nihongo_quiz_state";
@@ -859,60 +690,94 @@ const saveQuizState = () => {
 
 const persistedQuiz = loadQuizState();
 
-// Mock JFT-Basic A2 Exam Questions Data
+// Dual-Language JFT-Basic A2 Exam Questions Data
 const quizQuestionsData = [
   {
-    prompt: 'Apa hiragana dari Kanji "電話"?',
     reading: "でんわ",
-    options: [
-      "でんしゃ (Kereta)",
-      "でんわ (Telepon)",
-      "とけい (Jam)",
-      "えき (Stasiun)",
+    promptEn: 'What is the Hiragana reading for the Kanji "電話"?',
+    promptJa: '漢字「電話」の正しい読み（ひらがな）はどれですか？',
+    optionsEn: [
+      "でんしゃ (Train)",
+      "でんわ (Telephone)",
+      "とけい (Clock)",
+      "えき (Station)",
+    ],
+    optionsJa: [
+      "でんしゃ (電車)",
+      "でんわ (電話)",
+      "とけい (時計)",
+      "えき (駅)",
     ],
     correct: 1,
-    explanation:
-      'Kanji "電話" dibaca "でんわ" (denwa) yang berarti Telepon. "でんしゃ" adalah kereta.',
+    explanationEn: 'The kanji "電話" is read "でんわ" (denwa) which means telephone. "でんしゃ" means train.',
+    explanationJa: '漢字「電話」は「でんわ」と読みます。「でんしゃ」は電車を意味します。',
     srsWordId: 1,
   },
   {
-    prompt: "Pilih partikel yang tepat: 私は日本___行きたいです。",
     reading: "に",
-    options: ["に (ke/di)", "を (objek)", "で (dengan/di)", "が (subjek)"],
+    promptEn: "Select the correct particle: 私は日本___行きたいです。",
+    promptJa: "適切な助詞を選択してください： 私は日本___行きたいです。",
+    optionsEn: ["に (to/direction)", "を (object)", "で (by/at)", "が (subject)"],
+    optionsJa: ["に (方向・目的地)", "を (対象)", "で (手段・場所)", "が (主語)"],
     correct: 0,
-    explanation:
-      'Partikel "に" (ni) digunakan untuk menunjukkan arah pergerakan atau tujuan. "日本に行きたいです" berarti Ingin pergi ke Jepang.',
+    explanationEn: 'The particle "に" (ni) is used to indicate destination or direction of travel.',
+    explanationJa: '移動の目的地や方向を示す助詞は「に」を使用します。「日本に行きたいです」は日本へ向かう希望を表します。',
     srsWordId: 2,
   },
   {
-    prompt: 'Apa arti dari ungkapan "すみません"?',
     reading: "sumimasen",
-    options: [
-      "Selamat pagi",
-      "Terima kasih",
-      "Maaf / Permisi",
-      "Selamat tinggal",
+    promptEn: 'What is the primary meaning of the phrase "すみません"?',
+    promptJa: '表現「すみません」の主なニュアンスとして適切なものはどれですか？',
+    optionsEn: [
+      "Good morning",
+      "Thank you very much",
+      "Excuse me / I am sorry",
+      "Goodbye",
+    ],
+    optionsJa: [
+      "おはようございます (挨拶)",
+      "ありがとうございます (感謝)",
+      "謝罪 / 呼びかけの合図",
+      "さようなら (別れ)",
     ],
     correct: 2,
-    explanation:
-      '"すみません" (sumimasen) digunakan untuk meminta maaf atau permisi saat memanggil seseorang.',
+    explanationEn: '"すみません" (sumimasen) is used to apologize or get someone\'s attention ("Excuse me").',
+    explanationJa: '「すみません」は謝罪の意を表すほか、店員や他者に声をかける際の「失礼します」としても広く使用されます。',
     srsWordId: 3,
   },
   {
-    prompt: 'Pilih Kanji dari kata "たべる" (makan):',
     reading: "食べる",
-    options: [
-      "飲む (Minum)",
-      "見る (Melihat)",
-      "行く (Pergi)",
-      "食べる (Makan)",
+    promptEn: 'Select the Kanji corresponding to "たべる" (to eat):',
+    promptJa: '動詞「たべる（食べる）」に対応する漢字を選択してください：',
+    optionsEn: [
+      "飲む (To drink)",
+      "見る (To see)",
+      "行く (To go)",
+      "食べる (To eat)",
+    ],
+    optionsJa: [
+      "飲む (のむ)",
+      "見る (みる)",
+      "行く (いく)",
+      "食べる (たべる)",
     ],
     correct: 3,
-    explanation:
-      'Kanji "食べる" dibaca "たべる" (taberu) yang memiliki arti makan.',
+    explanationEn: 'The Kanji "食べる" is read as "たべる" (taberu), meaning to eat.',
+    explanationJa: '「食べる」は食事をとることを意味する動詞です。',
     srsWordId: 4,
   },
 ];
+
+const quizQuestions = computed(() => {
+  return quizQuestionsData.map((q) => ({
+    prompt: isJapanese.value ? q.promptJa : q.promptEn,
+    reading: q.reading,
+    options: isJapanese.value ? q.optionsJa : q.optionsEn,
+    correct: q.correct,
+    explanation: isJapanese.value ? q.explanationJa : q.explanationEn,
+    srsWordId: q.srsWordId,
+  }));
+});
 
 // Simulator state
 const currentQuestionIndex = ref(persistedQuiz?.currentIdx || 0);
@@ -926,11 +791,11 @@ const quizComplete = ref(false);
 const audioPlaying = ref(false);
 
 const currentQuestion = computed(() => {
-  return quizQuestionsData[currentQuestionIndex.value];
+  return quizQuestions.value[currentQuestionIndex.value];
 });
 
 const isLastQuestion = computed(() => {
-  return currentQuestionIndex.value === quizQuestionsData.length - 1;
+  return currentQuestionIndex.value === quizQuestions.value.length - 1;
 });
 
 // Spaced Repetition DB State Simulation
@@ -942,7 +807,6 @@ const srsLogData = ref(
       romaji: "denwa",
       errors: 0,
       box: 3,
-      nextReview: "In 4 days",
     },
     {
       id: 2,
@@ -950,7 +814,6 @@ const srsLogData = ref(
       romaji: "nihon ni ikimasu",
       errors: 0,
       box: 2,
-      nextReview: "In 2 days",
     },
     {
       id: 3,
@@ -958,7 +821,6 @@ const srsLogData = ref(
       romaji: "sumimasen",
       errors: 0,
       box: 4,
-      nextReview: "In 8 days",
     },
     {
       id: 4,
@@ -966,7 +828,6 @@ const srsLogData = ref(
       romaji: "taberu",
       errors: 0,
       box: 3,
-      nextReview: "In 4 days",
     },
   ],
 );
@@ -976,6 +837,31 @@ const playMockAudio = () => {
   setTimeout(() => {
     audioPlaying.value = false;
   }, 1800);
+};
+
+const getIntervalText = (box) => {
+  if (isJapanese.value) {
+    const intervals = {
+      1: "4時間後（即時復習）",
+      2: "1日後",
+      3: "4日後",
+      4: "8日後",
+      5: "16日後（定着）",
+    };
+    return intervals[box] || "4時間後";
+  }
+  const intervals = {
+    1: "In 4 hours",
+    2: "In 1 day",
+    3: "In 4 days",
+    4: "In 8 days",
+    5: "In 16 days",
+  };
+  return intervals[box] || "In 4 hours";
+};
+
+const localizedNextReview = (word) => {
+  return getIntervalText(word.box);
 };
 
 const submitAnswer = (idx) => {
@@ -1000,7 +886,6 @@ const submitAnswer = (idx) => {
     // Promote SRS Box
     if (srsRecord && srsRecord.box < 5) {
       srsRecord.box++;
-      srsRecord.nextReview = getIntervalText(srsRecord.box);
     }
     saveQuizState();
   } else {
@@ -1010,7 +895,6 @@ const submitAnswer = (idx) => {
     if (srsRecord) {
       srsRecord.errors++;
       srsRecord.box = 1;
-      srsRecord.nextReview = "In 4 hours (Immediate)";
     }
     saveQuizState();
   }
@@ -1060,17 +944,6 @@ const getBoxClass = (box) => {
   return classes[box] || classes[1];
 };
 
-const getIntervalText = (box) => {
-  const intervals = {
-    1: "In 4 hours",
-    2: "In 1 day",
-    3: "In 4 days",
-    4: "In 8 days",
-    5: "In 16 days",
-  };
-  return intervals[box] || "In 4 hours";
-};
-
 const resetQuizSimulator = () => {
   currentQuestionIndex.value = 0;
   score.value = 0;
@@ -1087,7 +960,6 @@ const resetQuizSimulator = () => {
       romaji: "denwa",
       errors: 0,
       box: 3,
-      nextReview: "In 4 days",
     },
     {
       id: 2,
@@ -1095,7 +967,6 @@ const resetQuizSimulator = () => {
       romaji: "nihon ni ikimasu",
       errors: 0,
       box: 2,
-      nextReview: "In 2 days",
     },
     {
       id: 3,
@@ -1103,7 +974,6 @@ const resetQuizSimulator = () => {
       romaji: "sumimasen",
       errors: 0,
       box: 4,
-      nextReview: "In 8 days",
     },
     {
       id: 4,
@@ -1111,7 +981,6 @@ const resetQuizSimulator = () => {
       romaji: "taberu",
       errors: 0,
       box: 3,
-      nextReview: "In 4 days",
     },
   ];
   localStorage.removeItem(STORAGE_KEY);

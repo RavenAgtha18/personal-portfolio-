@@ -13,7 +13,7 @@
         <ArrowLeft
           class="w-4 h-4 group-hover:-translate-x-1 transition-transform"
         />
-        <span>Back to Work</span>
+        <span>{{ t.backToWork }}</span>
       </router-link>
     </div>
 
@@ -27,16 +27,16 @@
           <Cpu class="w-4 h-4 text-amber-400" />
           <span
             class="text-xs text-amber-300 font-semibold tracking-wider uppercase font-mono"
-            >Enterprise Case Study</span
+            >{{ t.badge }}</span
           >
         </div>
         <h1
           class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 sm:mb-8"
         >
-          Protrack System –
-          <span class="gradient-text">Real-Time Production Tracking</span>
+          {{ t.hero.titlePrefix }}
+          <span class="gradient-text">{{ t.hero.titleHighlight }}</span>
           <br class="hidden lg:inline" />
-          &amp; Workflow Visibility Engine
+          {{ t.hero.titleSuffix }}
         </h1>
 
         <div
@@ -44,30 +44,30 @@
         >
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Role &amp; Scope</span
+              >{{ t.hero.roleLabel }}</span
             >
             <span class="text-sm font-semibold text-amber-300"
-              >System Developer (SysDev)</span
+              >{{ t.hero.roleValue }}</span
             >
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Production Facility</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.facilityLabel }}</span>
             <span class="text-sm font-semibold text-white"
-              >PT. Harrison And Gil-Java</span
+              >{{ t.hero.facilityValue }}</span
             >
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Database Model</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.dbModelLabel }}</span>
             <span class="text-sm font-semibold text-white"
-              >Relational SQL Tracking Schema</span
+              >{{ t.hero.dbModelValue }}</span
             >
           </div>
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Operational Capability</span
+              >{{ t.hero.capabilityLabel }}</span
             >
             <span class="text-sm font-semibold text-green-400"
-              >Dynamic Aging &amp; Real-Time WIP Tracking</span
+              >{{ t.hero.capabilityValue }}</span
             >
           </div>
         </div>
@@ -86,30 +86,41 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Executive Summary
+              {{ t.exec.title }}
             </h2>
             <div class="space-y-4 text-gray-300 leading-relaxed text-base">
               <p>
-                <strong>Protrack System</strong> is an industrial workflow
-                orchestration engine developed to resolve operational blindspots
-                in high-volume, multi-stage manufacturing floors. By monitoring
-                physical batch lifecycles through custom barcode scans at
-                designated work center stations, it provides management with
-                real-time Work-in-Progress (WIP) visibility.
+                <strong>Protrack System</strong> – {{ t.exec.p1 }}
               </p>
               <p>
-                The system maps physical travelers to digital database entities
-                called <em>Route Cards</em>, recording every department handoff
-                (from Machinery, Assembling, Carving, Finishing, to Upholstery
-                and Packing). It serves as a central reporting dashboard that
-                bridges production line activity and warehouse logistics.
+                {{ t.exec.p2 }}
               </p>
               <p>
-                Through transaction logging and station routing validations,
-                Protrack enables factory supervisors to immediately detect
-                operational bottlenecks, evaluate operator output, and estimate
-                ship-date target completion times accurately.
+                {{ t.exec.p3 }}
               </p>
+            </div>
+
+            <!-- Quantitative Impact Card -->
+            <div
+              class="mt-8 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl p-6 flex items-center justify-between"
+            >
+              <div>
+                <span
+                  class="text-xs text-amber-400 block font-mono uppercase tracking-wider"
+                  >{{ t.exec.statFocus }}</span
+                >
+                <h3 class="text-xl font-bold text-white mt-1">
+                  {{ t.exec.statTitle }}
+                </h3>
+              </div>
+              <div class="text-right">
+                <span class="text-2xl md:text-3xl font-extrabold text-amber-400"
+                  >{{ t.exec.statHighlight }}</span
+                >
+                <span class="text-xs text-gray-400 block"
+                  >{{ t.exec.statDesc }}</span
+                >
+              </div>
             </div>
           </section>
 
@@ -119,97 +130,29 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Operational Problems Solved
+              {{ t.problems.title }}
             </h2>
             <p class="text-gray-300 mb-6">
-              Before Protrack was implemented, factory management relied on
-              manual spreadsheets and end-of-week reports. This resulted in
-              several critical failure modes:
+              {{ t.problems.intro }}
             </p>
 
             <div class="space-y-4">
-              <!-- Problem 1 -->
               <div
+                v-for="(prob, idx) in t.problems.items"
+                :key="idx"
                 class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
               >
                 <div
                   class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400"
                 >
-                  <EyeOff class="w-5 h-5" />
+                  <component :is="problemIcons[idx % problemIcons.length]" class="w-5 h-5" />
                 </div>
                 <div>
                   <h4 class="font-semibold text-white mb-1">
-                    The "Black Box" Floor Blindspot
+                    {{ prob.title }}
                   </h4>
                   <p class="text-sm text-gray-400">
-                    Once raw materials entered the machinery station, their
-                    status was unknown until finished goods arrived at packing
-                    days later. Protrack eliminates this by forcing operators to
-                    scan barcodes at every intermediate station.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Problem 2 -->
-              <div
-                class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
-              >
-                <div
-                  class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400"
-                >
-                  <Database class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">
-                    Manual Spreadsheet Lag &amp; Errors
-                  </h4>
-                  <p class="text-sm text-gray-400">
-                    Production counts and WIP reporting used to lag by 24–48
-                    hours due to manual data entry. Protrack replaced this with
-                    real-time MySQL database transactions (`trans_track`) fired
-                    directly from scanning tablets.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Problem 3 -->
-              <div
-                class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
-              >
-                <div
-                  class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400"
-                >
-                  <Compass class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">
-                    Untracked Reject Cycles &amp; Lost Cost Attribution
-                  </h4>
-                  <p class="text-sm text-gray-400">
-                    Items rejected during QC inspection were frequently set
-                    aside for rework without logging. Protrack's database schema
-                    maps reject statuses (`reject_id`, `loc_before_reject`) to
-                    calculate rework costs and identify repeating failure
-                    points.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Problem 4 -->
-              <div
-                class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
-              >
-                <div
-                  class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400"
-                >
-                  <Clock class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">
-                    Station Stagnation &amp; Bottleneck Detection (Dynamic Aging Days)
-                  </h4>
-                  <p class="text-sm text-gray-400">
-                    Without continuous time tracking, batches idling at intermediate stations (e.g., kiln drying, finishing cure, upholstery queues) remained hidden until delivery deadlines were compromised. Protrack calculates <strong>Dynamic Aging Days</strong> by comparing the station check-in timestamp against current server time, triggering proactive alerts when batches exceed acceptable dwell thresholds.
+                    {{ prob.desc }}
                   </p>
                 </div>
               </div>
@@ -222,14 +165,11 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Database Schema &amp; Pipeline Architecture
+              {{ t.schema.title }}
             </h2>
 
             <p class="text-gray-300 mb-6">
-              The structural integrity of Protrack relies on a normalized MySQL
-              database schema designed for speed, fast indexing, and detailed
-              history tracking. Here is the relational schema parsed from the
-              live database inspection:
+              {{ t.schema.intro }}
             </p>
 
             <!-- Table 1: route_cards -->
@@ -239,8 +179,8 @@
               <div
                 class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between"
               >
-                <span>1. Table: route_cards</span>
-                <span class="text-amber-400">Core Batch Entity</span>
+                <span>{{ t.schema.table1Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table1Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -251,57 +191,19 @@
                       <th class="px-4 py-2">Column Name</th>
                       <th class="px-4 py-2">Type</th>
                       <th class="px-4 py-2">Key</th>
-                      <th class="px-4 py-2">Purpose</th>
+                      <th class="px-4 py-2">{{ isJapanese ? '用途・機能' : 'Purpose' }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-amber-300">id_route_card</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Unique identifier for the traveler card.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">barcode</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(25)</td>
-                      <td class="px-4 py-2 text-gray-500">MUL (Indexed)</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Scannable unique code (e.g. 20-0617-B-0012).
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">product_code</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(20)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Reference item code being processed.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">qty</td>
-                      <td class="px-4 py-2 text-gray-400">FLOAT</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Volume quantity in the batch traveler.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">process_loc</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(50)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Physical location active pointer.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-4 py-2 text-white">prod_stat</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(15)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Current status code of the batch card.
-                      </td>
+                    <tr
+                      v-for="col in t.schema.table1Cols"
+                      :key="col.name"
+                      class="border-b border-white/5"
+                    >
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-amber-300' : 'text-white'">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-gray-500' : (col.key && col.key.includes('MUL') ? 'text-red-400' : 'text-gray-500')">{{ col.key }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.purpose }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -315,8 +217,8 @@
               <div
                 class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between"
               >
-                <span>2. Table: trans_track</span>
-                <span class="text-amber-400">Transaction Event Log</span>
+                <span>{{ t.schema.table2Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table2Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -327,57 +229,19 @@
                       <th class="px-4 py-2">Column Name</th>
                       <th class="px-4 py-2">Type</th>
                       <th class="px-4 py-2">Key</th>
-                      <th class="px-4 py-2">Purpose</th>
+                      <th class="px-4 py-2">{{ isJapanese ? '用途・機能' : 'Purpose' }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-amber-300">id_trans_track</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Unique transaction ID.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">id_route_card</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-gray-500">MUL (FK)</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        References parent route_cards.id_route_card.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">track_date</td>
-                      <td class="px-4 py-2 text-gray-400">DATETIME</td>
-                      <td class="px-4 py-2 text-gray-500">MUL (Indexed)</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Precise timestamp of the scan transaction.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">location_id</td>
-                      <td class="px-4 py-2 text-gray-400">INT(11)</td>
-                      <td class="px-4 py-2 text-gray-500">MUL (FK)</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Physical station location where scanned.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">prev_location</td>
-                      <td class="px-4 py-2 text-gray-400">INT(11)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Workstation code prior to this transaction.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-4 py-2 text-white">user_id</td>
-                      <td class="px-4 py-2 text-gray-400">INT(11) UNSIGNED</td>
-                      <td class="px-4 py-2 text-gray-500">MUL (FK)</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        The authorized system user executing the scan.
-                      </td>
+                    <tr
+                      v-for="col in t.schema.table2Cols"
+                      :key="col.name"
+                      class="border-b border-white/5"
+                    >
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-amber-300' : 'text-white'">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-gray-500' : (col.key && col.key.includes('MUL') ? 'text-red-400' : 'text-gray-500')">{{ col.key }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.purpose }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -386,13 +250,14 @@
 
             <!-- Table 3: locations -->
             <div
+              v-if="t.schema.table3Title"
               class="mb-6 rounded-xl glass border border-white/10 overflow-hidden"
             >
               <div
                 class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between"
               >
-                <span>3. Table: locations</span>
-                <span class="text-amber-400">Workstation Reference</span>
+                <span>{{ t.schema.table3Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table3Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -403,41 +268,19 @@
                       <th class="px-4 py-2">Column Name</th>
                       <th class="px-4 py-2">Type</th>
                       <th class="px-4 py-2">Key</th>
-                      <th class="px-4 py-2">Purpose</th>
+                      <th class="px-4 py-2">{{ isJapanese ? '用途・機能' : 'Purpose' }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-amber-300">id_location</td>
-                      <td class="px-4 py-2 text-gray-400">INT(11)</td>
-                      <td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Unique location ID.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">location_short_name</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(5)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        3-letter code (e.g. MCH, FIN, UPH).
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">location_name</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(150)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Descriptive location name (e.g. MACHINING).
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-4 py-2 text-white">is_active</td>
-                      <td class="px-4 py-2 text-gray-400">TINYINT(1)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Boolean active/inactive status flag.
-                      </td>
+                    <tr
+                      v-for="col in t.schema.table3Cols"
+                      :key="col.name"
+                      class="border-b border-white/5"
+                    >
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-amber-300' : 'text-white'">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2 text-gray-500">{{ col.key }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.purpose }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -449,7 +292,7 @@
               <h3
                 class="text-lg font-semibold mb-4 text-amber-400 flex items-center gap-2"
               >
-                <Network class="w-4 h-4" /> Production Pipeline Flow
+                <Network class="w-4 h-4" /> {{ t.sim.pipelineTitle }}
               </h3>
 
               <div class="grid grid-cols-2 md:grid-cols-7 gap-4">
@@ -458,7 +301,7 @@
                   :key="loc.code"
                   class="p-3 rounded-xl border relative text-center flex flex-col justify-between"
                   :class="
-                    idx === 0
+                    idx === activeStepIndex
                       ? 'bg-amber-500/10 border-amber-500/30'
                       : 'glass border-white/10'
                   "
@@ -471,7 +314,7 @@
                     {{ loc.code }}
                   </div>
                   <div class="text-[9px] text-gray-400 leading-tight">
-                    {{ loc.name }}
+                    {{ isJapanese ? loc.nameJa : loc.name }}
                   </div>
 
                   <!-- Connector Arrow (Desktop) -->
@@ -497,12 +340,10 @@
                 class="text-2xl font-bold mb-4 flex items-center gap-2 text-white border-b border-white/10 pb-3"
               >
                 <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-                Interactive Production Simulator
+                {{ t.sim.title }}
               </h2>
               <p class="text-gray-300">
-                Simulate Protrack's core batch traveler mechanism. Click the
-                advance buttons to trigger a mock batch's progress. Notice how
-                the metrics and transaction log table react in real-time.
+                {{ t.sim.desc }}
               </p>
             </div>
 
@@ -513,7 +354,7 @@
                   <PlayCircle class="w-5 h-5 text-amber-400" />
                   <span
                     class="text-sm font-bold text-white uppercase tracking-wider font-mono"
-                    >Live Batch Controller</span
+                    >{{ isJapanese ? 'リアルタイム・ロット操作' : 'Live Batch Controller' }}</span
                   >
                 </div>
                 <div class="flex items-center gap-2">
@@ -521,7 +362,7 @@
                     class="w-2.5 h-2.5 rounded-full bg-green-500 animate-ping"
                   ></span>
                   <span class="text-xs text-green-400 font-mono"
-                    >Sim Active</span
+                    >{{ isJapanese ? 'シミュレーション稼働中' : 'Sim Active' }}</span
                   >
                 </div>
               </div>
@@ -530,7 +371,7 @@
               <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
                 <div class="bg-[#0e0e0e] border border-white/5 p-4 rounded-xl">
                   <span class="text-[10px] text-gray-400 block uppercase"
-                    >Batch Code</span
+                    >{{ isJapanese ? 'ロット番号' : 'Batch Code' }}</span
                   >
                   <span class="text-sm font-bold text-white font-mono">{{
                     activeBatch.barcode
@@ -538,7 +379,7 @@
                 </div>
                 <div class="bg-[#0e0e0e] border border-white/5 p-4 rounded-xl">
                   <span class="text-[10px] text-gray-400 block uppercase"
-                    >Current WIP Station</span
+                    >{{ isJapanese ? '現在工程' : 'Current WIP Station' }}</span
                   >
                   <span class="text-sm font-bold text-amber-400 font-mono">{{
                     activeBatch.location
@@ -546,19 +387,19 @@
                 </div>
                 <div class="bg-[#0e0e0e] border border-white/5 p-4 rounded-xl">
                   <span class="text-[10px] text-gray-400 block uppercase"
-                    >Dynamic Aging</span
+                    >{{ t.sim.agingDays }}</span
                   >
                   <span
                     class="text-sm font-bold font-mono"
                     :class="activeBatch.agingDays >= 4.0 ? 'text-red-400' : 'text-emerald-400'"
                   >
                     {{ activeBatch.agingDays || '1.8' }}d
-                    <span class="text-[10px] font-normal text-gray-400 block">{{ (activeBatch.agingDays || 1.8) >= 4.0 ? 'Bottleneck Flag' : 'Within SLA (<5d)' }}</span>
+                    <span class="text-[10px] font-normal text-gray-400 block">{{ (activeBatch.agingDays || 1.8) >= 4.0 ? (isJapanese ? 'ボトルネック検知' : 'Bottleneck Flag') : (isJapanese ? 'SLA基準内 (<5日)' : 'Within SLA (<5d)') }}</span>
                   </span>
                 </div>
                 <div class="bg-[#0e0e0e] border border-white/5 p-4 rounded-xl">
                   <span class="text-[10px] text-gray-400 block uppercase"
-                    >Process State</span
+                    >{{ t.sim.batchStatus }}</span
                   >
                   <span class="text-sm font-bold text-white font-mono">{{
                     activeBatch.state
@@ -566,10 +407,10 @@
                 </div>
                 <div class="bg-[#0e0e0e] border border-white/5 p-4 rounded-xl">
                   <span class="text-[10px] text-gray-400 block uppercase"
-                    >Log Records</span
+                    >{{ isJapanese ? 'トランザクション' : 'Log Records' }}</span
                   >
                   <span class="text-sm font-bold text-green-400 font-mono"
-                    >{{ mockTransactions.length }} Inserts</span
+                    >{{ mockTransactions.length }} {{ isJapanese ? '件' : 'Inserts' }}</span
                   >
                 </div>
               </div>
@@ -623,7 +464,7 @@
                           : 'text-gray-500'
                       "
                     >
-                      {{ node.name }}
+                      {{ isJapanese ? node.nameJa : node.name }}
                     </span>
                   </div>
                 </div>
@@ -638,7 +479,7 @@
                     @click="resetSimulator"
                     class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-xs text-white border border-white/10 transition-colors"
                   >
-                    Reset Batch
+                    {{ t.sim.btnReset }}
                   </button>
                   <button
                     @click="simulateReject"
@@ -647,7 +488,7 @@
                     "
                     class="px-4 py-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-xs text-red-400 border border-red-500/20 disabled:opacity-30 disabled:pointer-events-none transition-colors"
                   >
-                    Simulate Reject Event
+                    {{ t.sim.btnReject }}
                   </button>
                 </div>
 
@@ -656,7 +497,7 @@
                   :disabled="activeStepIndex === 6"
                   class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black text-xs font-bold transition-all disabled:opacity-30 disabled:pointer-events-none flex items-center gap-1.5"
                 >
-                  <span>Scan &amp; Advance Batch</span>
+                  <span>{{ t.sim.btnAdvance }}</span>
                   <ArrowRight class="w-4 h-4" />
                 </button>
               </div>
@@ -667,8 +508,8 @@
               <h3
                 class="text-sm font-bold text-white mb-4 uppercase tracking-wider font-mono flex items-center gap-2"
               >
-                <Database class="w-4 h-4 text-amber-500" /> Simulated
-                `trans_track` SQL INSERT Logs
+                <Database class="w-4 h-4 text-amber-500" />
+                {{ t.sim.logTitle }}
               </h3>
 
               <div
@@ -681,13 +522,13 @@
                     <tr
                       class="bg-white/5 text-gray-400 border-b border-white/5"
                     >
-                      <th class="p-3">id_trans_track</th>
-                      <th class="p-3">barcode</th>
-                      <th class="p-3">location_id</th>
-                      <th class="p-3">prev_loc</th>
-                      <th class="p-3">status</th>
-                      <th class="p-3">operator_nik</th>
-                      <th class="p-3">timestamp</th>
+                      <th class="p-3">{{ t.sim.thId }}</th>
+                      <th class="p-3">{{ t.sim.thBarcode }}</th>
+                      <th class="p-3">{{ t.sim.thStation }}</th>
+                      <th class="p-3">{{ t.sim.thPrev }}</th>
+                      <th class="p-3">{{ t.sim.thStatus }}</th>
+                      <th class="p-3">{{ t.sim.thOperator }}</th>
+                      <th class="p-3">{{ t.sim.thTimestamp }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -727,8 +568,7 @@
                         colspan="7"
                         class="p-8 text-center text-gray-500 italic"
                       >
-                        No transactions captured. Click "Scan &amp; Advance
-                        Batch" above.
+                        {{ isJapanese ? 'トランザクションが記録されていません。「次工程へ進める」をクリックしてください。' : 'No transactions captured. Click "Scan & Advance Batch" above.' }}
                       </td>
                     </tr>
                   </tbody>
@@ -748,44 +588,22 @@
             <h3
               class="text-lg font-bold text-white mb-6 flex items-center gap-2"
             >
-              <Sparkles class="w-5 h-5 text-amber-400" /> BA Takeaways
+              <Sparkles class="w-5 h-5 text-amber-400" /> {{ t.features.title }}
             </h3>
 
             <ul class="space-y-4">
-              <li class="flex items-start gap-3">
+              <li
+                v-for="(item, idx) in t.features.items"
+                :key="idx"
+                class="flex items-start gap-3"
+              >
                 <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                 <div>
                   <h4 class="text-sm font-semibold text-white">
-                    Full WIP Auditability
+                    {{ item.title }}
                   </h4>
                   <p class="text-xs text-gray-400 mt-0.5">
-                    Captures operator details (NIK) and accurate time telemetry
-                    at every station handoff, reducing process friction.
-                  </p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">
-                    Station Loop Validation
-                  </h4>
-                  <p class="text-xs text-gray-400 mt-0.5">
-                    Enforces sequence validation at the database layer (e.g.
-                    preventing a batch from skipping from Assembling to Packing
-                    directly).
-                  </p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">
-                    Defect Loop Isolation
-                  </h4>
-                  <p class="text-xs text-gray-400 mt-0.5">
-                    Automates routing adjustments for rejected items, logging
-                    locations to isolate problematic machinery and patterns.
+                    {{ item.desc }}
                   </p>
                 </div>
               </li>
@@ -798,24 +616,24 @@
             data-aos="fade-left"
             data-aos-delay="100"
           >
-            <h3 class="text-lg font-bold text-white mb-4">Project Telemetry</h3>
+            <h3 class="text-lg font-bold text-white mb-4">{{ t.telemetry.title }}</h3>
 
             <div class="space-y-3 text-xs border-b border-white/5 pb-4 mb-4">
               <div class="flex justify-between">
-                <span class="text-gray-400">Database Engine</span>
-                <span class="text-white font-mono">MySQL / MariaDB</span>
+                <span class="text-gray-400">{{ isJapanese ? 'バックエンド基盤' : 'Backend Engine' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.backend }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Primary Key Mapping</span>
-                <span class="text-white font-mono">id_route_card (BIGINT)</span>
+                <span class="text-gray-400">{{ isJapanese ? 'フロントエンド' : 'Frontend UI' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.frontend }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Data Logs Schema</span>
-                <span class="text-white font-mono">trans_track (BIGINT)</span>
+                <span class="text-gray-400">{{ isJapanese ? 'データベース' : 'Database' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.database }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Unique Index Keys</span>
-                <span class="text-white font-mono">barcode, location_id</span>
+                <span class="text-gray-400">{{ isJapanese ? '現場端末機器' : 'Hardware Fleet' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.hardware }}</span>
               </div>
             </div>
 
@@ -826,7 +644,7 @@
               class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-colors flex items-center justify-center gap-2 text-xs font-semibold"
             >
               <Github class="w-4 h-4" />
-              <span>Explore GitHub Repository</span>
+              <span>{{ t.telemetry.viewGithub }}</span>
             </a>
           </div>
         </div>
@@ -852,6 +670,13 @@ import {
   Sparkles,
   Github,
 } from "lucide-vue-next";
+import { useLanguage } from "@/composables/useLanguage";
+import { protrackI18n } from "@/locales/caseStudies/protrack";
+
+const { isJapanese } = useLanguage();
+const t = computed(() => (isJapanese.value ? protrackI18n.ja : protrackI18n.en));
+
+const problemIcons = [EyeOff, Database, Compass, Clock];
 
 // LocalStorage Persistence
 const STORAGE_KEY = "protrack_sim_state";
@@ -882,13 +707,13 @@ const persistedSim = loadSimState();
 
 // Pipeline Stations Configuration
 const pipelineStations = [
-  { code: "MCH", name: "Machinery" },
-  { code: "ASSY", name: "Assembling" },
-  { code: "CRV", name: "Carving & Sanding" },
-  { code: "FIN", name: "Finishing" },
-  { code: "UPH", name: "Upholstery" },
-  { code: "PACK", name: "Packing" },
-  { code: "SHP", name: "Shipped" },
+  { code: "MCH", name: "Machinery", nameJa: "木取り・機械加工" },
+  { code: "ASSY", name: "Assembling", nameJa: "組立・構造接合" },
+  { code: "CRV", name: "Carving & Sanding", nameJa: "彫刻・木地研磨" },
+  { code: "FIN", name: "Finishing", nameJa: "塗装・乾燥硬化" },
+  { code: "UPH", name: "Upholstery", nameJa: "張子・ファブリック" },
+  { code: "PACK", name: "Packing", nameJa: "検品・梱包保管" },
+  { code: "SHP", name: "Shipped", nameJa: "コンテナ積込出荷" },
 ];
 
 // Simulator Reactive State

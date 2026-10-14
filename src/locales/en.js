@@ -74,8 +74,8 @@ export default {
       badge: "04. MONOZUKURI",
       tagline: "Frontline Trust • Japanese Standards",
       title: "Zero Breakdowns. Built for Kaizen.",
-      desc: "Engineered for high-tempo shop-floor environments where operators wear gloves. Continuous Kaizen waste reduction aligned with Japanese in-house systems standards (社内SE) and FE Exam preparation.",
-      tags: ["社内SE (In-House SE)", "Monozukuri Mindset", "FE Exam Preparation"],
+      desc: "Engineered for high-tempo shop-floor environments where operators wear gloves. Continuous Kaizen waste reduction aligned with Japanese in-house systems standards (社内SE) and zero-downtime operational reliability.",
+      tags: ["社内SE (In-House SE)", "Monozukuri Mindset", "Zero-Downtime Kaizen"],
     },
   },
 

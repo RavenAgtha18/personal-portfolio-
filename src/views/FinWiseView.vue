@@ -13,7 +13,7 @@
         <ArrowLeft
           class="w-4 h-4 group-hover:-translate-x-1 transition-transform"
         />
-        <span>Back to Work</span>
+        <span>{{ t.backToWork }}</span>
       </router-link>
     </div>
 
@@ -27,15 +27,15 @@
           <Wallet class="w-4 h-4 text-amber-400" />
           <span
             class="text-xs text-amber-300 font-semibold tracking-wider uppercase"
-            >FinTech Case Study</span
+            >{{ t.badge }}</span
           >
         </div>
         <h1
           class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 sm:mb-8"
         >
-          FinWise – <span class="gradient-text">Smart Personal Budgeting</span>
+          {{ t.hero.titlePrefix }} <span class="gradient-text">{{ t.hero.titleHighlight }}</span>
           <br class="hidden lg:inline" />
-          &amp; Real-Time Financial Intelligence Engine
+          {{ t.hero.titleSuffix }}
         </h1>
 
         <div
@@ -43,32 +43,32 @@
         >
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Role &amp; Scope</span
+              >{{ t.hero.roleLabel }}</span
             >
             <span class="text-sm font-semibold text-amber-300"
-              >Full-stack Engineer (Creator)</span
+              >{{ t.hero.roleValue }}</span
             >
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Domain Focus</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.domainLabel }}</span>
             <span class="text-sm font-semibold text-white"
-              >FinTech / Personal Asset Management</span
+              >{{ t.hero.domainValue }}</span
             >
           </div>
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Core Architecture</span
+              >{{ t.hero.archLabel }}</span
             >
             <span class="text-sm font-semibold text-white"
-              >Laravel REST API + Vue 3 SPA</span
+              >{{ t.hero.archValue }}</span
             >
           </div>
           <div>
             <span class="text-xs text-gray-400 block mb-1"
-              >Core Features</span
+              >{{ t.hero.featuresLabel }}</span
             >
             <span class="text-sm font-semibold text-green-400"
-              >Currency Conversion &amp; ACID Ledger</span
+              >{{ t.hero.featuresValue }}</span
             >
           </div>
         </div>
@@ -87,30 +87,12 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Executive Summary
+              {{ t.exec.title }}
             </h2>
             <div class="space-y-4 text-gray-300 leading-relaxed text-base">
-              <p>
-                <strong>FinWise</strong> is a personal asset, budgeting, and
-                transaction tracking platform designed to optimize individual
-                liquidity and analyze monthly spending behaviors. By
-                centralizing cash movements, internal transfers, and supplier
-                realizations, the system creates a comprehensive log of all
-                financial flows.
-              </p>
-              <p>
-                The backend acts as a strict validation gateway, evaluating
-                incoming expense requests against parent categories and granular
-                monthly sub-category budget limits. The frontend client provides
-                real-time financial tracking widgets, allowing users to
-                visualize budget utilization metrics dynamically.
-              </p>
-              <p>
-                By shifting expense verification directly to the transaction
-                entry point, FinWise prevents budget overruns, eliminates ledger
-                desynchronization across multi-currency accounts, and delivers
-                instant financial reporting transparency.
-              </p>
+              <p>{{ t.exec.p1 }}</p>
+              <p>{{ t.exec.p2 }}</p>
+              <p>{{ t.exec.p3 }}</p>
             </div>
           </section>
 
@@ -120,73 +102,29 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Operational &amp; Technical Problems Solved
+              {{ t.problems.title }}
             </h2>
 
             <div class="space-y-6">
-              <!-- Problem 1 -->
               <div
+                v-for="(item, idx) in t.problems.items"
+                :key="idx"
                 class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
               >
                 <div
                   class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400"
                 >
-                  <TrendingUp class="w-5 h-5" />
+                  <component
+                    :is="idx === 0 ? TrendingUp : idx === 1 ? AlertTriangle : RefreshCw"
+                    class="w-5 h-5"
+                  />
                 </div>
                 <div>
                   <h4 class="font-semibold text-white mb-1">
-                    Asymmetric Expense Tracking &amp; Data Leakage
+                    {{ item.title }}
                   </h4>
                   <p class="text-sm text-gray-400 leading-relaxed">
-                    Users often log fluid transactional records (e.g. transfers,
-                    partial vendor payments) across multiple accounts without a
-                    centralized double-entry validation system. This leads to
-                    balance mismatch leaks. FinWise enforces structural ledger
-                    matching by linking allocations (`budget_allocations`) with
-                    actual payouts (`realization`).
-                  </p>
-                </div>
-              </div>
-
-              <!-- Problem 2 -->
-              <div
-                class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
-              >
-                <div
-                  class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400"
-                >
-                  <AlertTriangle class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">
-                    Silent Budget Overrun &amp; Missing Verification Gateways
-                  </h4>
-                  <p class="text-sm text-gray-400 leading-relaxed">
-                    Traditional expense apps log transactions post-facto,
-                    alerting users only after a budget category has already been
-                    breached. FinWise incorporates an active middleware
-                    validator at the database request layer, evaluating
-                    transaction amount limits against remaining allocated
-                    buffers before executing commit operations.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Problem 3 -->
-              <div
-                class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
-              >
-                <div
-                  class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400"
-                >
-                  <RefreshCw class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">
-                    Multi-Currency Discrepancies &amp; Exchange Reconciliation
-                  </h4>
-                  <p class="text-sm text-gray-400 leading-relaxed">
-                    Personal finance logs frequently cross multiple currencies (e.g., IDR, USD, JPY) for SaaS subscriptions, digital services, and travel. Logging raw amounts without normalized conversion corrupts budget tracking. FinWise features a built-in <strong>Currency Conversion Feature</strong> that standardizes multi-currency transactions into the base ledger using validated exchange rates before validating against category limits.
+                    {{ item.desc }}
                   </p>
                 </div>
               </div>
@@ -199,14 +137,10 @@
               class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3"
             >
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Database Schema &amp; Transactional Integrity
+              {{ t.schema.title }}
             </h2>
             <p class="text-gray-300 mb-6">
-              The database schema uses a highly structured relational
-              transaction model. To prevent balance inconsistencies during
-              concurrent writes, FinWise utilizes strict
-              <strong>database-level transaction locks (ACID compliance)</strong
-              >.
+              {{ t.schema.intro }}
             </p>
 
             <!-- Table 1: budget_category -->
@@ -216,8 +150,8 @@
               <div
                 class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between"
               >
-                <span>1. Table: budget_category</span>
-                <span class="text-amber-400">Parent Category Budgets</span>
+                <span>{{ t.schema.table1Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table1Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -232,28 +166,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-amber-300">id</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td>
+                    <tr
+                      v-for="col in t.schema.table1Cols"
+                      :key="col.name"
+                      class="border-b border-white/5"
+                    >
+                      <td class="px-4 py-2 text-amber-300 font-medium">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2 text-gray-500">{{ col.key }}</td>
                       <td class="px-4 py-2 text-gray-400">
-                        Unique identifier for the parent budget.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">total_budget</td>
-                      <td class="px-4 py-2 text-gray-400">DECIMAL(22,2)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Total parent category spending limit amount.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-4 py-2 text-white">category_materials</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(225)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Group identifier (e.g. Operational, Raw Materials).
+                        {{ col.purpose }}
                       </td>
                     </tr>
                   </tbody>
@@ -268,9 +190,9 @@
               <div
                 class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between"
               >
-                <span>2. Table: budget_allocations</span>
+                <span>{{ t.schema.table2Title }}</span>
                 <span class="text-amber-400"
-                  >Granular Limits &amp; Transfers</span
+                  >{{ t.schema.table2Tag }}</span
                 >
               </div>
               <div class="overflow-x-auto">
@@ -286,36 +208,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-amber-300">id</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td>
+                    <tr
+                      v-for="col in t.schema.table2Cols"
+                      :key="col.name"
+                      class="border-b border-white/5"
+                    >
+                      <td class="px-4 py-2 text-amber-300 font-medium">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2 text-gray-500">{{ col.key }}</td>
                       <td class="px-4 py-2 text-gray-400">
-                        Unique identifier for sub-allocations.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">category_item</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(225)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Specific item/expense category name.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">allocated_budget</td>
-                      <td class="px-4 py-2 text-gray-400">DECIMAL(22,2)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Base budget limit allocated to this category.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-4 py-2 text-white">transfer_1 ... 5</td>
-                      <td class="px-4 py-2 text-gray-400">DECIMAL(22,2)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Logs adjustments and topups transferred in/out.
+                        {{ col.purpose }}
                       </td>
                     </tr>
                   </tbody>
@@ -330,8 +232,8 @@
               <div
                 class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between"
               >
-                <span>3. Table: realization</span>
-                <span class="text-amber-400">Actual Outflow Transactions</span>
+                <span>{{ t.schema.table3Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table3Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -346,36 +248,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-amber-300">id</td>
-                      <td class="px-4 py-2 text-gray-400">BIGINT(20)</td>
-                      <td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td>
+                    <tr
+                      v-for="col in t.schema.table3Cols"
+                      :key="col.name"
+                      class="border-b border-white/5"
+                    >
+                      <td class="px-4 py-2 text-amber-300 font-medium">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2 text-gray-500">{{ col.key }}</td>
                       <td class="px-4 py-2 text-gray-400">
-                        Unique payment transaction ID.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">supplier</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(225)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Recipient supplier/merchant name.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-white/5">
-                      <td class="px-4 py-2 text-white">amount</td>
-                      <td class="px-4 py-2 text-gray-400">DECIMAL(22,2)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Transactional cash amount paid.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-4 py-2 text-white">category_materials</td>
-                      <td class="px-4 py-2 text-gray-400">VARCHAR(225)</td>
-                      <td class="px-4 py-2 text-gray-500">--</td>
-                      <td class="px-4 py-2 text-gray-400">
-                        Linked spending category for budget validation.
+                        {{ col.purpose }}
                       </td>
                     </tr>
                   </tbody>
@@ -388,26 +270,17 @@
               class="p-4 rounded-xl bg-zinc-950 border border-white/5 text-sm space-y-3"
             >
               <h4 class="font-bold text-white flex items-center gap-2">
-                <Database class="w-4 h-4 text-amber-400" /> Arithmetic Integrity
-                (ACID Operations)
+                <Database class="w-4 h-4 text-amber-400" /> {{ t.schema.acidTitle }}
               </h4>
               <p class="text-xs text-gray-400 leading-relaxed">
-                To guarantee ledger balance consistency, FinWise utilizes
-                Laravel's database-level transactions:
+                {{ t.schema.acidDesc }}
               </p>
               <ul class="list-disc pl-4 text-xs text-gray-400 space-y-1">
                 <li>
-                  <strong>Atomic Commits</strong>: Ledger insertions into the
-                  <code class="text-amber-300">realization</code> table are
-                  bundled together with update queries on
-                  <code class="text-amber-300">budget_allocations</code> inside
-                  an SQL transaction block.
+                  {{ t.schema.acid1 }}
                 </li>
                 <li>
-                  <strong>Pessimistic Locking</strong>: Uses
-                  <code class="text-amber-300">sharedLock()</code> and
-                  <code class="text-amber-300">lockForUpdate()</code> during
-                  write calculations to prevent multi-device race conditions.
+                  {{ t.schema.acid2 }}
                 </li>
               </ul>
             </div>
@@ -424,13 +297,10 @@
                 class="text-2xl font-bold mb-4 flex items-center gap-2 text-white border-b border-white/10 pb-3"
               >
                 <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-                Interactive Expense &amp; Budget Simulator
+                {{ t.sim.title }}
               </h2>
               <p class="text-gray-300">
-                Test the real-time budget depletion mechanism. Add custom mock
-                expenses to the categories below. Observe the reactive budget
-                meters and how they change color from green to red when overrun
-                thresholds are crossed.
+                {{ t.sim.desc }}
               </p>
             </div>
 
@@ -439,14 +309,13 @@
                 <h3
                   class="text-sm font-bold text-white uppercase tracking-wider font-mono flex items-center gap-2"
                 >
-                  <PiggyBank class="w-4 h-4 text-amber-400" /> Live Budget
-                  Controller
+                  <PiggyBank class="w-4 h-4 text-amber-400" /> {{ t.sim.controllerTitle }}
                 </h3>
                 <button
                   @click="resetBudgetSimulator"
                   class="text-amber-400 hover:text-amber-300 text-xs font-mono"
                 >
-                  Reset Budgets
+                  {{ t.sim.btnReset }}
                 </button>
               </div>
 
@@ -456,7 +325,7 @@
                   class="bg-[#0e0e0e] border border-white/5 p-4 rounded-xl text-center"
                 >
                   <span class="text-[10px] text-gray-400 block uppercase"
-                    >Total Limit</span
+                    >{{ t.sim.statLimit }}</span
                   >
                   <span class="text-base font-bold text-white font-mono"
                     >${{ formatMoney(totalBudgetLimit) }}</span
@@ -466,7 +335,7 @@
                   class="bg-[#0e0e0e] border border-white/5 p-4 rounded-xl text-center"
                 >
                   <span class="text-[10px] text-gray-400 block uppercase"
-                    >Spent So Far</span
+                    >{{ t.sim.statSpent }}</span
                   >
                   <span class="text-base font-bold text-amber-400 font-mono"
                     >${{ formatMoney(totalExpensesSpent) }}</span
@@ -476,7 +345,7 @@
                   class="bg-[#0e0e0e] border border-white/5 p-4 rounded-xl text-center"
                 >
                   <span class="text-[10px] text-gray-400 block uppercase"
-                    >Available Bal</span
+                    >{{ t.sim.statAvailable }}</span
                   >
                   <span
                     class="text-base font-bold font-mono"
@@ -504,10 +373,10 @@
                         class="w-2.5 h-2.5 rounded-full"
                         :class="cat.colorClass"
                       ></span>
-                      {{ cat.name }}
+                      {{ getCategoryLabel(cat.name) }}
                     </span>
                     <span class="text-gray-400">
-                      Spent:
+                      {{ isJapanese ? '消化額:' : 'Spent:' }}
                       <strong class="text-white"
                         >${{ formatMoney(cat.spent) }}</strong
                       >
@@ -533,7 +402,7 @@
                 <h4
                   class="text-xs font-bold text-white uppercase tracking-wider mb-4"
                 >
-                  Log Real-Time Expense Entry
+                  {{ t.sim.formTitle }}
                 </h4>
 
                 <form
@@ -543,7 +412,7 @@
                   <div>
                     <label
                       class="block text-[10px] text-gray-400 uppercase mb-1"
-                      >Input Currency</label
+                      >{{ t.sim.labelCurrency }}</label
                     >
                     <select
                       v-model="newExpense.currency"
@@ -558,7 +427,7 @@
                   <div>
                     <label
                       class="block text-[10px] text-gray-400 uppercase mb-1"
-                      >Amount ({{ newExpense.currency }})</label
+                      >{{ t.sim.labelAmount }} ({{ newExpense.currency }})</label
                     >
                     <input
                       v-model.number="newExpense.rawAmount"
@@ -575,7 +444,7 @@
                   <div>
                     <label
                       class="block text-[10px] text-gray-400 uppercase mb-1"
-                      >Spend Category</label
+                      >{{ t.sim.labelCategory }}</label
                     >
                     <select
                       v-model="newExpense.category"
@@ -587,7 +456,7 @@
                         :value="cat.name"
                         class="bg-neutral-900"
                       >
-                        {{ cat.name }}
+                        {{ getCategoryLabel(cat.name) }}
                       </option>
                     </select>
                   </div>
@@ -597,7 +466,7 @@
                     class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold py-2 rounded-lg text-xs transition-all flex items-center justify-center gap-1.5 h-[34px]"
                   >
                     <CheckCircle2 class="w-4 h-4" />
-                    <span>Commit Outflow</span>
+                    <span>{{ t.sim.btnCommit }}</span>
                   </button>
                 </form>
 
@@ -615,8 +484,7 @@
               <h3
                 class="text-sm font-bold text-white mb-4 uppercase tracking-wider font-mono flex items-center gap-2"
               >
-                <Database class="w-4 h-4 text-amber-500" /> Simulated
-                `realization` SQL Logs
+                <Database class="w-4 h-4 text-amber-500" /> {{ t.sim.sqlLogsTitle }}
               </h3>
 
               <div
@@ -629,12 +497,12 @@
                     <tr
                       class="bg-white/5 text-gray-400 border-b border-white/5"
                     >
-                      <th class="p-3">id</th>
-                      <th class="p-3">category_materials</th>
-                      <th class="p-3">amount</th>
-                      <th class="p-3">supplier</th>
-                      <th class="p-3">status</th>
-                      <th class="p-3">timestamp</th>
+                      <th class="p-3">{{ t.sim.thId }}</th>
+                      <th class="p-3">{{ t.sim.thCategory }}</th>
+                      <th class="p-3">{{ t.sim.thAmount }}</th>
+                      <th class="p-3">{{ t.sim.thSupplier }}</th>
+                      <th class="p-3">{{ t.sim.thStatus }}</th>
+                      <th class="p-3">{{ t.sim.thTimestamp }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -646,7 +514,7 @@
                       <td class="p-3 text-amber-500 font-bold">
                         #REAL-{{ log.id }}
                       </td>
-                      <td class="p-3 text-white">{{ log.category }}</td>
+                      <td class="p-3 text-white">{{ getCategoryLabel(log.category) }}</td>
                       <td class="p-3 text-amber-400 font-bold">
                         ${{ formatMoney(log.amount) }}
                         <span v-if="log.currencyNote" class="text-[9px] text-gray-400 block font-normal font-sans">{{ log.currencyNote }}</span>
@@ -656,7 +524,7 @@
                         <span
                           class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-green-500/10 text-green-400 border border-green-500/20"
                         >
-                          Committed
+                          {{ t.sim.statusCommitted }}
                         </span>
                       </td>
                       <td class="p-3 text-gray-500">{{ log.time }}</td>
@@ -678,43 +546,22 @@
             <h3
               class="text-lg font-bold text-white mb-6 flex items-center gap-2"
             >
-              <Sparkles class="w-5 h-5 text-amber-400" /> Key Features
+              <Sparkles class="w-5 h-5 text-amber-400" /> {{ t.features.title }}
             </h3>
 
             <ul class="space-y-4">
-              <li class="flex items-start gap-3">
+              <li
+                v-for="(feat, fIdx) in t.features.items"
+                :key="fIdx"
+                class="flex items-start gap-3"
+              >
                 <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                 <div>
                   <h4 class="text-sm font-semibold text-white">
-                    ACID transactional logs
+                    {{ feat.title }}
                   </h4>
                   <p class="text-xs text-gray-400 mt-0.5">
-                    Enforces atomic commits between budget categories,
-                    allocations, and realization tables.
-                  </p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">
-                    Dynamic allocation logs
-                  </h4>
-                  <p class="text-xs text-gray-400 mt-0.5">
-                    Tracks manual allocation shifting events through dedicated
-                    SQL columns (`transfer_1` to `transfer_5`).
-                  </p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">
-                    Real-Time limit monitoring
-                  </h4>
-                  <p class="text-xs text-gray-400 mt-0.5">
-                    Prevents category budget overrun events before SQL database
-                    execution commits.
+                    {{ feat.desc }}
                   </p>
                 </div>
               </li>
@@ -727,25 +574,25 @@
             data-aos="fade-left"
             data-aos-delay="100"
           >
-            <h3 class="text-lg font-bold text-white mb-4">Project Telemetry</h3>
+            <h3 class="text-lg font-bold text-white mb-4">{{ t.features.telemetryTitle }}</h3>
 
             <div class="space-y-3 text-xs border-b border-white/5 pb-4 mb-4">
               <div class="flex justify-between">
-                <span class="text-gray-400">Backend API</span>
+                <span class="text-gray-400">{{ t.features.backend }}</span>
                 <span class="text-white font-mono">Laravel 10 / PHP 8.2</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Frontend Client</span>
+                <span class="text-gray-400">{{ t.features.frontend }}</span>
                 <span class="text-white font-mono"
                   >Vue 3 / Axios / Tailwind</span
                 >
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Database Layer</span>
+                <span class="text-gray-400">{{ t.features.database }}</span>
                 <span class="text-white font-mono">MySQL / InnoDB</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Locking Strategy</span>
+                <span class="text-gray-400">{{ t.features.locking }}</span>
                 <span class="text-white font-mono"
                   >Pessimistic lockForUpdate()</span
                 >
@@ -758,7 +605,7 @@
               class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-colors flex items-center justify-center gap-2 text-xs font-semibold"
             >
               <Github class="w-4 h-4" />
-              <span>Explore GitHub Repository</span>
+              <span>{{ t.features.btnGithub }}</span>
             </a>
           </div>
         </div>
@@ -782,6 +629,23 @@ import {
   Check,
   Github,
 } from "lucide-vue-next";
+import { useLanguage } from "@/composables/useLanguage";
+import { finwiseI18n } from "@/locales/caseStudies/finwise";
+
+const { isJapanese } = useLanguage();
+const t = computed(() => (isJapanese.value ? finwiseI18n.ja : finwiseI18n.en));
+
+// Category label localization map
+const categoryLabelsJa = {
+  "Operational & Materials": "業務運用・資材費",
+  "Logistics & Shipping": "物流・配送費",
+  "Facility & Tools": "設備・工具備品",
+  "Marketing & Material": "マーケティング・販促",
+};
+
+const getCategoryLabel = (name) => {
+  return isJapanese.value && categoryLabelsJa[name] ? categoryLabelsJa[name] : name;
+};
 
 // LocalStorage Persistence
 const STORAGE_KEY = "finwise_budget_state";
@@ -928,7 +792,9 @@ const addExpense = () => {
   // Overrun checks
   const futureSpent = category.spent + baseAmount;
   if (futureSpent > category.limit) {
-    overrunAlert.value = `Warning: This transaction of $${baseAmount} USD will cause an overrun on category [${category.name}] budget limit!`;
+    overrunAlert.value = isJapanese.value
+      ? `警告: この ${newExpense.value.currency} 取引（換算 $${baseAmount} USD）により、カテゴリ [${getCategoryLabel(category.name)}] の予算枠を超過します！`
+      : `Warning: This transaction of $${baseAmount} USD will cause an overrun on category [${category.name}] budget limit!`;
   }
 
   // Deduct/Add to spent
@@ -941,7 +807,7 @@ const addExpense = () => {
     amount: baseAmount,
     currencyNote:
       newExpense.value.currency !== "USD"
-        ? `${Number(newExpense.value.rawAmount).toLocaleString()} ${newExpense.value.currency} converted`
+        ? `${Number(newExpense.value.rawAmount).toLocaleString()} ${newExpense.value.currency} ${isJapanese.value ? '換算済' : 'converted'}`
         : null,
     supplier: getRandomSupplier(category.name),
     time: new Date().toTimeString().split(" ")[0],

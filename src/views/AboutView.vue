@@ -15,14 +15,22 @@ import {
   Printer,
   CheckCircle2,
   Globe2,
+  FileText,
+  Eye,
+  ExternalLink,
 } from 'lucide-vue-next'
 import { useLanguage } from '@/composables/useLanguage'
 import HolographicAvatarCard from '@/components/HolographicAvatarCard.vue'
 import InteractiveGridBackground from '@/components/InteractiveGridBackground.vue'
 import PhysicsStackSandbox from '@/components/PhysicsStackSandbox.vue'
+import ShokumuKeirekishoModal from '@/components/ShokumuKeirekishoModal.vue'
 
 const { isJapanese, messages } = useLanguage()
 const activeCategory = ref('physical')
+const keirekishoModalRef = ref(null)
+const openKeirekishoModal = () => {
+  keirekishoModalRef.value?.openModal()
+}
 
 // Icon mappings for each industrial competency tier
 const tierIcons = {
@@ -126,6 +134,49 @@ const timelineItems = computed(() => {
                 <component :is="item.icon" class="w-6 h-6 text-amber-400 mb-2" />
                 <h3 class="font-bold text-zinc-100 text-xs">{{ item.title }}</h3>
                 <p class="text-[11px] text-zinc-400 mt-1 leading-relaxed">{{ item.desc }}</p>
+              </div>
+            </div>
+
+            <!-- Japanese Resume (職務経歴書) Call-to-Action Card -->
+            <div
+              class="mt-6 p-4 rounded-xl border border-amber-500/30 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                  <FileText class="w-4 h-4" />
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold text-white font-mono">
+                      {{ isJapanese ? '職務経歴書 (Shokumu Keirekisho)' : 'Japanese Standard Resume' }}
+                    </span>
+                    <span class="text-[9px] px-1.5 py-0.2 rounded font-mono bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                      JIS A4・2枚
+                    </span>
+                  </div>
+                  <p class="text-[11px] text-zinc-400 mt-0.5">
+                    {{ isJapanese ? '日系IT企業・製造DX標準様式。Word文書 (.doc) または PDF形式で即時出力。' : 'Formatted for Japanese enterprise recruiters. Download in Word (.doc) or Print-to-PDF.' }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 w-full sm:w-auto">
+                <button
+                  @click="openKeirekishoModal"
+                  class="flex-1 sm:flex-initial px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-mono text-xs font-bold transition-all hover:scale-105 active:scale-95 shadow-md flex items-center justify-center gap-1.5"
+                >
+                  <Eye class="w-3.5 h-3.5" />
+                  <span>{{ isJapanese ? '閲覧 / 出力' : 'View / Export' }}</span>
+                </button>
+                <router-link
+                  to="/keirekisho"
+                  class="p-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white hover:border-zinc-700 transition-colors"
+                  title="全画面で開く"
+                >
+                  <ExternalLink class="w-4 h-4" />
+                </router-link>
               </div>
             </div>
           </div>
@@ -281,5 +332,8 @@ const timelineItems = computed(() => {
         </div>
       </div>
     </section>
+
+    <!-- Shokumu Keirekisho Modal -->
+    <ShokumuKeirekishoModal ref="keirekishoModalRef" />
   </div>
 </template>

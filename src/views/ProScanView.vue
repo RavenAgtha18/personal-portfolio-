@@ -5,14 +5,13 @@
     <div class="fixed inset-0 -z-10 grid-pattern opacity-30"></div>
     
     <!-- Top Nav / Back Button -->
-    <!-- Top Nav / Back Button -->
     <div class="max-w-7xl mx-auto mb-8 sm:mb-10" data-aos="fade-down">
       <router-link
         to="/work"
         class="inline-flex items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors group text-sm font-medium"
       >
         <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        <span>Back to Work</span>
+        <span>{{ t.backToWork }}</span>
       </router-link>
     </div>
 
@@ -23,29 +22,29 @@
       <header class="mb-12 sm:mb-16 text-center md:text-left" data-aos="fade-up">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-amber mb-5 sm:mb-6">
           <Scan class="w-4 h-4 text-amber-400" />
-          <span class="text-xs text-amber-300 font-semibold tracking-wider uppercase font-mono">Enterprise Case Study</span>
+          <span class="text-xs text-amber-300 font-semibold tracking-wider uppercase font-mono">{{ t.badge }}</span>
         </div>
         <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 sm:mb-8">
-          ProScan – <span class="gradient-text">Inventory Intelligence:</span> <br class="hidden lg:inline"/>
-          Real-Time Stock Opname &amp; Barcode Verification Engine
+          {{ t.hero.titlePrefix }} <span class="gradient-text">{{ t.hero.titleHighlight }}</span> <br class="hidden lg:inline"/>
+          {{ t.hero.titleSuffix }}
         </h1>
         
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 p-4 sm:p-6 rounded-2xl glass mt-6 sm:mt-8">
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Role &amp; Positioning</span>
-            <span class="text-sm font-semibold text-amber-300">System Developer (SysDev)</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.roleLabel }}</span>
+            <span class="text-sm font-semibold text-amber-300">{{ t.hero.roleValue }}</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Production Facility</span>
-            <span class="text-sm font-semibold text-white">PT. Harrison And Gil-Java</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.facilityLabel }}</span>
+            <span class="text-sm font-semibold text-white">{{ t.hero.facilityValue }}</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Core Tech Stack</span>
-            <span class="text-sm font-semibold text-white">Laravel REST API + Vue 3 SPA</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.stackLabel }}</span>
+            <span class="text-sm font-semibold text-white">{{ t.hero.stackValue }}</span>
           </div>
           <div>
-            <span class="text-xs text-gray-400 block mb-1">Key Capability</span>
-            <span class="text-sm font-semibold text-green-400">Barcode Stock Opname &amp; Variance Audit</span>
+            <span class="text-xs text-gray-400 block mb-1">{{ t.hero.capabilityLabel }}</span>
+            <span class="text-sm font-semibold text-green-400">{{ t.hero.capabilityValue }}</span>
           </div>
         </div>
       </header>
@@ -59,29 +58,29 @@
           <section id="executive-summary" class="scroll-mt-24" data-aos="fade-up">
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3">
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Executive Summary
+              {{ t.exec.title }}
             </h2>
             <div class="space-y-4 text-gray-300 leading-relaxed text-base">
               <p>
-                <strong>ProScan</strong> is a high-performance inventory verification and stock opname auditing application built for PT. Harrison And Gil-Java to digitize warehouse logging. The system enables real-time physical-to-database barcode scanning on the factory floor, matching current inventory logs directly against active stock periods.
+                <strong>ProScan</strong> – {{ t.exec.p1 }}
               </p>
               <p>
-                The application replaces paper-based tally sheets with a barcode verification engine. By executing transactional lookup indexing on barcodes and physical location IDs, operators perform high-speed scans that reconcile discrepancies between physical counts and system ERP ledgers.
+                {{ t.exec.p2 }}
               </p>
               <p>
-                By linking physical stock takes to automated adjustment triggers, ProScan significantly accelerates stock recount cycles, ensuring complete traceability and audit-ready stock adjustment logs.
+                {{ t.exec.p3 }}
               </p>
             </div>
 
             <!-- Highlight Stat -->
             <div class="mt-8 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl p-6 flex items-center justify-between">
               <div>
-                <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">Audit Efficiency</span>
-                <h3 class="text-xl font-bold text-white mt-1">Stock Variance Reconciliation</h3>
+                <span class="text-xs text-amber-400 block font-mono uppercase tracking-wider">{{ t.exec.statFocus }}</span>
+                <h3 class="text-xl font-bold text-white mt-1">{{ t.exec.statTitle }}</h3>
               </div>
               <div class="text-right">
-                <span class="text-2xl md:text-3xl font-extrabold text-amber-400">Reconciled</span>
-                <span class="text-xs text-gray-400 block">Digital stock opname audit trail &amp; adjustments</span>
+                <span class="text-2xl md:text-3xl font-extrabold text-amber-400">{{ t.exec.statHighlight }}</span>
+                <span class="text-xs text-gray-400 block">{{ t.exec.statDesc }}</span>
               </div>
             </div>
           </section>
@@ -90,32 +89,22 @@
           <section id="problems-solved" class="scroll-mt-24" data-aos="fade-up">
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3">
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Operational &amp; Technical Problems Solved
+              {{ t.problems.title }}
             </h2>
             
             <div class="space-y-6">
-              <!-- Problem 1 -->
-              <div class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10">
+              <div
+                v-for="(prob, idx) in t.problems.items"
+                :key="idx"
+                class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10"
+              >
                 <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
-                  <AlertTriangle class="w-5 h-5" />
+                  <component :is="problemIcons[idx % problemIcons.length]" class="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 class="font-semibold text-white mb-1">Inventory Discrepancy &amp; Shrinkage (Phantom Stock)</h4>
+                  <h4 class="font-semibold text-white mb-1">{{ prob.title }}</h4>
                   <p class="text-sm text-gray-400 leading-relaxed">
-                    Relying on manual spreadsheets or weekly paper audits creates massive data lags. Physical items get relocated, consumed, or damaged without timely records, leading to "phantom stock" where the system shows item availability that does not exist in reality. ProScan enforces real-time mobile scans against current active periods, logging exact timestamps.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Problem 2 -->
-              <div class="flex gap-4 p-4 rounded-xl bg-amber-950/10 border border-amber-500/10">
-                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
-                  <Scan class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">Mismatched Barcode Routing &amp; Inventory Mappings</h4>
-                  <p class="text-sm text-gray-400 leading-relaxed">
-                    Without scanning validation, warehouse operators easily log incorrect item quantities, wrong categories, or deposit goods in wrong bins. ProScan resolves this by performing real-time barcode-to-location verification (`match_location`), ensuring that items scanned in the physical aisles immediately trigger matching coordinates in the central database.
+                    {{ prob.desc }}
                   </p>
                 </div>
               </div>
@@ -126,17 +115,17 @@
           <section id="database-schema" class="scroll-mt-24" data-aos="fade-up">
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-white border-b border-white/10 pb-3">
               <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-              Database Schema &amp; Transactional Logs
+              {{ t.schema.title }}
             </h2>
             <p class="text-gray-300 mb-6">
-              The schema relies on transactional indexing on barcode, SKU, and location fields. This design guarantees quick query execution during peak inventory audit shifts when hundreds of operators are scanning items simultaneously.
+              {{ t.schema.intro }}
             </p>
 
             <!-- Table 1: stock_opname_period -->
             <div class="mb-6 rounded-xl glass border border-white/10 overflow-hidden">
               <div class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between">
-                <span>1. Table: stock_opname_period</span>
-                <span class="text-amber-400">Audit Sessions</span>
+                <span>{{ t.schema.table1Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table1Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -145,14 +134,16 @@
                       <th class="px-4 py-2">Column Name</th>
                       <th class="px-4 py-2">Type</th>
                       <th class="px-4 py-2">Key</th>
-                      <th class="px-4 py-2">Purpose</th>
+                      <th class="px-4 py-2">{{ isJapanese ? '用途・機能' : 'Purpose' }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300">id_period</td><td class="px-4 py-2 text-gray-400">BIGINT(20) UNSIGNED</td><td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td><td class="px-4 py-2 text-gray-400">Unique period identifier.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">active</td><td class="px-4 py-2 text-gray-400">TINYINT(4)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Active flag (e.g. 1 = Active, 0 = Inactive).</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">code_stock_opname</td><td class="px-4 py-2 text-gray-400">VARCHAR(50)</td><td class="px-4 py-2 text-amber-400">INDEX</td><td class="px-4 py-2 text-gray-400">Custom identifier for the audit session.</td></tr>
-                    <tr><td class="px-4 py-2 text-white">start_date / end_date</td><td class="px-4 py-2 text-gray-400">TIMESTAMP</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Beginning and end boundary timestamps.</td></tr>
+                    <tr v-for="col in t.schema.table1Cols" :key="col.name" class="border-b border-white/5">
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-amber-300' : 'text-white'">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-gray-500' : (col.key && col.key.includes('INDEX') ? 'text-amber-400' : 'text-gray-500')">{{ col.key }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.purpose }}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -161,8 +152,8 @@
             <!-- Table 2: stock_opname_data_sfg -->
             <div class="mb-6 rounded-xl glass border border-white/10 overflow-hidden">
               <div class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between">
-                <span>2. Table: stock_opname_data_sfg</span>
-                <span class="text-amber-400">Physical Stock Scans</span>
+                <span>{{ t.schema.table2Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table2Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -171,17 +162,16 @@
                       <th class="px-4 py-2">Column Name</th>
                       <th class="px-4 py-2">Type</th>
                       <th class="px-4 py-2">Key</th>
-                      <th class="px-4 py-2">Purpose</th>
+                      <th class="px-4 py-2">{{ isJapanese ? '用途・機能' : 'Purpose' }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300">id_stock_opname_sfg</td><td class="px-4 py-2 text-gray-400">BIGINT(20) UNSIGNED</td><td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td><td class="px-4 py-2 text-gray-400">Unique scan record ID.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">code_stock_opname</td><td class="px-4 py-2 text-gray-400">VARCHAR(25)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Foreign code mapping to active period.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">barcode</td><td class="px-4 py-2 text-gray-400">VARCHAR(40)</td><td class="px-4 py-2 text-amber-400">INDEX</td><td class="px-4 py-2 text-gray-400">Scanned barcode of physical item.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">data_location_id</td><td class="px-4 py-2 text-gray-400">VARCHAR(25)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Registered ERP location short name.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">scan_location_id</td><td class="px-4 py-2 text-gray-400">VARCHAR(25)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Location short name where scan took place.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">match_location</td><td class="px-4 py-2 text-gray-400">TINYINT(4)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">1 if location matches ERP record; 0 if not.</td></tr>
-                    <tr><td class="px-4 py-2 text-white">amount</td><td class="px-4 py-2 text-gray-400">BIGINT(20)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Physical scanned quantity count.</td></tr>
+                    <tr v-for="col in t.schema.table2Cols" :key="col.name" class="border-b border-white/5">
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-amber-300' : 'text-white'">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-gray-500' : (col.key && col.key.includes('MUL') ? 'text-red-400' : (col.key && col.key.includes('INDEX') ? 'text-amber-400' : 'text-gray-500'))">{{ col.key }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.purpose }}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -190,8 +180,8 @@
             <!-- Table 3: master_item_sfg -->
             <div class="mb-6 rounded-xl glass border border-white/10 overflow-hidden">
               <div class="bg-white/5 px-4 py-2.5 font-mono text-xs font-bold text-white border-b border-white/10 flex justify-between">
-                <span>3. Table: master_item_sfg</span>
-                <span class="text-amber-400">ERP Item Master Registry</span>
+                <span>{{ t.schema.table3Title }}</span>
+                <span class="text-amber-400">{{ t.schema.table3Tag }}</span>
               </div>
               <div class="overflow-x-auto">
                 <table class="w-full text-left font-mono text-xs">
@@ -200,15 +190,16 @@
                       <th class="px-4 py-2">Column Name</th>
                       <th class="px-4 py-2">Type</th>
                       <th class="px-4 py-2">Key</th>
-                      <th class="px-4 py-2">Purpose</th>
+                      <th class="px-4 py-2">{{ isJapanese ? '用途・機能' : 'Purpose' }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-amber-300">id_item_sfg</td><td class="px-4 py-2 text-gray-400">BIGINT(20) UNSIGNED</td><td class="px-4 py-2 text-gray-500">PRI AUTO_INC</td><td class="px-4 py-2 text-gray-400">Unique item entity database ID.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">barcode</td><td class="px-4 py-2 text-gray-400">VARCHAR(40)</td><td class="px-4 py-2 text-amber-400">UNI</td><td class="px-4 py-2 text-gray-400">Unique barcode mapped to physical SKU tag.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">item_desc</td><td class="px-4 py-2 text-gray-400">VARCHAR(25)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Product code / tag.</td></tr>
-                    <tr class="border-b border-white/5"><td class="px-4 py-2 text-white">location_short_name</td><td class="px-4 py-2 text-gray-400">VARCHAR(20)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Registered warehouse aisle/bin identifier.</td></tr>
-                    <tr><td class="px-4 py-2 text-white">scanned</td><td class="px-4 py-2 text-gray-400">TINYINT(4)</td><td class="px-4 py-2 text-gray-500">--</td><td class="px-4 py-2 text-gray-400">Reconciliation state flag (1 = Scanned, 0 = Pending).</td></tr>
+                    <tr v-for="col in t.schema.table3Cols" :key="col.name" class="border-b border-white/5">
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-amber-300' : 'text-white'">{{ col.name }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.type }}</td>
+                      <td class="px-4 py-2" :class="col.key && col.key.includes('PRI') ? 'text-gray-500' : (col.key && col.key.includes('INDEX') || col.key && col.key.includes('UNI') ? 'text-amber-400' : 'text-gray-500')">{{ col.key }}</td>
+                      <td class="px-4 py-2 text-gray-400">{{ col.purpose }}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -220,10 +211,10 @@
             <div>
               <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 text-white border-b border-white/10 pb-3">
                 <span class="w-1.5 h-6 bg-amber-500 rounded"></span>
-                Interactive Stock Opname Simulator
+                {{ t.sim.title }}
               </h2>
               <p class="text-gray-300">
-                Simulate warehouse physical count audits. Select an item registry profile, input the physical count quantity observed on the warehouse shelf, and select the aisle location coordinates. The engine instantly computes delta stock variances and creates adjustment log entries.
+                {{ t.sim.desc }}
               </p>
             </div>
 
@@ -235,7 +226,7 @@
                 <div class="flex items-center gap-4">
                   <PackageCheck class="w-5 h-5 text-amber-400" />
                   <div class="text-left">
-                    <span class="text-[10px] text-gray-400 block uppercase">Selected Barcode / Item</span>
+                    <span class="text-[10px] text-gray-400 block uppercase">{{ t.sim.selectBarcode }}</span>
                     <select 
                       v-model="selectedItemBarcode"
                       class="bg-transparent text-white font-mono font-bold text-sm border-b border-white/20 focus:border-amber-400 focus:outline-none py-1 cursor-pointer"
@@ -246,7 +237,7 @@
                         :value="item.barcode"
                         class="bg-neutral-900 text-white"
                       >
-                        {{ item.barcode }} - {{ item.desc }}
+                        {{ item.barcode }} - {{ isJapanese ? item.descJa : item.desc }}
                       </option>
                     </select>
                   </div>
@@ -255,7 +246,7 @@
                 <div class="text-right">
                   <button @click="resetSimulator" class="text-amber-400 hover:text-amber-300 text-xs font-mono flex items-center gap-1">
                     <RefreshCw class="w-3.5 h-3.5" />
-                    <span>Reset Simulator</span>
+                    <span>{{ t.sim.resetBtn }}</span>
                   </button>
                 </div>
               </div>
@@ -264,7 +255,7 @@
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <!-- System Registered Aisle -->
                 <div class="p-4 rounded-xl bg-white/5 border border-white/5 space-y-1">
-                  <span class="text-[10px] text-gray-400 block uppercase">Registered Aisle</span>
+                  <span class="text-[10px] text-gray-400 block uppercase">{{ t.sim.registeredAisle }}</span>
                   <div class="text-sm font-semibold text-white font-mono flex items-center gap-1.5">
                     <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
                     {{ selectedItem.registeredAisle }}
@@ -273,15 +264,15 @@
 
                 <!-- System ERP Quantity -->
                 <div class="p-4 rounded-xl bg-white/5 border border-white/5 space-y-1">
-                  <span class="text-[10px] text-gray-400 block uppercase">ERP System Stock</span>
+                  <span class="text-[10px] text-gray-400 block uppercase">{{ t.sim.erpStock }}</span>
                   <div class="text-sm font-semibold text-white font-mono">
-                    {{ selectedItem.systemStock }} units
+                    {{ selectedItem.systemStock }} {{ isJapanese ? '点' : 'units' }}
                   </div>
                 </div>
 
                 <!-- Location Scanner Matcher -->
                 <div class="p-4 rounded-xl bg-white/5 border border-white/5 space-y-2">
-                  <label class="text-[10px] text-gray-400 block uppercase">Scanned Aisle</label>
+                  <label class="text-[10px] text-gray-400 block uppercase">{{ t.sim.scannedAisle }}</label>
                   <select 
                     v-model="scannedAisle"
                     class="w-full bg-white/5 border border-white/10 rounded px-2 py-1 text-xs text-white focus:border-amber-400 focus:outline-none font-mono"
@@ -298,8 +289,8 @@
               <div class="p-4 rounded-xl bg-neutral-950/20 border border-white/10 mb-6 space-y-4">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div class="space-y-1">
-                    <h5 class="text-sm font-bold text-white">Physical Shelf Count Entry</h5>
-                    <p class="text-xs text-gray-400">Input quantity observed during audit scanning.</p>
+                    <h5 class="text-sm font-bold text-white">{{ t.sim.shelfCount }}</h5>
+                    <p class="text-xs text-gray-400">{{ t.sim.shelfCountDesc }}</p>
                   </div>
                   
                   <div class="flex items-center gap-3">
@@ -327,15 +318,15 @@
                 <!-- Delta Math Reconciler -->
                 <div class="border-t border-white/5 pt-4 grid grid-cols-3 text-center text-xs font-mono">
                   <div>
-                    <span class="text-gray-400 block mb-1">System Count</span>
+                    <span class="text-gray-400 block mb-1">{{ t.sim.systemCount }}</span>
                     <span class="text-white font-bold">{{ selectedItem.systemStock }}</span>
                   </div>
                   <div>
-                    <span class="text-gray-400 block mb-1">Physical Count</span>
+                    <span class="text-gray-400 block mb-1">{{ t.sim.physicalCount }}</span>
                     <span class="text-amber-400 font-bold">{{ physicalCount }}</span>
                   </div>
                   <div>
-                    <span class="text-gray-400 block mb-1">Variance Delta</span>
+                    <span class="text-gray-400 block mb-1">{{ t.sim.varianceDelta }}</span>
                     <span 
                       class="font-bold font-mono"
                       :class="varianceDelta === 0 ? 'text-green-400' : 'text-red-400'"
@@ -361,7 +352,7 @@
                     <PackageCheck v-else class="w-6 h-6 flex-shrink-0" />
                     <div>
                       <strong class="text-sm font-bold uppercase tracking-wider block">
-                        {{ varianceDelta === 0 && locationMatches ? 'RECONCILED / ZERO VARIANCE' : 'STOCK ADJUSTMENT LOG TRIGGERED' }}
+                        {{ varianceDelta === 0 && locationMatches ? (isJapanese ? '差異なし / 正常照合完了' : 'RECONCILED / ZERO VARIANCE') : (isJapanese ? '在庫調整伝票自動起票トリガー' : 'STOCK ADJUSTMENT LOG TRIGGERED') }}
                       </strong>
                       <span class="text-xs text-gray-400 font-mono">
                         {{ getStatusDetailsMessage }}
@@ -369,7 +360,7 @@
                     </div>
                   </div>
                   <div class="text-right font-mono text-[10px] text-gray-500 hidden md:block">
-                    Match Location: {{ locationMatches ? 'YES' : 'NO' }}
+                    {{ locationMatches ? t.sim.matchYes : t.sim.matchNo }}
                   </div>
                 </div>
 
@@ -378,7 +369,7 @@
                   class="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1.5"
                 >
                   <Scan class="w-4 h-4" />
-                  <span>Commit Inventory Log &amp; Sync ERP</span>
+                  <span>{{ t.sim.commitBtn }}</span>
                 </button>
               </div>
 
@@ -387,21 +378,21 @@
             <!-- SIMULATED TRANSACTIONAL ADJUSTMENT LOGS -->
             <div class="p-6 rounded-2xl glass border border-white/10">
               <h3 class="text-sm font-bold text-white mb-4 uppercase tracking-wider font-mono flex items-center gap-2">
-                <History class="w-4 h-4 text-amber-500" /> Audit Transaction Logs (`stock_opname_data_sfg`)
+                <History class="w-4 h-4 text-amber-500" /> {{ t.sim.logTitle }}
               </h3>
               
               <div class="overflow-x-auto rounded-xl bg-[#0e0e0e] border border-white/5">
                 <table class="w-full text-left border-collapse text-[11px] font-mono">
                   <thead>
                     <tr class="bg-white/5 text-gray-400 border-b border-white/5">
-                      <th class="p-3">Opname id</th>
-                      <th class="p-3">Item Barcode</th>
-                      <th class="p-3">Registered Aisle</th>
-                      <th class="p-3">Scanned Aisle</th>
-                      <th class="p-3">ERP Quantity</th>
-                      <th class="p-3">Physical Scanned</th>
-                      <th class="p-3">Variance</th>
-                      <th class="p-3">Status</th>
+                      <th class="p-3">{{ t.sim.thId }}</th>
+                      <th class="p-3">{{ t.sim.thBarcode }}</th>
+                      <th class="p-3">{{ t.sim.thRegAisle }}</th>
+                      <th class="p-3">{{ t.sim.thScanAisle }}</th>
+                      <th class="p-3">{{ t.sim.thErpQty }}</th>
+                      <th class="p-3">{{ t.sim.thPhysQty }}</th>
+                      <th class="p-3">{{ t.sim.thVariance }}</th>
+                      <th class="p-3">{{ t.sim.thStatus }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -428,7 +419,7 @@
                               : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
                           ]"
                         >
-                          {{ log.variance === 0 && log.locationMatch ? 'Match' : 'Adjusted' }}
+                          {{ log.variance === 0 && log.locationMatch ? (isJapanese ? '正常照合' : 'Match') : (isJapanese ? '差異調整' : 'Adjusted') }}
                         </span>
                       </td>
                     </tr>
@@ -445,29 +436,19 @@
           <!-- Key Achievements -->
           <div class="p-6 rounded-2xl glass border border-white/10" data-aos="fade-left">
             <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-              <Sparkles class="w-5 h-5 text-amber-400" /> Key Architecture
+              <Sparkles class="w-5 h-5 text-amber-400" /> {{ t.features.title }}
             </h3>
             
             <ul class="space-y-4">
-              <li class="flex items-start gap-3">
+              <li
+                v-for="(item, idx) in t.features.items"
+                :key="idx"
+                class="flex items-start gap-3"
+              >
                 <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                 <div>
-                  <h4 class="text-sm font-semibold text-white">High-Speed Indexing</h4>
-                  <p class="text-xs text-gray-400 mt-0.5">Optimized B-Tree indexes on `barcode` columns to ensure instant scans during large-scale audit intervals.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">Location Match Verification</h4>
-                  <p class="text-xs text-gray-400 mt-0.5">Automates structural location checks (`match_location`) to prevent items from being stored in wrong shelves.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <Check class="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 class="text-sm font-semibold text-white">Dynamic Period Locking</h4>
-                  <p class="text-xs text-gray-400 mt-0.5">Isolates adjustments to active auditing periods (`stock_opname_period`) preventing historical record manipulation.</p>
+                  <h4 class="text-sm font-semibold text-white">{{ item.title }}</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">{{ item.desc }}</p>
                 </div>
               </li>
             </ul>
@@ -475,24 +456,24 @@
 
           <!-- Project Specs -->
           <div class="p-6 rounded-2xl glass border border-white/10" data-aos="fade-left" data-aos-delay="100">
-            <h3 class="text-lg font-bold text-white mb-4">Project Telemetry</h3>
+            <h3 class="text-lg font-bold text-white mb-4">{{ t.telemetry.title }}</h3>
             
             <div class="space-y-3 text-xs border-b border-white/5 pb-4 mb-4">
               <div class="flex justify-between">
-                <span class="text-gray-400">Backend API</span>
-                <span class="text-white font-mono">Laravel 9 / PHP 8.1</span>
+                <span class="text-gray-400">{{ isJapanese ? 'バックエンドAPI' : 'Backend API' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.backend }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Frontend Client</span>
-                <span class="text-white font-mono">Vue 3 / Tailwind CSS</span>
+                <span class="text-gray-400">{{ isJapanese ? 'フロントエンド' : 'Frontend Client' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.frontend }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Database Layer</span>
-                <span class="text-white font-mono">MySQL 8 / InnoDB</span>
+                <span class="text-gray-400">{{ isJapanese ? 'データベース基盤' : 'Database Layer' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.database }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-400">Index Types</span>
-                <span class="text-white font-mono">B-Tree Indexes</span>
+                <span class="text-gray-400">{{ isJapanese ? 'インデックス方式' : 'Index Types' }}</span>
+                <span class="text-white font-mono">{{ t.telemetry.indexTypes }}</span>
               </div>
             </div>
 
@@ -502,7 +483,7 @@
               class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-colors flex items-center justify-center gap-2 text-xs font-semibold"
             >
               <Github class="w-4 h-4" />
-              <span>Explore GitHub Repository</span>
+              <span>{{ t.telemetry.viewGithub }}</span>
             </a>
           </div>
         </div>
@@ -519,19 +500,26 @@ import {
   Scan, 
   PackageCheck, 
   AlertTriangle, 
-  History,
-  Check,
-  Github,
-  RefreshCw,
-  Sparkles
+  History, 
+  Check, 
+  Github, 
+  RefreshCw, 
+  Sparkles 
 } from 'lucide-vue-next'
+import { useLanguage } from '@/composables/useLanguage'
+import { proscanI18n } from '@/locales/caseStudies/proscan'
+
+const { isJapanese } = useLanguage()
+const t = computed(() => (isJapanese.value ? proscanI18n.ja : proscanI18n.en))
+
+const problemIcons = [AlertTriangle, Scan]
 
 // Mock Data registries
 const itemRegistry = [
-  { barcode: 'CG-SFG-2001', desc: 'Luxury Wooden Legs (Mahogany)', systemStock: 45, registeredAisle: 'AISLE-A1' },
-  { barcode: 'CG-SFG-2002', desc: 'Sofa Cushion Padding (Foam)', systemStock: 120, registeredAisle: 'AISLE-A2' },
-  { barcode: 'CG-SFG-2003', desc: 'Gilded Frame Accents (Gold Leaf)', systemStock: 15, registeredAisle: 'AISLE-B1' },
-  { barcode: 'CG-SFG-2004', desc: 'Velvet Fabric Rolls (Navy Blue)', systemStock: 80, registeredAisle: 'AISLE-B2' }
+  { barcode: 'CG-SFG-2001', desc: 'Luxury Wooden Legs (Mahogany)', descJa: '高級マホガニー製家具脚パーツ', systemStock: 45, registeredAisle: 'AISLE-A1' },
+  { barcode: 'CG-SFG-2002', desc: 'Sofa Cushion Padding (Foam)', descJa: '高反発ソファクッション芯材', systemStock: 120, registeredAisle: 'AISLE-A2' },
+  { barcode: 'CG-SFG-2003', desc: 'Gilded Frame Accents (Gold Leaf)', descJa: '金箔装飾額縁アクセント材', systemStock: 15, registeredAisle: 'AISLE-B1' },
+  { barcode: 'CG-SFG-2004', desc: 'Velvet Fabric Rolls (Navy Blue)', descJa: '特注ベルベットファブリック原反（紺）', systemStock: 80, registeredAisle: 'AISLE-B2' }
 ]
 
 // State variables for Simulator
@@ -563,15 +551,23 @@ const locationMatches = computed(() => {
 
 const getStatusDetailsMessage = computed(() => {
   if (varianceDelta.value === 0 && locationMatches.value) {
-    return 'All barcode scanning details reconcile perfectly with ERP records.'
+    return isJapanese.value
+      ? '全バーコードスキャン情報が基幹ERP台帳と100%一致しました。'
+      : 'All barcode scanning details reconcile perfectly with ERP records.'
   }
   const varianceMsg = varianceDelta.value !== 0 
-    ? `Variance of ${varianceDelta.value > 0 ? '+' : ''}${varianceDelta.value} units detected.` 
+    ? (isJapanese.value 
+        ? `${varianceDelta.value > 0 ? '+' : ''}${varianceDelta.value} 点の数量差異を検知。`
+        : `Variance of ${varianceDelta.value > 0 ? '+' : ''}${varianceDelta.value} units detected.`)
     : ''
   const locationMsg = !locationMatches.value 
-    ? `Aisle mismatch (Scanned: ${scannedAisle.value} vs Registered: ${selectedItem.value.registeredAisle}).` 
+    ? (isJapanese.value 
+        ? `保管棚番の不一致（スキャン: ${scannedAisle.value} vs 台帳登録: ${selectedItem.value.registeredAisle}）。`
+        : `Aisle mismatch (Scanned: ${scannedAisle.value} vs Registered: ${selectedItem.value.registeredAisle}).`)
     : ''
-  return `Discrepancy logged: ${varianceMsg} ${locationMsg} Creating DB adjustments.`.trim()
+  return isJapanese.value
+    ? `不整合を記録: ${varianceMsg} ${locationMsg} 調整伝票を自動起票します。`
+    : `Discrepancy logged: ${varianceMsg} ${locationMsg} Creating DB adjustments.`.trim()
 })
 
 // Simulated logs table

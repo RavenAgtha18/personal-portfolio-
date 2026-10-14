@@ -141,6 +141,16 @@ const routes = [
         }
       }
     ]
+  },
+  {
+    path: '/keirekisho',
+    alias: ['/shokumu-keirekisho', '/resume-jp', '/resume'],
+    name: 'shokumu-keirekisho',
+    component: () => import('@/views/KeirekishoView.vue'),
+    meta: {
+      title: '職務経歴書 (Shokumu Keirekisho) | Riki Andi Alfiyanto',
+      description: '日系IT企業・製造DX向け Bridge SE / Technical Business Analyst 日本標準職務経歴書 (A4・2枚規格)。Word・PDFダウンロード対応。',
+    }
   }
 ]
 

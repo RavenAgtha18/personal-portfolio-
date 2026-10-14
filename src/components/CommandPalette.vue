@@ -297,6 +297,16 @@ const items = [
 
   // 3. Quick Actions
   {
+    id: 'act-keirekisho',
+    category: 'Actions',
+    title: '職務経歴書 (Shokumu Keirekisho) – JIS 2ページ規格',
+    subtitle: 'Word (.doc) / PDF 形式でダウンロード・印刷可能な日本標準経歴書',
+    badge: 'JIS 2-PAGE',
+    actionText: 'Open',
+    icon: FileText,
+    action: () => router.push('/keirekisho'),
+  },
+  {
     id: 'act-resume',
     category: 'Actions',
     title: 'Download Resume / CV',
