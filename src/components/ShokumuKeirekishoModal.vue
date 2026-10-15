@@ -31,7 +31,7 @@
                   </span>
                 </h3>
                 <p class="text-[11px] text-zinc-400">
-                  日系IT企業・製造DX向け Bridge SE / Technical BA 標準様式
+                  日系IT企業・製造DX向け 社内SE (社内システムエンジニア) 標準様式
                 </p>
               </div>
             </div>

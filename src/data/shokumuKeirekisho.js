@@ -13,7 +13,7 @@ export const shokumuKeirekishoData = {
     nationality: "インドネシア共和国",
     targetRole: "社内SE (社内システムエンジニア / 現場Webアプリケーションエンジニア)",
     email: "rikiandi1801@gmail.com",
-    portfolioUrl: "https://rikiandi.dev",
+    portfolioUrl: "https://github.com/RavenAgtha18/personal-portfolio-",
     githubUrl: "https://github.com/RavenAgtha18",
     certifications: [
       { name: "JFT-Basic A2 (国際交流基金 日本語基礎テスト A2認定)", date: "取得済" },
@@ -130,7 +130,7 @@ export const shokumuKeirekishoData = {
       description:
         "倉庫内に点在する3,000点超の半製品・完成品の実地棚卸作業において、紙のカウント票を廃止し、バーコード連続スキャンによる基幹ERP台帳とのリアルタイム差異検出を実現。定期的な実地棚卸立会とトラブル対応を継続担当。",
       achievements: [
-        "棚卸工期を従来の4日間から1.5日間へ短縮（作業工数60%削減）。",
+        "棚卸工期を従来の4日間から1.5日間へ短縮（作業工数62.5%削減）。",
         "物理実数と基幹ERP台帳の在庫差異率を8.5%から0.3%未満へ劇的改善。",
       ],
     },

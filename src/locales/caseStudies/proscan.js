@@ -22,7 +22,7 @@ export const proscanI18n = {
       p3: "By linking physical stock takes to automated adjustment triggers, ProScan significantly accelerates stock recount cycles, ensuring complete traceability and audit-ready stock adjustment logs.",
       statFocus: "Audit Efficiency",
       statTitle: "Stock Variance Reconciliation",
-      statHighlight: "65% Faster",
+      statHighlight: "62.5% Faster",
       statDesc: "Audit cycle slashed from 4 days to 1.5 days across 3,000+ SKUs",
     },
     problems: {
@@ -145,8 +145,8 @@ export const proscanI18n = {
       p3: "現品スキャンと在庫調整伝票の自動生成を直結させたことで、再カウント作業の大幅削減、完全な監査証跡、および迅速な月次決算在庫確定を実現しました。",
       statFocus: "定量的導入成果",
       statTitle: "実地棚卸の所要期間",
-      statHighlight: "65% 短縮",
-      statDesc: "4日間の全社棚卸を1.5日へ短縮し、差異率を8.5%から0.3%未満へ改善",
+      statHighlight: "62.5% 短縮",
+      statDesc: "4日間の全社棚卸を1.5日へ短縮（62.5%削減）し、差異率を8.5%から0.3%未満へ改善",
     },
     problems: {
       title: "解決した運用上・技術的課題",

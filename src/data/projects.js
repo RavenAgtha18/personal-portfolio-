@@ -394,9 +394,9 @@ export const projects = [
     solutionJa:
       "現場モバイル最適化Laravel 9 Bladeとインデックス付きMySQLテーブル群。スキャンと同時に台帳残高と照合し、不一致棚番を即座にハイライト。",
     result:
-      "Cut stock opname audit duration by 65% (from 4 days to 1.5 days). Dual-auditor scanning mechanism slashed inventory variance from 8.5% down to < 0.3% across 3,000+ SKUs in 4 active warehouses.",
+      "Cut stock opname audit duration by 62.5% (from 4 days to 1.5 days). Dual-auditor scanning mechanism slashed inventory variance from 8.5% down to < 0.3% across 3,000+ SKUs in 4 active warehouses.",
     resultJa:
-      "棚卸監査所要日数を4日から1.5日へ65%短縮。ダブルスキャン検証により在庫差異率を8.5%から0.3%未満へ劇的削減（4大倉庫3,000超SKU対象）。",
+      "棚卸監査所要日数を4日から1.5日へ62.5%短縮。ダブルスキャン検証により在庫差異率を8.5%から0.3%未満へ劇的削減（4大倉庫3,000超SKU対象）。",
   },
   {
     id: 13,
