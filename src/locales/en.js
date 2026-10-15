@@ -264,8 +264,8 @@ export default {
       },
       {
         period: "2024 - 2025",
-        title: "Independent Development & Business Studies",
-        desc: "Engaged in freelance game development, software projects, university coursework in Business Management, and intensive Japanese language study (achieving JFT-Basic A2).",
+        title: "Independent Business & Freelance Game Development",
+        desc: "Founded and managed an independent commercial venture (operations, retail, and financial administration) alongside freelance game development contracts focusing on gameplay mechanics and logic scripting.",
       },
       {
         period: "2023 - 2024",

@@ -192,8 +192,8 @@
                   </th>
                   <td colspan="3" class="border border-zinc-400 p-0.5 px-1 text-zinc-800 text-[9px] leading-tight">
                     <div class="flex items-center justify-between">
-                      <span><strong>2024年05月 ～ 2025年01月</strong>：個人事業・ゲーム受託 &amp; 大学（経営学専攻）・日本語学習</span>
-                      <span class="text-zinc-600 font-sans">自己研鑽 / JFT-Basic A2準備</span>
+                      <span><strong>2024年05月 ～ 2025年01月</strong>：個人事業主（店舗・事業運営） &amp; フリーランス（ゲーム開発受託）</span>
+                      <span class="text-zinc-600 font-sans">事業運営 / ゲームプログラミング</span>
                     </div>
                   </td>
                 </tr>

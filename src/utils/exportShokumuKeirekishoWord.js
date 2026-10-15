@@ -201,7 +201,7 @@ export function exportShokumuKeirekishoToWord() {
     <tr>
       <th rowspan='3'>前職・職歴</th>
       <td colspan='3'>
-        <strong>2024年05月 ～ 2025年01月</strong>: 個人事業・ゲーム受託開発 &amp; 大学（経営学専攻）・日本語学習（JFT-Basic A2準備）
+        <strong>2024年05月 ～ 2025年01月</strong>: 個人事業主（店舗・事業運営） &amp; フリーランス（ゲーム開発受託・制作）
       </td>
     </tr>
     <tr>
