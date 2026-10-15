@@ -19,7 +19,7 @@
       <div class="pointer-events-none absolute inset-0 z-10 bg-radial-cinematic"></div>
       <div class="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-[#06080e] via-transparent to-[#06080e]/60"></div>
 
-      <!-- Top Ambient Bar (Minimalist Luxury Telemetry) -->
+      <!-- Top Ambient Bar (Minimalist Luxury Telemetry - Center Unobstructed) -->
       <div class="relative z-20 w-full px-3.5 sm:px-12 pt-16 sm:pt-20 flex items-center justify-between pointer-events-none font-mono text-xs gap-2">
         <!-- Division Tag -->
         <div class="flex items-center gap-2 sm:gap-3 bg-black/40 backdrop-blur-xl px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 shadow-lg shadow-black/50 text-[10px] sm:text-xs min-w-0">
@@ -33,22 +33,6 @@
           </span>
           <span class="text-zinc-600 hidden xs:inline">/</span>
           <span class="hidden sm:inline text-zinc-400">SYSDEV (2-PERSON CORE)</span>
-        </div>
-
-        <!-- Center: Interactive Scene Switcher -->
-        <div class="hidden md:flex items-center gap-1.5 bg-black/40 backdrop-blur-xl p-1 rounded-full border border-white/10 pointer-events-auto shadow-lg">
-          <button
-            v-for="(scene, idx) in scenes"
-            :key="scene.id"
-            @click="jumpToScene(idx)"
-            class="px-3.5 py-1.5 rounded-full text-[11px] font-medium transition-all duration-300 flex items-center gap-2 cursor-pointer"
-            :class="activeSceneIndex === idx
-              ? 'bg-white/15 text-white font-semibold shadow-inner border border-white/20'
-              : 'text-zinc-400 hover:text-zinc-200 hover:bg-white/5'"
-          >
-            <span class="w-1.5 h-1.5 rounded-full" :class="activeSceneIndex === idx ? 'bg-amber-400' : 'bg-zinc-600'"></span>
-            <span>{{ scene.label }}</span>
-          </button>
         </div>
 
         <!-- Scroll Progress Indicator -->
@@ -73,54 +57,99 @@
           <div
             v-if="currentPhaseIndex === 0"
             key="hero-stage"
-            class="w-full max-w-xl lg:max-w-2xl pointer-events-auto"
+            class="w-full flex items-end justify-between pointer-events-auto gap-4 sm:gap-8"
           >
-            <!-- Status Badge -->
-            <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/20 text-[10px] sm:text-xs font-mono mb-2 sm:mb-3 bg-black/55 backdrop-blur-md text-zinc-200 shadow-lg max-w-full">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
-              <span class="tracking-wide truncate">{{ t('hero.statusBadge') }}</span>
+            <!-- Left Editorial Text -->
+            <div class="w-full max-w-xl lg:max-w-2xl">
+              <!-- Status Badge -->
+              <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/20 text-[10px] sm:text-xs font-mono mb-2 sm:mb-3 bg-black/55 backdrop-blur-md text-zinc-200 shadow-lg max-w-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
+                <span class="tracking-wide truncate">{{ t('hero.statusBadge') }}</span>
+              </div>
+
+              <!-- Grand Headline with deep cinema shadow -->
+              <h1 class="text-2xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2 leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] break-keep sm:whitespace-nowrap">
+                {{ t('hero.name') }}
+              </h1>
+
+              <!-- Subtitle -->
+              <p class="text-xs xs:text-base sm:text-xl font-light text-zinc-200 mb-2 sm:mb-2.5 tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+                {{ t('hero.headline') }} <span class="text-amber-400 font-normal">/</span> {{ t('hero.headlineSub') }}
+              </p>
+
+              <!-- Bio Statement -->
+              <p class="text-[11px] xs:text-xs sm:text-sm text-zinc-300 max-w-lg mb-4 sm:mb-5 leading-relaxed font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] line-clamp-3 xs:line-clamp-none">
+                {{ t('hero.bio') }}
+              </p>
+
+              <!-- Action Pill Buttons -->
+              <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                <button
+                  @click="scrollToProjects"
+                  class="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide bg-white text-zinc-950 hover:bg-zinc-100 transition-all duration-300 hover:scale-[1.02] shadow-xl shadow-black/60 cursor-pointer"
+                >
+                  <FolderOpen class="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                  <span>{{ t('hero.exploreSystems') }}</span>
+                </button>
+                <a
+                  href="https://wa.me/6285175180821"
+                  target="_blank"
+                  class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
+                >
+                  <MessageCircle class="w-3.5 h-3.5 shrink-0" />
+                  <span>{{ t('hero.contactMe') }}</span>
+                </a>
+                <a
+                  href="/cv_rikiandi.pdf"
+                  target="_blank"
+                  class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
+                >
+                  <FileText class="w-3.5 h-3.5 shrink-0" />
+                  <span>{{ t('hero.resume') }}</span>
+                </a>
+              </div>
             </div>
 
-            <!-- Grand Headline with deep cinema shadow -->
-            <h1 class="text-2xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2 leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] break-keep sm:whitespace-nowrap">
-              {{ t('hero.name') }}
-            </h1>
-
-            <!-- Subtitle -->
-            <p class="text-xs xs:text-base sm:text-xl font-light text-zinc-200 mb-2 sm:mb-2.5 tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
-              {{ t('hero.headline') }} <span class="text-amber-400 font-normal">/</span> {{ t('hero.headlineSub') }}
-            </p>
-
-            <!-- Bio Statement -->
-            <p class="text-[11px] xs:text-xs sm:text-sm text-zinc-300 max-w-lg mb-4 sm:mb-5 leading-relaxed font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] line-clamp-3 xs:line-clamp-none">
-              {{ t('hero.bio') }}
-            </p>
-
-            <!-- Action Pill Buttons -->
-            <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
-              <button
-                @click="scrollToProjects"
-                class="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide bg-white text-zinc-950 hover:bg-zinc-100 transition-all duration-300 hover:scale-[1.02] shadow-xl shadow-black/60 cursor-pointer"
-              >
-                <FolderOpen class="w-3.5 h-3.5 text-amber-600 shrink-0" />
-                <span>{{ t('hero.exploreSystems') }}</span>
-              </button>
-              <a
-                href="https://wa.me/6285175180821"
-                target="_blank"
-                class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
-              >
-                <MessageCircle class="w-3.5 h-3.5 shrink-0" />
-                <span>{{ t('hero.contactMe') }}</span>
-              </a>
-              <a
-                href="/cv_rikiandi.pdf"
-                target="_blank"
-                class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
-              >
-                <FileText class="w-3.5 h-3.5 shrink-0" />
-                <span>{{ t('hero.resume') }}</span>
-              </a>
+            <!-- Right: Authentic Profile HUD Card (Shows real photo with clear, sharp eyes!) -->
+            <div class="hidden xl:flex flex-col items-end font-mono text-[11px] text-zinc-400 pointer-events-none mb-1 shrink-0">
+              <div class="p-3.5 rounded-2xl border border-white/15 bg-black/60 backdrop-blur-xl w-64 space-y-2.5 shadow-2xl shadow-black/90">
+                <div class="flex items-center gap-3 pb-2 border-b border-white/10">
+                  <div class="relative shrink-0">
+                    <img
+                      src="/img/profile.jpg"
+                      alt="Riki Andi Alfiyanto"
+                      class="w-12 h-12 rounded-xl object-cover object-top border border-amber-400/50 shadow-md shadow-black/50"
+                    />
+                    <span class="absolute -bottom-1 -right-1 w-2.5 h-2.5 bg-emerald-400 border-2 border-black rounded-full"></span>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="text-[12px] font-bold text-white tracking-wide truncate">
+                      {{ isJapanese ? 'リキ・アンディ' : 'Riki Andi' }}
+                    </div>
+                    <div class="text-[10px] text-amber-400 truncate font-semibold">
+                      {{ isJapanese ? '社内SE (SysDev)' : 'In-House SE' }}
+                    </div>
+                    <div class="text-[9px] text-zinc-400 truncate">
+                      PT. Harrison And Gil
+                    </div>
+                  </div>
+                </div>
+                <div class="flex justify-between text-zinc-400 text-[10px]">
+                  <span>HARDWARE:</span>
+                  <span class="text-zinc-200 font-semibold">ZEBRA TC26 PDA</span>
+                </div>
+                <div class="flex justify-between text-zinc-400 text-[10px]">
+                  <span>SYNC:</span>
+                  <span class="text-amber-400 font-semibold">SEMARANG ⟷ TOKYO</span>
+                </div>
+                <div class="flex justify-between pt-1.5 border-t border-white/10 text-[10px]">
+                  <span>STATUS:</span>
+                  <span class="text-emerald-400 font-semibold flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    ACTIVE // 現場稼働
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -256,13 +285,6 @@ const scenes = computed(() => [
   { id: "tokyo", label: messages.value.hero.sceneTokyo, src: "/img/hero-cinematic-riki.png" },
 ]);
 
-const activeSceneIndex = computed(() => {
-  const p = scrollProgress.value;
-  if (p < 0.35) return 0; // Executive Penthouse
-  if (p < 0.70) return 1; // Holographic CAD Matrix
-  return 2; // Tokyo Tower & Kaizen
-});
-
 // The 5 Scrollytelling Phases (Fully Reactive to Language Switch)
 const phases = computed(() => [
   {
@@ -369,10 +391,6 @@ const scrollToPhase = (index) => {
   });
 };
 
-const jumpToScene = (sceneIndex) => {
-  const phaseMap = [0, 2, 4];
-  scrollToPhase(phaseMap[sceneIndex]);
-};
 
 const scrollToProjects = () => {
   const el = document.getElementById("featured-projects");
