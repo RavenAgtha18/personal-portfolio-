@@ -261,21 +261,21 @@ export const projects = [
   {
     id: 8,
     name: "FinWise",
-    nameJa: "FinWise 資産インテリジェンス",
+    nameJa: "FinWise 工場多通貨調達・流動性管理システム",
     imageUrl: "finwise",
     status:
-      "Personal financial intelligence and liquidity management system. Features a dedicated multi-currency conversion engine, parent/child budget limit controls, and ACID-compliant transactional ledger reconciliation.",
+      "Enterprise multi-currency procurement and liquidity control system built from scratch for PT. Harrison And Gil-Java. Features dedicated multi-currency conversion (USD/EUR/IDR), parent/child budget limit controls, and ACID-compliant transactional ledger reconciliation.",
     statusJa:
-      "個人資産インテリジェンスおよび流動性管理システム。多通貨自動換算エンジン、階層型予算リミット制御、ACID準拠の元帳照合トランザクションを搭載。",
+      "PT. Harrison And Gil-Java向けにゼロから自社開発した工場多通貨調達・流動性管理システム。USD（輸入木材）・EUR（金物）・IDR（現地経費）の自動為替換算、階層型予算枠制御、ACID準拠の元帳排他ロックを搭載。",
     tech: "Laravel 11, Blade, Bootstrap, Chart.js, MySQL",
     tags: ["Laravel 11", "Blade", "Chart.js", "MySQL", "Currency Conversion", "ACID Transactions", "FinTech"],
-    tagsJa: ["Laravel 11", "Blade", "Chart.js", "MySQL", "通貨換算", "ACIDトランザクション", "FinTech"],
+    tagsJa: ["Laravel 11", "Blade", "Chart.js", "MySQL", "多通貨調達", "ACIDトランザクション", "工場財務DX"],
     github: "null",
     demo: "/portfolio/finwise",
     isCaseStudy: true,
     isSimpleShowcase: false,
-    category: "FinTech Intelligence",
-    categoryJa: "FinTech・資産管理",
+    category: "Factory Procurement & FinTech",
+    categoryJa: "工場調達・財務管理",
     problem:
       "Cross-currency factory procurement (USD for luxury imported timber, EUR for specialty hardware, IDR for local wages) created frequent budget overruns and untracked spending leaks.",
     problemJa:

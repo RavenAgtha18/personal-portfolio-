@@ -201,7 +201,7 @@ export function exportShokumuKeirekishoToWord() {
     <tr>
       <th rowspan='3'>前職・職歴</th>
       <td colspan='3'>
-        <strong>2024年05月 ～ 2025年01月</strong>: 個人事業主（店舗・事業運営） &amp; Webアプリケーション個人開発（FinWise, 日本語学習アプリ等）
+        <strong>2024年05月 ～ 2025年01月</strong>: 個人事業主（店舗・事業運営） &amp; Webアプリケーション個人開発（日本語学習アプリ、技術ツール等）
       </td>
     </tr>
     <tr>

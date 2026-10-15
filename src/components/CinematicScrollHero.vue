@@ -82,7 +82,7 @@
             </div>
 
             <!-- Grand Headline with deep cinema shadow -->
-            <h1 class="text-2xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2 leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+            <h1 class="text-2xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2 leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] break-keep sm:whitespace-nowrap">
               {{ t('hero.name') }}
             </h1>
 

@@ -24,9 +24,9 @@ export default {
     scrollExplore: "スクロールして詳細を展開 ↓",
 
     // Scenes
-    sceneOverview: "エグゼクティブ・スタジオ",
-    sceneMatrix: "CAD設計 & ホログラム",
-    sceneTokyo: "東京タワー & カイゼン",
+    sceneOverview: "全体アーキテクチャ",
+    sceneMatrix: "現場ハードウェア・DB連携",
+    sceneTokyo: "品質統制 & カイゼン",
 
     // Telemetry Box
     telemetryTitle: "工場システム稼働状況",
@@ -40,7 +40,7 @@ export default {
     // Phases
     phase00: {
       tab: "メイン",
-      tagline: "東京ペントハウス & アーキテクチャ",
+      tagline: "現場主義・製造実行システム (MES) 基盤",
       title: "Riki Andi Alfiyanto",
       desc: "システム開発者（社内SE）• 製造実行システム（MES）エンジニアリング",
       tags: ["PT. Harrison And Gil-Java", "2名体制 社内SE", "MES開発・現場運用"],
@@ -265,7 +265,7 @@ export default {
       {
         period: "2024年 - 2025年",
         title: "個人事業（事業運営） & Webアプリケーション個人開発",
-        desc: "独立した個人事業の立ち上げ・店舗運営（収支・業務管理）を手掛けつつ、自作Webアプリ（資産管理FinWise・日本語学習アプリ等）を企画・設計・開発。",
+        desc: "独立した個人事業の立ち上げ・実店舗運営（仕入・収支・業務管理）を手掛けつつ、自作Webアプリ（日本語学習アプリ・技術ツール等）を企画・設計・開発。",
       },
       {
         period: "2023年 - 2024年",

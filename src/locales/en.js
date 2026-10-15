@@ -24,9 +24,9 @@ export default {
     scrollExplore: "SCROLL TO EXPLORE CINEMATIC FLOW",
 
     // Scenes
-    sceneOverview: "Executive Penthouse",
-    sceneMatrix: "Holographic CAD Matrix",
-    sceneTokyo: "Tokyo Tower & Kaizen",
+    sceneOverview: "System Architecture",
+    sceneMatrix: "Hardware & DB Interlock",
+    sceneTokyo: "Quality Control & Kaizen",
 
     // Telemetry Box
     telemetryTitle: "FACTORY TELEMETRY",
@@ -40,7 +40,7 @@ export default {
     // Phases
     phase00: {
       tab: "Hero Entry",
-      tagline: "Tokyo Penthouse Architecture",
+      tagline: "In-House System Engineering & MES Architecture",
       title: "Riki Andi Alfiyanto",
       desc: "System Developer • Manufacturing Execution Systems (MES)",
       tags: ["PT. Harrison And Gil-Java", "2-Person Core Division", "MES Engineering"],
@@ -265,7 +265,7 @@ export default {
       {
         period: "2024 - 2025",
         title: "Independent Commercial Business & Web Application Development",
-        desc: "Managed an independent commercial venture (operations, retail, and financial administration) while architecting self-directed Web applications (FinWise multi-currency budget tracker, Nihongo learning app).",
+        desc: "Managed an independent commercial venture (operations, retail, and financial administration) while architecting self-directed Web applications (Nihongo learning app, technical tools).",
       },
       {
         period: "2023 - 2024",
