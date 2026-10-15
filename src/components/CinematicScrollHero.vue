@@ -50,7 +50,7 @@
 
       <!-- Stage: Editorial Content Layer (Lower-Thirds for all phases to keep visuals unobstructed) -->
       <div
-        class="relative z-20 flex-1 max-w-6xl mx-auto w-full px-4 sm:px-12 flex items-end justify-between pb-4 sm:pb-10 pointer-events-none transition-all duration-500"
+        class="relative z-20 flex-1 max-w-7xl mx-auto w-full px-4 sm:px-10 flex items-end justify-between pb-4 sm:pb-10 pointer-events-none transition-all duration-500"
       >
         <Transition name="fade-slide" mode="out-in">
           <!-- PHASE 0: Grand Editorial Hero (Cinema Scale - Lower Thirds, Zero Blockage) -->
@@ -60,15 +60,15 @@
             class="w-full flex items-end justify-between pointer-events-auto gap-4 sm:gap-8"
           >
             <!-- Left Editorial Text -->
-            <div class="w-full max-w-xl lg:max-w-2xl">
+            <div class="flex-1 min-w-0 max-w-3xl pr-2 sm:pr-6">
               <!-- Status Badge -->
               <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/20 text-[10px] sm:text-xs font-mono mb-2 sm:mb-3 bg-black/55 backdrop-blur-md text-zinc-200 shadow-lg max-w-full">
                 <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
                 <span class="tracking-wide truncate">{{ t('hero.statusBadge') }}</span>
               </div>
 
-              <!-- Grand Headline with deep cinema shadow -->
-              <h1 class="text-2xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2 leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] break-keep sm:whitespace-nowrap">
+              <!-- Grand Headline with deep cinema shadow & responsive sizing to never clip Japanese name -->
+              <h1 class="text-2xl xs:text-3xl sm:text-4xl md:text-[2.65rem] lg:text-[2.9rem] font-extrabold tracking-tight text-white mb-2 leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] break-keep sm:whitespace-nowrap">
                 {{ t('hero.name') }}
               </h1>
 
@@ -130,7 +130,7 @@
                       {{ isJapanese ? '社内SE (SysDev)' : 'In-House SE' }}
                     </div>
                     <div class="text-[9px] text-zinc-400 truncate">
-                      PT. Harrison And Gil
+                      PT. Harrison And Gil-Java
                     </div>
                   </div>
                 </div>
