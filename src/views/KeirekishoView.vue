@@ -187,13 +187,29 @@
                   </td>
                 </tr>
                 <tr>
-                  <th class="bg-zinc-100 border border-zinc-400 p-0.5 px-1 text-left font-bold text-zinc-800">
-                    前職・経歴
+                  <th class="bg-zinc-100 border border-zinc-400 p-0.5 px-1 text-left font-bold text-zinc-800" rowspan="3">
+                    前職・職歴
                   </th>
-                  <td colspan="3" class="border border-zinc-400 p-0.5 px-1 text-zinc-800 text-[9.5px]">
+                  <td colspan="3" class="border border-zinc-400 p-0.5 px-1 text-zinc-800 text-[9px] leading-tight">
                     <div class="flex items-center justify-between">
-                      <span><strong>2023年01月 ～ 2024年12月</strong>：フルスタックWebエンジニア（受託開発）</span>
-                      <span class="text-zinc-600 font-sans">環境: Laravel, Vue.js, Python, MySQL</span>
+                      <span><strong>2024年05月 ～ 2025年01月</strong>：個人事業・ゲーム受託 &amp; 大学（経営学専攻）・日本語学習</span>
+                      <span class="text-zinc-600 font-sans">自己研鑽 / JFT-Basic A2準備</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3" class="border border-zinc-400 p-0.5 px-1 text-zinc-800 text-[9px] leading-tight">
+                    <div class="flex items-center justify-between">
+                      <span><strong>2023年09月 ～ 2024年04月</strong>：<strong>PT Solusi Teknologi Sejati</strong>（フルスタックWebエンジニア）</span>
+                      <span class="text-zinc-600 font-sans">QRIS決済、キャッシュ標準化（障害90%減・月$5K削減）</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3" class="border border-zinc-400 p-0.5 px-1 text-zinc-800 text-[9px] leading-tight">
+                    <div class="flex items-center justify-between">
+                      <span><strong>2022年11月 ～ 2023年06月</strong>：<strong>Eduwork</strong>（フルスタック開発アプレンティス）</span>
+                      <span class="text-zinc-600 font-sans">POS小売・図書管理システム、API統合、Pusher</span>
                     </div>
                   </td>
                 </tr>

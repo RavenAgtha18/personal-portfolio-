@@ -263,9 +263,19 @@ export default {
         desc: "Spearheading technical requirements gathering, warehouse inventory architectures, and real-time shop-floor tracking systems bridging frontline manufacturing operators with enterprise database backends at PT. Harrison And Gil-Java (Lean 2-Person SysDev Core).",
       },
       {
+        period: "2024 - 2025",
+        title: "Independent Development & Business Studies",
+        desc: "Engaged in freelance game development, software projects, university coursework in Business Management, and intensive Japanese language study (achieving JFT-Basic A2).",
+      },
+      {
         period: "2023 - 2024",
-        title: "Full-Stack Software Engineer",
-        desc: "Engineered web applications utilizing Laravel, Vue.js, MySQL relational schemas, and responsive UI design systems for commercial and enterprise production deployments.",
+        title: "Full-Stack Developer (PT Solusi Teknologi Sejati)",
+        desc: "Architected rapid QRIS payment tracking and standardized caching protocols, cutting deployment errors by 90%, reducing monthly support costs by $5K, and slashing incident downtime by 50%.",
+      },
+      {
+        period: "2022 - 2023",
+        title: "Full Stack Developer Apprentice (Eduwork)",
+        desc: "Delivered full-cycle business applications (POS Retail, Library Management System), integrated third-party REST APIs, and implemented Pusher real-time event notifications.",
       },
     ],
   },

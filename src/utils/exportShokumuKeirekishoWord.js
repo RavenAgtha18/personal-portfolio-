@@ -199,8 +199,20 @@ export function exportShokumuKeirekishoToWord() {
       <td>${data.company.businessType}（従業員数 ${data.company.employees}）</td>
     </tr>
     <tr>
-      <th>前職・経歴</th>
-      <td colspan='3'>${data.company.previousExperience}</td>
+      <th rowspan='3'>前職・職歴</th>
+      <td colspan='3'>
+        <strong>2024年05月 ～ 2025年01月</strong>: 個人事業・ゲーム受託開発 &amp; 大学（経営学専攻）・日本語学習（JFT-Basic A2準備）
+      </td>
+    </tr>
+    <tr>
+      <td colspan='3'>
+        <strong>2023年09月 ～ 2024年04月</strong>: <strong>PT Solusi Teknologi Sejati</strong>（フルスタックWebエンジニア） - QRIS決済連携、キャッシュ標準化（エラー90%削減・月間$5,000コスト削減）
+      </td>
+    </tr>
+    <tr>
+      <td colspan='3'>
+        <strong>2022年11月 ～ 2023年06月</strong>: <strong>Eduwork</strong>（フルスタック開発アプレンティス） - POS小売・図書管理システム開発、API統合、Pusherリアルタイム通信
+      </td>
     </tr>
   </table>
 

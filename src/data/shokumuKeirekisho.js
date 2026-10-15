@@ -12,7 +12,7 @@ export const shokumuKeirekishoData = {
     birthYear: "2000年代生",
     nationality: "インドネシア共和国",
     targetRole: "社内SE (社内システムエンジニア / 現場Webアプリケーションエンジニア)",
-    email: "rikiandi1801@gmail.com",
+    email: "rikiandialfiyanto29@gmail.com",
     portfolioUrl: "https://github.com/RavenAgtha18/personal-portfolio-",
     githubUrl: "https://github.com/RavenAgtha18",
     certifications: [
@@ -23,7 +23,7 @@ export const shokumuKeirekishoData = {
 
   // 1. 職務要約 (250〜300文字)
   summary:
-    "Webエンジニアとして2年間のフルスタック開発経験（PHP, Python, JavaScript）を積んだ後、2025年2月よりインドネシアの高級家具輸出製造拠点（PT. Harrison And Gil-Java / 従業員約500名）にて社内SE（SysDev部門）として現場DXを推進。稼働中のレガシー工程管理システム（Laravel 5.1）のゼロダウンタイム改修・滞留日数分析をはじめ、FEFO原材料管理、実地棚卸、輸出梱包証跡など計8つのMES基盤の機能拡張・自社開発および日々の継続保守・障害対応を一貫して担当。WIP報告遅延をリアルタイム（1秒未満）に短縮、写真保管工数を45〜60分から3分未満に圧縮するなど現場直結の定量的成果を達成。JFT-Basic A2認定を保有し、日本のモノづくり精神と現場カイゼンを深く理解する「社内SE」として即戦力で貢献可能です。",
+    "フルスタック開発および受託・個人開発の実務経験（PHP, Python, JavaScript, MySQL）を経て、2025年2月よりインドネシアの高級家具輸出製造拠点（PT. Harrison And Gil-Java / 従業員約500名）にて社内SE（SysDev部門）として現場DXを推進。稼働中のレガシー工程管理システム（Laravel 5.1）のゼロダウンタイム改修・滞留日数分析をはじめ、FEFO原材料管理、実地棚卸、輸出梱包証跡など計8つのMES基盤の機能拡張・自社開発および日々の継続保守・障害対応を一貫して担当。WIP報告遅延をリアルタイム（1秒未満）に短縮、写真保管工数を45〜60分から3分未満に圧縮するなど現場直結の定量的成果を達成。JFT-Basic A2認定を保有し、日本のモノづくり精神と現場カイゼンを深く理解する「社内SE」として即戦力で貢献可能です。",
 
   // 2. 活かせる経験・知識・技術
   competencies: [
@@ -68,8 +68,28 @@ export const shokumuKeirekishoData = {
     employmentType: "正社員",
     position: "社内SE (システムエンジニア)",
     previousExperience:
-      "2023年01月 ～ 2024年12月：フルスタックWebエンジニア（受託開発 / Laravel, Vue.js, Python, MySQL）",
+      "2024年05月～2025年01月: 個人事業・ゲーム受託 & 経営学学士課程・自己研鑽 / 2023年09月～2024年04月: PT Solusi Teknologi Sejati (フルスタックWebエンジニア) / 2022年11月～2023年06月: Eduwork (フルスタック開発アプレンティス)",
   },
+  previousCareers: [
+    {
+      period: "2024年05月 ～ 2025年01月",
+      name: "個人事業・フリーランス受託 & 大学学業・自己研鑽",
+      role: "個人開発者 / 経営学学士課程",
+      summary: "ゲーム開発受託・個人Web制作、大学（経営学専攻）での学習、日本語集中学習（JFT-Basic A2取得準備）。",
+    },
+    {
+      period: "2023年09月 ～ 2024年04月",
+      name: "PT Solusi Teknologi Sejati",
+      role: "フルスタックWebエンジニア",
+      summary: "QRIS決済追跡システム開発、キャッシュ標準化（デプロイ不具合90%削減・月間$5,000コスト削減）、障害対応・ダウンタイム50%削減。",
+    },
+    {
+      period: "2022年11月 ～ 2023年06月",
+      name: "Eduwork",
+      role: "フルスタック開発アプレンティス",
+      summary: "図書管理システムおよび小売POSシステムのDBスキーマ設計〜UI展開、外部API統合、Pusherリアルタイム通信実装。",
+    },
+  ],
 
   // プロジェクト詳細（2025年2月入社以降、現在も全システム稼働中・継続保守およびエンハンス開発中）
   projects: [
