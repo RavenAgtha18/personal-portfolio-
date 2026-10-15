@@ -149,9 +149,9 @@ export const projects = [
     solutionJa:
       "複合インデックス付き正規化MySQL設計（route_cards, trans_track）とLaravelバックエンド。現場タブレット端末と連動し現在時刻との差分から滞留日数を動的算出。",
     result:
-      "Slashed WIP reporting latency from 24–48 hours to real-time (< 1s transaction commit). Reduced workstation bottleneck idling by 35% across 8 departments, actively tracking 1,500+ daily route cards handled by 40+ floor operators.",
+      "Slashed WIP reporting latency from 24–48 hours to real-time (< 1s transaction commit). Reduced workstation bottleneck dwell time from 2–3 days down to same-day resolution (< 4 hours) across 8 departments, actively tracking 1,500+ daily route cards handled by 40+ floor operators.",
     resultJa:
-      "WIP仕掛品進捗の把握遅延を24〜48時間からリアルタイム（1秒未満）に短縮。動的滞留日数アラートにより工程停滞を35%削減し、8部門40名以上の作業者が1日1,500件超の工程カードを円滑追跡。",
+      "WIP仕掛品進捗の把握遅延を24〜48時間からリアルタイム（1秒未満）に短縮。動的滞留日数（Aging Days）アラートにより組立工程の停滞を従来の2〜3日から当日中（数時間以内）へ大幅短縮し、8部門40名以上の作業者が1日1,500件超の工程カードを円滑追跡。",
   },
   {
     id: 14,
@@ -429,8 +429,8 @@ export const projects = [
     solutionJa:
       "Laravel 11 Blade PWAによるロット別期限テーブル（material_expired_dates）とJSON形式の複層棚番管理。発注点自動アラートおよび電子受領写真付き出庫検証ワークフローを自社構築。",
     result:
-      "Cut chemical material expiration waste by 85% via automated FEFO alerts. Eliminated unpredicted raw material stockouts from 4–5 line stoppages per month down to zero across 1,200+ managed material SKUs.",
+      "Eliminated unexpected raw material stockouts from 4–5 line stoppages per month down to zero, and compressed material picking requisition time from 30–45 minutes to < 3 minutes across 1,200+ managed material SKUs.",
     resultJa:
-      "FEFO自動アラートにより化学原料の期限切れ廃棄ロスを85%削減。発注点自動連動により月4〜5回発生していた原料切れによるライン停止を0件（完全根絶）に達成（1,200超SKU対象）。",
+      "発注点自動連動により月4〜5回発生していた原料切れによるライン停止を0件（完全根絶）に達成し、出庫引当・在庫確認時間を従来の30〜45分から3分未満へ短縮（1,200超SKU対象）。",
   },
 ];

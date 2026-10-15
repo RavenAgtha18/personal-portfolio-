@@ -201,17 +201,17 @@ export function exportShokumuKeirekishoToWord() {
     <tr>
       <th rowspan='3'>前職・職歴</th>
       <td colspan='3'>
-        <strong>2024年05月 ～ 2025年01月</strong>: 個人事業主（店舗・事業運営） &amp; フリーランス（ゲーム開発受託・制作）
+        <strong>2024年05月 ～ 2025年01月</strong>: 個人事業主（店舗・事業運営） &amp; Webアプリケーション個人開発（FinWise, 日本語学習アプリ等）
       </td>
     </tr>
     <tr>
       <td colspan='3'>
-        <strong>2023年09月 ～ 2024年04月</strong>: <strong>PT Solusi Teknologi Sejati</strong>（フルスタックWebエンジニア） - QRIS決済連携、キャッシュ標準化（エラー90%削減・月間$5,000コスト削減）
+        <strong>2023年09月 ～ 2024年04月</strong>: <strong>PT Solusi Teknologi Sejati</strong>（Webエンジニア） - QRIS決済連携、キャッシュ標準化（障害90%削減・ダウンタイム半減）
       </td>
     </tr>
     <tr>
       <td colspan='3'>
-        <strong>2022年11月 ～ 2023年06月</strong>: <strong>Eduwork</strong>（フルスタック開発アプレンティス） - POS小売・図書管理システム開発、API統合、Pusherリアルタイム通信
+        <strong>2022年11月 ～ 2023年06月</strong>: <strong>Eduwork</strong>（Web開発アプレンティス） - POS小売・図書管理システム開発、API統合、Pusherリアルタイム通信
       </td>
     </tr>
   </table>

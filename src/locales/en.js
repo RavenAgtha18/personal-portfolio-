@@ -264,13 +264,13 @@ export default {
       },
       {
         period: "2024 - 2025",
-        title: "Independent Business & Freelance Game Development",
-        desc: "Founded and managed an independent commercial venture (operations, retail, and financial administration) alongside freelance game development contracts focusing on gameplay mechanics and logic scripting.",
+        title: "Independent Commercial Business & Web Application Development",
+        desc: "Managed an independent commercial venture (operations, retail, and financial administration) while architecting self-directed Web applications (FinWise multi-currency budget tracker, Nihongo learning app).",
       },
       {
         period: "2023 - 2024",
         title: "Full-Stack Developer (PT Solusi Teknologi Sejati)",
-        desc: "Architected rapid QRIS payment tracking and standardized caching protocols, cutting deployment errors by 90%, reducing monthly support costs by $5K, and slashing incident downtime by 50%.",
+        desc: "Architected rapid QRIS payment tracking and standardized caching protocols, cutting deployment errors by 90% and slashing critical incident downtime by 50%.",
       },
       {
         period: "2022 - 2023",

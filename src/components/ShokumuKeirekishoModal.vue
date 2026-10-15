@@ -254,25 +254,25 @@
                           前職・職歴
                         </th>
                         <td colspan="3" class="border border-zinc-400 p-1 text-zinc-800 text-[9.5px] leading-tight">
-                          <div class="flex items-center justify-between">
-                            <span><strong>2024年05月 ～ 2025年01月</strong>：個人事業主（店舗・事業運営） &amp; フリーランス（ゲーム開発受託）</span>
-                            <span class="text-zinc-500 font-sans">事業運営 / ゲームプログラミング</span>
+                          <div class="flex items-center justify-between whitespace-nowrap">
+                            <span><strong>2024年05月 ～ 2025年01月</strong>：個人事業主（事業運営） &amp; Webツール個人開発</span>
+                            <span class="text-zinc-500 font-sans">店舗運営 / 自作Webアプリ開発</span>
                           </div>
                         </td>
                       </tr>
                       <tr>
                         <td colspan="3" class="border border-zinc-400 p-1 text-zinc-800 text-[9.5px] leading-tight">
-                          <div class="flex items-center justify-between">
-                            <span><strong>2023年09月 ～ 2024年04月</strong>：<strong>PT Solusi Teknologi Sejati</strong>（フルスタックWebエンジニア）</span>
-                            <span class="text-zinc-500 font-sans">QRIS決済、キャッシュ標準化（障害90%減・月$5K削減）</span>
+                          <div class="flex items-center justify-between whitespace-nowrap">
+                            <span><strong>2023年09月 ～ 2024年04月</strong>：<strong>PT Solusi Teknologi Sejati</strong>（Webエンジニア）</span>
+                            <span class="text-zinc-500 font-sans">QRIS決済、キャッシュ標準化（障害90%減）</span>
                           </div>
                         </td>
                       </tr>
                       <tr>
                         <td colspan="3" class="border border-zinc-400 p-1 text-zinc-800 text-[9.5px] leading-tight">
-                          <div class="flex items-center justify-between">
-                            <span><strong>2022年11月 ～ 2023年06月</strong>：<strong>Eduwork</strong>（フルスタック開発アプレンティス）</span>
-                            <span class="text-zinc-500 font-sans">POS小売・図書管理システム、API統合、Pusher</span>
+                          <div class="flex items-center justify-between whitespace-nowrap">
+                            <span><strong>2022年11月 ～ 2023年06月</strong>：<strong>Eduwork</strong>（Web開発アプレンティス）</span>
+                            <span class="text-zinc-500 font-sans">POS小売・図書管理システム、API統合</span>
                           </div>
                         </td>
                       </tr>
