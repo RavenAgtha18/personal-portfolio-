@@ -1,13 +1,13 @@
 <template>
   <section
     ref="sectionRef"
-    class="relative w-full select-none"
-    style="height: 480vh;"
+    class="relative w-full select-none h-[380vh] md:h-[480vh]"
   >
     <!-- Sticky Full-Screen Viewport -->
     <div
       class="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between transition-colors duration-500 bg-[#06080e]"
       @mousemove="handleMouseMove"
+      @touchmove.passive="handleTouchMove"
     >
       <!-- Background Living Cinematic Canvas (60fps Ken Burns & Interactive Fluid Flow) -->
       <canvas
@@ -20,7 +20,7 @@
       <div class="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-[#06080e] via-transparent to-[#06080e]/60"></div>
 
       <!-- Top Ambient Bar (Minimalist Luxury Telemetry - Center Unobstructed) -->
-      <div class="relative z-20 w-full px-3.5 sm:px-12 pt-16 sm:pt-20 flex items-center justify-between pointer-events-none font-mono text-xs gap-2">
+      <div class="relative z-20 w-full px-3 sm:px-12 pt-12 sm:pt-20 flex items-center justify-between pointer-events-none font-mono text-xs gap-2">
         <!-- Division Tag -->
         <div class="flex items-center gap-2 sm:gap-3 bg-black/40 backdrop-blur-xl px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 shadow-lg shadow-black/50 text-[10px] sm:text-xs min-w-0">
           <span class="relative flex h-2 w-2 shrink-0">
@@ -50,7 +50,7 @@
 
       <!-- Stage: Editorial Content Layer (Lower-Thirds for all phases to keep visuals unobstructed) -->
       <div
-        class="relative z-20 flex-1 max-w-7xl mx-auto w-full px-4 sm:px-10 flex items-end justify-between pb-4 sm:pb-10 pointer-events-none transition-all duration-500"
+        class="relative z-20 flex-1 max-w-7xl mx-auto w-full px-4 sm:px-10 flex items-end justify-between pb-1 sm:pb-10 pointer-events-none transition-all duration-500"
       >
         <Transition name="fade-slide" mode="out-in">
           <!-- PHASE 0: Grand Editorial Hero (Cinema Scale - Lower Thirds, Zero Blockage) -->
@@ -62,31 +62,31 @@
             <!-- Left Editorial Text -->
             <div class="flex-1 min-w-0 max-w-3xl pr-2 sm:pr-6">
               <!-- Status Badge -->
-              <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/20 text-[10px] sm:text-xs font-mono mb-2 sm:mb-3 bg-black/55 backdrop-blur-md text-zinc-200 shadow-lg max-w-full">
+              <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-0.5 sm:py-1.5 rounded-full border border-white/20 text-[10px] sm:text-xs font-mono mb-1.5 sm:mb-3 bg-black/55 backdrop-blur-md text-zinc-200 shadow-lg max-w-full">
                 <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
                 <span class="tracking-wide truncate">{{ t('hero.statusBadge') }}</span>
               </div>
 
               <!-- Grand Headline with deep cinema shadow & responsive sizing to never clip Japanese name -->
-              <h1 class="text-2xl xs:text-3xl sm:text-4xl md:text-[2.65rem] lg:text-[2.9rem] font-extrabold tracking-tight text-white mb-2 leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] break-keep sm:whitespace-nowrap">
+              <h1 class="text-2xl xs:text-3xl sm:text-4xl md:text-[2.65rem] lg:text-[2.9rem] font-extrabold tracking-tight text-white mb-1 sm:mb-2 leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] break-keep sm:whitespace-nowrap">
                 {{ t('hero.name') }}
               </h1>
 
               <!-- Subtitle -->
-              <p class="text-xs xs:text-base sm:text-xl font-light text-zinc-200 mb-2 sm:mb-2.5 tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+              <p class="text-xs xs:text-base sm:text-xl font-light text-zinc-200 mb-1 sm:mb-2.5 tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
                 {{ t('hero.headline') }} <span class="text-amber-400 font-normal">/</span> {{ t('hero.headlineSub') }}
               </p>
 
               <!-- Bio Statement -->
-              <p class="text-[11px] xs:text-xs sm:text-sm text-zinc-300 max-w-lg mb-4 sm:mb-5 leading-relaxed font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] line-clamp-3 xs:line-clamp-none">
+              <p class="text-[11px] xs:text-xs sm:text-sm text-zinc-300 max-w-lg mb-2 sm:mb-5 leading-relaxed font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] line-clamp-2 xs:line-clamp-none">
                 {{ t('hero.bio') }}
               </p>
 
               <!-- Action Pill Buttons -->
-              <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
+              <div class="flex flex-wrap items-center gap-1.5 sm:gap-2.5">
                 <button
                   @click="scrollToProjects"
-                  class="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide bg-white text-zinc-950 hover:bg-zinc-100 transition-all duration-300 hover:scale-[1.02] shadow-xl shadow-black/60 cursor-pointer"
+                  class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide bg-white text-zinc-950 hover:bg-zinc-100 transition-all duration-300 hover:scale-[1.02] shadow-xl shadow-black/60 cursor-pointer"
                 >
                   <FolderOpen class="w-3.5 h-3.5 text-amber-600 shrink-0" />
                   <span>{{ t('hero.exploreSystems') }}</span>
@@ -94,19 +94,18 @@
                 <a
                   href="https://wa.me/6285175180821"
                   target="_blank"
-                  class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
+                  class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
                 >
                   <MessageCircle class="w-3.5 h-3.5 shrink-0" />
                   <span>{{ t('hero.contactMe') }}</span>
                 </a>
-                <a
-                  href="/cv_rikiandi.pdf"
-                  target="_blank"
-                  class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
+                <router-link
+                  to="/keirekisho"
+                  class="hidden xs:inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide border border-white/20 bg-black/50 text-zinc-200 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
                 >
                   <FileText class="w-3.5 h-3.5 shrink-0" />
                   <span>{{ t('hero.resume') }}</span>
-                </a>
+                </router-link>
               </div>
             </div>
 
@@ -170,12 +169,12 @@
               </div>
 
               <!-- Title -->
-              <h2 class="text-xl xs:text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-2 leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+              <h2 class="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-2 leading-[1.15] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] break-keep">
                 {{ currentPhaseData.title }}
               </h2>
 
               <!-- Description -->
-              <p class="text-xs sm:text-sm text-zinc-200 leading-relaxed mb-3 sm:mb-4 max-w-xl font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] line-clamp-3 xs:line-clamp-none">
+              <p class="text-xs sm:text-sm text-zinc-200 leading-relaxed mb-3 sm:mb-4 max-w-xl font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] line-clamp-2 xs:line-clamp-none">
                 {{ currentPhaseData.description }}
               </p>
 
@@ -229,14 +228,14 @@
       </div>
 
       <!-- Bottom HUD Scrubber & Stage Navigation -->
-      <div class="relative z-20 w-full px-3.5 sm:px-12 pb-4 sm:pb-8 flex items-center justify-between gap-2 sm:gap-4 font-mono text-xs">
+      <div class="relative z-20 w-full px-3 sm:px-12 pb-3 sm:pb-8 flex items-center justify-between gap-1.5 sm:gap-4 font-mono text-xs">
         <!-- Interactive Phase Jump Pills -->
         <div class="flex items-center gap-1 sm:gap-1.5 bg-black/40 backdrop-blur-xl p-1 rounded-full border border-white/10 shadow-xl max-w-full overflow-x-auto no-scrollbar">
           <button
             v-for="(phase, index) in phases"
             :key="phase.id"
             @click="scrollToPhase(index)"
-            class="px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs transition-all duration-300 flex items-center gap-1.5 sm:gap-2 cursor-pointer shrink-0"
+            class="min-w-[28px] sm:min-w-0 px-2 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer shrink-0"
             :class="currentPhaseIndex === index
               ? 'bg-amber-400 text-black font-bold shadow-md shadow-amber-400/20'
               : 'text-zinc-400 hover:text-white hover:bg-white/5'"
@@ -249,7 +248,7 @@
         <!-- Interactive Skip to Projects Pill -->
         <button
           @click="scrollToProjects"
-          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/55 hover:bg-black/80 backdrop-blur-xl border border-white/15 hover:border-amber-400/50 text-zinc-300 hover:text-amber-300 transition-all text-[10px] sm:text-xs shrink-0 cursor-pointer shadow-lg group pointer-events-auto"
+          class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-black/55 hover:bg-black/80 backdrop-blur-xl border border-white/15 hover:border-amber-400/50 text-zinc-300 hover:text-amber-300 transition-all text-[10px] sm:text-xs shrink-0 cursor-pointer shadow-lg group pointer-events-auto"
           title="Directly view projects catalog"
         >
           <span class="uppercase tracking-wider font-mono">{{ isJapanese ? '実績一覧へスキップ' : 'Skip to Projects' }}</span>
@@ -366,6 +365,15 @@ const handleMouseMove = (e) => {
   targetMouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
 };
 
+const handleTouchMove = (e) => {
+  if (!e.touches || !e.touches[0]) return;
+  const touch = e.touches[0];
+  const rect = canvasRef.value?.getBoundingClientRect();
+  if (!rect) return;
+  targetMouseX = ((touch.clientX - rect.left) / rect.width - 0.5) * 2;
+  targetMouseY = ((touch.clientY - rect.top) / rect.height - 0.5) * 2;
+};
+
 // Scroll listener calculation
 const updateScrollProgress = () => {
   if (!sectionRef.value) return;
@@ -445,9 +453,15 @@ const renderCanvas = () => {
 
   time += 0.016; // approx 60fps delta
 
-  // Smooth lerp for mouse inertia
-  mouseX += (targetMouseX - mouseX) * 0.04;
-  mouseY += (targetMouseY - mouseY) * 0.04;
+  // Idle ambient drift when no mouse or touch input
+  const idleDriftX = Math.sin(time * 0.4) * 0.15;
+  const idleDriftY = Math.cos(time * 0.3) * 0.08;
+  const effectiveTargetX = (Math.abs(targetMouseX) > 0.01) ? targetMouseX : idleDriftX;
+  const effectiveTargetY = (Math.abs(targetMouseY) > 0.01) ? targetMouseY : idleDriftY;
+
+  // Smooth lerp for mouse/touch inertia
+  mouseX += (effectiveTargetX - mouseX) * 0.04;
+  mouseY += (effectiveTargetY - mouseY) * 0.04;
 
   ctx.clearRect(0, 0, width, height);
 

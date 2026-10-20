@@ -71,7 +71,7 @@
             <span>{{ t('gateway.badge') }}</span>
           </div>
 
-          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4" :class="isDark ? 'text-white' : 'text-slate-900'">
+          <h2 class="text-xl xs:text-2xl sm:text-4xl font-extrabold tracking-tight mb-4 break-keep" :class="isDark ? 'text-white' : 'text-slate-900'">
             {{ t('gateway.title') }}
           </h2>
 
@@ -79,10 +79,10 @@
             {{ t('gateway.desc') }}
           </p>
 
-          <div class="flex flex-wrap justify-center items-center gap-3 font-mono">
+          <div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 font-mono">
             <router-link
               to="/portfolio"
-              class="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02] shadow-xl"
+              class="w-full sm:w-auto justify-center group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02] shadow-xl"
               :class="isDark ? 'bg-white text-zinc-950 hover:bg-zinc-100' : 'bg-slate-900 text-white hover:bg-slate-800 shadow-sm'"
             >
               <span>{{ t('gateway.cta') }}</span>
@@ -91,7 +91,7 @@
 
             <router-link
               to="/about"
-              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs font-semibold border transition-all duration-300 hover:scale-[1.02]"
+              class="w-full sm:w-auto justify-center inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs font-semibold border transition-all duration-300 hover:scale-[1.02]"
               :class="isDark ? 'bg-zinc-900/60 text-zinc-300 border-white/10 hover:border-white/20' : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300 shadow-sm'"
             >
               <span>{{ isJapanese ? '経歴・プロフィールを見る' : 'About My SysDev Journey' }}</span>
@@ -99,7 +99,7 @@
 
             <router-link
               to="/keirekisho"
-              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs font-semibold border transition-all duration-300 hover:scale-[1.02]"
+              class="w-full sm:w-auto justify-center inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs font-semibold border transition-all duration-300 hover:scale-[1.02]"
               :class="isDark ? 'bg-amber-500/10 text-amber-300 border-amber-500/30 hover:bg-amber-500/20' : 'bg-amber-50 text-amber-900 border-amber-300 hover:bg-amber-100 shadow-sm'"
             >
               <FileText class="w-4 h-4 text-amber-400" />

@@ -55,15 +55,14 @@
 
         <!-- Right Side Actions (Desktop & Mobile) -->
         <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3">
-          <!-- Shokumu Keirekisho (Resume JP) Trigger -->
+          <!-- Shokumu Keirekisho (Resume JP) Trigger (Desktop/Tablet) -->
           <button
             @click="openKeirekishoModal"
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20 text-xs font-mono font-semibold transition-all hover:scale-105 active:scale-95"
+            class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20 text-xs font-mono font-semibold transition-all hover:scale-105 active:scale-95"
             title="職務経歴書 (A4・2枚) Word/PDFダウンロード"
           >
             <FileText class="w-3.5 h-3.5 text-amber-400" />
-            <span class="hidden sm:inline">{{ isJapanese ? '職務経歴書' : 'Resume (JP)' }}</span>
-            <span class="sm:hidden">経歴書</span>
+            <span>{{ isJapanese ? '職務経歴書' : 'Resume (JP)' }}</span>
           </button>
 
           <!-- Language Switcher Toggle -->
@@ -105,11 +104,18 @@
         </div>
       </div>
 
+      <!-- Mobile Menu Backdrop -->
+      <div 
+        v-if="isMobileMenuOpen"
+        @click="isMobileMenuOpen = false"
+        class="md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-30 transition-opacity"
+      ></div>
+
       <!-- Mobile Menu -->
       <Transition name="slide-down">
         <div 
           v-if="isMobileMenuOpen"
-          class="md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-slate-200 dark:border-white/5 shadow-xl dark:shadow-none"
+          class="md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-slate-200 dark:border-white/5 shadow-2xl dark:shadow-none z-40"
         >
           <div class="px-4 sm:px-6 py-4 space-y-2">
             <router-link
@@ -166,7 +172,7 @@
             R
           </div>
           
-          <h3 class="text-2xl font-bold mb-2">
+          <h3 class="text-xl sm:text-2xl font-bold mb-2 break-keep">
             <span class="gradient-text">{{ t('footer.heading') }}</span>
           </h3>
           <p class="text-slate-600 dark:text-gray-400 mb-8 max-w-md">

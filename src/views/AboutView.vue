@@ -104,21 +104,21 @@ const timelineItems = computed(() => {
               <span>{{ messages?.about?.roleBadge || 'System Developer (SysDev) · 2-Person Core Division' }}</span>
             </div>
             
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
+            <h1 class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-slate-900 dark:text-white break-keep">
               {{ messages?.about?.name || 'Riki Andi Alfiyanto' }}
             </h1>
             
-            <p class="text-sm sm:text-base text-zinc-300 leading-relaxed mb-6">
-              {{ messages?.about?.bioPrefix || 'Based in' }} <span class="text-amber-400 font-semibold">{{ messages?.about?.bioLocation || 'Semarang, Indonesia 🇮🇩' }}</span>, 
+            <p class="text-sm sm:text-base text-slate-700 dark:text-zinc-300 leading-relaxed mb-6">
+              {{ messages?.about?.bioPrefix || 'Based in' }} <span class="text-amber-500 dark:text-amber-400 font-semibold">{{ messages?.about?.bioLocation || 'Semarang, Indonesia 🇮🇩' }}</span>, 
               <span v-if="!isJapanese">working as a </span>
-              <span class="text-amber-400 font-semibold">{{ messages?.about?.bioRole || 'System Developer (SysDev)' }}</span> 
-              <span v-if="!isJapanese">at </span><span v-else>（</span><span class="text-white font-semibold">{{ messages?.about?.bioCompany || 'PT. Harrison And Gil-Java' }}</span><span v-if="isJapanese">）</span>. 
+              <span class="text-amber-500 dark:text-amber-400 font-semibold">{{ messages?.about?.bioRole || 'System Developer (SysDev)' }}</span> 
+              <span v-if="!isJapanese">at </span><span v-else>（</span><span class="text-slate-900 dark:text-white font-semibold">{{ messages?.about?.bioCompany || 'PT. Harrison And Gil-Java' }}</span><span v-if="isJapanese">）</span>. 
               <span v-if="!isJapanese">Operating within a lean </span>
-              <span class="text-amber-400 font-semibold">{{ messages?.about?.bioDivision || '2-person SysDev division' }}</span>
+              <span class="text-amber-500 dark:text-amber-400 font-semibold">{{ messages?.about?.bioDivision || '2-person SysDev division' }}</span>
               <span>{{ messages?.about?.bioSuffix }}</span>
             </p>
             
-            <blockquote class="border-l-4 border-amber-500 pl-4 py-2 italic text-zinc-400 mb-8 font-mono text-xs sm:text-sm">
+            <blockquote class="border-l-4 border-amber-500 pl-4 py-2 italic text-slate-600 dark:text-zinc-400 mb-8 font-mono text-xs sm:text-sm">
               "{{ messages?.about?.quote }}"
             </blockquote>
 
@@ -127,13 +127,13 @@ const timelineItems = computed(() => {
               <div 
                 v-for="(item, index) in highlights" 
                 :key="item.title"
-                class="p-4 rounded-xl border border-zinc-800 bg-zinc-950/70 hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1"
+                class="p-4 rounded-xl border border-slate-200 bg-white/80 dark:border-zinc-800 dark:bg-zinc-950/70 hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1 shadow-sm dark:shadow-none"
                 :data-aos="'fade-up'"
                 :data-aos-delay="index * 100"
               >
-                <component :is="item.icon" class="w-6 h-6 text-amber-400 mb-2" />
-                <h3 class="font-bold text-zinc-100 text-xs">{{ item.title }}</h3>
-                <p class="text-[11px] text-zinc-400 mt-1 leading-relaxed">{{ item.desc }}</p>
+                <component :is="item.icon" class="w-6 h-6 text-amber-500 dark:text-amber-400 mb-2" />
+                <h3 class="font-bold text-slate-900 dark:text-zinc-100 text-xs">{{ item.title }}</h3>
+                <p class="text-[11px] text-slate-600 dark:text-zinc-400 mt-1 leading-relaxed">{{ item.desc }}</p>
               </div>
             </div>
 
@@ -144,19 +144,19 @@ const timelineItems = computed(() => {
               data-aos-delay="300"
             >
               <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                <div class="w-9 h-9 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-500 dark:text-amber-400 shrink-0">
                   <FileText class="w-4 h-4" />
                 </div>
                 <div>
                   <div class="flex items-center gap-2">
-                    <span class="text-xs font-bold text-white font-mono">
+                    <span class="text-xs font-bold text-slate-900 dark:text-white font-mono">
                       {{ isJapanese ? '職務経歴書 (Shokumu Keirekisho)' : 'Japanese Standard Resume' }}
                     </span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded font-mono bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <span class="text-[9px] px-1.5 py-0.2 rounded font-mono bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-500/30">
                       JIS A4・2枚
                     </span>
                   </div>
-                  <p class="text-[11px] text-zinc-400 mt-0.5">
+                  <p class="text-[11px] text-slate-600 dark:text-zinc-400 mt-0.5">
                     {{ isJapanese ? '日系IT企業・製造DX標準様式。Word文書 (.doc) または PDF形式で即時出力。' : 'Formatted for Japanese enterprise recruiters. Download in Word (.doc) or Print-to-PDF.' }}
                   </p>
                 </div>
@@ -172,7 +172,7 @@ const timelineItems = computed(() => {
                 </button>
                 <router-link
                   to="/keirekisho"
-                  class="p-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white hover:border-zinc-700 transition-colors"
+                  class="p-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-zinc-700 transition-colors shadow-sm dark:shadow-none"
                   title="全画面で開く"
                 >
                   <ExternalLink class="w-4 h-4" />
@@ -185,18 +185,18 @@ const timelineItems = computed(() => {
     </section>
 
     <!-- Architecture Competency Matrix (Replaces Outdated Percent Bars) -->
-    <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-zinc-800/80 bg-zinc-950/40">
+    <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-slate-200/80 bg-slate-100/50 dark:border-zinc-800/80 dark:bg-zinc-950/40">
       <div class="max-w-6xl mx-auto">
         <!-- Section Header -->
         <div class="text-center mb-12" data-aos="fade-up">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 font-mono text-xs mb-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 dark:text-amber-400 font-mono text-xs mb-3">
             <Cpu class="w-3.5 h-3.5" />
             <span>{{ messages?.about?.competenciesBadge || 'Architecture & Field Competencies' }}</span>
           </div>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white break-keep">
             {{ messages?.about?.competenciesTitle || 'Engineering Competency Architecture' }}
           </h2>
-          <p class="text-zinc-400 mt-2 text-xs sm:text-sm max-w-xl mx-auto font-mono">
+          <p class="text-slate-600 dark:text-zinc-400 mt-2 text-xs sm:text-sm max-w-xl mx-auto font-mono">
             {{ messages?.about?.competenciesDesc || 'Proven hardware protocols, middleware patterns, and SDLC methodologies verified across active manufacturing environments.' }}
           </p>
         </div>
@@ -210,8 +210,8 @@ const timelineItems = computed(() => {
             class="px-4 py-2 rounded-xl text-xs font-mono font-semibold transition-all duration-200 border flex items-center gap-2"
             :class="[
               activeCategory === key
-                ? 'bg-amber-500/20 text-amber-300 border-amber-500/60 shadow-lg shadow-amber-500/10'
-                : 'bg-zinc-900/60 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-zinc-200'
+                ? 'bg-amber-500/20 text-amber-800 dark:text-amber-300 border-amber-500/60 shadow-lg shadow-amber-500/10'
+                : 'bg-white dark:bg-zinc-900/60 text-slate-600 dark:text-zinc-400 border-slate-200 dark:border-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 hover:text-slate-900 dark:hover:text-zinc-200 shadow-sm dark:shadow-none'
             ]"
           >
             <component :is="tier.icon" class="w-3.5 h-3.5" />
@@ -220,7 +220,7 @@ const timelineItems = computed(() => {
         </div>
 
         <!-- Tagline -->
-        <div v-if="competencyTiers[activeCategory]" class="text-center text-xs font-mono text-amber-400 mb-8">
+        <div v-if="competencyTiers[activeCategory]" class="text-center text-xs font-mono text-amber-600 dark:text-amber-400 mb-8">
           ● {{ competencyTiers[activeCategory].tagline }}
         </div>
 
@@ -229,30 +229,30 @@ const timelineItems = computed(() => {
           <div
             v-for="item in competencyTiers[activeCategory].items"
             :key="item.name"
-            class="p-5 rounded-2xl border border-zinc-800 bg-zinc-950/70 hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+            class="p-5 rounded-2xl border border-slate-200 bg-white/90 dark:border-zinc-800 dark:bg-zinc-950/70 hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between shadow-sm dark:shadow-none"
           >
             <div>
               <div class="flex items-center justify-between mb-2">
-                <span class="text-[10px] font-mono font-bold text-amber-500">{{ item.tier }}</span>
-                <span class="text-[9px] font-mono px-2 py-0.5 rounded border border-zinc-800 bg-zinc-900 text-zinc-300">
+                <span class="text-[10px] font-mono font-bold text-amber-600 dark:text-amber-500">{{ item.tier }}</span>
+                <span class="text-[9px] font-mono px-2 py-0.5 rounded border border-slate-200 bg-slate-50 text-slate-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
                   {{ item.badge }}
                 </span>
               </div>
-              <h3 class="text-base font-bold text-zinc-100 mb-2 flex items-center gap-2">
-                <component :is="item.icon" class="w-4 h-4 text-amber-400 flex-shrink-0" />
+              <h3 class="text-base font-bold text-slate-900 dark:text-zinc-100 mb-2 flex items-center gap-2">
+                <component :is="item.icon" class="w-4 h-4 text-amber-500 dark:text-amber-400 flex-shrink-0" />
                 <span>{{ item.name }}</span>
               </h3>
-              <p class="text-xs text-zinc-400 leading-relaxed mb-4">
+              <p class="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed mb-4">
                 {{ item.desc }}
               </p>
             </div>
 
             <!-- Specs Tag Pills -->
-            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-zinc-800/80 font-mono text-[10px]">
+            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-200 dark:border-zinc-800/80 font-mono text-[10px]">
               <span
                 v-for="spec in item.specs"
                 :key="spec"
-                class="px-2 py-0.5 rounded border border-zinc-800 bg-zinc-900/90 text-zinc-300"
+                class="px-2 py-0.5 rounded border border-slate-200 bg-slate-50 text-slate-700 dark:border-zinc-800 dark:bg-zinc-900/90 dark:text-zinc-300"
               >
                 {{ spec }}
               </span>
@@ -263,17 +263,17 @@ const timelineItems = computed(() => {
     </section>
 
     <!-- Interactive Physics Stack & Shop-Floor Sandbox (Matter.js 2D Physics) -->
-    <section id="physics" class="py-12 sm:py-20 px-3 sm:px-6 border-t border-zinc-800/80 bg-zinc-950/60">
+    <section id="physics" class="py-12 sm:py-20 px-3 sm:px-6 border-t border-slate-200/80 bg-slate-100/30 dark:border-zinc-800/80 dark:bg-zinc-950/60">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-8 sm:mb-10" data-aos="fade-up">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 font-mono text-xs mb-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 dark:text-amber-400 font-mono text-xs mb-3">
             <Zap class="w-3.5 h-3.5" />
             <span>{{ messages?.about?.physicsBadge || 'Matter.js 2D Physics Simulation' }}</span>
           </div>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white break-keep">
             {{ messages?.about?.physicsTitle || 'Shop-Floor & Tech Stack Physics Sandbox' }}
           </h2>
-          <p class="text-zinc-400 mt-2 text-xs sm:text-sm max-w-xl mx-auto font-mono">
+          <p class="text-slate-600 dark:text-zinc-400 mt-2 text-xs sm:text-sm max-w-xl mx-auto font-mono">
             {{ messages?.about?.physicsDesc || 'Every library, hardware scanner, database, and protocol in my engineering stack modeled with real Newtonian collision dynamics.' }}
           </p>
         </div>
@@ -283,14 +283,14 @@ const timelineItems = computed(() => {
     </section>
 
     <!-- Experience Timeline -->
-    <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-zinc-800/80">
+    <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-slate-200/80 dark:border-zinc-800/80">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12" data-aos="fade-up">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 font-mono text-xs mb-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 dark:text-amber-400 font-mono text-xs mb-3">
             <Briefcase class="w-3.5 h-3.5" />
             <span>{{ messages?.about?.timelineBadge || 'Field Experience' }}</span>
           </div>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white break-keep">
             {{ messages?.about?.timelineTitle || 'Engineering Timeline' }}
           </h2>
         </div>
@@ -311,16 +311,16 @@ const timelineItems = computed(() => {
                 class="flex-1 order-2"
                 :class="index % 2 === 0 ? 'md:text-right md:order-1' : 'md:order-3'"
               >
-                <div class="border border-zinc-800 bg-zinc-950/80 p-4 sm:p-6 rounded-2xl hover:border-amber-500/50 transition-all duration-300 ml-8 md:ml-0">
-                  <span class="text-amber-400 text-xs font-mono font-semibold">{{ job.period }}</span>
-                  <h3 class="text-base font-bold text-white mt-1">{{ job.title }}</h3>
-                  <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
+                <div class="border border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-950/80 p-4 sm:p-6 rounded-2xl hover:border-amber-500/50 transition-all duration-300 ml-8 md:ml-0 shadow-sm dark:shadow-none">
+                  <span class="text-amber-600 dark:text-amber-400 text-xs font-mono font-semibold">{{ job.period }}</span>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white mt-1">{{ job.title }}</h3>
+                  <p class="text-xs text-slate-600 dark:text-zinc-400 mt-2 leading-relaxed">
                     {{ job.desc }}
                   </p>
                 </div>
               </div>
               <div 
-                class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-[#0a0a0a] order-1 md:order-2"
+                class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-slate-100 dark:border-[#0a0a0a] order-1 md:order-2"
                 :class="index === 0 ? 'bg-amber-500' : 'bg-amber-400'"
               ></div>
               <div 

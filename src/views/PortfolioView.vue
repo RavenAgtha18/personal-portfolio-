@@ -10,7 +10,7 @@
           <span>{{ messages?.portfolio?.badge || 'Project Index & Case Studies' }}</span>
         </div>
 
-        <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3 text-slate-900 dark:text-white">
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3 text-slate-900 dark:text-white break-keep">
           {{ messages?.portfolio?.title || 'Engineering Architecture Portfolio' }}
         </h1>
 
@@ -93,8 +93,8 @@
             >
               <component :is="insight.icon" class="w-16 h-16 text-amber-400" />
             </div>
-            <p class="text-sm text-amber-400 mb-1">{{ insight.label }}</p>
-            <p class="text-4xl font-bold text-white">{{ insight.value }}</p>
+            <p class="text-sm text-amber-500 dark:text-amber-400 mb-1">{{ insight.label }}</p>
+            <p class="text-4xl font-bold text-slate-900 dark:text-white">{{ insight.value }}</p>
           </div>
         </div>
 
