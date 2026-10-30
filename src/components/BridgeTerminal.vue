@@ -59,6 +59,27 @@
         <div v-else-if="entry.type === 'special'" class="whitespace-pre-wrap text-amber-300 pl-3 sm:pl-4 border-l border-amber-500/40 font-bold text-[11px] sm:text-xs">
           {{ entry.text }}
         </div>
+        <div v-if="entry.links && entry.links.length" class="pl-3 sm:pl-4 mt-2 flex flex-wrap gap-2">
+          <router-link
+            v-for="(link, lIdx) in entry.links.filter(l => l.to)"
+            :key="'rl-' + lIdx"
+            :to="link.to"
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/40 text-[11px] font-semibold transition-colors"
+          >
+            <span>{{ link.label }}</span>
+            <span>&rarr;</span>
+          </router-link>
+          <a
+            v-for="(link, lIdx) in entry.links.filter(l => l.href)"
+            :key="'a-' + lIdx"
+            :href="link.href"
+            target="_blank"
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 border border-emerald-500/40 text-[11px] font-semibold transition-colors"
+          >
+            <span>{{ link.label }}</span>
+            <span>&nearr;</span>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -90,16 +111,18 @@
 
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
+import { useRouter } from 'vue-router'
 import { useTheme } from '@/composables/useTheme'
 import { Terminal } from 'lucide-vue-next'
 import confetti from 'canvas-confetti'
 
+const router = useRouter()
 const { isDark } = useTheme()
 
 const inputCommand = ref('')
 const outputContainerRef = ref(null)
 
-const availableCommands = ['help', 'whoami', 'specs', 'telemetry', 'japan', 'sudo hire', 'clear']
+const availableCommands = ['help', 'whoami', 'specs', 'projects', 'resume', 'telemetry', 'japan', 'sudo hire', 'clear']
 
 const history = ref([
   {
@@ -145,8 +168,9 @@ const executeCommand = (cmd) => {
   specs       - Technical architecture and industrial stack specifications
   telemetry   - Stream simulated shop-floor scanner events
   japan       - Japanese language capability (JFT-Basic A2, Monozukuri mindset)
-  projects    - List flagship manufacturing and internal systems
-  sudo hire   - Trigger direct WhatsApp & email contact options
+  projects    - Complete engineering catalog (all 12 production systems & platforms)
+  resume      - Open Japanese standard resume (職務経歴書 JIS 2-page standard)
+  sudo hire   - Trigger direct WhatsApp, email & recruitment protocol
   clear       - Wipe the current terminal session`
       })
       break
@@ -198,9 +222,12 @@ const executeCommand = (cmd) => {
       break
 
     case 'projects':
+    case 'project':
+    case 'catalog':
       history.value.push({
         type: 'output',
-        text: `PRODUCTION SYSTEMS CATALOG (PT. HARRISON AND GIL-JAVA · 2-PERSON SYSDEV TEAM):
+        text: `ENGINEERING & SYSTEMS CATALOG (12 PROJECTS):
+  [PT. HARRISON AND GIL-JAVA · 2-PERSON IN-HOUSE SYSDEV DIVISION]
   1. SnapPack       - Export shipping verification, digital touch signatures & EUDR compliance
   2. Protrack       - Real-time shop-floor WIP tracking & dynamic aging calculations
   3. Stokku         - Warehouse inventory control, FEFO chemical routing & 2-tier rack zoning
@@ -208,8 +235,30 @@ const executeCommand = (cmd) => {
   5. QC Checklist   - Shop-floor quality inspection gateway & defect classification logs
   6. ProScan        - Barcode stock opname audits & ERP ledger variance reconciliation
   7. Toolin         - Factory equipment requisition & multi-tier department approvals
-  8. Doc Control    - ISO/SOP document management & multi-version audit history`
+  8. Doc Control    - ISO/SOP document management & multi-version audit history
+  9. FinWise        - Corporate petty cash & financial voucher approval workflow
+  [FINTECH & WEB PLATFORMS]
+  10. Smart Money   - IDX stock analysis & foreign flow intelligence (Python/Streamlit)
+  11. ISP Semarang  - Official portal & financial tools for Investor Saham Pemula Semarang
+  12. Nihongo-App   - Japanese JLPT/JFT-Basic training & SRS flashcard web platform`,
+        links: [
+          { label: '全12件の開発実績カタログを開く (/portfolio)', to: '/portfolio' }
+        ]
       })
+      break
+
+    case 'resume':
+    case 'cv':
+    case 'keirekisho':
+      history.value.push({
+        type: 'success',
+        text: `Opening 職務経歴書 (Japanese Resume JIS 2-Page Standard)...`,
+        links: [
+          { label: '職務経歴書ページを開く (/keirekisho)', to: '/keirekisho' },
+          { label: 'PDF直接ダウンロード (/cv_rikiandi.pdf)', href: '/cv_rikiandi.pdf' }
+        ]
+      })
+      router.push('/keirekisho')
       break
 
     case 'sudo hire':
@@ -227,9 +276,13 @@ const executeCommand = (cmd) => {
 WhatsApp: +62 851-7518-0821
 Email:    rikiandialfiyanto@gmail.com
 LinkedIn: linkedin.com/in/riki-andi-alfiyanto
-Resume:   /cv_rikiandi.pdf
+Resume:   /keirekisho (職務経歴書 JIS 2ページ規格) & /cv_rikiandi.pdf
 ------------------------------------------------------------
-Ready to elevate your engineering team and bridge business needs.`
+Ready to elevate your engineering team and bridge business needs.`,
+        links: [
+          { label: '職務経歴書ページを開く (/keirekisho)', to: '/keirekisho' },
+          { label: 'PDF直接ダウンロード (/cv_rikiandi.pdf)', href: '/cv_rikiandi.pdf' }
+        ]
       })
       break
 

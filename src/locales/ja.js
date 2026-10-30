@@ -33,7 +33,7 @@ export default {
     telemetryOnline: "正常稼働中",
     telemetryDivision: "2名体制 社内SE (SysDev)",
     telemetryPlant: "HARRISON & GIL-JAVA",
-    telemetrySuite: "8つのMES本番モジュール",
+    telemetrySuite: "12の実運用システム網",
     telemetryHardware: "ZEBRA TC26 • USB WEDGE",
     telemetryStandard: "システム停止ゼロ",
 
@@ -62,10 +62,10 @@ export default {
       tags: ["Zebra TC26 Android PDA", "USB HIDバーコードスキャナー", "ポカヨケ（誤投入防止）ゲート"],
     },
     phase03: {
-      tab: "8大MESモジュール",
+      tab: "MES・DXシステム網",
       badge: "03. 工場統合基盤",
-      tagline: "8つの自社開発MESモジュール",
-      title: "8大製造システム統合スイート",
+      tagline: "自社開発MES & 現場DXシステム群",
+      title: "製造MES・業務システム統合スイート",
       desc: "工場全体を支える自社システム網：Protrack（仕掛品・滞留日数追跡）、Stokku（FEFO先入先出倉庫管理）、finish-info（生地歩留まり算出）、SnapPack（EUDR輸出梱包証明）、QC（品質欠陥追跡）、ProScan（バーコード棚卸監査）。",
       tags: ["Protrack（仕掛品追跡）", "Stokku（FEFO倉庫）", "SnapPack（EUDR輸出）", "ProScan（棚卸監査）"],
     },
@@ -102,7 +102,7 @@ export default {
 
   // Systems Catalog Gateway
   gateway: {
-    badge: "10件以上の実運用システムを自社開発",
+    badge: "全12件の実運用システム・Webプラットフォーム",
     title: "自社開発システムアーキテクチャを見る",
     desc: "現場の課題を解決した実稼働ケーススタディ：Protrack（工程追跡）、SnapPack（出荷証明）、Stokku（FEFO在庫管理）、ProScan（棚卸）、QC（品質管理）。",
     cta: "完全な開発実績カタログを見る →",

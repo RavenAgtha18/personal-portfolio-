@@ -142,7 +142,7 @@ const INITIAL_BADGES = [
   { label: 'Python Script', tag: 'PARSER & CRON', icon: '🐍', color: '#facc15', bg: 'rgba(250, 204, 21, 0.16)' },
   { label: 'QC Gate', tag: 'TOLERANCE', icon: '🛡️', color: '#f43f5e', bg: 'rgba(244, 63, 94, 0.16)' },
   { label: 'JFT-A2 Nihongo', tag: 'BRIDGE COMM', icon: '🇯🇵', color: '#ec4899', bg: 'rgba(236, 72, 153, 0.16)' },
-  { label: 'ISP Semarang', tag: 'FIBER NETWORK', icon: '🌐', color: '#06b6d4', bg: 'rgba(6, 182, 212, 0.16)' },
+  { label: 'ISP Semarang', tag: 'STOCK COMMUNITY', icon: '📈', color: '#06b6d4', bg: 'rgba(6, 182, 212, 0.16)' },
   { label: 'Honeywell HF680', tag: '2D SCANNER', icon: '🔍', color: '#14b8a6', bg: 'rgba(20, 184, 166, 0.16)' },
   { label: 'Tailwind CSS', tag: 'DESIGN SYS', icon: '🎨', color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.16)' },
   { label: 'RESTful API', tag: 'ENDPOINTS', icon: '⚙️', color: '#818cf8', bg: 'rgba(129, 140, 248, 0.16)' },

@@ -168,6 +168,7 @@ import {
   Cpu,
   Globe,
   Zap,
+  TrendingUp,
 } from 'lucide-vue-next'
 
 const router = useRouter()
@@ -245,11 +246,11 @@ const items = [
   {
     id: 'cs-isp',
     category: 'Case Studies',
-    title: 'ISP Semarang — Portal & Operations',
-    subtitle: 'High-volume internet service provider operational portal',
-    badge: 'LIVE SYSTEM',
+    title: 'ISP Semarang — Investor Saham Pemula Portal',
+    subtitle: 'Komunitas Investor Saham Pemula Semarang — Financial calculation tools (CAGR, Dividend, DCA)',
+    badge: 'FINTECH',
     actionText: 'Open Live Demo',
-    icon: Globe,
+    icon: TrendingUp,
     action: () => window.open('https://www.ispsemarang.my.id', '_blank'),
   },
 
@@ -277,8 +278,8 @@ const items = [
   {
     id: 'nav-portfolio',
     category: 'Navigation',
-    title: 'All Projects (15+ Catalog)',
-    subtitle: 'Explore full engineering project index and architecture dashboard',
+    title: 'All Projects (12 Projects Catalog)',
+    subtitle: 'Explore full 12-project engineering catalog and architecture dashboard',
     badge: 'CATALOG',
     actionText: 'Navigate',
     icon: FolderOpen,

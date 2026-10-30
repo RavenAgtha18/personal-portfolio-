@@ -33,7 +33,7 @@ export default {
     telemetryOnline: "ACTIVE",
     telemetryDivision: "2-PERSON SYSDEV CORE",
     telemetryPlant: "HARRISON & GIL-JAVA",
-    telemetrySuite: "8 MES PRODUCTION MODULES",
+    telemetrySuite: "12 PRODUCTION SYSTEMS",
     telemetryHardware: "ZEBRA TC26 • WEDGE HID",
     telemetryStandard: "ZERO BREAKDOWN",
 
@@ -62,11 +62,11 @@ export default {
       tags: ["Zebra TC26 Android PDA", "USB HID Wedge Scanners", "Poka-Yoke Error Gates"],
     },
     phase03: {
-      tab: "8 MES Engines",
+      tab: "MES & DX Systems",
       badge: "03. FACTORY MATRIX",
-      tagline: "8 Integrated Manufacturing Systems",
-      title: "8-Engine Manufacturing Suite",
-      desc: "A complete factory operating web: Protrack (WIP tracking & aging), Stokku (FEFO warehouse zoning), finish-info (fabric yield), SnapPack (EUDR export packing), QC (defects), ProScan (stock opname), and Toolin.",
+      tagline: "Integrated Manufacturing & Systems",
+      title: "Manufacturing MES & Systems Suite",
+      desc: "A complete operating web: Protrack (WIP tracking & aging), Stokku (FEFO warehouse zoning), finish-info (fabric yield), SnapPack (EUDR export packing), QC (defects), ProScan (stock opname), and FinWise.",
       tags: ["Protrack WIP", "Stokku FEFO", "SnapPack EUDR", "ProScan Audit"],
     },
     phase04: {
@@ -102,7 +102,7 @@ export default {
 
   // Systems Catalog Gateway
   gateway: {
-    badge: "10+ Production Systems Engineered",
+    badge: "12 Production Systems & Platforms",
     title: "Explore Complete Systems Architecture",
     desc: "Deep-dive into verified production case studies: Protrack (WIP tracking & aging), SnapPack (EUDR shipping chain of custody), Stokku (FEFO inventory), ProScan (barcode stock opname), and QC checklists.",
     cta: "Open Complete Engineering Catalog",
